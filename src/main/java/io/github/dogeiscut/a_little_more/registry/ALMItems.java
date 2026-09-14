@@ -1,10 +1,13 @@
 package io.github.dogeiscut.a_little_more.registry;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
+import io.github.dogeiscut.a_little_more.content.armor.AttributeArmorItem;
+import io.github.dogeiscut.a_little_more.content.consumables.enseepened_pearl.EnseepenedPearlItem;
+import io.github.dogeiscut.a_little_more.content.weapons.flail.FlailItem;
+import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
@@ -17,23 +20,106 @@ import java.util.function.Supplier;
 public class ALMItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ALittleMore.MOD_ID);
 
-//    public static final Supplier<Item> item = item("celerium_shard", (p) -> new Item(
-//            p.attributes(
-//                    ItemAttributeModifiers.builder()
-//                            .add(
-//                                    Attributes.MOVEMENT_SPEED,
-//                                    new AttributeModifier(
-//                                            ALittleMore.id("")
-//                                    )
-//                            )
-//            )
-//    ));
     public static final Supplier<Item> CELERIUM_SHARD = basicItem("celerium_shard");
-
-
-
     public static final Supplier<Item> EMERALD_NUGGET = basicItem("emerald_nugget");
     public static final Supplier<Item> OPOSSUM_TAIL = basicItem("opossum_tail");
+    public static final Supplier<Item> SEEP_CRYSTAL = basicItem("seep_crystal");
+
+    public static final Supplier<ArmorItem> CELERIUM_HELMET = item("celerium_helmet",
+            properties -> new AttributeArmorItem(
+                    ALMArmorMaterials.CELERIUM,
+                    ArmorItem.Type.HELMET,
+                    new Item.Properties(),
+                    ItemAttributeModifiers.builder()
+                            .add(Attributes.MOVEMENT_SPEED,
+                                    new AttributeModifier(ALittleMore.id("celerium_helmet"), 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                                    EquipmentSlotGroup.HEAD)
+                            .build()
+            ));
+    public static final Supplier<ArmorItem> CELERIUM_CHESTPLATE = item("celerium_chestplate",
+            properties -> new AttributeArmorItem(
+                    ALMArmorMaterials.CELERIUM,
+                    ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties(),
+                    ItemAttributeModifiers.builder()
+                            .add(Attributes.MOVEMENT_SPEED,
+                                    new AttributeModifier(ALittleMore.id("celerium_chestplate"), 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                                    EquipmentSlotGroup.CHEST)
+                            .build()
+            ));
+    public static final Supplier<ArmorItem> CELERIUM_LEGGINGS = item("celerium_leggings",
+            properties -> new AttributeArmorItem(
+                    ALMArmorMaterials.CELERIUM,
+                    ArmorItem.Type.LEGGINGS,
+                    new Item.Properties(),
+                    ItemAttributeModifiers.builder()
+                            .add(Attributes.MOVEMENT_SPEED,
+                                    new AttributeModifier(ALittleMore.id("celerium_leggings"), 0.08, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                                    EquipmentSlotGroup.LEGS)
+                            .build()
+            ));
+    public static final Supplier<ArmorItem> CELERIUM_BOOTS = item("celerium_boots",
+            properties -> new AttributeArmorItem(
+                    ALMArmorMaterials.CELERIUM,
+                    ArmorItem.Type.BOOTS,
+                    new Item.Properties(),
+                    ItemAttributeModifiers.builder()
+                            .add(Attributes.MOVEMENT_SPEED,
+                                    new AttributeModifier(ALittleMore.id("celerium_boots"), 0.08, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                                    EquipmentSlotGroup.FEET)
+                            .build()
+            ));
+
+    public static final Supplier<SwordItem> CELERIUM_SWORD = item("celerium_sword",
+            properties -> new SwordItem(
+                    ALMTiers.CELERIUM,
+                    properties.attributes(SwordItem.createAttributes(ALMTiers.CELERIUM, 3, -1.0F).withModifierAdded(
+                            Attributes.MOVEMENT_SPEED,
+                            new AttributeModifier(ALittleMore.id("celerium_sword"), 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), EquipmentSlotGroup.MAINHAND)
+                    )
+            ));
+
+    public static final Supplier<PickaxeItem> CELERIUM_PICKAXE = item("celerium_pickaxe",
+            properties -> new PickaxeItem(
+                    ALMTiers.CELERIUM,
+                    properties.attributes(PickaxeItem.createAttributes(ALMTiers.CELERIUM, 1.0F, -1.8F).withModifierAdded(
+                            Attributes.MOVEMENT_SPEED,
+                            new AttributeModifier(ALittleMore.id("celerium_pickaxe"), 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), EquipmentSlotGroup.MAINHAND)
+                    )
+            ));
+    public static final Supplier<AxeItem> CELERIUM_AXE = item("celerium_axe",
+            properties -> new AxeItem(
+                    ALMTiers.CELERIUM,
+                    properties.attributes(AxeItem.createAttributes(ALMTiers.CELERIUM, 5.0F, -1.9F).withModifierAdded(
+                            Attributes.MOVEMENT_SPEED,
+                            new AttributeModifier(ALittleMore.id("celerium_axe"), 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), EquipmentSlotGroup.MAINHAND)
+                    )
+            ));
+    public static final Supplier<ShovelItem> CELERIUM_SHOVEL = item("celerium_shovel",
+            properties -> new ShovelItem(
+                    ALMTiers.CELERIUM,
+                    properties.attributes(ShovelItem.createAttributes(ALMTiers.CELERIUM, 1.5F, -1.7F).withModifierAdded(
+                            Attributes.MOVEMENT_SPEED,
+                            new AttributeModifier(ALittleMore.id("celerium_shovel"), 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), EquipmentSlotGroup.MAINHAND)
+                    )
+            ));
+    public static final Supplier<HoeItem> CELERIUM_HOE = item("celerium_hoe",
+            properties -> new HoeItem(
+                    ALMTiers.CELERIUM,
+                    properties.attributes(HoeItem.createAttributes(ALMTiers.CELERIUM, -2.0F, 0.0F).withModifierAdded(
+                            Attributes.MOVEMENT_SPEED,
+                            new AttributeModifier(ALittleMore.id("celerium_hoe"), 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), EquipmentSlotGroup.MAINHAND)
+                    )
+            ));
+
+    public static final Supplier<EnseepenedPearlItem> ENSEEPENED_PEARL = item("enseepened_pearl", EnseepenedPearlItem::new);
+
+    public static final Supplier<Item> IMBUEMENT_TEMPLATE = item("imbuement_template", Item::new);
+    public static final Supplier<Item> ADVANCED_IMBUEMENT_TEMPLATE = item("advanced_imbuement_template", Item::new);
+
+    public static final Supplier<Item> IMBUEMENT_BADGE = item("imbuement_badge", properties -> new Item(properties.stacksTo(1)));
+
+    public static final Supplier<FlailItem> FLAIL = item("flail", FlailItem::new);
 
 //    public static final Supplier<SpawnEggItem> OPOSSUM_SPAWN_EGG = ITEMS.registerItem(
 //            "opossum_spawn_egg",

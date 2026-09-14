@@ -2,6 +2,7 @@ package io.github.dogeiscut.a_little_more;
 
 import com.mojang.logging.LogUtils;
 import io.github.dogeiscut.a_little_more.registry.ALMArmorMaterials;
+import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
 import io.github.dogeiscut.a_little_more.registry.ALMCreativeTabs;
 import io.github.dogeiscut.a_little_more.registry.ALMItems;
 import net.minecraft.client.Minecraft;
@@ -51,7 +52,7 @@ public class ALittleMore {
 //        ALMAttributes.register(modEventBus);
         ALMArmorMaterials.register(modEventBus);
         ALMItems.register(modEventBus);
-//        ALMBlocks.register(modEventBus);
+        ALMBlocks.register(modEventBus);
 //        ALMBlockEntities.register(modEventBus);
 //        ALMEntities.register(modEventBus);
 //        ALMParticles.register(modEventBus);

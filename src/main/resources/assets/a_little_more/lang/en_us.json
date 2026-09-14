@@ -31,10 +31,10 @@
   "item.a_little_more.flail": "Flail",
 
   "block.a_little_more.seepstone": "Seepstone",
-  "block.a_little_more.chiseled_seepstone": "Chiseled Seepstone",
   "block.a_little_more.seepstone_slab": "Seepstone Slab",
   "block.a_little_more.seepstone_stairs": "Seepstone Stairs",
   "block.a_little_more.seepstone_wall": "Seepstone Wall",
+  "block.a_little_more.seepstone_bricks": "Seepstone Brick Slab",
   "block.a_little_more.seepstone_brick_slab": "Seepstone Brick Slab",
   "block.a_little_more.seepstone_brick_stairs": "Seepstone Brick Stairs",
   "block.a_little_more.seepstone_brick_wall": "Seepstone Brick Wall",
@@ -42,6 +42,7 @@
   "block.a_little_more.polished_seepstone_slab": "Polished Seepstone Slab",
   "block.a_little_more.polished_seepstone_stairs": "Polished Seepstone Stairs",
   "block.a_little_more.polished_seepstone_wall": "Polished Seepstone Wall",
+  "block.a_little_more.chiseled_seepstone": "Chiseled Seepstone",
 
   "block.a_little_more.celerium_block": "Block of Celerium",
   "block.a_little_more.celerium_ore": "Celerium Ore",
@@ -63,6 +64,7 @@
   "entity.a_little_more.shady_dealer": "Shady Dealer",
   "item.a_little_more.shady_dealer_spawn_egg": "Shady Dealer Spawn Egg",
   "entity.a_little_more.spike_ball": "Spike Ball",
+  "entity.a_little_more.enseepened_pearl": "Enseepened Pearl",
 
   "effect.a_little_more.immunity": "Immunity",
   "effect.a_little_more.dashing": "Dashing",
