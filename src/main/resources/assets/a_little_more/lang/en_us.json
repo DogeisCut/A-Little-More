@@ -6,7 +6,9 @@
   "item.a_little_more.celerium_shard": "Celerium Shard",
   "item.a_little_more.emerald_nugget": "Emerald Nugget",
   "item.a_little_more.opossum_tail": "Opossum Tail",
-  "block.a_little_more.seep_crystal": "Seep Crystal",
+
+  "item.a_little_more.seep_crystal": "Seep Crystal",
+  "block.a_little_more.seep_crystal_cluster": "Seep Crystal Cluster",
 
   "item.a_little_more.celerium_helmet": "Celerium Helmet",
   "item.a_little_more.celerium_chestplate": "Celerium Chestplate",
