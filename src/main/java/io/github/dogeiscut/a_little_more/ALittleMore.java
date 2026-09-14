@@ -28,6 +28,8 @@ public class ALittleMore {
         ALMBlocks.register(modEventBus);
         ALMFluids.register(modEventBus);
         ALMFluidTypes.register(modEventBus);
+        ALMMobEffects.register(modEventBus);
+        ALMPotions.register(modEventBus);
 //        ALMBlockEntities.register(modEventBus);
 //        ALMEntities.register(modEventBus);
 //        ALMParticles.register(modEventBus);

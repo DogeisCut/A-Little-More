@@ -13,6 +13,7 @@ public class ALMAttributes {
     public static final DeferredRegister<Attribute> ATTRIBUTES =
             DeferredRegister.create(Registries.ATTRIBUTE, ALittleMore.MOD_ID);
 
+    // TODO: this attribute is shown in red if subtracted. Consider inverting into target_hurt_time_reduction.
     public static final Holder<Attribute> TARGET_HURT_TIME = ATTRIBUTES.register("target_hurt_time", () -> new PercentageAttribute(
             "attributes.a_little_more.target_hurt_time",
             1.0d,

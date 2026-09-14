@@ -69,6 +69,11 @@
   "entity.a_little_more.enseepened_pearl": "Enseepened Pearl",
 
   "effect.a_little_more.immunity": "Immunity",
+  "item.minecraft.tipped_arrow.effect.immunity": "Arrow of Immunity",
+  "item.minecraft.potion.effect.immunity": "Potion of Immunity",
+  "item.minecraft.splash_potion.effect.immunity": "Splash Potion of Immunity",
+  "item.minecraft.lingering_potion.effect.immunity": "Lingering Potion of Immunity",  "item.minecraft.tipped_arrow.effect.immunity": "Arrow of Immunity",
+
   "effect.a_little_more.dashing": "Dashing",
 
   "enchantment.a_little_more.multiplication": "Multiplication",

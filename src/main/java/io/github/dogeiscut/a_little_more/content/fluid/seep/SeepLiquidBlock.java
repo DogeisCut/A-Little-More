@@ -19,6 +19,7 @@ public class SeepLiquidBlock extends LiquidBlock {
 
     private static final int LEVITATION_DURATION_TICKS = 20;
     private static final int LEVITATION_AMPLIFIER = 2;
+    private static final double PUSH_FORCE = 0.02d;
 
     public SeepLiquidBlock(Supplier<? extends FlowingFluid> fluidSupplier, Properties properties) {
         super(fluidSupplier.get(), properties);
@@ -43,10 +44,13 @@ public class SeepLiquidBlock extends LiquidBlock {
                             true
                     ));
                 }
-                Vec3 delta = living.getDeltaMovement();
-                living.setDeltaMovement(delta.x, delta.y + 0.1D, delta.z);
+                // This may seem weird but remember that the Immunity mob effect exists
+                if (living.hasEffect(MobEffects.LEVITATION)) {
+                    Vec3 delta = living.getDeltaMovement();
+                    living.setDeltaMovement(delta.x, delta.y + PUSH_FORCE, delta.z);
 
-                living.hasImpulse = true;
+                    living.hasImpulse = true;
+                }
             }
         }
     }
