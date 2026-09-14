@@ -23,7 +23,6 @@ public class ALMItems {
     public static final Supplier<Item> CELERIUM_SHARD = basicItem("celerium_shard");
     public static final Supplier<Item> EMERALD_NUGGET = basicItem("emerald_nugget");
     public static final Supplier<Item> OPOSSUM_TAIL = basicItem("opossum_tail");
-    public static final Supplier<Item> SEEP_CRYSTAL = basicItem("seep_crystal");
 
     public static final Supplier<ArmorItem> CELERIUM_HELMET = item("celerium_helmet",
             properties -> new AttributeArmorItem(
