@@ -56,6 +56,6 @@ public enum ALMTiers implements Tier {
 
     @Override
     public Ingredient getRepairIngredient() {
-        return (Ingredient)this.repairIngredient.get();
+        return this.repairIngredient.get();
     }
 }

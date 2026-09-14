@@ -87,15 +87,16 @@ public class ALMFluids {
                 .craftRemainder(Items.BUCKET);
     }
 
+    public static void register(IEventBus modEventBus) {
+        FLUIDS.register(modEventBus);
+    }
+
     public record FluidEntry(
             Supplier<? extends FluidType> type,
             Supplier<BaseFlowingFluid.Source> still,
             Supplier<BaseFlowingFluid.Flowing> flowing,
             DeferredBlock<LiquidBlock> block,
             Supplier<BucketItem> bucket
-    ) {}
-
-    public static void register(IEventBus modEventBus) {
-        FLUIDS.register(modEventBus);
+    ) {
     }
 }
