@@ -12,8 +12,11 @@ public class ALMFluidTypes {
     public static final DeferredRegister<FluidType> FLUID_TYPES =
             DeferredRegister.create(NeoForgeRegistries.FLUID_TYPES, ALittleMore.MOD_ID);
 
-    public static final Supplier<FluidType> SEEP = FLUID_TYPES.register("seep", SeepFluidType::new);
+    public static final Supplier<SeepFluidType> SEEP = fluidType("seep", SeepFluidType::new);
 
+    public static <T extends FluidType> Supplier<T> fluidType(String name, Supplier<T> factory) {
+        return FLUID_TYPES.register(name, factory);
+    }
 
     public static void register(IEventBus modEventBus) {
         FLUID_TYPES.register(modEventBus);
