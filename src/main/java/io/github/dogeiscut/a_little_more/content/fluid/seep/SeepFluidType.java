@@ -20,6 +20,7 @@ public class SeepFluidType extends BaseFluidType {
                         .descriptionId("block.a_little_more.seep")
                         .fallDistanceModifier(0f)
                         .canExtinguish(true)
+                        .canDrown(false)
                         .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
                         .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
                         .sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
