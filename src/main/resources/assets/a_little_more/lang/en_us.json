@@ -44,19 +44,28 @@
   "block.a_little_more.polished_seepstone_wall": "Polished Seepstone Wall",
 
   "block.a_little_more.celerium_block": "Block of Celerium",
+  "block.a_little_more.celerium_ore": "Celerium Ore",
+  "block.a_little_more.deepslate_celerium_ore": "Deepslate Celerium Ore",
+
+  "item.a_little_more.seep_bucket": "Bucket of Seep",
 
   "fluid.a_little_more.seep": "Seep",
   "fluid.a_little_more.flowing_seep": "Flowing Seep",
   "block.a_little_more.seep": "Seep",
 
+  "block.a_little_more.seepslime": "Seepslime",
+
   "block.a_little_more.dash_pad": "Dash Pad",
   "block.a_little_more.launch_pad": "Launch Pad",
 
   "entity.a_little_more.opossum": "Opossum",
+  "item.a_little_more.opossum_spawn_egg": "Opossum Spawn Egg",
   "entity.a_little_more.shady_dealer": "Shady Dealer",
+  "item.a_little_more.shady_dealer_spawn_egg": "Shady Dealer Spawn Egg",
   "entity.a_little_more.spike_ball": "Spike Ball",
 
   "effect.a_little_more.immunity": "Immunity",
+  "effect.a_little_more.dashing": "Dashing",
 
   "enchantment.a_little_more.multiplication": "Multiplication",
   "enchantment.a_little_more.impact": "Impact",
@@ -64,31 +73,31 @@
   "enchantment.a_little_more.inertia": "Inertia",
 
   "advancement.a_little_more.rabies_free.title": "Rabies Free",
-  "advancement.a_little_more.rabies_free.desc": "",
+  "advancement.a_little_more.rabies_free.desc": "Craft and drink a Potion of Immunity, and dodge an effect.",
   "advancement.a_little_more.skull_crusher.title": "Skull Crusher",
-  "advancement.a_little_more.skull_crusher.desc": "",
+  "advancement.a_little_more.skull_crusher.desc": "Obtain a Flail.",
   "advancement.a_little_more.black_market.title": "Black Market",
-  "advancement.a_little_more.black_market.desc": "",
+  "advancement.a_little_more.black_market.desc": "Trade with a Shady Dealer.",
   "advancement.a_little_more.swimming_in_secrets.title": "Swimming in Secrets",
-  "advancement.a_little_more.swimming_in_secrets.desc": "",
+  "advancement.a_little_more.swimming_in_secrets.desc": "Swim in Seep while under the effects of Immunity",
   "advancement.a_little_more.running_around_at_the_speed_of_sound.title": "Running Around at The Speed of Sound",
-  "advancement.a_little_more.running_around_at_the_speed_of_sound.desc": "",
+  "advancement.a_little_more.running_around_at_the_speed_of_sound.desc": "Obtain the maximum possible speed through Celerium.",
   "advancement.a_little_more.a_quick_sprint.title": "A Quick Sprint",
-  "advancement.a_little_more.a_quick_sprint.desc": "",
+  "advancement.a_little_more.a_quick_sprint.desc": "Use a Dash Pad.",
   "advancement.a_little_more.around_the_world.title": "Around The World",
-  "advancement.a_little_more.around_the_world.desc": "",
+  "advancement.a_little_more.around_the_world.desc": "Be under the effects of a Dash Pad for over a minute.",
   "advancement.a_little_more.catch_me.title": "Catch Me!",
-  "advancement.a_little_more.catch_me.desc": "",
+  "advancement.a_little_more.catch_me.desc": "Use a Flail to suspend yourself in the air by catching it behind a block.",
   "advancement.a_little_more.minor_enhancements.title": "Minor Enhancements",
-  "advancement.a_little_more.minor_enhancements.desc": "",
+  "advancement.a_little_more.minor_enhancements.desc": "Use any Imbuement Template",
   "advancement.a_little_more.weightless_flight.title": "Weightless Flight",
-  "advancement.a_little_more.weightless_flight.desc": "",
+  "advancement.a_little_more.weightless_flight.desc": "Swin in Speeslime.",
   "advancement.a_little_more.upgrades_people.title": "Upgrades, People",
-  "advancement.a_little_more.upgrades_people.desc": "",
+  "advancement.a_little_more.upgrades_people.desc": "Transform an item in Seep.",
   "advancement.a_little_more.player_pinball.title": "Player Pinball",
-  "advancement.a_little_more.player_pinball.desc": "",
+  "advancement.a_little_more.player_pinball.desc": "Use a Launch Pad.",
   "advancement.a_little_more.erased_history.title": "Erased History",
-  "advancement.a_little_more.erased_history.desc": "",
+  "advancement.a_little_more.erased_history.desc": "Mine a Seep Crystal with something in it.",
 
   "jukebox_song.a_little_more.a_little_more": "A Little More - DogeisCut"
 }
