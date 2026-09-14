@@ -95,7 +95,7 @@
   "advancement.a_little_more.minor_enhancements.title": "Minor Enhancements",
   "advancement.a_little_more.minor_enhancements.desc": "Use any Imbuement Template",
   "advancement.a_little_more.weightless_flight.title": "Weightless Flight",
-  "advancement.a_little_more.weightless_flight.desc": "Swin in Speeslime.",
+  "advancement.a_little_more.weightless_flight.desc": "Swim in Seepslime.",
   "advancement.a_little_more.upgrades_people.title": "Upgrades, People",
   "advancement.a_little_more.upgrades_people.desc": "Transform an item in Seep.",
   "advancement.a_little_more.player_pinball.title": "Player Pinball",
@@ -103,5 +103,7 @@
   "advancement.a_little_more.erased_history.title": "Erased History",
   "advancement.a_little_more.erased_history.desc": "Mine a Seep Crystal with something in it.",
 
-  "jukebox_song.a_little_more.a_little_more": "A Little More - DogeisCut"
+  "jukebox_song.a_little_more.a_little_more": "A Little More - DogeisCut",
+
+  "attributes.a_little_more.post_attack_invulnerability_time_multiplier": "Post Attack Invulnerability Time Multiplier"
 }

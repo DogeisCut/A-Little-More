@@ -4,8 +4,15 @@ import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.content.fluid.BaseFluidType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.pathfinder.PathType;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.SoundActions;
 import net.neoforged.neoforge.fluids.FluidType;
 import org.joml.Vector3f;
@@ -29,6 +36,7 @@ public class SeepFluidType extends BaseFluidType {
                         .adjacentPathType(PathType.DANGER_OTHER)
                         .density(15)
                         .rarity(Rarity.UNCOMMON)
+                        .motionScale(-0.01d)
                         .viscosity(5),
                 STILL,
                 FLOW,
@@ -38,5 +46,24 @@ public class SeepFluidType extends BaseFluidType {
                 0.0f,
                 2.0f
         );
+    }
+
+    private static final double SINK_ACCELERATION = 0.04D;
+    private static final double MAX_SINK_SPEED = -0.5D;
+    private static final double HORIZONTAL_DRAG = 0.95D;
+
+    @Override
+    public void setItemMovement(ItemEntity entity) {
+        Vec3 delta = entity.getDeltaMovement();
+        double newY = Math.max(delta.y - SINK_ACCELERATION, MAX_SINK_SPEED);
+        entity.setDeltaMovement(delta.x * HORIZONTAL_DRAG, newY, delta.z * HORIZONTAL_DRAG);
+    }
+
+    @Override
+    public boolean canSwim(Entity entity) {
+        if (entity instanceof LivingEntity living && living.hasEffect(MobEffects.LEVITATION)) {
+            return false;
+        }
+        return super.canSwim(entity);
     }
 }

@@ -1,6 +1,7 @@
 package io.github.dogeiscut.a_little_more.registry;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
+import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepLiquidBlock;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
@@ -18,6 +19,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.BiFunction;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
@@ -31,7 +33,9 @@ public class ALMFluids {
             properties -> properties
                     .slopeFindDistance(2)
                     .levelDecreasePerBlock(2),
-            liquidBlockProperties(MapColor.COLOR_PURPLE)
+            liquidBlockProperties(MapColor.COLOR_PURPLE),
+            defaultBucketItemProperties(),
+            SeepLiquidBlock::new
     );
 
     public static FluidEntry fluid(String name, Supplier<? extends FluidType> fluidType,
@@ -47,6 +51,14 @@ public class ALMFluids {
     public static FluidEntry fluid(String name, Supplier<? extends FluidType> fluidType,
                                    UnaryOperator<BaseFlowingFluid.Properties> propertiesOp,
                                    BlockBehaviour.Properties blockProperties, Item.Properties bucketProperties) {
+        return fluid(name, fluidType, propertiesOp, blockProperties, bucketProperties,
+                (still, p) -> new LiquidBlock(still.get(), p));
+    }
+
+    public static FluidEntry fluid(String name, Supplier<? extends FluidType> fluidType,
+                                   UnaryOperator<BaseFlowingFluid.Properties> propertiesOp,
+                                   BlockBehaviour.Properties blockProperties, Item.Properties bucketProperties,
+                                   BiFunction<Supplier<BaseFlowingFluid.Source>, BlockBehaviour.Properties, LiquidBlock> blockFactory) {
         AtomicReference<BaseFlowingFluid.Properties> propertiesHolder = new AtomicReference<>();
 
         Supplier<BaseFlowingFluid.Source> still =
@@ -55,7 +67,7 @@ public class ALMFluids {
                 FLUIDS.register("flowing_" + name, () -> new BaseFlowingFluid.Flowing(propertiesHolder.get()));
 
         DeferredBlock<LiquidBlock> block = ALMBlocks.block(
-                name, p -> new LiquidBlock(still.get(), p), blockProperties);
+                name, p -> blockFactory.apply(still, p), blockProperties);
 
         Supplier<BucketItem> bucket = ALMItems.item(
                 name + "_bucket", p -> new BucketItem(still.get(), p), bucketProperties);

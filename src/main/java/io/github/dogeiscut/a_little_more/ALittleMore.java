@@ -22,7 +22,7 @@ public class ALittleMore {
     public ALittleMore(IEventBus modEventBus, ModContainer modContainer) {
 
 //        ALMDataComponents.register(modEventBus);
-//        ALMAttributes.register(modEventBus);
+        ALMAttributes.register(modEventBus);
         ALMArmorMaterials.register(modEventBus);
         ALMItems.register(modEventBus);
         ALMBlocks.register(modEventBus);
