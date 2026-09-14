@@ -31,9 +31,16 @@ public class ALMItems {
                     ArmorItem.Type.HELMET,
                     new Item.Properties(),
                     ItemAttributeModifiers.builder()
-                            .add(Attributes.MOVEMENT_SPEED,
-                                    new AttributeModifier(ALittleMore.id("celerium_helmet"), 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-                                    EquipmentSlotGroup.HEAD)
+                            .add(
+                                    Attributes.MOVEMENT_SPEED,
+                                    new AttributeModifier(ALittleMore.id("celerium_helmet_movement_speed"), 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                                    EquipmentSlotGroup.HEAD
+                            )
+                            .add(
+                                    ALMAttributes.TARGET_HURT_TIME,
+                                    new AttributeModifier(ALittleMore.id("celerium_helmet_target_hurt_time"), -0.06, AttributeModifier.Operation.ADD_VALUE),
+                                    EquipmentSlotGroup.HEAD
+                            )
                             .build()
             ));
     public static final Supplier<ArmorItem> CELERIUM_CHESTPLATE = item("celerium_chestplate",
@@ -42,9 +49,16 @@ public class ALMItems {
                     ArmorItem.Type.CHESTPLATE,
                     new Item.Properties(),
                     ItemAttributeModifiers.builder()
-                            .add(Attributes.MOVEMENT_SPEED,
-                                    new AttributeModifier(ALittleMore.id("celerium_chestplate"), 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-                                    EquipmentSlotGroup.CHEST)
+                            .add(
+                                    Attributes.MOVEMENT_SPEED,
+                                    new AttributeModifier(ALittleMore.id("celerium_chestplate_movement_speed"), 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                                    EquipmentSlotGroup.CHEST
+                            )
+                            .add(
+                                    ALMAttributes.TARGET_HURT_TIME,
+                                    new AttributeModifier(ALittleMore.id("celerium_chestplate_target_hurt_time"), -0.06, AttributeModifier.Operation.ADD_VALUE),
+                                    EquipmentSlotGroup.CHEST
+                            )
                             .build()
             ));
     public static final Supplier<ArmorItem> CELERIUM_LEGGINGS = item("celerium_leggings",
@@ -53,9 +67,16 @@ public class ALMItems {
                     ArmorItem.Type.LEGGINGS,
                     new Item.Properties(),
                     ItemAttributeModifiers.builder()
-                            .add(Attributes.MOVEMENT_SPEED,
-                                    new AttributeModifier(ALittleMore.id("celerium_leggings"), 0.08, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-                                    EquipmentSlotGroup.LEGS)
+                            .add(
+                                    Attributes.MOVEMENT_SPEED,
+                                    new AttributeModifier(ALittleMore.id("celerium_leggings_movement_speed"), 0.08, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                                    EquipmentSlotGroup.LEGS
+                            )
+                            .add(
+                                    ALMAttributes.TARGET_HURT_TIME,
+                                    new AttributeModifier(ALittleMore.id("celerium_leggings_target_hurt_time"), -0.06, AttributeModifier.Operation.ADD_VALUE),
+                                    EquipmentSlotGroup.LEGS
+                            )
                             .build()
             ));
     public static final Supplier<ArmorItem> CELERIUM_BOOTS = item("celerium_boots",
@@ -64,51 +85,97 @@ public class ALMItems {
                     ArmorItem.Type.BOOTS,
                     new Item.Properties(),
                     ItemAttributeModifiers.builder()
-                            .add(Attributes.MOVEMENT_SPEED,
-                                    new AttributeModifier(ALittleMore.id("celerium_boots"), 0.08, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-                                    EquipmentSlotGroup.FEET)
+                            .add(
+                                    Attributes.MOVEMENT_SPEED,
+                                    new AttributeModifier(ALittleMore.id("celerium_boots_movement_speed"), 0.08, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                                    EquipmentSlotGroup.FEET
+                            )
+                            .add(
+                                    ALMAttributes.TARGET_HURT_TIME,
+                                    new AttributeModifier(ALittleMore.id("celerium_boots_target_hurt_time"), -0.06, AttributeModifier.Operation.ADD_VALUE),
+                                    EquipmentSlotGroup.FEET
+                            )
                             .build()
             ));
 
     public static final Supplier<SwordItem> CELERIUM_SWORD = item("celerium_sword",
             properties -> new SwordItem(
                     ALMTiers.CELERIUM,
-                    properties.attributes(SwordItem.createAttributes(ALMTiers.CELERIUM, 3, -1.0F).withModifierAdded(
-                            Attributes.MOVEMENT_SPEED,
-                            new AttributeModifier(ALittleMore.id("celerium_sword"), 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), EquipmentSlotGroup.MAINHAND)
+                    properties.attributes(SwordItem.createAttributes(ALMTiers.CELERIUM, 3, -1.0F)
+                            .withModifierAdded(
+                                    Attributes.MOVEMENT_SPEED,
+                                    new AttributeModifier(ALittleMore.id("celerium_sword_movement_speed"), 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                                    EquipmentSlotGroup.MAINHAND
+                            )
+                            .withModifierAdded(
+                                    ALMAttributes.TARGET_HURT_TIME,
+                                    new AttributeModifier(ALittleMore.id("celerium_sword_target_hurt_time"), -0.06, AttributeModifier.Operation.ADD_VALUE),
+                                    EquipmentSlotGroup.MAINHAND
+                            )
                     )
             ));
 
-    public static final Supplier<PickaxeItem> CELERIUM_PICKAXE = item("celerium_pickaxe",
+    public static final Supplier CELERIUM_PICKAXE = item("celerium_pickaxe",
             properties -> new PickaxeItem(
                     ALMTiers.CELERIUM,
-                    properties.attributes(PickaxeItem.createAttributes(ALMTiers.CELERIUM, 1.0F, -1.8F).withModifierAdded(
-                            Attributes.MOVEMENT_SPEED,
-                            new AttributeModifier(ALittleMore.id("celerium_pickaxe"), 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), EquipmentSlotGroup.MAINHAND)
+                    properties.attributes(PickaxeItem.createAttributes(ALMTiers.CELERIUM, 1.0F, -1.8F)
+                            .withModifierAdded(
+                                    Attributes.MOVEMENT_SPEED,
+                                    new AttributeModifier(ALittleMore.id("celerium_pickaxe_movement_speed"), 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                                    EquipmentSlotGroup.MAINHAND
+                            )
+                            .withModifierAdded(
+                                    ALMAttributes.TARGET_HURT_TIME,
+                                    new AttributeModifier(ALittleMore.id("celerium_pickaxe_target_hurt_time"), -0.06, AttributeModifier.Operation.ADD_VALUE),
+                                    EquipmentSlotGroup.MAINHAND
+                            )
                     )
             ));
     public static final Supplier<AxeItem> CELERIUM_AXE = item("celerium_axe",
             properties -> new AxeItem(
                     ALMTiers.CELERIUM,
-                    properties.attributes(AxeItem.createAttributes(ALMTiers.CELERIUM, 5.0F, -1.9F).withModifierAdded(
-                            Attributes.MOVEMENT_SPEED,
-                            new AttributeModifier(ALittleMore.id("celerium_axe"), 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), EquipmentSlotGroup.MAINHAND)
+                    properties.attributes(AxeItem.createAttributes(ALMTiers.CELERIUM, 5.0F, -1.9F)
+                            .withModifierAdded(
+                                    Attributes.MOVEMENT_SPEED,
+                                    new AttributeModifier(ALittleMore.id("celerium_axe_movement_speed"), 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                                    EquipmentSlotGroup.MAINHAND
+                            )
+                            .withModifierAdded(
+                                    ALMAttributes.TARGET_HURT_TIME,
+                                    new AttributeModifier(ALittleMore.id("celerium_axe_target_hurt_time"), -0.06, AttributeModifier.Operation.ADD_VALUE),
+                                    EquipmentSlotGroup.MAINHAND
+                            )
                     )
             ));
     public static final Supplier<ShovelItem> CELERIUM_SHOVEL = item("celerium_shovel",
             properties -> new ShovelItem(
                     ALMTiers.CELERIUM,
-                    properties.attributes(ShovelItem.createAttributes(ALMTiers.CELERIUM, 1.5F, -1.7F).withModifierAdded(
-                            Attributes.MOVEMENT_SPEED,
-                            new AttributeModifier(ALittleMore.id("celerium_shovel"), 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), EquipmentSlotGroup.MAINHAND)
+                    properties.attributes(ShovelItem.createAttributes(ALMTiers.CELERIUM, 1.5F, -1.7F)
+                            .withModifierAdded(
+                                    Attributes.MOVEMENT_SPEED,
+                                    new AttributeModifier(ALittleMore.id("celerium_shovel_movement_speed"), 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                                    EquipmentSlotGroup.MAINHAND
+                            )
+                            .withModifierAdded(
+                                    ALMAttributes.TARGET_HURT_TIME,
+                                    new AttributeModifier(ALittleMore.id("celerium_shovel_target_hurt_time"), -0.06, AttributeModifier.Operation.ADD_VALUE),
+                                    EquipmentSlotGroup.MAINHAND
+                            )
                     )
             ));
     public static final Supplier<HoeItem> CELERIUM_HOE = item("celerium_hoe",
             properties -> new HoeItem(
                     ALMTiers.CELERIUM,
-                    properties.attributes(HoeItem.createAttributes(ALMTiers.CELERIUM, -2.0F, 0.0F).withModifierAdded(
-                            Attributes.MOVEMENT_SPEED,
-                            new AttributeModifier(ALittleMore.id("celerium_hoe"), 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), EquipmentSlotGroup.MAINHAND)
+                    properties.attributes(HoeItem.createAttributes(ALMTiers.CELERIUM, -0.5F, 0.0F)
+                            .withModifierAdded(
+                                    Attributes.MOVEMENT_SPEED,
+                                    new AttributeModifier(ALittleMore.id("celerium_hoe_movement_speed"), 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                                    EquipmentSlotGroup.MAINHAND
+                            ).withModifierAdded(
+                                    ALMAttributes.TARGET_HURT_TIME,
+                                    new AttributeModifier(ALittleMore.id("celerium_hoe_target_hurt_time"), -0.06, AttributeModifier.Operation.ADD_VALUE),
+                                    EquipmentSlotGroup.MAINHAND
+                            )
                     )
             ));
 

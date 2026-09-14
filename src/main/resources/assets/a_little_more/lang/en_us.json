@@ -105,5 +105,5 @@
 
   "jukebox_song.a_little_more.a_little_more": "A Little More - DogeisCut",
 
-  "attributes.a_little_more.post_attack_invulnerability_time_multiplier": "Post Attack Invulnerability Time Multiplier"
+  "attributes.a_little_more.target_hurt_time": "Target Hurt Time"
 }

@@ -12,13 +12,13 @@ import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 
 @EventBusSubscriber(modid = ALittleMore.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
-public class PostAttackInvulnerabilityTimeMultiplierEvent {
+public class TargetHurtTimeEvent {
 
     @SubscribeEvent
     public static void onEntityAttributeModification(EntityAttributeModificationEvent event) {
         for (EntityType<? extends LivingEntity> type : event.getTypes()) {
-            if (!event.has(type, ALMAttributes.POST_ATTACK_INVULNERABILITY_TIME_MULTIPLIER)) {
-                event.add(type, ALMAttributes.POST_ATTACK_INVULNERABILITY_TIME_MULTIPLIER);
+            if (!event.has(type, ALMAttributes.TARGET_HURT_TIME)) {
+                event.add(type, ALMAttributes.TARGET_HURT_TIME);
             }
         }
     }
@@ -27,7 +27,7 @@ public class PostAttackInvulnerabilityTimeMultiplierEvent {
     public static void onLivingEntityPostDamage(LivingDamageEvent.Post event) {
         if (event.getSource().getEntity() instanceof LivingEntity attacker) {
             AttributeMap attributes = attacker.getAttributes();
-            AttributeInstance instance = attributes.getInstance(ALMAttributes.POST_ATTACK_INVULNERABILITY_TIME_MULTIPLIER);
+            AttributeInstance instance = attributes.getInstance(ALMAttributes.TARGET_HURT_TIME);
 
             if (instance != null) {
                 LivingEntity target = event.getEntity();
