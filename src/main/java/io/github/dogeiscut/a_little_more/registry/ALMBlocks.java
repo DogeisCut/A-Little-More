@@ -33,6 +33,9 @@ public class ALMBlocks {
     public static final DeferredBlock<Block> CELERIUM_ORE = simpleBlockWithItem("celerium_ore", BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_ORE));
     public static final DeferredBlock<Block> DEEPSLATE_CELERIUM_ORE = simpleBlockWithItem("deepslate_celerium_ore", BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_DIAMOND_ORE));
 
+    public static final DeferredBlock<Block> DASH_PAD = simpleBlockWithItem("dash_pad", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS));
+    public static final DeferredBlock<Block> LAUNCH_PAD = simpleBlockWithItem("launch_pad", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS));
+
     public static DeferredBlock<Block> simpleBlock(String name, BlockBehaviour.Properties properties) {
         return BLOCKS.registerSimpleBlock(name, properties);
     }
