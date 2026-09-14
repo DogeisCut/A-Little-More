@@ -1,0 +1,94 @@
+{
+  "itemGroup.a_little_more": "A Little More",
+
+  "tooltip.a_little_more.imbued_with": "Imbued With:",
+
+  "item.a_little_more.celerium_shard": "Celerium Shard",
+  "item.a_little_more.emerald_nugget": "Emerald Nugget",
+  "item.a_little_more.opossum_tail": "Opossum Tail",
+  "block.a_little_more.seep_crystal": "Seep Crystal",
+
+  "item.a_little_more.celerium_helmet": "Celerium Helmet",
+  "item.a_little_more.celerium_chestplate": "Celerium Chestplate",
+  "item.a_little_more.celerium_leggings": "Celerium Leggings",
+  "item.a_little_more.celerium_boots": "Celerium Boots",
+
+  "item.a_little_more.celerium_sword": "Celerium Sword",
+  "item.a_little_more.celerium_pickaxe": "Celerium Pickaxe",
+  "item.a_little_more.celerium_axe": "Celerium Axe",
+  "item.a_little_more.celerium_shovel": "Celerium Shovel",
+  "item.a_little_more.celerium_hoe": "Celerium Hoe",
+
+  "item.a_little_more.celerium_spear": "Celerium Spear",
+
+  "item.a_little_more.enseepened_pearl": "Enseepened Pearl",
+
+  "item.a_little_more.imbuement_template": "Imbuement Template",
+  "item.a_little_more.advanced_imbuement_template": "Advanced Imbuement Template",
+
+  "item.a_little_more.imbuement_badge": "Imbuement Badge",
+
+  "item.a_little_more.flail": "Flail",
+
+  "block.a_little_more.seepstone": "Seepstone",
+  "block.a_little_more.chiseled_seepstone": "Chiseled Seepstone",
+  "block.a_little_more.seepstone_slab": "Seepstone Slab",
+  "block.a_little_more.seepstone_stairs": "Seepstone Stairs",
+  "block.a_little_more.seepstone_wall": "Seepstone Wall",
+  "block.a_little_more.seepstone_brick_slab": "Seepstone Brick Slab",
+  "block.a_little_more.seepstone_brick_stairs": "Seepstone Brick Stairs",
+  "block.a_little_more.seepstone_brick_wall": "Seepstone Brick Wall",
+  "block.a_little_more.polished_seepstone": "Polished Seepstone",
+  "block.a_little_more.polished_seepstone_slab": "Polished Seepstone Slab",
+  "block.a_little_more.polished_seepstone_stairs": "Polished Seepstone Stairs",
+  "block.a_little_more.polished_seepstone_wall": "Polished Seepstone Wall",
+
+  "block.a_little_more.celerium_block": "Block of Celerium",
+
+  "fluid.a_little_more.seep": "Seep",
+  "fluid.a_little_more.flowing_seep": "Flowing Seep",
+  "block.a_little_more.seep": "Seep",
+
+  "block.a_little_more.dash_pad": "Dash Pad",
+  "block.a_little_more.launch_pad": "Launch Pad",
+
+  "entity.a_little_more.opossum": "Opossum",
+  "entity.a_little_more.shady_dealer": "Shady Dealer",
+  "entity.a_little_more.spike_ball": "Spike Ball",
+
+  "effect.a_little_more.immunity": "Immunity",
+
+  "enchantment.a_little_more.multiplication": "Multiplication",
+  "enchantment.a_little_more.impact": "Impact",
+  "enchantment.a_little_more.orbit": "Orbit",
+  "enchantment.a_little_more.inertia": "Inertia",
+
+  "advancement.a_little_more.rabies_free.title": "Rabies Free",
+  "advancement.a_little_more.rabies_free.desc": "",
+  "advancement.a_little_more.skull_crusher.title": "Skull Crusher",
+  "advancement.a_little_more.skull_crusher.desc": "",
+  "advancement.a_little_more.black_market.title": "Black Market",
+  "advancement.a_little_more.black_market.desc": "",
+  "advancement.a_little_more.swimming_in_secrets.title": "Swimming in Secrets",
+  "advancement.a_little_more.swimming_in_secrets.desc": "",
+  "advancement.a_little_more.running_around_at_the_speed_of_sound.title": "Running Around at The Speed of Sound",
+  "advancement.a_little_more.running_around_at_the_speed_of_sound.desc": "",
+  "advancement.a_little_more.a_quick_sprint.title": "A Quick Sprint",
+  "advancement.a_little_more.a_quick_sprint.desc": "",
+  "advancement.a_little_more.around_the_world.title": "Around The World",
+  "advancement.a_little_more.around_the_world.desc": "",
+  "advancement.a_little_more.catch_me.title": "Catch Me!",
+  "advancement.a_little_more.catch_me.desc": "",
+  "advancement.a_little_more.minor_enhancements.title": "Minor Enhancements",
+  "advancement.a_little_more.minor_enhancements.desc": "",
+  "advancement.a_little_more.weightless_flight.title": "Weightless Flight",
+  "advancement.a_little_more.weightless_flight.desc": "",
+  "advancement.a_little_more.upgrades_people.title": "Upgrades, People",
+  "advancement.a_little_more.upgrades_people.desc": "",
+  "advancement.a_little_more.player_pinball.title": "Player Pinball",
+  "advancement.a_little_more.player_pinball.desc": "",
+  "advancement.a_little_more.erased_history.title": "Erased History",
+  "advancement.a_little_more.erased_history.desc": "",
+
+  "jukebox_song.a_little_more.a_little_more": "A Little More - DogeisCut"
+}
