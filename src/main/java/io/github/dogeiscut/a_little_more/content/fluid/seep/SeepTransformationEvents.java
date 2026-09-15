@@ -23,7 +23,7 @@ import java.util.Optional;
 public class SeepTransformationEvents {
 
     private static final String SUBMERSION_KEY = "a_little_more:seep_submersion_ticks";
-    private static final int TRANSFORM_TICKS = 0;
+    private static final int TRANSFORM_TICKS = 60;
 
     @SubscribeEvent
     public static void onEntityTick(EntityTickEvent.Post event) {
@@ -49,7 +49,6 @@ public class SeepTransformationEvents {
         }
 
         RecipeManager recipeManager = level.getRecipeManager();
-        System.out.println(level.getRecipeManager().getAllRecipesFor(ALMRecipes.SEEP_TRANSFORMATION_TYPE.get()).size());
         Optional<RecipeHolder<SeepTransformationRecipe>> match = recipeManager.getRecipeFor(
                 ALMRecipes.SEEP_TRANSFORMATION_TYPE.get(), new SingleRecipeInput(stack), level);
 
@@ -71,18 +70,17 @@ public class SeepTransformationEvents {
     }
 
     private static boolean isFullySubmergedInSeep(ItemEntity itemEntity) {
-//        Level level = itemEntity.level();
-//        AABB box = itemEntity.getBoundingBox();
-//        BlockPos topPos = BlockPos.containing(itemEntity.getX(), box.maxY, itemEntity.getZ());
-//        FluidState fluidState = level.getFluidState(topPos);
-//
-//        boolean isSeep = fluidState.is(ALMFluids.SEEP.still().get()) || fluidState.is(ALMFluids.SEEP.flowing().get());
-//        if (!isSeep) {
-//            return false;
-//        }
-//
-//        double surfaceY = topPos.getY() + fluidState.getHeight(level, topPos);
-//        return box.maxY <= surfaceY;
-        return true;
+        Level level = itemEntity.level();
+        AABB box = itemEntity.getBoundingBox();
+        BlockPos topPos = BlockPos.containing(itemEntity.getX(), box.maxY, itemEntity.getZ());
+        FluidState fluidState = level.getFluidState(topPos);
+
+        boolean isSeep = fluidState.is(ALMFluids.SEEP.still().get()) || fluidState.is(ALMFluids.SEEP.flowing().get());
+        if (!isSeep) {
+            return false;
+        }
+
+        double surfaceY = topPos.getY() + fluidState.getHeight(level, topPos);
+        return box.maxY <= surfaceY;
     }
 }

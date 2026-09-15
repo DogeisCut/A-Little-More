@@ -22,7 +22,7 @@ public class EnseepenedPearlItem extends Item {
         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENDER_PEARL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
         player.getCooldowns().addCooldown(this, 20);
         if (!level.isClientSide) {
-            ThrownEnderpearl thrownenderpearl = new ThrownEnderpearl(level, player);
+            EnseepenedPearlEntity thrownenderpearl = new EnseepenedPearlEntity(level, player);
             thrownenderpearl.setItem(itemstack);
             thrownenderpearl.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
             level.addFreshEntity(thrownenderpearl);

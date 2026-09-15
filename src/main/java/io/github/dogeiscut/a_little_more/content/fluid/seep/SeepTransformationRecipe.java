@@ -4,13 +4,10 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.github.dogeiscut.a_little_more.registry.ALMRecipes;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -18,26 +15,26 @@ import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-public record SeepTransformationRecipe(Item ingredient, Item result) implements Recipe<SingleRecipeInput> {
+public record SeepTransformationRecipe(Ingredient ingredient, ItemStack result) implements Recipe<SingleRecipeInput> {
 
     @Override
     public boolean matches(SingleRecipeInput input, @NotNull Level level) {
-        return input.item().is(ingredient);
+        return ingredient.test(input.item());
     }
 
     @Override
     public @NotNull ItemStack assemble(@NotNull SingleRecipeInput input, HolderLookup.@NotNull Provider registries) {
-        return new ItemStack(result);
+        return result.copy();
     }
 
     @Override
-    public boolean canCraftInDimensions(int i, int i1) {
+    public boolean canCraftInDimensions(int width, int height) {
         return true;
     }
 
     @Override
     public @NotNull ItemStack getResultItem(HolderLookup.@NotNull Provider registries) {
-        return new ItemStack(result);
+        return result.copy();
     }
 
     @Override
@@ -56,14 +53,14 @@ public record SeepTransformationRecipe(Item ingredient, Item result) implements 
 
         public static final MapCodec<SeepTransformationRecipe> CODEC = RecordCodecBuilder.mapCodec(instance ->
                 instance.group(
-                        BuiltInRegistries.ITEM.byNameCodec().fieldOf("ingredient").forGetter(SeepTransformationRecipe::ingredient),
-                        BuiltInRegistries.ITEM.byNameCodec().fieldOf("result").forGetter(SeepTransformationRecipe::ingredient)
+                        Ingredient.CODEC.fieldOf("ingredient").forGetter(SeepTransformationRecipe::ingredient),
+                        ItemStack.CODEC.fieldOf("result").forGetter(SeepTransformationRecipe::result)
                 ).apply(instance, SeepTransformationRecipe::new)
         );
 
         public static final StreamCodec<RegistryFriendlyByteBuf, SeepTransformationRecipe> STREAM_CODEC = StreamCodec.composite(
-                ByteBufCodecs.registry(Registries.ITEM), SeepTransformationRecipe::ingredient,
-                ByteBufCodecs.registry(Registries.ITEM), SeepTransformationRecipe::result,
+                Ingredient.CONTENTS_STREAM_CODEC, SeepTransformationRecipe::ingredient,
+                ItemStack.STREAM_CODEC, SeepTransformationRecipe::result,
                 SeepTransformationRecipe::new
         );
 
