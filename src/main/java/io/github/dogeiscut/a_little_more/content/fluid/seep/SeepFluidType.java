@@ -22,6 +22,7 @@ public class SeepFluidType extends BaseFluidType {
     private static final double SINK_ACCELERATION = 0.04D;
     private static final double MAX_SINK_SPEED = -0.5D;
     private static final double HORIZONTAL_DRAG = 0.95D;
+
     public SeepFluidType() {
         super(FluidType.Properties.create()
                         .descriptionId("block.a_little_more.seep")
