@@ -46,3 +46,4 @@ I can save it for a future update.
 - [ ] Item Tagging
 - [ ] Block Tagging
 - [ ] File Organization/Cleanup (the goal is to have files for the same feature in the same folder, and that one file has one tasks)
+- [ ] Loot Tables (UGHHHHHH)
