@@ -28,7 +28,7 @@ public class SeepFluidType extends BaseFluidType {
                         .fallDistanceModifier(0f)
                         .canExtinguish(true)
                         .canDrown(false)
-                        .lightLevel(2)
+                        .lightLevel(5)
                         .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
                         .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
                         .sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
