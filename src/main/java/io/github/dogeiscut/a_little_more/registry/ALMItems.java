@@ -134,7 +134,7 @@ public class ALMItems {
     public static final Supplier<AxeItem> CELERIUM_AXE = item("celerium_axe",
             properties -> new AxeItem(
                     ALMTiers.CELERIUM,
-                    properties.attributes(AxeItem.createAttributes(ALMTiers.CELERIUM, 5.0F, -1.9F)
+                    properties.attributes(AxeItem.createAttributes(ALMTiers.CELERIUM, 4.0F, -2.0F)
                             .withModifierAdded(
                                     Attributes.MOVEMENT_SPEED,
                                     new AttributeModifier(ALittleMore.id("celerium_axe_movement_speed"), 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
@@ -166,7 +166,7 @@ public class ALMItems {
     public static final Supplier<HoeItem> CELERIUM_HOE = item("celerium_hoe",
             properties -> new HoeItem(
                     ALMTiers.CELERIUM,
-                    properties.attributes(HoeItem.createAttributes(ALMTiers.CELERIUM, -0.5F, 0.0F)
+                    properties.attributes(HoeItem.createAttributes(ALMTiers.CELERIUM, 0.0F, 0.0F)
                             .withModifierAdded(
                                     Attributes.MOVEMENT_SPEED,
                                     new AttributeModifier(ALittleMore.id("celerium_hoe_movement_speed"), 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
