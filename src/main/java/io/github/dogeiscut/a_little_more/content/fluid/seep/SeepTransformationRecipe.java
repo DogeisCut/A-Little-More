@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.github.dogeiscut.a_little_more.registry.ALMRecipes;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
@@ -16,6 +17,11 @@ public record SeepTransformationRecipe(Ingredient ingredient, ItemStack result) 
     @Override
     public boolean matches(SingleRecipeInput input, @NotNull Level level) {
         return ingredient.test(input.item());
+    }
+
+    @Override
+    public @NotNull NonNullList<Ingredient> getIngredients() {
+        return NonNullList.of(Ingredient.EMPTY, ingredient);
     }
 
     @Override

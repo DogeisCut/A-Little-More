@@ -1,17 +1,21 @@
-package io.github.dogeiscut.a_little_more.content.fluid.seep;
+package io.github.dogeiscut.a_little_more.compat.jei;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.client.gui.Render3DHelper;
+import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepTransformationRecipe;
 import io.github.dogeiscut.a_little_more.registry.ALMFluids;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.neoforge.NeoForgeTypes;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
+import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -20,6 +24,8 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 
 public class SeepTransformationRecipeCategory implements IRecipeCategory<SeepTransformationRecipe> {
+
+    // TODO: change thing on the left side to fluid or bucket that says "a_little_more.recipe.seep_transformation.seep"
 
     public static final RecipeType<SeepTransformationRecipe> RECIPE_TYPE =
             RecipeType.create(ALittleMore.MOD_ID, "seep_transformation", SeepTransformationRecipe.class);
@@ -44,7 +50,7 @@ public class SeepTransformationRecipeCategory implements IRecipeCategory<SeepTra
 
     @Override
     public @NotNull Component getTitle() {
-        return Component.translatable("gui.a_little_more.category.seep_transformation");
+        return Component.translatable("a_little_more.recipe.seep_transformation");
     }
 
     @Override
@@ -56,6 +62,7 @@ public class SeepTransformationRecipeCategory implements IRecipeCategory<SeepTra
     public IDrawable getIcon() {
         return icon;
     }
+
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, SeepTransformationRecipe recipe, @NotNull IFocusGroup focuses) {

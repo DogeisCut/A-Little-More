@@ -1,15 +1,21 @@
-package io.github.dogeiscut.a_little_more.integration.create;
+package io.github.dogeiscut.a_little_more.compat.create;
 
 import com.simibubi.create.compat.jei.category.ProcessingViaFanCategory;
 import com.simibubi.create.compat.jei.category.animations.AnimatedKinetics;
 import com.simibubi.create.foundation.gui.AllGuiTextures;
+import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepTransformationRecipe;
 import io.github.dogeiscut.a_little_more.registry.ALMFluids;
+import mezz.jei.api.recipe.RecipeType;
 import net.createmod.catnip.gui.element.GuiGameElement;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import org.jetbrains.annotations.NotNull;
 
 public class FanSeepingCategory extends ProcessingViaFanCategory<SeepTransformationRecipe> {
+
+    public static final RecipeType<RecipeHolder<SeepTransformationRecipe>> RECIPE_TYPE =
+            RecipeType.createRecipeHolderType(ALittleMore.id("fan_seeping"));
 
     public FanSeepingCategory(Info<SeepTransformationRecipe> info) {
         super(info);

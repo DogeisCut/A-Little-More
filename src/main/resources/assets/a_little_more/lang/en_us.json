@@ -112,7 +112,11 @@
 
   "attributes.a_little_more.target_hurt_time": "Target Hurt Time",
 
-  "gui.a_little_more.category.seep_transformation": "Seep Transformation",
+  "a_little_more.recipe.seep_transformation": "Seep Transformation",
+  "a_little_more.recipe.seep_transformation.seep": "Dropping an Item Into Seep",
+
+  "a_little_more.recipe.fan_seeping": "Bulk Seeping",
+  "a_little_more.recipe.fan_seeping.fan": "Fan behind Seep",
 
   "trim_material.a_little_more.celerium": "Celerium"
 }

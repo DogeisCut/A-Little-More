@@ -1,13 +1,9 @@
 package io.github.dogeiscut.a_little_more;
 
 import com.mojang.logging.LogUtils;
-import io.github.dogeiscut.a_little_more.integration.create.CreateIntegration;
+import io.github.dogeiscut.a_little_more.compat.create.ALMCreate;
 import io.github.dogeiscut.a_little_more.registry.*;
-import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.BucketItem;
-import net.minecraft.world.level.block.DispenserBlock;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -48,7 +44,7 @@ public class ALittleMore {
         ALMCreativeTabs.register(modEventBus);
 
         if (ModList.get().isLoaded("create")) {
-            CreateIntegration.init(modEventBus);
+            ALMCreate.init(modEventBus);
         }
 
         if (FMLEnvironment.dist == Dist.CLIENT) {

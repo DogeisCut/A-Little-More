@@ -1,4 +1,4 @@
-package io.github.dogeiscut.a_little_more.integration.create;
+package io.github.dogeiscut.a_little_more.compat.create;
 
 import com.simibubi.create.api.registry.CreateRegistries;
 import com.simibubi.create.content.kinetics.fan.processing.FanProcessingType;
@@ -8,7 +8,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class CreateIntegration {
+public class ALMCreate {
 
     public static final DeferredRegister<FanProcessingType> FAN_TYPES =
             DeferredRegister.create(CreateRegistries.FAN_PROCESSING_TYPE, ALittleMore.MOD_ID);

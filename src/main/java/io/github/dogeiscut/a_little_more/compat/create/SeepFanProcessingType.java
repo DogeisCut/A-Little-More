@@ -1,4 +1,4 @@
-package io.github.dogeiscut.a_little_more.integration.create;
+package io.github.dogeiscut.a_little_more.compat.create;
 
 import com.simibubi.create.content.kinetics.fan.processing.FanProcessingType;
 import com.simibubi.create.foundation.recipe.RecipeApplier;
@@ -23,9 +23,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-// TODO: JEI
-
 public class SeepFanProcessingType implements FanProcessingType {
+    // TODO: fan on the left side that says "a_little_more.recipe.fan_seeping.fan"
+    // TODO: make this show up for clicking on Seep and its bucket (ALMJEI.registerFluidSubtypes? ALMJEI.registerExtraIngredients?)
 
     @Override
     public boolean isValidAt(Level level, BlockPos pos) {
