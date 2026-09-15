@@ -1,11 +1,13 @@
 package io.github.dogeiscut.a_little_more;
 
 import com.mojang.logging.LogUtils;
+import io.github.dogeiscut.a_little_more.integration.create.CreateIntegration;
 import io.github.dogeiscut.a_little_more.registry.*;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
@@ -36,6 +38,10 @@ public class ALittleMore {
 //        ALMParticles.register(modEventBus);
 //        ALMSounds.register(modEventBus);
         ALMCreativeTabs.register(modEventBus);
+
+        if (ModList.get().isLoaded("create")) {
+            CreateIntegration.init(modEventBus);
+        }
 
         if (FMLEnvironment.dist == Dist.CLIENT) {
             modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
