@@ -32,25 +32,32 @@ public class SeepLiquidBlock extends LiquidBlock {
         double fluidSurfaceY = pos.getY() + fluidHeight;
 
         if (entity.getBoundingBox().minY < fluidSurfaceY) {
-            if (entity instanceof LivingEntity living && living.isAlive()) {
-                if (!level.isClientSide) {
-                    living.addEffect(new MobEffectInstance(
-                            MobEffects.LEVITATION,
-                            LEVITATION_DURATION_TICKS,
-                            LEVITATION_AMPLIFIER,
-                            false,
-                            true,
-                            true
-                    ));
-                }
-                // This may seem weird but remember that the Immunity mob effect exists
-                if (living.hasEffect(MobEffects.LEVITATION)) {
-                    Vec3 delta = living.getDeltaMovement();
-                    living.setDeltaMovement(delta.x, delta.y + PUSH_FORCE, delta.z);
-
-                    living.hasImpulse = true;
+            if (entity.isAlive()) {
+                if (entity instanceof LivingEntity living) {
+                    if (!level.isClientSide) {
+                        living.addEffect(new MobEffectInstance(
+                                MobEffects.LEVITATION,
+                                LEVITATION_DURATION_TICKS,
+                                LEVITATION_AMPLIFIER,
+                                false,
+                                true,
+                                true
+                        ));
+                    }
+                    if (living.hasEffect(MobEffects.LEVITATION)) {
+                        applyPushImpulseToEntity(living);
+                    }
+                } else {
+                    applyPushImpulseToEntity(entity);
                 }
             }
         }
+    }
+
+    private void applyPushImpulseToEntity(Entity entity) {
+        Vec3 delta = entity.getDeltaMovement();
+        entity.setDeltaMovement(delta.x, delta.y + PUSH_FORCE, delta.z);
+
+        entity.hasImpulse = true;
     }
 }
