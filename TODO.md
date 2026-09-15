@@ -1,6 +1,8 @@
 - [ ] Seep Effects (particles and sounds)
   - [ ] Swimming Sounds
   - [ ] Splash Sounds
+    - [ ] Small
+    - [ ] Big
   - [ ] Splash Particles
   - [ ] Bucket sounds
   - [ ] Underseep Sounds
