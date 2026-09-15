@@ -2,3 +2,12 @@
 - [ ] Seep bucket dispenser behavior
 - [ ] Seep cauldron
 - [ ] Under seep overlay
+- [ ] Figure out wait repairing celerium tools/armor doesn't show up in JEI
+- [ ] Fix Create support for Bulk Seeping not showing up in JEI
+- [ ] Datagen (tagging everthing manually is getting tiring)
+- [ ] ALMTags namespacing
+# TASKS
+- [ ] Various TODOs within files
+- [ ] Item Tagging
+- [ ] Block Tagging
+- [ ] File Organization/Cleanup (the goal is to have files for the same feature in the same folder, and that one file has one tasks)
