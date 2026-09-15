@@ -4,13 +4,11 @@ import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.content.fluid.BaseFluidType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.SoundActions;
@@ -21,7 +19,9 @@ public class SeepFluidType extends BaseFluidType {
     public static final ResourceLocation STILL = ALittleMore.id("block/seep_still");
     public static final ResourceLocation FLOW = ALittleMore.id("block/seep_flow");
     public static final ResourceLocation OVERLAY = ALittleMore.id("misc/in_seep");
-
+    private static final double SINK_ACCELERATION = 0.04D;
+    private static final double MAX_SINK_SPEED = -0.5D;
+    private static final double HORIZONTAL_DRAG = 0.95D;
     public SeepFluidType() {
         super(FluidType.Properties.create()
                         .descriptionId("block.a_little_more.seep")
@@ -47,10 +47,6 @@ public class SeepFluidType extends BaseFluidType {
                 3.0f
         );
     }
-
-    private static final double SINK_ACCELERATION = 0.04D;
-    private static final double MAX_SINK_SPEED = -0.5D;
-    private static final double HORIZONTAL_DRAG = 0.95D;
 
     @Override
     public void setItemMovement(ItemEntity entity) {

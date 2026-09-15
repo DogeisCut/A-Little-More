@@ -32,8 +32,8 @@ public class FluidInteractionsEvents {
                     new FluidInteractionRegistry.InteractionInformation(
                             (level, currentPos, relativePos, currentState) ->
                                     !level.getFluidState(relativePos).isEmpty() &&
-                                    !level.getFluidState(relativePos).is(ALMFluids.SEEP.still().get()) &&
-                                    !level.getFluidState(relativePos).is(ALMFluids.SEEP.flowing().get()),
+                                            !level.getFluidState(relativePos).is(ALMFluids.SEEP.still().get()) &&
+                                            !level.getFluidState(relativePos).is(ALMFluids.SEEP.flowing().get()),
 
                             ALMBlocks.SEEPSTONE.get().defaultBlockState()
                     )
