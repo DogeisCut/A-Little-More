@@ -19,6 +19,5 @@ public class CreateIntegration {
 
     public static void init(IEventBus modEventBus) {
         FAN_TYPES.register(modEventBus);
-        NeoForge.EVENT_BUS.addListener(CreateMixingIntegration::onAddReloadListeners);
     }
 }
