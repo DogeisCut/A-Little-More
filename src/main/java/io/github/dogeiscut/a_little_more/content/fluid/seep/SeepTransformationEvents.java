@@ -25,6 +25,8 @@ public class SeepTransformationEvents {
     private static final String SUBMERSION_KEY = "a_little_more:seep_submersion_ticks";
     private static final int TRANSFORM_TICKS = 60;
 
+    // Only reason this isn't in SeepLiquidBlock.entityInside is I'm unsure how to handle items leaving the fluid (to properly remove the SUBMERSION_KEY)
+
     @SubscribeEvent
     public static void onEntityTick(EntityTickEvent.Post event) {
         if (!(event.getEntity() instanceof ItemEntity itemEntity)) {

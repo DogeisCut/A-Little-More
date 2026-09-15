@@ -6,6 +6,20 @@
 - [ ] Fix Create support for Bulk Seeping not showing up in JEI
 - [ ] Datagen (tagging everthing manually is getting tiring)
 - [ ] ALMTags namespacing
+- [ ] Seepstone family assets
+- [ ] Opossums
+- [ ] Shady dealers
+- [ ] Horrendous Hideout
+- [ ] Worldgen (for seep, celerium)
+- [ ] Item Imbuing
+- [ ] Music (for music disc)
+  - [ ] Music Disc
+- [ ] Advancements
+- [ ] Fix whatever the hell is going on with Celerium trims (missing premutations? not making those by hand...)
+- [ ] Flail
+- [ ] Speed Pad
+  - [ ] Speed Pad Effect
+- [ ] Launch Pad
 # TASKS
 - [ ] Various TODOs within files
 - [ ] Item Tagging

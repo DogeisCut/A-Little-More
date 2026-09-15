@@ -25,6 +25,7 @@ public class ALMItems {
     public static final Supplier<Item> OPOSSUM_TAIL = basicItem("opossum_tail");
     public static final Supplier<Item> SEEP_CRYSTAL = basicItem("seep_crystal");
 
+    // TODO: Celerium tool/armor helper function(s)
     public static final Supplier<ArmorItem> CELERIUM_HELMET = item("celerium_helmet",
             properties -> new AttributeArmorItem(
                     ALMArmorMaterials.CELERIUM,
@@ -115,7 +116,7 @@ public class ALMItems {
                     )
             ));
 
-    public static final Supplier CELERIUM_PICKAXE = item("celerium_pickaxe",
+    public static final Supplier<PickaxeItem> CELERIUM_PICKAXE = item("celerium_pickaxe",
             properties -> new PickaxeItem(
                     ALMTiers.CELERIUM,
                     properties.attributes(PickaxeItem.createAttributes(ALMTiers.CELERIUM, 1.0F, -1.8F)

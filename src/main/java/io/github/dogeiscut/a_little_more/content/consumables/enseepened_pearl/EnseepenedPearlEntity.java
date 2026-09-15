@@ -22,6 +22,12 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
 public class EnseepenedPearlEntity extends ThrowableItemProjectile {
+    // Yeah, this is mostly duplicated code from the ender pearl
+    // TODO: It also doesn't spawn particle effects or have a proper event
+    // This is intentional even though it could get out of sync because
+    // not making a new entity for this and using events or whatnot was
+    // too cumbersome for me...
+
     public EnseepenedPearlEntity(EntityType<? extends ThrowableItemProjectile> entityType, Level level) {
         super(entityType, level);
     }
