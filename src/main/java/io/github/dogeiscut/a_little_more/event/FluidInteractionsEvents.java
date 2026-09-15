@@ -15,6 +15,7 @@ import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
 @EventBusSubscriber(modid = ALittleMore.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class FluidInteractionsEvents {
 
+    // TODO: this doesnt go here, move to another class
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {

@@ -5,6 +5,6 @@ import net.minecraft.world.effect.MobEffectCategory;
 
 public class ImmunityMobEffect extends MobEffect {
     public ImmunityMobEffect() {
-        super(MobEffectCategory.NEUTRAL, 0xDDDDDD);
+        super(MobEffectCategory.NEUTRAL, 0xCCCCCC);
     }
 }

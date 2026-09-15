@@ -2,10 +2,16 @@ package io.github.dogeiscut.a_little_more.content.fluid;
 
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Camera;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.FogRenderer;
+import net.minecraft.client.renderer.ScreenEffectRenderer;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.BlockAndTintGetter;
+import net.minecraft.world.level.material.FluidState;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
@@ -16,13 +22,13 @@ import java.util.function.Consumer;
 public class BaseFluidType extends FluidType {
     private final ResourceLocation stillTexture;
     private final ResourceLocation flowingTexture;
-    private final ResourceLocation overlayTexture;
+    private final @Nullable ResourceLocation overlayTexture;
     private final int tintColor;
     private final Vector3f fogColor;
     private final float fogStart;
     private final float fogEnd;
 
-    public BaseFluidType(Properties properties, ResourceLocation stillTexture, ResourceLocation flowingTexture, ResourceLocation overlayTexture, int tintColor, Vector3f fogColor, float fogStart, float fogEnd) {
+    public BaseFluidType(Properties properties, ResourceLocation stillTexture, ResourceLocation flowingTexture, @Nullable ResourceLocation overlayTexture, int tintColor, Vector3f fogColor, float fogStart, float fogEnd) {
         super(properties);
         this.stillTexture = stillTexture;
         this.flowingTexture = flowingTexture;
@@ -45,7 +51,7 @@ public class BaseFluidType extends FluidType {
         return tintColor;
     }
 
-    public ResourceLocation getOverlayTexture() {
+    public @Nullable ResourceLocation getOverlayTexture() {
         return overlayTexture;
     }
 
@@ -86,7 +92,6 @@ public class BaseFluidType extends FluidType {
                 RenderSystem.setShaderFogStart(fogStart);
                 RenderSystem.setShaderFogEnd(fogEnd);
             }
-
         });
     }
 }
