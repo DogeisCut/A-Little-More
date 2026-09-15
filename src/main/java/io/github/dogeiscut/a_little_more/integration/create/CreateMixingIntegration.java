@@ -23,30 +23,37 @@ import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 import net.neoforged.neoforge.server.ServerLifecycleHooks;
+import org.jetbrains.annotations.NotNull;
 
 // TODO: broken :(
 // TODO: JEI
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+
 @EventBusSubscriber(modid = ALittleMore.MOD_ID)
 public class CreateMixingIntegration {
 
     @SubscribeEvent
     public static void onAddReloadListeners(AddReloadListenerEvent event) {
         event.addListener((barrier, resourceManager, preparationsProfiler, reloadProfiler, backgroundExecutor, gameExecutor) -> barrier.wait(null).thenRunAsync(() -> {
-            MinecraftServer server = ServerLifecycleHooks.getCurrentServer();
-            if (server != null) {
-                injectMixingRecipes(server.getRecipeManager());
-            }
+            injectMixingRecipes(event.getServerResources().getRecipeManager());
         }, gameExecutor));
     }
 
     private static void injectMixingRecipes(RecipeManager recipeManager) {
+        ALittleMore.LOGGER.info("[A Little More] Howdy! I'm Injecty, Injecty the injector!");
         List<RecipeHolder<SeepTransformationRecipe>> seepRecipes =
                 recipeManager.getAllRecipesFor(ALMRecipes.SEEP_TRANSFORMATION_TYPE.get());
 
         List<RecipeHolder<?>> newMixingRecipes = new ArrayList<>();
+        for (RecipeHolder<?> holder : recipeManager.getRecipes()) {
+            if (!holder.id().getPath().startsWith("create_mixing/")) {
+                newMixingRecipes.add(holder);
+            }
+        }
 
         for (RecipeHolder<SeepTransformationRecipe> holder : seepRecipes) {
             SeepTransformationRecipe recipe = holder.value();
