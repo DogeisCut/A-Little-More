@@ -3,18 +3,26 @@ package io.github.dogeiscut.a_little_more;
 import com.mojang.logging.LogUtils;
 import io.github.dogeiscut.a_little_more.integration.create.CreateIntegration;
 import io.github.dogeiscut.a_little_more.registry.*;
+import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.level.block.DispenserBlock;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import org.slf4j.Logger;
 
 @Mod(ALittleMore.MOD_ID)
+@EventBusSubscriber(modid = ALittleMore.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class ALittleMore {
 
     public static final String MOD_ID = "a_little_more";
@@ -48,6 +56,15 @@ public class ALittleMore {
         }
     }
 
+    @SubscribeEvent
+    public static void onCommonSetup(FMLCommonSetupEvent event) {
+//        event.enqueueWork(() -> {
+//            BuiltInRegistries.ITEM.stream()
+//                    .filter(item -> ALittleMore.MOD_ID.equals(BuiltInRegistries.ITEM.getKey(item).getNamespace()))
+//                    .filter(item -> item instanceof BucketItem)
+//                    .forEach(item -> DispenserBlock.registerBehavior(item, ));
+//        });
+    }
 
     public static ResourceLocation id(String path) {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
