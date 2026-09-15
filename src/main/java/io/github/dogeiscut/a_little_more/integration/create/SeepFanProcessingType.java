@@ -1,25 +1,20 @@
 package io.github.dogeiscut.a_little_more.integration.create;
-import net.createmod.catnip.theme.Color;
 
 import com.simibubi.create.content.kinetics.fan.processing.FanProcessingType;
 import com.simibubi.create.foundation.recipe.RecipeApplier;
-import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepLiquidBlock;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepTransformationRecipe;
 import io.github.dogeiscut.a_little_more.registry.ALMFluids;
 import io.github.dogeiscut.a_little_more.registry.ALMRecipes;
 import io.github.dogeiscut.a_little_more.registry.ALMTags;
+import net.createmod.catnip.theme.Color;
 import net.minecraft.core.BlockPos;
-
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;

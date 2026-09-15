@@ -10,8 +10,8 @@ import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
@@ -91,12 +91,12 @@ public class Render3DHelper {
         float h = FLUID_HEIGHT;
 
         quad(builder, m,
-                0, h, 0,  0, h, 1,  1, h, 1,  1, h, 0,
+                0, h, 0, 0, h, 1, 1, h, 1, 1, h, 0,
                 stillSprite.getU0(), stillSprite.getU1(), stillSprite.getV0(), stillSprite.getV1(),
                 r, g, b, a, 0, 1, 0);
 
         quad(builder, m,
-                0, 0, 1,  0, 0, 0,  1, 0, 0,  1, 0, 1,
+                0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1,
                 stillSprite.getU0(), stillSprite.getU1(), stillSprite.getV0(), stillSprite.getV1(),
                 r * 0.5f, g * 0.5f, b * 0.5f, a, 0, -1, 0);
 
@@ -113,22 +113,22 @@ public class Render3DHelper {
         float sideMaxV = sideMinV + vRange * scaleV * h;
 
         quad(builder, m,
-                1, h, 0,  1, 0, 0,  0, 0, 0,  0, h, 0,
+                1, h, 0, 1, 0, 0, 0, 0, 0, 0, h, 0,
                 sideMinU, sideMaxU, sideMinV, sideMaxV,
                 r * 0.8f, g * 0.8f, b * 0.8f, a, 0, 0, -1);
 
         quad(builder, m,
-                0, h, 1,  0, 0, 1,  1, 0, 1,  1, h, 1,
+                0, h, 1, 0, 0, 1, 1, 0, 1, 1, h, 1,
                 sideMinU, sideMaxU, sideMinV, sideMaxV,
                 r * 0.8f, g * 0.8f, b * 0.8f, a, 0, 0, 1);
 
         quad(builder, m,
-                0, h, 0,  0, 0, 0,  0, 0, 1,  0, h, 1,
+                0, h, 0, 0, 0, 0, 0, 0, 1, 0, h, 1,
                 sideMinU, sideMaxU, sideMinV, sideMaxV,
                 r * 0.6f, g * 0.6f, b * 0.6f, a, -1, 0, 0);
 
         quad(builder, m,
-                1, h, 1,  1, 0, 1,  1, 0, 0,  1, h, 0,
+                1, h, 1, 1, 0, 1, 1, 0, 0, 1, h, 0,
                 sideMinU, sideMaxU, sideMinV, sideMaxV,
                 r * 0.6f, g * 0.6f, b * 0.6f, a, 1, 0, 0);
     }

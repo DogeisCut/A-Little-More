@@ -4,7 +4,6 @@ import com.simibubi.create.api.registry.CreateRegistries;
 import com.simibubi.create.content.kinetics.fan.processing.FanProcessingType;
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;

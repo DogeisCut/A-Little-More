@@ -66,7 +66,7 @@ public class SeepTransformationRecipeCategory implements IRecipeCategory<SeepTra
         builder.addSlot(RecipeIngredientRole.CATALYST, 62, 6)
                 .setBackground(slotBackground, -1, -1)
                 .addFluidStack(ALMFluids.SEEP.still().get(), 1000)
-                .setFluidRenderer(1000L, false, 16,16);
+                .setFluidRenderer(1000L, false, 16, 16);
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 114, 22)
                 .setBackground(slotBackground, -1, -1)

@@ -1,19 +1,11 @@
 package io.github.dogeiscut.a_little_more.integration.jei;
 
-import com.simibubi.create.AllItems;
-import com.simibubi.create.Create;
-import com.simibubi.create.compat.jei.CreateJEI;
-import com.simibubi.create.compat.jei.category.CreateRecipeCategory;
-import com.simibubi.create.compat.jei.category.ProcessingViaFanCategory;
 import io.github.dogeiscut.a_little_more.ALittleMore;
-import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepTransformationRecipe;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepTransformationRecipeCategory;
-import io.github.dogeiscut.a_little_more.integration.create.FanSeepingCategory;
 import io.github.dogeiscut.a_little_more.registry.ALMFluids;
 import io.github.dogeiscut.a_little_more.registry.ALMRecipes;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
-import mezz.jei.api.neoforge.NeoForgeTypes;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
@@ -22,7 +14,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
-import net.neoforged.neoforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;

@@ -1,9 +1,7 @@
 package io.github.dogeiscut.a_little_more;
 
 import io.github.dogeiscut.a_little_more.registry.ALMEntities;
-import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
-import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
