@@ -35,7 +35,8 @@ public class ALMFluids {
                     .levelDecreasePerBlock(2),
             liquidBlockProperties(MapColor.COLOR_PURPLE),
             defaultBucketItemProperties(),
-            SeepLiquidBlock::new
+            ((sourceSupplier, properties) ->
+                    new SeepLiquidBlock(sourceSupplier, properties.lightLevel(state -> 2)))
     );
 
     public static FluidEntry fluid(String name, Supplier<? extends FluidType> fluidType,

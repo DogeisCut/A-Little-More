@@ -41,10 +41,10 @@ public class SeepFluidType extends BaseFluidType {
                 STILL,
                 FLOW,
                 OVERLAY,
-                0xFFFFFF,
+                0xFFFFFFFF,
                 new Vector3f(0.866666667f, 0.690196078f, 1.0f),
-                0.0f,
-                2.0f
+                1.0f,
+                3.0f
         );
     }
 
