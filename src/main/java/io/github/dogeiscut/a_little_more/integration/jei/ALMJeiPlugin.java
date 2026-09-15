@@ -1,8 +1,14 @@
 package io.github.dogeiscut.a_little_more.integration.jei;
 
+import com.simibubi.create.AllItems;
+import com.simibubi.create.Create;
+import com.simibubi.create.compat.jei.CreateJEI;
+import com.simibubi.create.compat.jei.category.CreateRecipeCategory;
+import com.simibubi.create.compat.jei.category.ProcessingViaFanCategory;
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepTransformationRecipe;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepTransformationRecipeCategory;
+import io.github.dogeiscut.a_little_more.integration.create.FanSeepingCategory;
 import io.github.dogeiscut.a_little_more.registry.ALMFluids;
 import io.github.dogeiscut.a_little_more.registry.ALMRecipes;
 import mezz.jei.api.IModPlugin;
