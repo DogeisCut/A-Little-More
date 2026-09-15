@@ -110,5 +110,7 @@
 
   "jukebox_song.a_little_more.a_little_more": "A Little More - DogeisCut",
 
-  "attributes.a_little_more.target_hurt_time": "Target Hurt Time"
+  "attributes.a_little_more.target_hurt_time": "Target Hurt Time",
+
+  "gui.a_little_more.category.seep_transformation": "Seep Transformation"
 }
