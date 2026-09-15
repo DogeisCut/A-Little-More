@@ -1,4 +1,17 @@
 - [ ] Seep Effects (particles and sounds)
+  - [ ] Swimming Sounds
+  - [ ] Splash Sounds
+  - [ ] Splash Particles
+  - [ ] Bucket sounds
+  - [ ] Underseep Sounds
+  - [ ] Underseep particles
+  - [ ] Submerge sounds
+  - [ ] Resurface sounds
+  - [ ] Flowing sounds
+  - [ ] Ambient particles (I imagine seep to be bubbly?)
+  - [ ] Ambient sounds
+  - Worth noting Create doesn't even bother with all this for Chocolate and Honey so if I can't get it working,
+I can save it for a future update.
 - [ ] Seep bucket dispenser behavior
 - [ ] Seep cauldron
 - [ ] Under seep overlay
@@ -20,6 +33,9 @@
 - [ ] Speed Pad
   - [ ] Speed Pad Effect
 - [ ] Launch Pad
+- [ ] Custom Celerium block sounds
+- [ ] Custom Seepstone block sounds
+- [ ] Make seep drag entities more (like water)
 # TASKS
 - [ ] Various TODOs within files
 - [ ] Item Tagging
