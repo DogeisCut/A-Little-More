@@ -43,6 +43,7 @@ public class ALMJEI implements IModPlugin {
                 new SeepTransformationRecipeCategory(helper)
         );
 
+        // TODO: use actual double icon https://github.com/Creators-of-Create/Create/blob/0924e93639ad5f61cfc39a221d909e16f2893df1/src/main/java/com/simibubi/create/compat/jei/CreateJEI.java#L165
         if (ModList.get().isLoaded("create")) {
             registration.addRecipeCategories(
                     new FanSeepingCategory(new CreateRecipeCategory.Info<>(
