@@ -1,0 +1,12 @@
+{
+  "asset_name": "celerium",
+  "description": {
+    "color": "#76F0C2",
+    "translate": "trim_material.a_little_more.celerium"
+  },
+  "ingredient": "a_little_more:celerium_shard",
+  "item_model_index": 0.6,
+  "override_armor_materials": {
+    "a_little_more:celerium": "celerium_darker"
+  }
+}

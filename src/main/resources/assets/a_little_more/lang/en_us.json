@@ -112,5 +112,7 @@
 
   "attributes.a_little_more.target_hurt_time": "Target Hurt Time",
 
-  "gui.a_little_more.category.seep_transformation": "Seep Transformation"
+  "gui.a_little_more.category.seep_transformation": "Seep Transformation",
+
+  "trim_material.a_little_more.celerium": "Celerium"
 }
