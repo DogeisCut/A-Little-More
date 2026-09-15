@@ -39,26 +39,6 @@ public class FluidInteractionsEvents {
                             ALMBlocks.SEEPSTONE.get().defaultBlockState()
                     )
             );
-
-//            FluidInteractionRegistry.addInteraction(
-//                    NeoForgeMod.WATER_TYPE.value(),
-//                    new FluidInteractionRegistry.InteractionInformation(
-//                            (level, currentPos, relativePos, currentState) ->
-//                                    level.getFluidState(relativePos).is(ALMFluids.SEEP.flowing().get()),
-//
-//                            ALMBlocks.SEEPSTONE.get().defaultBlockState()
-//                    )
-//            );
-//
-//            FluidInteractionRegistry.addInteraction(
-//                    NeoForgeMod.LAVA_TYPE.value(),
-//                    new FluidInteractionRegistry.InteractionInformation(
-//                            (level, currentPos, relativePos, currentState) ->
-//                                    level.getFluidState(relativePos).is(ALMFluids.SEEP.flowing().get()),
-//
-//                            ALMBlocks.SEEPSTONE.get().defaultBlockState()
-//                    )
-//            );
         });
     }
 }
