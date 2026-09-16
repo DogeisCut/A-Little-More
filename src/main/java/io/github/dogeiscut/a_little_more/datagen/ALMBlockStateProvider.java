@@ -49,6 +49,7 @@ public class ALMBlockStateProvider extends BlockStateProvider {
 
     private void family(ALMBlockFamily almFamily) {
         BlockFamily family = almFamily.vanilla();
+        if (!family.shouldGenerateModel()) return;
         Block base = family.getBaseBlock();
 
         if (skipIfNoTexture(base)) return;

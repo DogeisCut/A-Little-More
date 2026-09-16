@@ -33,7 +33,7 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
     @Override
     protected void buildRecipes(@NotNull RecipeOutput out) {
 
-        ALMBlockFamilies.getAllFamilies().forEach(family -> family(out, family));
+        ALMBlockFamilies.getAllFamilies().forEach(family -> family(out, family, true));
         progression(out, ALMBlockFamilies.SEEPSTONE_PROGRESSION);
 
         oreSmelting(out, List.of(ALMBlocks.CELERIUM_ORE.get(), ALMBlocks.DEEPSLATE_CELERIUM_ORE.get()),
@@ -60,26 +60,27 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
         //seepTransformation(out, Tags.Items.MUSIC_DISCS, ALMItems.MUSIC_DISC_JUST_A_LITTLE_MORE.get());
     }
 
-    private void family(RecipeOutput out, ALMBlockFamily almFamily) {
+    private void family(RecipeOutput out, ALMBlockFamily almFamily, boolean isStone) {
         BlockFamily family = almFamily.vanilla();
+        if (!family.shouldGenerateRecipe()) return;
         Block base = family.getBaseBlock();
 
         family.getVariants().forEach((variant, block) -> {
             if (variant == BlockFamily.Variant.SLAB) {
                 slabRecipe(out, block, base);
-                stonecut(out, block, base, 2);
+                if (isStone) stonecut(out, block, base, 2);
             } else if (variant == BlockFamily.Variant.STAIRS) {
                 stairsRecipe(out, block, base);
-                stonecut(out, block, base, 1);
+                if (isStone) stonecut(out, block, base, 1);
             } else if (variant == BlockFamily.Variant.WALL) {
                 wallRecipe(out, block, base);
-                stonecut(out, block, base, 1);
+                if (isStone) stonecut(out, block, base, 1);
             } else if (variant == BlockFamily.Variant.CHISELED) {
                 Block slab = family.getVariants().get(BlockFamily.Variant.SLAB);
                 if (slab != null) {
                     chiseledRecipe(out, block, slab);
                 }
-                stonecut(out, block, base, 1);
+                if (isStone) stonecut(out, block, base, 1);
             } else if (variant == BlockFamily.Variant.POLISHED) {
             } else {
                 ALittleMore.LOGGER.warn(
@@ -90,7 +91,7 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
 
         if (almFamily.hasPillar()) {
             pillarRecipe(out, almFamily.pillar(), base);
-            stonecut(out, almFamily.pillar(), base, 1);
+            if (isStone) stonecut(out, almFamily.pillar(), base, 1);
         }
     }
 
