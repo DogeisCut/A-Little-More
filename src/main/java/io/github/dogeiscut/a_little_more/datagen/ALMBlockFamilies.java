@@ -36,6 +36,14 @@ public final class ALMBlockFamilies {
             .wall(ALMBlocks.SEEPSTONE_TILE_WALL.get())
             .getFamily());
 
+    public static final List<ALMBlockFamily> SEEPSTONE_PROGRESSION = List.of(
+            SEEPSTONE, POLISHED_SEEPSTONE, SEEPSTONE_BRICKS, SEEPSTONE_TILES
+    );
+
+    public static final List<ALMBlockFamily> PILLAR_STONECUT_SOURCES = List.of(
+            SEEPSTONE, POLISHED_SEEPSTONE
+    );
+
     public static final List<Block> SIMPLE_CUBES = List.of(
             ALMBlocks.CHISELED_SEEPSTONE.get(),
             ALMBlocks.CELERIUM_BLOCK.get()
@@ -65,7 +73,7 @@ public final class ALMBlockFamilies {
     private static ALMBlockFamily.Builder familyBuilder(Block baseBlock) {
         return new ALMBlockFamily.Builder(baseBlock);
     }
-    
+
     private static ALMBlockFamily register(ALMBlockFamily family) {
         ALMBlockFamily existing = MAP.put(family.baseBlock(), family);
         if (existing != null) {

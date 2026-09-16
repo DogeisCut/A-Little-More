@@ -34,10 +34,7 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
     protected void buildRecipes(@NotNull RecipeOutput out) {
 
         ALMBlockFamilies.getAllFamilies().forEach(family -> family(out, family));
-
-        square4(out, ALMBlocks.SEEPSTONE_TILES.get(), ALMBlocks.SEEPSTONE_BRICKS.get());
-        square4(out, ALMBlocks.SEEPSTONE_BRICKS.get(), ALMBlocks.POLISHED_SEEPSTONE.get());
-        square4(out, ALMBlocks.POLISHED_SEEPSTONE.get(), ALMBlocks.SEEPSTONE.get());
+        progression(out, ALMBlockFamilies.SEEPSTONE_PROGRESSION);
 
         oreSmelting(out, List.of(ALMBlocks.CELERIUM_ORE.get(), ALMBlocks.DEEPSLATE_CELERIUM_ORE.get()),
                 ALMItems.CELERIUM_SHARD.get(), 1.0F, 200);
@@ -92,10 +89,39 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
         });
 
         if (almFamily.hasPillar()) {
-            Block pillar = almFamily.pillar();
-            pillarRecipe(out, pillar, base);
-            stonecut(out, pillar, base, 1);
+            pillarRecipe(out, almFamily.pillar(), base);
         }
+    }
+
+    private void progression(RecipeOutput out, List<ALMBlockFamily> chain) {
+        for (int i = 0; i < chain.size(); i++) {
+            Block earlierBase = chain.get(i).baseBlock();
+
+            for (int j = i + 1; j < chain.size(); j++) {
+                ALMBlockFamily later = chain.get(j);
+                Block laterBase = later.baseBlock();
+
+                if (j == i + 1) {
+                    square4(out, laterBase, earlierBase);
+                }
+                stonecut(out, laterBase, earlierBase, 1);
+
+                later.vanilla().getVariants().forEach((variant, block) -> {
+                    if (variant == BlockFamily.Variant.SLAB) {
+                        stonecut(out, block, earlierBase, 2);
+                    } else if (variant == BlockFamily.Variant.STAIRS || variant == BlockFamily.Variant.WALL) {
+                        stonecut(out, block, earlierBase, 1);
+                    }
+                });
+            }
+        }
+
+        chain.stream()
+                .filter(ALMBlockFamily::hasPillar)
+                .findFirst()
+                .map(ALMBlockFamily::pillar)
+                .ifPresent(pillar -> ALMBlockFamilies.PILLAR_STONECUT_SOURCES.forEach(source ->
+                        stonecut(out, pillar, source.baseBlock(), 1)));
     }
 
     public void slabRecipe(RecipeOutput out, ItemLike slab, ItemLike material) {
