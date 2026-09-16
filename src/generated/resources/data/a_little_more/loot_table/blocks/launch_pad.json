@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "a_little_more:launch_pad"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "a_little_more:blocks/launch_pad"
+}

@@ -1,9 +1,0 @@
-{
-  "type": "a_little_more:seep_transformation",
-  "ingredient": {
-    "item": "minecraft:cobblestone"
-  },
-  "result": {
-    "id": "minecraft:end_stone"
-  }
-}
