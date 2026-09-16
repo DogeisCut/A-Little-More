@@ -49,7 +49,7 @@ I can save it for a future update.
 - [ ] Various TODOs within files
   - TODOs in the following files: `ALittleMoreClient`, `SeepFanProcessingType`, `ALMJEI`, `SeepTransformationRecipeCategory`,
 `EnseepenedPearlEntity`, `FluidInteractionsEvents`, `TargetHurtTimeEvents`, `ALMArmorMaterials`, `ALMAttributes`,
-`ALMItems`, and `ALMTags`.
+`ALMItems`, `Render3DHelper`, and `ALMTags`.
 - [ ] Item Tagging
 - [ ] Block Tagging
 - [ ] File Organization/Cleanup (the goal is to have files for the same feature in the same folder, and that one file has one tasks)

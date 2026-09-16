@@ -49,6 +49,8 @@ public class Render3DHelper {
     public static void render3DFluid(GuiGraphics guiGraphics, FluidStack fluidStack, float x, float y, float scale) {
         if (fluidStack.isEmpty()) return;
 
+        // TODO: fix transparency
+
         IClientFluidTypeExtensions clientFluid = IClientFluidTypeExtensions.of(fluidStack.getFluid());
         ResourceLocation stillTex = clientFluid.getStillTexture(fluidStack);
         ResourceLocation flowingTex = clientFluid.getFlowingTexture(fluidStack);
