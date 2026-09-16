@@ -90,6 +90,7 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
 
         if (almFamily.hasPillar()) {
             pillarRecipe(out, almFamily.pillar(), base);
+            stonecut(out, almFamily.pillar(), base, 1);
         }
     }
 
@@ -115,13 +116,6 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
                 });
             }
         }
-
-        chain.stream()
-                .filter(ALMBlockFamily::hasPillar)
-                .findFirst()
-                .map(ALMBlockFamily::pillar)
-                .ifPresent(pillar -> ALMBlockFamilies.PILLAR_STONECUT_SOURCES.forEach(source ->
-                        stonecut(out, pillar, source.baseBlock(), 1)));
     }
 
     public void slabRecipe(RecipeOutput out, ItemLike slab, ItemLike material) {

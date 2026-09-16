@@ -40,10 +40,6 @@ public final class ALMBlockFamilies {
             SEEPSTONE, POLISHED_SEEPSTONE, SEEPSTONE_BRICKS, SEEPSTONE_TILES
     );
 
-    public static final List<ALMBlockFamily> PILLAR_STONECUT_SOURCES = List.of(
-            SEEPSTONE, POLISHED_SEEPSTONE
-    );
-
     public static final List<Block> SIMPLE_CUBES = List.of(
             ALMBlocks.CHISELED_SEEPSTONE.get(),
             ALMBlocks.CELERIUM_BLOCK.get()

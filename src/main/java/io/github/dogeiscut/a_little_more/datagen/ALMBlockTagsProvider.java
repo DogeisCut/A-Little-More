@@ -8,6 +8,9 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.WallBlock;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -50,6 +53,18 @@ public class ALMBlockTagsProvider extends BlockTagsProvider {
 
         tag(ALMTags.Blocks.INCORRECT_FOR_CELERIUM_TOOL)
                 .addTag(BlockTags.INCORRECT_FOR_IRON_TOOL);
+    }
+
+    private void auto(Block block) {
+        if (block instanceof SlabBlock) {
+            tag(BlockTags.SLABS).add(block);
+        }
+        if (block instanceof StairBlock) {
+            tag(BlockTags.STAIRS).add(block);
+        }
+        if (block instanceof WallBlock) {
+            tag(BlockTags.WALLS).add(block);
+        }
     }
 
     private void pickaxe(Block block) {
