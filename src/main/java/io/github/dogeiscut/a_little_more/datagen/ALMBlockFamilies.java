@@ -19,21 +19,25 @@ public final class ALMBlockFamilies {
             .chiseled(ALMBlocks.CHISELED_SEEPSTONE.get())
             .polished(ALMBlocks.POLISHED_SEEPSTONE.get())
             .pillar(ALMBlocks.SEEPSTONE_PILLAR.get())
+            .stone()
             .getFamily());
     public static final ALMBlockFamily POLISHED_SEEPSTONE = register(familyBuilder(ALMBlocks.POLISHED_SEEPSTONE.get())
             .slab(ALMBlocks.POLISHED_SEEPSTONE_SLAB.get())
             .stairs(ALMBlocks.POLISHED_SEEPSTONE_STAIRS.get())
             .wall(ALMBlocks.POLISHED_SEEPSTONE_WALL.get())
+            .stone()
             .getFamily());
     public static final ALMBlockFamily SEEPSTONE_BRICKS = register(familyBuilder(ALMBlocks.SEEPSTONE_BRICKS.get())
             .slab(ALMBlocks.SEEPSTONE_BRICK_SLAB.get())
             .stairs(ALMBlocks.SEEPSTONE_BRICK_STAIRS.get())
             .wall(ALMBlocks.SEEPSTONE_BRICK_WALL.get())
+            .stone()
             .getFamily());
     public static final ALMBlockFamily SEEPSTONE_TILES = register(familyBuilder(ALMBlocks.SEEPSTONE_TILES.get())
             .slab(ALMBlocks.SEEPSTONE_TILE_SLAB.get())
             .stairs(ALMBlocks.SEEPSTONE_TILE_STAIRS.get())
             .wall(ALMBlocks.SEEPSTONE_TILE_WALL.get())
+            .stone()
             .getFamily());
 
     public static final List<ALMBlockFamily> SEEPSTONE_PROGRESSION = List.of(

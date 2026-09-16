@@ -33,7 +33,7 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
     @Override
     protected void buildRecipes(@NotNull RecipeOutput out) {
 
-        ALMBlockFamilies.getAllFamilies().forEach(family -> family(out, family, true));
+        ALMBlockFamilies.getAllFamilies().forEach(family -> family(out, family, family.isStone()));
         progression(out, ALMBlockFamilies.SEEPSTONE_PROGRESSION);
 
         oreSmelting(out, List.of(ALMBlocks.CELERIUM_ORE.get(), ALMBlocks.DEEPSLATE_CELERIUM_ORE.get()),

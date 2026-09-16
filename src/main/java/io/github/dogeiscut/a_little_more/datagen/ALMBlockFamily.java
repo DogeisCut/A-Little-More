@@ -11,11 +11,13 @@ import java.util.stream.Stream;
 
 public final class ALMBlockFamily {
     private final BlockFamily vanilla;
+    private final boolean isStone;
     @Nullable
     private final RotatedPillarBlock pillar;
 
-    private ALMBlockFamily(BlockFamily vanilla, @Nullable RotatedPillarBlock pillar) {
+    private ALMBlockFamily(BlockFamily vanilla, boolean isStone, @Nullable RotatedPillarBlock pillar) {
         this.vanilla = vanilla;
+        this.isStone = isStone;
         this.pillar = pillar;
     }
 
@@ -36,6 +38,10 @@ public final class ALMBlockFamily {
         return pillar != null;
     }
 
+    public boolean isStone() {
+        return this.isStone;
+    }
+
     public Stream<Block> allBlocks() {
         Stream<Block> base = Stream.of(baseBlock());
         Stream<Block> variants = vanilla.getVariants().entrySet().stream()
@@ -48,6 +54,7 @@ public final class ALMBlockFamily {
 
     public static final class Builder {
         private final BlockFamily.Builder delegate;
+        private boolean isStone;
         @Nullable
         private RotatedPillarBlock pillar;
 
@@ -91,7 +98,12 @@ public final class ALMBlockFamily {
         }
 
         public ALMBlockFamily getFamily() {
-            return new ALMBlockFamily(delegate.getFamily(), pillar);
+            return new ALMBlockFamily(delegate.getFamily(), isStone, pillar);
+        }
+
+        public Builder stone() {
+            this.isStone = true;
+            return this;
         }
     }
 }
