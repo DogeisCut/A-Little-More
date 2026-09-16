@@ -30,7 +30,7 @@ public class ALMItems {
             properties -> new AttributeArmorItem(
                     ALMArmorMaterials.CELERIUM,
                     ArmorItem.Type.HELMET,
-                    new Item.Properties(),
+                    new Item.Properties().stacksTo(1),
                     ItemAttributeModifiers.builder()
                             .add(
                                     Attributes.MOVEMENT_SPEED,
@@ -48,7 +48,7 @@ public class ALMItems {
             properties -> new AttributeArmorItem(
                     ALMArmorMaterials.CELERIUM,
                     ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties(),
+                    new Item.Properties().stacksTo(1),
                     ItemAttributeModifiers.builder()
                             .add(
                                     Attributes.MOVEMENT_SPEED,
@@ -66,7 +66,7 @@ public class ALMItems {
             properties -> new AttributeArmorItem(
                     ALMArmorMaterials.CELERIUM,
                     ArmorItem.Type.LEGGINGS,
-                    new Item.Properties(),
+                    new Item.Properties().stacksTo(1),
                     ItemAttributeModifiers.builder()
                             .add(
                                     Attributes.MOVEMENT_SPEED,
@@ -84,7 +84,7 @@ public class ALMItems {
             properties -> new AttributeArmorItem(
                     ALMArmorMaterials.CELERIUM,
                     ArmorItem.Type.BOOTS,
-                    new Item.Properties(),
+                    new Item.Properties().stacksTo(1),
                     ItemAttributeModifiers.builder()
                             .add(
                                     Attributes.MOVEMENT_SPEED,
