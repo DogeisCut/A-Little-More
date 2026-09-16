@@ -1,9 +1,13 @@
 package io.github.dogeiscut.a_little_more.registry;
 
+import com.mojang.datafixers.util.Either;
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.content.armor.AttributeArmorItem;
 import io.github.dogeiscut.a_little_more.content.consumables.enseepened_pearl.EnseepenedPearlItem;
 import io.github.dogeiscut.a_little_more.content.weapons.flail.FlailItem;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -189,6 +193,17 @@ public class ALMItems {
 
     public static final Supplier<FlailItem> FLAIL = item("flail", properties -> new FlailItem(
             properties.rarity(Rarity.EPIC)
+    ));
+
+    public static final Supplier<Item> MUSIC_DISC_JUST_A_LITTLE_MORE = item("music_disc_just_a_little_more", (properties) -> new Item(properties
+            .stacksTo(1)
+            .rarity(Rarity.RARE)
+            .jukeboxPlayable(
+                ResourceKey.create(
+                        Registries.JUKEBOX_SONG,
+                        ALittleMore.id("just_a_little_more")
+                )
+            )
     ));
 
 //    public static final Supplier<SpawnEggItem> OPOSSUM_SPAWN_EGG = ITEMS.registerItem(

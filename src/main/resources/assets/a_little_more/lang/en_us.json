@@ -108,7 +108,8 @@
   "advancement.a_little_more.erased_history.title": "Erased History",
   "advancement.a_little_more.erased_history.desc": "Mine a Seep Crystal with something in it.",
 
-  "jukebox_song.a_little_more.a_little_more": "A Little More - DogeisCut",
+  "item.a_little_more.music_disc_just_a_little_more": "Music Disc",
+  "jukebox_song.a_little_more.just_a_little_more": "DogeisCut - Just A Little More",
 
   "attributes.a_little_more.target_hurt_time": "Target Hurt Time",
 

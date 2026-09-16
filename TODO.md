@@ -29,8 +29,8 @@ I can save it for a future update.
   - [ ] Seep
   - [X] Celerium
 - [ ] Item Imbuing
-- [ ] Music (for music disc)
-  - [ ] Music Disc
+- [X] Music (for music disc)
+  - [X] Music Disc
 - [ ] Advancements
 - [ ] Fix whatever the hell is going on with Celerium trims (missing premutations? not making those by hand...)
 - [ ] Flail
