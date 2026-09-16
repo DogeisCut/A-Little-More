@@ -45,6 +45,7 @@ I can save it for a future update.
   - [ ] Adjust random pixels on axe texture
   - [X] Ores
 - [ ] Seep Crystals
+- [ ] Celerium Horse Armor
 # TASKS
 - [ ] Various TODOs within files
   - TODOs in the following files: `ALittleMoreClient`, `SeepFanProcessingType`, `ALMJEI`, `SeepTransformationRecipeCategory`,

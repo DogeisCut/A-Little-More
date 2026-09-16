@@ -1,0 +1,9 @@
+{
+  "type": "a_little_more:seep_transformation",
+  "ingredient": {
+    "item": "minecraft:stone"
+  },
+  "result": {
+    "id": "a_little_more:seepstone"
+  }
+}
