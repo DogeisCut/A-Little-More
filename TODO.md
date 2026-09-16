@@ -25,7 +25,9 @@ I can save it for a future update.
 - [ ] Opossums
 - [ ] Shady dealers
 - [ ] Horrendous Hideout
-- [ ] Worldgen (for seep, celerium)
+- [ ] Worldgen
+  - [ ] Seep
+  - [X] Celerium
 - [ ] Item Imbuing
 - [ ] Music (for music disc)
   - [ ] Music Disc
@@ -39,8 +41,10 @@ I can save it for a future update.
 - [ ] Custom Seepstone block sounds
 - [ ] Make seep drag entities more (like water)
 - Celerium Textures
-  - [ ] Replace armor placeholdwers
+  - [ ] Replace armor placeholders
   - [ ] Adjust random pixels on axe texture
+  - [X] Ores
+- [ ] Seep Crystals
 # TASKS
 - [ ] Various TODOs within files
   - TODOs in the following files: `ALittleMoreClient`, `SeepFanProcessingType`, `ALMJEI`, `SeepTransformationRecipeCategory`,

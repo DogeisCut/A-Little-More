@@ -36,7 +36,6 @@ public class SeepFluidType extends BaseFluidType {
                         .pathType(PathType.LAVA)
                         .adjacentPathType(PathType.DANGER_OTHER)
                         .density(15)
-                        .rarity(Rarity.UNCOMMON)
                         .motionScale(-0.01d)
                         .viscosity(5),
                 STILL,

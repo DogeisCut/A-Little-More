@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 1.0,
+  "group": "diamond",
+  "ingredient": {
+    "item": "a_little_more:deepslate_celerium_ore"
+  },
+  "result": {
+    "id": "a_little_more:celerium_shard"
+  }
+}
