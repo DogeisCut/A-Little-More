@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_seepstone_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": "a_little_more:seepstone_slab"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "a_little_more:chiseled_seepstone"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_seepstone_slab"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "a_little_more:chiseled_seepstone"
+    ]
+  }
+}

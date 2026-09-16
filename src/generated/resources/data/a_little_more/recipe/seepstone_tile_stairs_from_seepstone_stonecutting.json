@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "a_little_more:seepstone"
+  },
+  "result": {
+    "count": 1,
+    "id": "a_little_more:seepstone_tile_stairs"
+  }
+}
