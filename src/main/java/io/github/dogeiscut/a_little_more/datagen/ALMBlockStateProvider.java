@@ -4,6 +4,7 @@ import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
 import io.github.dogeiscut.a_little_more.registry.ALMFluids;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
@@ -26,11 +27,11 @@ public class ALMBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        ALMFamilies.ALL_FAMILIES.forEach(this::blockFamily);
+        // TODO: block families
 
-        ALMFamilies.SIMPLE_CUBES.forEach(this::simpleCubeAllWithItem);
-        ALMFamilies.ORES.forEach(this::simpleCubeAllWithItem);
-        ALMFamilies.AXE_MINEABLE.forEach(this::simpleCubeAllWithItem);
+        ALMBlockFamilies.SIMPLE_CUBES.forEach(this::simpleCubeAllWithItem);
+        ALMBlockFamilies.ORES.forEach(this::simpleCubeAllWithItem);
+        ALMBlockFamilies.AXE_MINEABLE.forEach(this::simpleCubeAllWithItem);
 
         // TODO: seep cluster assets, it's NOT going to be a cube.
         simpleCubeAllWithItem(ALMBlocks.SEEP_CRYSTAL_CLUSTER.get());
@@ -47,42 +48,6 @@ public class ALMBlockStateProvider extends BlockStateProvider {
     public void simpleCubeAllWithItem(Block block) {
         if (skipIfNoTexture(block)) return;
         simpleBlockWithItem(block, cubeAll(block));
-    }
-
-    public void blockFamily(ALMBlockFamily family) {
-        if (skipIfNoTexture(family.getBase())) return;
-
-        ResourceLocation texture = blockTexture(family.getBase());
-        ModelFile baseModel = cubeAll(family.getBase());
-        simpleBlockWithItem(family.getBase(), baseModel);
-
-        Map<ALMBlockFamily.Variant, Block> vars = family.getVariants();
-
-        if (vars.containsKey(ALMBlockFamily.Variant.SLAB)) {
-            SlabBlock slab = (SlabBlock) vars.get(ALMBlockFamily.Variant.SLAB);
-            slabBlock(slab, modLoc("block/" + name(family.getBase())), texture);
-            itemModelFromBlock(slab);
-        }
-        if (vars.containsKey(ALMBlockFamily.Variant.SLAB)) {
-            StairBlock stairs = (StairBlock) vars.get(ALMBlockFamily.Variant.STAIRS);
-            stairsBlock(stairs, texture);
-            itemModelFromBlock(stairs);
-        }
-        if (vars.containsKey(ALMBlockFamily.Variant.WALL)) {
-            WallBlock wall = (WallBlock) vars.get(ALMBlockFamily.Variant.WALL);
-            wallBlock(wall, texture);
-            itemModels().wallInventory(name(wall) + "_inventory", texture);
-        }
-        if (vars.containsKey(ALMBlockFamily.Variant.CHISELED)) {
-            Block chiseled = vars.get(ALMBlockFamily.Variant.CHISELED);
-            simpleCubeAllWithItem(chiseled);
-        }
-        if (vars.containsKey(ALMBlockFamily.Variant.PILLAR)) {
-            RotatedPillarBlock pillar = (RotatedPillarBlock) vars.get(ALMBlockFamily.Variant.PILLAR);
-            axisBlock(pillar, texture);
-            itemModels().wallInventory(name(pillar) + "_inventory", texture);
-        }
-
     }
 
     public void particleOnly(Block block, ResourceLocation particle) {

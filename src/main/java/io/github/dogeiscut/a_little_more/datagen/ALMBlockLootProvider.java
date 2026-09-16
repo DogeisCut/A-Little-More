@@ -10,7 +10,6 @@ import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.neoforged.neoforge.registries.DeferredBlock;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
@@ -37,9 +36,10 @@ public class ALMBlockLootProvider extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        ALMFamilies.ALL_FAMILIES.forEach(set -> set.getAllBlocks().forEach(this::selfDrop));
-        ALMFamilies.SIMPLE_CUBES.forEach(this::selfDrop);
-        ALMFamilies.AXE_MINEABLE.forEach(this::selfDrop);
+        // TODO: block families
+
+        ALMBlockFamilies.SIMPLE_CUBES.forEach(this::selfDrop);
+        ALMBlockFamilies.AXE_MINEABLE.forEach(this::selfDrop);
 
         oreDrop(ALMBlocks.CELERIUM_ORE.get(), ALMItems.CELERIUM_SHARD.get());
         oreDrop(ALMBlocks.DEEPSLATE_CELERIUM_ORE.get(), ALMItems.CELERIUM_SHARD.get());
