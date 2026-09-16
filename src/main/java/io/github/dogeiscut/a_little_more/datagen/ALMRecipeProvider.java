@@ -33,7 +33,7 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
     @Override
     protected void buildRecipes(@NotNull RecipeOutput out) {
 
-        // TODO: block families
+        ALMBlockFamilies.getAllFamilies().forEach(family -> family(out, family));
 
         square4(out, ALMBlocks.SEEPSTONE_TILES.get(), ALMBlocks.SEEPSTONE_BRICKS.get());
         square4(out, ALMBlocks.SEEPSTONE_BRICKS.get(), ALMBlocks.POLISHED_SEEPSTONE.get());
@@ -61,6 +61,41 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
         seepTransformation(out, Items.AMETHYST_CLUSTER, ALMBlocks.SEEP_CRYSTAL_CLUSTER.get().asItem());
         seepTransformation(out, Items.STONE, ALMBlocks.SEEPSTONE.get().asItem());
         //seepTransformation(out, Tags.Items.MUSIC_DISCS, ALMItems.MUSIC_DISC_JUST_A_LITTLE_MORE.get());
+    }
+
+    private void family(RecipeOutput out, ALMBlockFamily almFamily) {
+        BlockFamily family = almFamily.vanilla();
+        Block base = family.getBaseBlock();
+
+        family.getVariants().forEach((variant, block) -> {
+            if (variant == BlockFamily.Variant.SLAB) {
+                slabRecipe(out, block, base);
+                stonecut(out, block, base, 2);
+            } else if (variant == BlockFamily.Variant.STAIRS) {
+                stairsRecipe(out, block, base);
+                stonecut(out, block, base, 1);
+            } else if (variant == BlockFamily.Variant.WALL) {
+                wallRecipe(out, block, base);
+                stonecut(out, block, base, 1);
+            } else if (variant == BlockFamily.Variant.CHISELED) {
+                Block slab = family.getVariants().get(BlockFamily.Variant.SLAB);
+                if (slab != null) {
+                    chiseledRecipe(out, block, slab);
+                }
+                stonecut(out, block, base, 1);
+            } else if (variant == BlockFamily.Variant.POLISHED) {
+            } else {
+                ALittleMore.LOGGER.warn(
+                        "[A Little More datagen] No recipe generator wired up for block family variant {} on {}",
+                        variant, BuiltInRegistries.BLOCK.getKey(block));
+            }
+        });
+
+        if (almFamily.hasPillar()) {
+            Block pillar = almFamily.pillar();
+            pillarRecipe(out, pillar, base);
+            stonecut(out, pillar, base, 1);
+        }
     }
 
     public void slabRecipe(RecipeOutput out, ItemLike slab, ItemLike material) {

@@ -27,14 +27,17 @@ public class ALMBlockTagsProvider extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
 
-        // TODO: block families
+        ALMBlockFamilies.SEEPSTONE.allBlocks().forEach(this::pickaxe);
+        ALMBlockFamilies.POLISHED_SEEPSTONE.allBlocks().forEach(this::pickaxe);
+        ALMBlockFamilies.SEEPSTONE_BRICKS.allBlocks().forEach(this::pickaxe);
+        ALMBlockFamilies.SEEPSTONE_TILES.allBlocks().forEach(this::pickaxe);
 
-        pickaxe(ALMBlockFamilies.SIMPLE_CUBES);
-        pickaxe(ALMBlockFamilies.ORES);
-        pickaxe(ALMBlockFamilies.PICKAXE_MINEABLE_EXTRA);
-        ALMBlockFamilies.AXE_MINEABLE.forEach(b -> tag(BlockTags.MINEABLE_WITH_AXE).add(b));
+        ALMBlockFamilies.SIMPLE_CUBES.forEach(this::pickaxe);
+        ALMBlockFamilies.ORES.forEach(this::pickaxe);
+        ALMBlockFamilies.PICKAXE_MINEABLE_EXTRA.forEach(this::pickaxe);
+        ALMBlockFamilies.AXE_MINEABLE.forEach(this::axe);
 
-        ALMBlockFamilies.NEEDS_IRON_TOOL.forEach(b -> tag(BlockTags.NEEDS_IRON_TOOL).add(b));
+        ALMBlockFamilies.NEEDS_IRON_TOOL.forEach(this::ironTool);
 
         ore(ALMBlocks.CELERIUM_ORE.get(), Tags.Blocks.ORES_IN_GROUND_STONE);
         ore(ALMBlocks.DEEPSLATE_CELERIUM_ORE.get(), Tags.Blocks.ORES_IN_GROUND_DEEPSLATE);
@@ -49,8 +52,16 @@ public class ALMBlockTagsProvider extends BlockTagsProvider {
                 .addTag(BlockTags.INCORRECT_FOR_IRON_TOOL);
     }
 
-    private void pickaxe(List<Block> blocks) {
-        blocks.forEach(b -> tag(BlockTags.MINEABLE_WITH_PICKAXE).add(b));
+    private void pickaxe(Block block) {
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(block);
+    }
+
+    private void axe(Block block) {
+        tag(BlockTags.MINEABLE_WITH_AXE).add(block);
+    }
+
+    private void ironTool(Block block) {
+        tag(BlockTags.NEEDS_IRON_TOOL).add(block);
     }
 
     private void ore(Block block, TagKey<Block> inGround) {

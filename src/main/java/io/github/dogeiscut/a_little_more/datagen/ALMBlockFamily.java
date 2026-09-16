@@ -5,6 +5,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
+import java.util.stream.Stream;
+
 
 public final class ALMBlockFamily {
     private final BlockFamily vanilla;
@@ -31,6 +34,16 @@ public final class ALMBlockFamily {
 
     public boolean hasPillar() {
         return pillar != null;
+    }
+
+    public Stream<Block> allBlocks() {
+        Stream<Block> base = Stream.of(baseBlock());
+        Stream<Block> variants = vanilla.getVariants().entrySet().stream()
+                .filter(entry -> entry.getKey() != BlockFamily.Variant.CHISELED
+                        && entry.getKey() != BlockFamily.Variant.POLISHED)
+                .map(Map.Entry::getValue);
+        Stream<Block> pillarStream = hasPillar() ? Stream.of(pillar) : Stream.empty();
+        return Stream.concat(Stream.concat(base, variants), pillarStream);
     }
 
     public static final class Builder {

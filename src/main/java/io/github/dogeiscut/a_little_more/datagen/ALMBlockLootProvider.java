@@ -36,7 +36,7 @@ public class ALMBlockLootProvider extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        // TODO: block families
+        ALMBlockFamilies.getAllFamilies().forEach(family -> family.allBlocks().forEach(this::selfDrop));
 
         ALMBlockFamilies.SIMPLE_CUBES.forEach(this::selfDrop);
         ALMBlockFamilies.AXE_MINEABLE.forEach(this::selfDrop);
