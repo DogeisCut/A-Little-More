@@ -34,6 +34,7 @@ public class SeepFluidType extends BaseFluidType {
                         .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
                         .sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
                         .pathType(PathType.LAVA)
+                        .rarity(Rarity.UNCOMMON)
                         .adjacentPathType(PathType.DANGER_OTHER)
                         .density(15)
                         .motionScale(-0.01d)

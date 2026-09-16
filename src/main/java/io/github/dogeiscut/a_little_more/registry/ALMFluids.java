@@ -6,6 +6,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -34,7 +35,7 @@ public class ALMFluids {
                     .slopeFindDistance(2)
                     .levelDecreasePerBlock(2),
             liquidBlockProperties(MapColor.COLOR_PURPLE),
-            defaultBucketItemProperties(),
+            defaultBucketItemProperties().rarity(Rarity.UNCOMMON),
             ((sourceSupplier, properties) ->
                     new SeepLiquidBlock(sourceSupplier, properties.lightLevel(state -> 5)))
     );

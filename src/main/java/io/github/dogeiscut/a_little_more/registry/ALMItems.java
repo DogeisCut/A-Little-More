@@ -187,7 +187,9 @@ public class ALMItems {
 
     public static final Supplier<Item> IMBUEMENT_BADGE = item("imbuement_badge", properties -> new Item(properties.stacksTo(1)));
 
-    public static final Supplier<FlailItem> FLAIL = item("flail", FlailItem::new);
+    public static final Supplier<FlailItem> FLAIL = item("flail", properties -> new FlailItem(
+            properties.rarity(Rarity.EPIC)
+    ));
 
 //    public static final Supplier<SpawnEggItem> OPOSSUM_SPAWN_EGG = ITEMS.registerItem(
 //            "opossum_spawn_egg",
