@@ -3,8 +3,8 @@ package io.github.dogeiscut.a_little_more.compat.jei;
 import com.simibubi.create.compat.jei.category.CreateRecipeCategory;
 import com.simibubi.create.compat.jei.category.ProcessingViaFanCategory;
 import io.github.dogeiscut.a_little_more.ALittleMore;
-import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepTransformationRecipe;
 import io.github.dogeiscut.a_little_more.compat.create.FanSeepingCategory;
+import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepTransformationRecipe;
 import io.github.dogeiscut.a_little_more.registry.ALMFluids;
 import io.github.dogeiscut.a_little_more.registry.ALMRecipes;
 import mezz.jei.api.IModPlugin;
@@ -29,6 +29,23 @@ import java.util.List;
 @JeiPlugin
 @SuppressWarnings("unused")
 public class ALMJEI implements IModPlugin {
+
+    private static List<RecipeHolder<SeepTransformationRecipe>> getSeepTransformationRecipeHolders() {
+        Minecraft minecraft = Minecraft.getInstance();
+        RecipeManager recipeManager = null;
+
+        if (minecraft.level != null) {
+            recipeManager = minecraft.level.getRecipeManager();
+        } else if (minecraft.getConnection() != null) {
+            recipeManager = minecraft.getConnection().getRecipeManager();
+        }
+
+        if (recipeManager == null) {
+            return Collections.emptyList();
+        }
+
+        return recipeManager.getAllRecipesFor(ALMRecipes.SEEP_TRANSFORMATION_TYPE.get());
+    }
 
     @Override
     public @NotNull ResourceLocation getPluginUid() {
@@ -89,22 +106,5 @@ public class ALMJEI implements IModPlugin {
                     FanSeepingCategory.RECIPE_TYPE
             );
         }
-    }
-
-    private static List<RecipeHolder<SeepTransformationRecipe>> getSeepTransformationRecipeHolders() {
-        Minecraft minecraft = Minecraft.getInstance();
-        RecipeManager recipeManager = null;
-
-        if (minecraft.level != null) {
-            recipeManager = minecraft.level.getRecipeManager();
-        } else if (minecraft.getConnection() != null) {
-            recipeManager = minecraft.getConnection().getRecipeManager();
-        }
-
-        if (recipeManager == null) {
-            return Collections.emptyList();
-        }
-
-        return recipeManager.getAllRecipesFor(ALMRecipes.SEEP_TRANSFORMATION_TYPE.get());
     }
 }

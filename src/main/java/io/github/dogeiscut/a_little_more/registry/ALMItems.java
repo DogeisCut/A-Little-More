@@ -1,11 +1,9 @@
 package io.github.dogeiscut.a_little_more.registry;
 
-import com.mojang.datafixers.util.Either;
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.content.armor.AttributeArmorItem;
 import io.github.dogeiscut.a_little_more.content.consumables.enseepened_pearl.EnseepenedPearlItem;
 import io.github.dogeiscut.a_little_more.content.weapons.flail.FlailItem;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -199,10 +197,10 @@ public class ALMItems {
             .stacksTo(1)
             .rarity(Rarity.RARE)
             .jukeboxPlayable(
-                ResourceKey.create(
-                        Registries.JUKEBOX_SONG,
-                        ALittleMore.id("just_a_little_more")
-                )
+                    ResourceKey.create(
+                            Registries.JUKEBOX_SONG,
+                            ALittleMore.id("just_a_little_more")
+                    )
             )
     ));
 
