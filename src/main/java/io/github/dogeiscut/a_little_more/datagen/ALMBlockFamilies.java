@@ -3,35 +3,34 @@ package io.github.dogeiscut.a_little_more.datagen;
 import com.google.common.collect.Maps;
 import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.BlockFamily;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
 public final class ALMBlockFamilies {
-    private static final Map<Block, BlockFamily> MAP = Maps.newHashMap();
+    private static final Map<Block, ALMBlockFamily> MAP = Maps.newHashMap();
 
-    public static final BlockFamily SEEPSTONE = familyBuilder(ALMBlocks.SEEPSTONE.get())
+    public static final ALMBlockFamily SEEPSTONE = familyBuilder(ALMBlocks.SEEPSTONE.get())
             .slab(ALMBlocks.SEEPSTONE_SLAB.get())
             .stairs(ALMBlocks.SEEPSTONE_STAIRS.get())
             .wall(ALMBlocks.SEEPSTONE_WALL.get())
             .chiseled(ALMBlocks.CHISELED_SEEPSTONE.get())
             .polished(ALMBlocks.POLISHED_SEEPSTONE.get())
+            .pillar(ALMBlocks.SEEPSTONE_PILLAR.get())
             .getFamily();
-    public static final BlockFamily POLISHED_SEEPSTONE = familyBuilder(ALMBlocks.POLISHED_SEEPSTONE.get())
+    public static final ALMBlockFamily POLISHED_SEEPSTONE = familyBuilder(ALMBlocks.POLISHED_SEEPSTONE.get())
             .slab(ALMBlocks.POLISHED_SEEPSTONE_SLAB.get())
             .stairs(ALMBlocks.POLISHED_SEEPSTONE_STAIRS.get())
             .wall(ALMBlocks.POLISHED_SEEPSTONE_WALL.get())
             .getFamily();
-    public static final BlockFamily SEEPSTONE_BRICKS = familyBuilder(ALMBlocks.SEEPSTONE_BRICKS.get())
+    public static final ALMBlockFamily SEEPSTONE_BRICKS = familyBuilder(ALMBlocks.SEEPSTONE_BRICKS.get())
             .slab(ALMBlocks.SEEPSTONE_BRICK_SLAB.get())
             .stairs(ALMBlocks.SEEPSTONE_BRICK_STAIRS.get())
             .wall(ALMBlocks.SEEPSTONE_BRICK_WALL.get())
             .getFamily();
-    public static final BlockFamily SEEPSTONE_TILES = familyBuilder(ALMBlocks.SEEPSTONE_TILES.get())
+    public static final ALMBlockFamily SEEPSTONE_TILES = familyBuilder(ALMBlocks.SEEPSTONE_TILES.get())
             .slab(ALMBlocks.SEEPSTONE_TILE_SLAB.get())
             .stairs(ALMBlocks.SEEPSTONE_TILE_STAIRS.get())
             .wall(ALMBlocks.SEEPSTONE_TILE_WALL.get())
@@ -63,17 +62,17 @@ public final class ALMBlockFamilies {
             ALMBlocks.LAUNCH_PAD.get()
     );
 
-    private static BlockFamily.Builder familyBuilder(Block baseBlock) {
-        BlockFamily.Builder blockfamily$builder = new BlockFamily.Builder(baseBlock);
-        BlockFamily blockfamily = MAP.put(baseBlock, blockfamily$builder.getFamily());
-        if (blockfamily != null) {
+    private static ALMBlockFamily.Builder familyBuilder(Block baseBlock) {
+        ALMBlockFamily.Builder ALMBlockFamily$builder = new ALMBlockFamily.Builder(baseBlock);
+        ALMBlockFamily ALMBlockFamily = MAP.put(baseBlock, ALMBlockFamily$builder.getFamily());
+        if (ALMBlockFamily != null) {
             throw new IllegalStateException("Duplicate family definition for " + BuiltInRegistries.BLOCK.getKey(baseBlock));
         } else {
-            return blockfamily$builder;
+            return ALMBlockFamily$builder;
         }
     }
 
-    public static Stream<BlockFamily> getAllFamilies() {
+    public static Stream<ALMBlockFamily> getAllFamilies() {
         return MAP.values().stream();
     }
 }
