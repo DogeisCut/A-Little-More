@@ -27,8 +27,8 @@ public class ALMBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        ALMFamilies.STONE_SETS.forEach(set ->
-                set.all().forEach(block -> tag(BlockTags.MINEABLE_WITH_PICKAXE).add(block)));
+        ALMFamilies.SEEPSTONE_FAMILIES.forEach(set ->
+                set.getAllBlocks().forEach(block -> tag(BlockTags.MINEABLE_WITH_PICKAXE).add(block)));
 
         pickaxe(ALMFamilies.SIMPLE_CUBES);
         pickaxe(ALMFamilies.ORES);

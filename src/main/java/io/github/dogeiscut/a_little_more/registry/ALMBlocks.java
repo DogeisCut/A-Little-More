@@ -28,6 +28,11 @@ public class ALMBlocks {
     public static final DeferredBlock<StairBlock> POLISHED_SEEPSTONE_STAIRS = blockWithItem("polished_seepstone_stairs", p -> new StairBlock(SEEPSTONE.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(SEEPSTONE.get())));
     public static final DeferredBlock<WallBlock> POLISHED_SEEPSTONE_WALL = blockWithItem("polished_seepstone_wall", p -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(SEEPSTONE.get())));
     public static final DeferredBlock<Block> CHISELED_SEEPSTONE = blockWithItem("chiseled_seepstone", p -> new Block(BlockBehaviour.Properties.ofFullCopy(SEEPSTONE.get())));
+    public static final DeferredBlock<RotatedPillarBlock> SEEPSTONE_PILLAR = blockWithItem("seepstone_pillar", p -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(SEEPSTONE.get())));
+    public static final DeferredBlock<Block> SEEPSTONE_TILES = blockWithItem("seepstone_tiles", p -> new Block(BlockBehaviour.Properties.ofFullCopy(SEEPSTONE.get())));
+    public static final DeferredBlock<SlabBlock> SEEPSTONE_TILE_SLAB = blockWithItem("seepstone_tile_slab", p -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(SEEPSTONE.get())));
+    public static final DeferredBlock<StairBlock> SEEPSTONE_TILE_STAIRS = blockWithItem("seepstone_tile_stairs", p -> new StairBlock(SEEPSTONE.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(SEEPSTONE.get())));
+    public static final DeferredBlock<WallBlock> SEEPSTONE_TILE_WALL = blockWithItem("seepstone_tile_wall", p -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(SEEPSTONE.get())));
 
     public static final DeferredBlock<Block> CELERIUM_BLOCK = simpleBlockWithItem("celerium_block", BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK));
     public static final DeferredBlock<Block> CELERIUM_ORE = simpleBlockWithItem("celerium_ore", BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_ORE));

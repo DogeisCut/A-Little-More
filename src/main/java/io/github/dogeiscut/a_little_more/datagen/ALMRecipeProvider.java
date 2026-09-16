@@ -10,21 +10,18 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
-import net.neoforged.neoforge.registries.DeferredBlock;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
 
 public class ALMRecipeProvider extends RecipeProvider implements IConditionBuilder {
 
@@ -34,11 +31,11 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(@NotNull RecipeOutput out) {
-        ALMFamilies.STONE_SETS.forEach(set -> stoneSet(out, set));
+        processFamilyRecipes(out, ALMFamilies.SEEPSTONE);
 
+        square4(out, ALMBlocks.SEEPSTONE_TILES.get(), ALMBlocks.SEEPSTONE_BRICKS.get());
         square4(out, ALMBlocks.SEEPSTONE_BRICKS.get(), ALMBlocks.POLISHED_SEEPSTONE.get());
         square4(out, ALMBlocks.POLISHED_SEEPSTONE.get(), ALMBlocks.SEEPSTONE.get());
-        stonecut(out, ALMBlocks.CHISELED_SEEPSTONE.get(), ALMBlocks.SEEPSTONE.get(), 1);
 
         oreSmelting(out, List.of(ALMBlocks.CELERIUM_ORE.get(), ALMBlocks.DEEPSLATE_CELERIUM_ORE.get()),
                 ALMItems.CELERIUM_SHARD.get(), 1.0F, 200);
@@ -64,28 +61,40 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
         //seepTransformation(out, Tags.Items.MUSIC_DISCS, ALMItems.MUSIC_DISC_JUST_A_LITTLE_MORE.get());
     }
 
-    public void stoneSet(RecipeOutput out, ALMFamilies.StoneSet set) {
-        Block base = set.base();
-        Block source = set.stonecutSource();
+    private void processFamilyRecipes(RecipeOutput out, ALMBlockFamily family) {
+        Block base = family.getBase();
+        Map<ALMBlockFamily.Variant, Block> vars = family.getVariants();
 
-        if (set.slab() != null) {
-            slabRecipe(out, set.slab(), base);
-            stonecut(out, set.slab(), source, 2);
-        }
-        if (set.stairs() != null) {
-            stairsRecipe(out, set.stairs(), base);
-            stonecut(out, set.stairs(), source, 1);
-        }
-        if (set.wall() != null) {
-            wallRecipe(out, set.wall(), base);
-            stonecut(out, set.wall(), source, 1);
-        }
+        if (vars.containsKey(ALMBlockFamily.Variant.SLAB)) slabRecipe(out, vars.get(ALMBlockFamily.Variant.SLAB), base);
+        if (vars.containsKey(ALMBlockFamily.Variant.STAIRS)) stairsRecipe(out, vars.get(ALMBlockFamily.Variant.STAIRS), base);
+        if (vars.containsKey(ALMBlockFamily.Variant.WALL)) wallRecipe(out, vars.get(ALMBlockFamily.Variant.WALL), base);
+        if (vars.containsKey(ALMBlockFamily.Variant.CHISELED)) chiseledRecipe(out, vars.get(ALMBlockFamily.Variant.CHISELED), base);
+        if (vars.containsKey(ALMBlockFamily.Variant.PILLAR)) pillarRecipe(out, vars.get(ALMBlockFamily.Variant.PILLAR), base);
 
-        if (set.cutFrom() != null) {
-            stonecut(out, set.base(), set.cutFrom(), 1);
+        cutFamilyFrom(out, family, base);
+
+        for (ALMBlockFamily child : family.getDerivatives()) {
+            processFamilyRecipes(out, child);
+            cutFamilyFrom(out, child, base);
         }
     }
 
+    private void cutFamilyFrom(RecipeOutput out, ALMBlockFamily family, Block source) {
+        if (family.getBase() != source) {
+            stonecut(out, family.getBase(), source, 1);
+        }
+
+        Map<ALMBlockFamily.Variant, Block> vars = family.getVariants();
+        if (vars.containsKey(ALMBlockFamily.Variant.SLAB)) stonecut(out, vars.get(ALMBlockFamily.Variant.SLAB), source, 2);
+        if (vars.containsKey(ALMBlockFamily.Variant.STAIRS)) stonecut(out, vars.get(ALMBlockFamily.Variant.STAIRS), source, 1);
+        if (vars.containsKey(ALMBlockFamily.Variant.WALL)) stonecut(out, vars.get(ALMBlockFamily.Variant.WALL), source, 1);
+        if (vars.containsKey(ALMBlockFamily.Variant.CHISELED)) stonecut(out, vars.get(ALMBlockFamily.Variant.CHISELED), source, 1);
+        if (vars.containsKey(ALMBlockFamily.Variant.PILLAR)) stonecut(out, vars.get(ALMBlockFamily.Variant.PILLAR), source, 1);
+
+        for (ALMBlockFamily child : family.getDerivatives()) {
+            cutFamilyFrom(out, child, source);
+        }
+    }
     public void slabRecipe(RecipeOutput out, ItemLike slab, ItemLike material) {
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, slab, 6)
                 .pattern("###")
@@ -108,6 +117,24 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, wall, 6)
                 .pattern("###")
                 .pattern("###")
+                .define('#', material)
+                .unlockedBy(criterionName(material), has(material))
+                .save(out);
+    }
+
+    public void chiseledRecipe(RecipeOutput out, ItemLike slabs, ItemLike material) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, slabs, 1)
+                .pattern("#")
+                .pattern("#")
+                .define('#', material)
+                .unlockedBy(criterionName(material), has(material))
+                .save(out);
+    }
+
+    public void pillarRecipe(RecipeOutput out, ItemLike blocks, ItemLike material) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blocks, 1)
+                .pattern("#")
+                .pattern("#")
                 .define('#', material)
                 .unlockedBy(criterionName(material), has(material))
                 .save(out);
