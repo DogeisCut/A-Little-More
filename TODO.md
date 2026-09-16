@@ -38,6 +38,9 @@ I can save it for a future update.
 - [ ] Custom Celerium block sounds
 - [ ] Custom Seepstone block sounds
 - [ ] Make seep drag entities more (like water)
+- Celerium Textures
+  - [ ] Replace armor placeholdwers
+  - [ ] Adjust random pixels on axe texture
 # TASKS
 - [ ] Various TODOs within files
   - TODOs in the following files: `ALittleMoreClient`, `SeepFanProcessingType`, `ALMJEI`, `SeepTransformationRecipeCategory`,
