@@ -3,7 +3,6 @@ package io.github.dogeiscut.a_little_more.registry;
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
