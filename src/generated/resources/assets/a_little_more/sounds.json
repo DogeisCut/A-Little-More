@@ -1,4 +1,20 @@
 {
+  "item.bucket.empty_seep": {
+    "sounds": [
+      "a_little_more:item/bucket/empty_seep1",
+      "a_little_more:item/bucket/empty_seep2",
+      "a_little_more:item/bucket/empty_seep3"
+    ],
+    "subtitle": "subtitles.item.bucket.empty"
+  },
+  "item.bucket.fill_seep": {
+    "sounds": [
+      "a_little_more:item/bucket/fill_seep1",
+      "a_little_more:item/bucket/fill_seep2",
+      "a_little_more:item/bucket/fill_seep3"
+    ],
+    "subtitle": "subtitles.item.bucket.fill"
+  },
   "music_disc.just_a_little_more": {
     "sounds": [
       {

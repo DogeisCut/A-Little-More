@@ -2,6 +2,7 @@ package io.github.dogeiscut.a_little_more.content.fluid.seep;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.content.fluid.BaseFluidType;
+import io.github.dogeiscut.a_little_more.registry.ALMSounds;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
@@ -31,8 +32,8 @@ public class SeepFluidType extends BaseFluidType {
                         .canExtinguish(true)
                         .canDrown(false)
                         .lightLevel(5)
-                        .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
-                        .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
+                        .sound(SoundActions.BUCKET_FILL, ALMSounds.BUCKET_SEEP_FILL.get())
+                        .sound(SoundActions.BUCKET_EMPTY, ALMSounds.BUCKET_EMPTY_SEEP.get())
                         .sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
                         .pathType(PathType.LAVA)
                         .rarity(Rarity.UNCOMMON)

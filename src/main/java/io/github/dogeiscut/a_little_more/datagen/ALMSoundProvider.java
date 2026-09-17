@@ -18,6 +18,24 @@ public class ALMSoundProvider extends SoundDefinitionsProvider {
     @Override
     public void registerSounds() {
         music(ALMSounds.JUST_A_LITTLE_MORE.get(), "records/just_a_little_more");
+        add(ALMSounds.BUCKET_EMPTY_SEEP.get(), SoundDefinition.definition()
+                .with(SoundDefinition.Sound.sound(
+                        ALittleMore.id("item/bucket/empty_seep1"), SoundDefinition.SoundType.SOUND
+                )).with(SoundDefinition.Sound.sound(
+                        ALittleMore.id("item/bucket/empty_seep2"), SoundDefinition.SoundType.SOUND
+                )).with(SoundDefinition.Sound.sound(
+                        ALittleMore.id("item/bucket/empty_seep3"), SoundDefinition.SoundType.SOUND
+                )).subtitle("subtitles.item.bucket.empty")
+        );
+        add(ALMSounds.BUCKET_SEEP_FILL.get(), SoundDefinition.definition()
+                .with(SoundDefinition.Sound.sound(
+                        ALittleMore.id("item/bucket/fill_seep1"), SoundDefinition.SoundType.SOUND
+                )).with(SoundDefinition.Sound.sound(
+                        ALittleMore.id("item/bucket/fill_seep2"), SoundDefinition.SoundType.SOUND
+                )).with(SoundDefinition.Sound.sound(
+                        ALittleMore.id("item/bucket/fill_seep3"), SoundDefinition.SoundType.SOUND
+                )).subtitle("subtitles.item.bucket.fill")
+        );
     }
 
     public void music(@NotNull SoundEvent event, String file) {
