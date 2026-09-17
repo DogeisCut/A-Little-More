@@ -29,6 +29,7 @@ public class ALMBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+        ALMBlocks.BLOCKS.getEntries().forEach(holder -> auto(holder.get()));
 
         ALMBlockFamilies.SEEPSTONE.allBlocks().forEach(this::pickaxe);
         ALMBlockFamilies.POLISHED_SEEPSTONE.allBlocks().forEach(this::pickaxe);
