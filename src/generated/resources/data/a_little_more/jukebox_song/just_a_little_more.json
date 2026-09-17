@@ -1,0 +1,8 @@
+{
+  "comparator_output": 7,
+  "description": {
+    "translate": "jukebox_song.a_little_more.just_a_little_more"
+  },
+  "length_in_seconds": 125.0,
+  "sound_event": "a_little_more:music_disc.just_a_little_more"
+}

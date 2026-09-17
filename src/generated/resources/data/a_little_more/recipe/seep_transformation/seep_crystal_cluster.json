@@ -1,0 +1,10 @@
+{
+  "type": "a_little_more:seep_transformation",
+  "ingredient": {
+    "item": "minecraft:amethyst_cluster"
+  },
+  "result": {
+    "count": 1,
+    "id": "a_little_more:seep_crystal_cluster"
+  }
+}

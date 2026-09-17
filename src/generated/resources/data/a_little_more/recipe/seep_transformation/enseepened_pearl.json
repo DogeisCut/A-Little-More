@@ -1,0 +1,10 @@
+{
+  "type": "a_little_more:seep_transformation",
+  "ingredient": {
+    "item": "minecraft:ender_pearl"
+  },
+  "result": {
+    "count": 1,
+    "id": "a_little_more:enseepened_pearl"
+  }
+}

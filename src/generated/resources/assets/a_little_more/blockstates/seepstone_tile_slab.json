@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "a_little_more:block/seepstone_tile_slab"
+    },
+    "type=double": {
+      "model": "a_little_more:block/seepstone_tiles"
+    },
+    "type=top": {
+      "model": "a_little_more:block/seepstone_tile_slab_top"
+    }
+  }
+}

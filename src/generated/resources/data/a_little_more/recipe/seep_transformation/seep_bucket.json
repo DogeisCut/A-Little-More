@@ -1,0 +1,10 @@
+{
+  "type": "a_little_more:seep_transformation",
+  "ingredient": {
+    "item": "minecraft:water_bucket"
+  },
+  "result": {
+    "count": 1,
+    "id": "a_little_more:seep_bucket"
+  }
+}

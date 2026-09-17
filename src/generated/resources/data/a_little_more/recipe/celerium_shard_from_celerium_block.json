@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "a_little_more:celerium_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "a_little_more:celerium_shard"
+  }
+}

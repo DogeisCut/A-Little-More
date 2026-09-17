@@ -1,0 +1,10 @@
+{
+  "music_disc.just_a_little_more": {
+    "sounds": [
+      {
+        "name": "a_little_more:records/just_a_little_more",
+        "stream": true
+      }
+    ]
+  }
+}

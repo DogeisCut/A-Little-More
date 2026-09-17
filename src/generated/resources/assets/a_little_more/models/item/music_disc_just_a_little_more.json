@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "a_little_more:item/music_disc_just_a_little_more"
+  }
+}
