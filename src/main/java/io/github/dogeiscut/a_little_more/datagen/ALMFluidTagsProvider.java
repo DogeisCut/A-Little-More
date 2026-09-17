@@ -21,7 +21,7 @@ public class ALMFluidTagsProvider extends FluidTagsProvider {
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider provider) {
+    protected void addTags(HolderLookup.@NotNull Provider provider) {
         tag(ALMTags.Fluids.SEEP)
                 .add(ALMFluids.SEEP.still().get())
                 .add(ALMFluids.SEEP.flowing().get());

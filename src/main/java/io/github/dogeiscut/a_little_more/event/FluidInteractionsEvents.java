@@ -29,7 +29,6 @@ public class FluidInteractionsEvents {
     @SubscribeEvent
     public static void onCommonSetup(@NotNull FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-
             FluidInteractionRegistry.addInteraction(
                     ALMFluidTypes.SEEP.get(),
                     new FluidInteractionRegistry.InteractionInformation(

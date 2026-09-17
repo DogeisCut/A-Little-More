@@ -94,6 +94,7 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
                 }
                 if (isStone) stonecut(out, block, base, 1);
             } else if (variant == BlockFamily.Variant.POLISHED) {
+
             } else {
                 ALittleMore.LOGGER.warn(
                         "[A Little More datagen] No recipe generator wired up for block family variant {} on {}",
@@ -102,6 +103,8 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
         });
 
         if (almFamily.hasPillar()) {
+            // this is never null but INTELLIJ won't stop complaining
+            assert almFamily.pillar() != null;
             pillarRecipe(out, almFamily.pillar(), base);
             if (isStone) stonecut(out, almFamily.pillar(), base, 1);
         }

@@ -55,12 +55,7 @@ public class ALittleMore {
 
     @SubscribeEvent
     public static void onCommonSetup(FMLCommonSetupEvent event) {
-//        event.enqueueWork(() -> {
-//            BuiltInRegistries.ITEM.stream()
-//                    .filter(item -> ALittleMore.MOD_ID.equals(BuiltInRegistries.ITEM.getKey(item).getNamespace()))
-//                    .filter(item -> item instanceof BucketItem)
-//                    .forEach(item -> DispenserBlock.registerBehavior(item, ));
-//        });
+
     }
 
     public static @NotNull ResourceLocation id(@NotNull String path) {

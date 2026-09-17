@@ -58,7 +58,7 @@ public class SeepFluidType extends BaseFluidType {
     }
 
     @Override
-    public boolean canSwim(Entity entity) {
+    public boolean canSwim(@NotNull Entity entity) {
         if (entity instanceof LivingEntity living && living.hasEffect(MobEffects.LEVITATION)) {
             return false;
         }

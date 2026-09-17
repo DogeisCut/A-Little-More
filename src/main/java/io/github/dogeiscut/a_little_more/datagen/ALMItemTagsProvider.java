@@ -30,7 +30,7 @@ public class ALMItemTagsProvider extends net.minecraft.data.tags.ItemTagsProvide
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider provider) {
+    protected void addTags(HolderLookup.@NotNull Provider provider) {
         ALMItems.ITEMS.getEntries().forEach(holder -> autoTag(holder.get()));
 
         tag(ALMTags.Items.SEEP_TRANSFORMABLE_MUSIC_DISCS)

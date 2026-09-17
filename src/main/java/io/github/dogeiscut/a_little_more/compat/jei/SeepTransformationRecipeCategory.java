@@ -56,7 +56,7 @@ public class SeepTransformationRecipeCategory implements IRecipeCategory<SeepTra
     }
 
     @Override
-    public IDrawable getIcon() {
+    public @NotNull IDrawable getIcon() {
         return icon;
     }
 
@@ -78,7 +78,7 @@ public class SeepTransformationRecipeCategory implements IRecipeCategory<SeepTra
     }
 
     @Override
-    public void draw(@NotNull SeepTransformationRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+    public void draw(@NotNull SeepTransformationRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
         arrow.draw(guiGraphics, 34, 22);
         arrow.draw(guiGraphics, 88, 22);
 

@@ -29,7 +29,7 @@ public class ALMBlockTagsProvider extends BlockTagsProvider {
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider provider) {
+    protected void addTags(HolderLookup.@NotNull Provider provider) {
         ALMBlocks.BLOCKS.getEntries().forEach(holder -> auto(holder.get()));
 
         ALMBlockFamilies.SEEPSTONE.allBlocks().forEach(this::pickaxe);
@@ -94,6 +94,6 @@ public class ALMBlockTagsProvider extends BlockTagsProvider {
 
     private void addAll(@NotNull TagKey<Block> key, @NotNull List<Block> blocks) {
         var builder = tag(key);
-        blocks.forEach(b -> builder.add(b));
+        blocks.forEach(builder::add);
     }
 }

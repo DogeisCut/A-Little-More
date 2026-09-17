@@ -73,6 +73,8 @@ public class ALMBlockStateProvider extends BlockStateProvider {
         });
 
         if (almFamily.hasPillar()) {
+            // this is never null but INTELLIJ won't stop complaining
+            assert almFamily.pillar() != null;
             pillarWithItem(almFamily.pillar());
         }
     }
