@@ -6,11 +6,11 @@
     - [ ] Splash Particles
     - [ ] Bucket sounds
     - [ ] Underseep Sounds
-    - [ ] Underseep particles
+    - [X] Underseep particles
     - [ ] Submerge sounds
     - [ ] Resurface sounds
     - [ ] Flowing sounds
-    - [ ] Ambient particles (I imagine seep to be bubbly?)
+    - [X] Ambient particles (I imagine seep to be bubbly?)
     - [ ] Ambient sounds
     - Worth noting Create doesn't even bother with all this for Chocolate and Honey so if I can't get it working,
       I can save it for a future update.
