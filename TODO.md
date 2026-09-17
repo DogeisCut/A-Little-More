@@ -20,8 +20,8 @@
 - [ ] Figure out wait repairing celerium tools/armor doesn't show up in JEI
 - [ ] Fix Create support for Bulk Seeping not showing up in JEI
 - [ ] Datagen
-  - [X] Fix block families
-  - [ ] whatever the hell is going on with armor trims
+    - [X] Fix block families
+    - [ ] whatever the hell is going on with armor trims
 - [ ] ALMTags namespacing
 - [ ] Seepstone family assets
 - [ ] Opossums
@@ -49,9 +49,9 @@
 - [ ] Seep Crystals
 - [ ] Celerium Horse Armor
 - [ ] Fix Creative inventory
-  - in an awful order
-  - Could probably benfit from multiple tabs
-  - missing immunity potions/arrow from A Little More tab
+    - in an awful order
+    - Could probably benfit from multiple tabs
+    - missing immunity potions/arrow from A Little More tab
 
 # TASKS
 

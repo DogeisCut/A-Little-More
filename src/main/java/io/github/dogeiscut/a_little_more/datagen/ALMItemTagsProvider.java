@@ -117,7 +117,8 @@ public class ALMItemTagsProvider extends net.minecraft.data.tags.ItemTagsProvide
                     add(ItemTags.FOOT_ARMOR, item);
                     add(ItemTags.FOOT_ARMOR_ENCHANTABLE, item);
                 }
-                default -> {}
+                default -> {
+                }
             }
         }
 

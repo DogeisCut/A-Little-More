@@ -18,18 +18,28 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class ALMRecipeProvider extends RecipeProvider implements IConditionBuilder {
 
     public ALMRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
         super(output, lookupProvider);
+    }
+
+    private static String path(ItemLike item) {
+        return BuiltInRegistries.ITEM.getKey(item.asItem()).getPath();
+    }
+
+    private static String path(Block block) {
+        return BuiltInRegistries.BLOCK.getKey(block).getPath();
+    }
+
+    private static String criterionName(ItemLike item) {
+        return "has_" + path(item);
     }
 
     @Override
@@ -271,17 +281,5 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
     public void seepTransformation(RecipeOutput out, net.minecraft.tags.TagKey<Item> inputTag, Item result) {
         ResourceLocation id = ALittleMore.id("seep_transformation/" + path(result));
         out.accept(id, new SeepTransformationRecipe(Ingredient.of(inputTag), new ItemStack(result)), null);
-    }
-
-    private static String path(ItemLike item) {
-        return BuiltInRegistries.ITEM.getKey(item.asItem()).getPath();
-    }
-
-    private static String path(Block block) {
-        return BuiltInRegistries.BLOCK.getKey(block).getPath();
-    }
-
-    private static String criterionName(ItemLike item) {
-        return "has_" + path(item);
     }
 }

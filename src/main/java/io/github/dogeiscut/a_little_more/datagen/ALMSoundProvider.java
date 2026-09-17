@@ -7,7 +7,6 @@ import net.minecraft.sounds.SoundEvent;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.common.data.SoundDefinition;
 import net.neoforged.neoforge.common.data.SoundDefinitionsProvider;
-import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class ALMSoundProvider extends SoundDefinitionsProvider {
 

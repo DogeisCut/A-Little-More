@@ -16,7 +16,6 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Supplier;
 
 public class ALMItemModelProvider extends ItemModelProvider {
 

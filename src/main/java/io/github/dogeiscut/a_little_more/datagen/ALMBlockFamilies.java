@@ -10,8 +10,29 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public final class ALMBlockFamilies {
+    public static final List<Block> SIMPLE_CUBES = List.of(
+            ALMBlocks.CELERIUM_BLOCK.get(),
+            ALMBlocks.CELERIUM_ORE.get(),
+            ALMBlocks.DEEPSLATE_CELERIUM_ORE.get()
+    );
+    public static final List<Block> NEEDS_IRON_TOOL = List.of(
+            ALMBlocks.CELERIUM_BLOCK.get(),
+            ALMBlocks.CELERIUM_ORE.get(),
+            ALMBlocks.DEEPSLATE_CELERIUM_ORE.get()
+    );
+    public static final List<Block> ORES = List.of(
+            ALMBlocks.CELERIUM_ORE.get(),
+            ALMBlocks.DEEPSLATE_CELERIUM_ORE.get()
+    );
+    public static final List<Block> AXE_MINEABLE = List.of(
+            ALMBlocks.DASH_PAD.get(),
+            ALMBlocks.LAUNCH_PAD.get()
+    );
+    public static final List<Block> PICKAXE_MINEABLE_EXTRA = List.of(
+            ALMBlocks.DASH_PAD.get(),
+            ALMBlocks.LAUNCH_PAD.get()
+    );
     private static final Map<Block, ALMBlockFamily> MAP = Maps.newHashMap();
-
     public static final ALMBlockFamily SEEPSTONE = register(familyBuilder(ALMBlocks.SEEPSTONE.get())
             .slab(ALMBlocks.SEEPSTONE_SLAB.get())
             .stairs(ALMBlocks.SEEPSTONE_STAIRS.get())
@@ -39,36 +60,8 @@ public final class ALMBlockFamilies {
             .wall(ALMBlocks.SEEPSTONE_TILE_WALL.get())
             .stone()
             .getFamily());
-
     public static final List<ALMBlockFamily> SEEPSTONE_PROGRESSION = List.of(
             SEEPSTONE, POLISHED_SEEPSTONE, SEEPSTONE_BRICKS, SEEPSTONE_TILES
-    );
-
-    public static final List<Block> SIMPLE_CUBES = List.of(
-            ALMBlocks.CELERIUM_BLOCK.get(),
-            ALMBlocks.CELERIUM_ORE.get(),
-            ALMBlocks.DEEPSLATE_CELERIUM_ORE.get()
-    );
-
-    public static final List<Block> NEEDS_IRON_TOOL = List.of(
-            ALMBlocks.CELERIUM_BLOCK.get(),
-            ALMBlocks.CELERIUM_ORE.get(),
-            ALMBlocks.DEEPSLATE_CELERIUM_ORE.get()
-    );
-
-    public static final List<Block> ORES = List.of(
-            ALMBlocks.CELERIUM_ORE.get(),
-            ALMBlocks.DEEPSLATE_CELERIUM_ORE.get()
-    );
-
-    public static final List<Block> AXE_MINEABLE = List.of(
-            ALMBlocks.DASH_PAD.get(),
-            ALMBlocks.LAUNCH_PAD.get()
-    );
-
-    public static final List<Block> PICKAXE_MINEABLE_EXTRA = List.of(
-            ALMBlocks.DASH_PAD.get(),
-            ALMBlocks.LAUNCH_PAD.get()
     );
 
     private static ALMBlockFamily.Builder familyBuilder(Block baseBlock) {

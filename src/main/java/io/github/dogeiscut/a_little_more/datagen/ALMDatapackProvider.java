@@ -2,7 +2,6 @@ package io.github.dogeiscut.a_little_more.datagen;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
-import io.github.dogeiscut.a_little_more.registry.ALMItems;
 import io.github.dogeiscut.a_little_more.registry.ALMSounds;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
@@ -18,9 +17,9 @@ import net.minecraft.world.item.JukeboxSong;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
@@ -46,16 +45,6 @@ public class ALMDatapackProvider extends DatapackBuiltinEntriesProvider {
 
     public ALMDatapackProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
         super(output, lookupProvider, BUILDER.build(), Set.of(ALittleMore.MOD_ID));
-    }
-
-    public static final class RegistrySetBuilderHolder {
-        public net.minecraft.core.RegistrySetBuilder build() {
-            return new net.minecraft.core.RegistrySetBuilder()
-                    .add(Registries.CONFIGURED_FEATURE, ALMDatapackProvider::configuredFeatures)
-                    .add(Registries.PLACED_FEATURE, ALMDatapackProvider::placedFeatures)
-                    .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ALMDatapackProvider::biomeModifiers)
-                    .add(Registries.JUKEBOX_SONG, ALMDatapackProvider::jukeboxSongs);
-        }
     }
 
     private static void configuredFeatures(BootstrapContext<ConfiguredFeature<?, ?>> ctx) {
@@ -116,6 +105,16 @@ public class ALMDatapackProvider extends DatapackBuiltinEntriesProvider {
 
     private static ResourceKey<BiomeModifier> biomeModifier(String name) {
         return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ALittleMore.id(name));
+    }
+
+    public static final class RegistrySetBuilderHolder {
+        public net.minecraft.core.RegistrySetBuilder build() {
+            return new net.minecraft.core.RegistrySetBuilder()
+                    .add(Registries.CONFIGURED_FEATURE, ALMDatapackProvider::configuredFeatures)
+                    .add(Registries.PLACED_FEATURE, ALMDatapackProvider::placedFeatures)
+                    .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ALMDatapackProvider::biomeModifiers)
+                    .add(Registries.JUKEBOX_SONG, ALMDatapackProvider::jukeboxSongs);
+        }
     }
 
 }

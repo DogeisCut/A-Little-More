@@ -1,7 +1,8 @@
 package io.github.dogeiscut.a_little_more.datagen;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
-import io.github.dogeiscut.a_little_more.registry.*;
+import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
+import io.github.dogeiscut.a_little_more.registry.ALMItems;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
@@ -15,6 +16,8 @@ import java.util.Map;
 public class ALMLanguageProvider extends LanguageProvider {
 
     private static final Map<String, String> OVERRIDES = new HashMap<>();
+    private static final java.util.Set<String> SMALL_WORDS =
+            java.util.Set.of("of", "the", "a", "an", "in", "at", "to", "and");
 
     static {
         OVERRIDES.put("celerium_block", "Block of Celerium");
@@ -23,6 +26,23 @@ public class ALMLanguageProvider extends LanguageProvider {
 
     public ALMLanguageProvider(PackOutput output, String locale) {
         super(output, ALittleMore.MOD_ID, locale);
+    }
+
+    public static String titleCase(String path) {
+        String[] words = path.split("_");
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < words.length; i++) {
+            String w = words[i];
+            if (w.isEmpty()) continue;
+            if (i > 0) sb.append(' ');
+            if (i > 0 && SMALL_WORDS.contains(w)) {
+                sb.append(w);
+            } else {
+                sb.append(Character.toUpperCase(w.charAt(0)))
+                        .append(w.substring(1).toLowerCase(Locale.ROOT));
+            }
+        }
+        return sb.toString();
     }
 
     @Override
@@ -43,26 +63,6 @@ public class ALMLanguageProvider extends LanguageProvider {
         String path = BuiltInRegistries.BLOCK.getKey(block).getPath();
         add(block, OVERRIDES.getOrDefault(path, titleCase(path)));
     }
-
-    public static String titleCase(String path) {
-        String[] words = path.split("_");
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < words.length; i++) {
-            String w = words[i];
-            if (w.isEmpty()) continue;
-            if (i > 0) sb.append(' ');
-            if (i > 0 && SMALL_WORDS.contains(w)) {
-                sb.append(w);
-            } else {
-                sb.append(Character.toUpperCase(w.charAt(0)))
-                        .append(w.substring(1).toLowerCase(Locale.ROOT));
-            }
-        }
-        return sb.toString();
-    }
-
-    private static final java.util.Set<String> SMALL_WORDS =
-            java.util.Set.of("of", "the", "a", "an", "in", "at", "to", "and");
 
     private void addStaticEntries() {
         add("itemGroup." + ALittleMore.MOD_ID, "A Little More");
