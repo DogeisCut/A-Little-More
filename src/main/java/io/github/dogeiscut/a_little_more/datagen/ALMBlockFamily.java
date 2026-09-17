@@ -44,10 +44,7 @@ public final class ALMBlockFamily {
 
     public Stream<Block> allBlocks() {
         Stream<Block> base = Stream.of(baseBlock());
-        Stream<Block> variants = vanilla.getVariants().entrySet().stream()
-                .filter(entry -> entry.getKey() != BlockFamily.Variant.CHISELED
-                        && entry.getKey() != BlockFamily.Variant.POLISHED)
-                .map(Map.Entry::getValue);
+        Stream<Block> variants = vanilla.getVariants().values().stream();
         Stream<Block> pillarStream = hasPillar() ? Stream.of(pillar) : Stream.empty();
         return Stream.concat(Stream.concat(base, variants), pillarStream);
     }

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "a_little_more:block/seepstone_pillar_top",
+    "side": "a_little_more:block/seepstone_pillar_side"
+  }
+}

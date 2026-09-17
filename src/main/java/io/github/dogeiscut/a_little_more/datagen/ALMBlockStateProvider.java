@@ -5,7 +5,6 @@ import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
 import io.github.dogeiscut.a_little_more.registry.ALMFluids;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
@@ -13,11 +12,9 @@ import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.ModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import org.openjdk.nashorn.internal.ir.annotations.Ignore;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class ALMBlockStateProvider extends BlockStateProvider {
 
@@ -32,8 +29,6 @@ public class ALMBlockStateProvider extends BlockStateProvider {
         ALMBlockFamilies.getAllFamilies().forEach(this::family);
 
         ALMBlockFamilies.SIMPLE_CUBES.forEach(this::simpleCubeAllWithItem);
-        ALMBlockFamilies.ORES.forEach(this::simpleCubeAllWithItem);
-        ALMBlockFamilies.AXE_MINEABLE.forEach(this::simpleCubeAllWithItem);
 
         // TODO: seep cluster assets, it's NOT going to be a cube.
         simpleCubeAllWithItem(ALMBlocks.SEEP_CRYSTAL_CLUSTER.get());
@@ -60,12 +55,15 @@ public class ALMBlockStateProvider extends BlockStateProvider {
             if (variant == BlockFamily.Variant.SLAB) {
                 ResourceLocation doubleSlabModel = modLoc("block/" + name(base));
                 slabBlock((SlabBlock) block, doubleSlabModel, baseTexture);
+                itemModelFromBlock(block);
             } else if (variant == BlockFamily.Variant.STAIRS) {
                 stairsBlock((StairBlock) block, baseTexture);
+                itemModelFromBlock(block);
             } else if (variant == BlockFamily.Variant.WALL) {
                 wallBlock((WallBlock) block, baseTexture);
-            } else if (variant == BlockFamily.Variant.CHISELED || variant == BlockFamily.Variant.POLISHED) {
-
+                itemModels().wallInventory(name(block), baseTexture);
+            } else if (variant == BlockFamily.Variant.CHISELED) {
+                simpleCubeAllWithItem(block);
             } else {
                 ALittleMore.LOGGER.warn(
                         "[A Little More datagen] No model generator wired up for block family variant {} on {}",
@@ -74,18 +72,26 @@ public class ALMBlockStateProvider extends BlockStateProvider {
         });
 
         if (almFamily.hasPillar()) {
-            pillar(almFamily.pillar());
+            pillarWithItem(almFamily.pillar());
         }
     }
 
-    private void pillar(RotatedPillarBlock pillarBlock) {
-        if (skipIfNoTexture(pillarBlock)) return;
-        ResourceLocation side = blockTexture(pillarBlock);
-        ResourceLocation end = ResourceLocation.fromNamespaceAndPath(side.getNamespace(), side.getPath() + "_top");
-        if (!models().existingFileHelper.exists(end, ModelProvider.TEXTURE)) {
-            missingTextures.add(end.toString());
-            return;
+    private void pillarWithItem(RotatedPillarBlock pillarBlock) {
+        ResourceLocation side = modLoc("block/" + name(pillarBlock) + "_side");
+        ResourceLocation end = modLoc("block/" + name(pillarBlock) + "_top");
+
+        boolean hasSide = models().existingFileHelper.exists(side, ModelProvider.TEXTURE);
+        boolean hasEnd = models().existingFileHelper.exists(end, ModelProvider.TEXTURE);
+
+        if (!hasSide) {
+            missingTextures.add(side.toString());
         }
+        if (!hasEnd) {
+            missingTextures.add(end.toString());
+        }
+
+        if (!hasSide || !hasEnd) return;
+
         axisBlock(pillarBlock, side, end);
         itemModelFromBlock(pillarBlock);
     }

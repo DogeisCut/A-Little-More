@@ -45,8 +45,9 @@ public final class ALMBlockFamilies {
     );
 
     public static final List<Block> SIMPLE_CUBES = List.of(
-            ALMBlocks.CHISELED_SEEPSTONE.get(),
-            ALMBlocks.CELERIUM_BLOCK.get()
+            ALMBlocks.CELERIUM_BLOCK.get(),
+            ALMBlocks.CELERIUM_ORE.get(),
+            ALMBlocks.DEEPSLATE_CELERIUM_ORE.get()
     );
 
     public static final List<Block> NEEDS_IRON_TOOL = List.of(
