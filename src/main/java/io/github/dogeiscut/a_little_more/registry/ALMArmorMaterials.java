@@ -10,6 +10,7 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.EnumMap;
 
@@ -34,7 +35,7 @@ public class ALMArmorMaterials {
             0.0f
     ));
 
-    public static void register(IEventBus modEventBus) {
+    public static void register(@NotNull IEventBus modEventBus) {
         ARMOR_MATERIALS.register(modEventBus);
     }
 }

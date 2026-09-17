@@ -7,6 +7,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
@@ -20,7 +21,7 @@ public class ALMRecipes {
     public static final Supplier<RecipeType<SeepTransformationRecipe>> SEEP_TRANSFORMATION_TYPE =
             RECIPE_TYPES.register("seep_transformation", () -> new RecipeType<>() {
                 @Override
-                public String toString() {
+                public @NotNull String toString() {
                     return ALittleMore.id("seep_transformation").toString();
                 }
             });
@@ -28,7 +29,7 @@ public class ALMRecipes {
     public static final Supplier<RecipeSerializer<SeepTransformationRecipe>> SEEP_TRANSFORMATION_SERIALIZER =
             RECIPE_SERIALIZERS.register("seep_transformation", () -> SeepTransformationRecipe.Serializer.INSTANCE);
 
-    public static void register(IEventBus modEventBus) {
+    public static void register(@NotNull IEventBus modEventBus) {
         RECIPE_TYPES.register(modEventBus);
         RECIPE_SERIALIZERS.register(modEventBus);
     }

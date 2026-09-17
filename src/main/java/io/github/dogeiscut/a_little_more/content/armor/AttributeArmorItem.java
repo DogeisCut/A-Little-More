@@ -5,14 +5,15 @@ import net.minecraft.core.Holder;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
 public class AttributeArmorItem extends ArmorItem {
-    private final Supplier<ItemAttributeModifiers> combinedModifiers;
+    private final @NotNull Supplier<ItemAttributeModifiers> combinedModifiers;
 
-    public AttributeArmorItem(Holder<ArmorMaterial> material, Type type, Properties properties,
-                              ItemAttributeModifiers extraModifiers) {
+    public AttributeArmorItem(@NotNull Holder<ArmorMaterial> material, @NotNull Type type, @NotNull Properties properties,
+                              @NotNull ItemAttributeModifiers extraModifiers) {
         super(material, type, properties);
 
         this.combinedModifiers = Suppliers.memoize(() -> {
@@ -31,7 +32,7 @@ public class AttributeArmorItem extends ArmorItem {
     }
 
     @Override
-    public ItemAttributeModifiers getDefaultAttributeModifiers() {
+    public @NotNull ItemAttributeModifiers getDefaultAttributeModifiers() {
         return this.combinedModifiers.get();
     }
 }

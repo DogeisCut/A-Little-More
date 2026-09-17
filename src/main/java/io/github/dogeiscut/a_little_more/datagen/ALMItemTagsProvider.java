@@ -14,6 +14,7 @@ import net.minecraft.world.item.*;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -21,9 +22,9 @@ import java.util.function.Supplier;
 
 public class ALMItemTagsProvider extends net.minecraft.data.tags.ItemTagsProvider {
 
-    public ALMItemTagsProvider(PackOutput output,
-                               CompletableFuture<HolderLookup.Provider> lookupProvider,
-                               CompletableFuture<TagLookup<net.minecraft.world.level.block.Block>> blockTags,
+    public ALMItemTagsProvider(@NotNull PackOutput output,
+                               @NotNull CompletableFuture<HolderLookup.Provider> lookupProvider,
+                               @NotNull CompletableFuture<TagLookup<net.minecraft.world.level.block.Block>> blockTags,
                                @Nullable ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, blockTags, ALittleMore.MOD_ID, existingFileHelper);
     }
@@ -127,38 +128,38 @@ public class ALMItemTagsProvider extends net.minecraft.data.tags.ItemTagsProvide
         }
     }
 
-    private void tool(Item item) {
+    private void tool(@NotNull Item item) {
         add(Tags.Items.TOOLS, item);
         add(ItemTags.BREAKS_DECORATED_POTS, item);
         durable(item);
     }
 
-    private void weapon(Item item) {
+    private void weapon(@NotNull Item item) {
         add(Tags.Items.MELEE_WEAPON_TOOLS, item);
         add(ItemTags.WEAPON_ENCHANTABLE, item);
     }
 
-    private void mining(Item item) {
+    private void mining(@NotNull Item item) {
         add(ItemTags.MINING_ENCHANTABLE, item);
         add(ItemTags.MINING_LOOT_ENCHANTABLE, item);
     }
 
-    private void durable(Item item) {
+    private void durable(@NotNull Item item) {
         add(ItemTags.DURABILITY_ENCHANTABLE, item);
         add(ItemTags.VANISHING_ENCHANTABLE, item);
         add(Tags.Items.ENCHANTABLES, item);
     }
 
-    private void add(TagKey<Item> key, Item item) {
+    private void add(@NotNull TagKey<Item> key, @NotNull Item item) {
         tag(key).add(BuiltInRegistries.ITEM.getResourceKey(item).orElseThrow());
     }
 
-    private void add(TagKey<Item> key, Supplier<? extends Item> item) {
+    private void add(@NotNull TagKey<Item> key, @NotNull Supplier<? extends Item> item) {
         add(key, item.get());
     }
 
     @SuppressWarnings("unused")
-    private void add(TagKey<Item> key, DeferredBlock<?> block) {
+    private void add(@NotNull TagKey<Item> key, @NotNull DeferredBlock<?> block) {
         add(key, block.get().asItem());
     }
 }

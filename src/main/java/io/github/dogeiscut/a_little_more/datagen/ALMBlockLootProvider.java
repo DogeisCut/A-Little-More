@@ -20,12 +20,12 @@ import java.util.function.Supplier;
 
 public class ALMBlockLootProvider extends BlockLootSubProvider {
 
-    protected ALMBlockLootProvider(HolderLookup.Provider provider) {
+    protected ALMBlockLootProvider(HolderLookup.@NotNull Provider provider) {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags(), provider);
     }
 
-    public static LootTableProvider create(PackOutput output,
-                                           CompletableFuture<HolderLookup.Provider> lookupProvider) {
+    public static @NotNull LootTableProvider create(@NotNull PackOutput output,
+                                                    @NotNull CompletableFuture<HolderLookup.Provider> lookupProvider) {
         return new LootTableProvider(
                 output,
                 Collections.emptySet(),
@@ -55,7 +55,7 @@ public class ALMBlockLootProvider extends BlockLootSubProvider {
         }
     }
 
-    public void oreDrop(Block ore, Item drop) {
+    public void oreDrop(@NotNull Block ore, @NotNull Item drop) {
         add(ore, block -> createOreDrop(block, drop));
     }
 

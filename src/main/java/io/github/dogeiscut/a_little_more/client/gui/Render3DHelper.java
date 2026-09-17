@@ -17,6 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.fluids.FluidStack;
+import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 
 public class Render3DHelper {
@@ -26,7 +27,7 @@ public class Render3DHelper {
     private static final float FLUID_HEIGHT = 14.0f / 16.0f; // horrible alternate dimension where minecraft decides to change this
     // upon further investigations, still fluids are actually slightly taller than this. I hate this game.
 
-    public static void render3DBlock(GuiGraphics guiGraphics, BlockState state, float x, float y, float scale) {
+    public static void render3DBlock(@NotNull GuiGraphics guiGraphics, @NotNull BlockState state, float x, float y, float scale) {
         PoseStack poseStack = guiGraphics.pose();
         poseStack.pushPose();
 
@@ -46,7 +47,7 @@ public class Render3DHelper {
         poseStack.popPose();
     }
 
-    public static void render3DFluid(GuiGraphics guiGraphics, FluidStack fluidStack, float x, float y, float scale) {
+    public static void render3DFluid(@NotNull GuiGraphics guiGraphics, @NotNull FluidStack fluidStack, float x, float y, float scale) {
         if (fluidStack.isEmpty()) return;
 
         // TODO: fix transparency
@@ -81,7 +82,7 @@ public class Render3DHelper {
         poseStack.popPose();
     }
 
-    private static void setup3DMatrix(PoseStack poseStack, float x, float y, float scale) {
+    private static void setup3DMatrix(@NotNull PoseStack poseStack, float x, float y, float scale) {
         poseStack.translate(x, y, 100.0f);
         poseStack.scale(scale, -scale, scale);
         poseStack.mulPose(Axis.XP.rotationDegrees(15.5f));
@@ -89,7 +90,7 @@ public class Render3DHelper {
         poseStack.translate(-0.5f, -0.5f, -0.5f);
     }
 
-    private static void drawFluidCube(VertexConsumer builder, Matrix4f m, TextureAtlasSprite stillSprite, TextureAtlasSprite flowingSprite, float r, float g, float b, float a) {
+    private static void drawFluidCube(@NotNull VertexConsumer builder, @NotNull Matrix4f m, @NotNull TextureAtlasSprite stillSprite, @NotNull TextureAtlasSprite flowingSprite, float r, float g, float b, float a) {
         float h = FLUID_HEIGHT;
 
         quad(builder, m,
@@ -135,7 +136,7 @@ public class Render3DHelper {
                 r * 0.6f, g * 0.6f, b * 0.6f, a, 1, 0, 0);
     }
 
-    public static void render3DItem(GuiGraphics guiGraphics, ItemStack stack, float x, float y, float scale, float yOffset, float xRot, float zRot) {
+    public static void render3DItem(@NotNull GuiGraphics guiGraphics, @NotNull ItemStack stack, float x, float y, float scale, float yOffset, float xRot, float zRot) {
         if (stack.isEmpty()) return;
 
         PoseStack poseStack = guiGraphics.pose();
@@ -166,7 +167,7 @@ public class Render3DHelper {
         poseStack.popPose();
     }
 
-    private static void quad(VertexConsumer builder, Matrix4f m,
+    private static void quad(@NotNull VertexConsumer builder, @NotNull Matrix4f m,
                              float x0, float y0, float z0,
                              float x1, float y1, float z1,
                              float x2, float y2, float z2,
@@ -181,7 +182,7 @@ public class Render3DHelper {
         vertex(builder, m, x3, y3, z3, u1, v0, r, g, b, a, nx, ny, nz);
     }
 
-    private static void vertex(VertexConsumer builder, Matrix4f m, float x, float y, float z, float u, float v, float r, float g, float b, float a, float nx, float ny, float nz) {
+    private static void vertex(@NotNull VertexConsumer builder, @NotNull Matrix4f m, float x, float y, float z, float u, float v, float r, float g, float b, float a, float nx, float ny, float nz) {
         builder.addVertex(m, x, y, z)
                 .setColor(r, g, b, a)
                 .setUv(u, v)

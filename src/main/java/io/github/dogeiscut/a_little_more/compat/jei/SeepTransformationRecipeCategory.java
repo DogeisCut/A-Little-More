@@ -27,12 +27,12 @@ public class SeepTransformationRecipeCategory implements IRecipeCategory<SeepTra
     public static final RecipeType<SeepTransformationRecipe> RECIPE_TYPE =
             RecipeType.create(ALittleMore.MOD_ID, "seep_transformation", SeepTransformationRecipe.class);
 
-    private final IDrawable background;
-    private final IDrawable icon;
-    private final IDrawable slotBackground;
-    private final IDrawable arrow;
+    private final @NotNull IDrawable background;
+    private final @NotNull IDrawable icon;
+    private final @NotNull IDrawable slotBackground;
+    private final @NotNull IDrawable arrow;
 
-    public SeepTransformationRecipeCategory(IGuiHelper helper) {
+    public SeepTransformationRecipeCategory(@NotNull IGuiHelper helper) {
         this.background = helper.createBlankDrawable(140, 64);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ALMFluids.SEEP.bucket().get()));
         this.slotBackground = helper.getSlotDrawable();
@@ -62,7 +62,7 @@ public class SeepTransformationRecipeCategory implements IRecipeCategory<SeepTra
 
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, SeepTransformationRecipe recipe, @NotNull IFocusGroup focuses) {
+    public void setRecipe(@NotNull IRecipeLayoutBuilder builder, @NotNull SeepTransformationRecipe recipe, @NotNull IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.INPUT, 10, 22)
                 .setBackground(slotBackground, -1, -1)
                 .addIngredients(recipe.ingredient());
@@ -78,7 +78,7 @@ public class SeepTransformationRecipeCategory implements IRecipeCategory<SeepTra
     }
 
     @Override
-    public void draw(SeepTransformationRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+    public void draw(@NotNull SeepTransformationRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
         arrow.draw(guiGraphics, 34, 22);
         arrow.draw(guiGraphics, 88, 22);
 

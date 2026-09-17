@@ -12,13 +12,14 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
+import org.jetbrains.annotations.NotNull;
 
 @EventBusSubscriber(modid = ALittleMore.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class FluidInteractionsEvents {
 
     // TODO: this doesnt go here, move to another class
     @SubscribeEvent
-    public static void onClientSetup(FMLClientSetupEvent event) {
+    public static void onClientSetup(@NotNull FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             ItemBlockRenderTypes.setRenderLayer(ALMFluids.SEEP.still().get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ALMFluids.SEEP.flowing().get(), RenderType.translucent());
@@ -26,7 +27,7 @@ public class FluidInteractionsEvents {
     }
 
     @SubscribeEvent
-    public static void onCommonSetup(FMLCommonSetupEvent event) {
+    public static void onCommonSetup(@NotNull FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
 
             FluidInteractionRegistry.addInteraction(

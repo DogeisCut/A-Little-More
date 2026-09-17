@@ -17,12 +17,12 @@ public class FanSeepingCategory extends ProcessingViaFanCategory<SeepTransformat
     public static final RecipeType<RecipeHolder<SeepTransformationRecipe>> RECIPE_TYPE =
             RecipeType.createRecipeHolderType(ALittleMore.id("fan_seeping"));
 
-    public FanSeepingCategory(Info<SeepTransformationRecipe> info) {
+    public FanSeepingCategory(@NotNull Info<SeepTransformationRecipe> info) {
         super(info);
     }
 
     @Override
-    protected AllGuiTextures getBlockShadow() {
+    protected @NotNull AllGuiTextures getBlockShadow() {
         return AllGuiTextures.JEI_LIGHT;
     }
 

@@ -13,6 +13,7 @@ import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.SoundActions;
 import net.neoforged.neoforge.fluids.FluidType;
+import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 
 public class SeepFluidType extends BaseFluidType {
@@ -50,7 +51,7 @@ public class SeepFluidType extends BaseFluidType {
     }
 
     @Override
-    public void setItemMovement(ItemEntity entity) {
+    public void setItemMovement(@NotNull ItemEntity entity) {
         Vec3 delta = entity.getDeltaMovement();
         double newY = Math.max(delta.y - SINK_ACCELERATION, MAX_SINK_SPEED);
         entity.setDeltaMovement(delta.x * HORIZONTAL_DRAG, newY, delta.z * HORIZONTAL_DRAG);

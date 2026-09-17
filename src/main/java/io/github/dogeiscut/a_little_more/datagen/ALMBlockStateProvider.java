@@ -12,6 +12,7 @@ import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.ModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class ALMBlockStateProvider extends BlockStateProvider {
 
     private final List<String> missingTextures = new ArrayList<>();
 
-    public ALMBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
+    public ALMBlockStateProvider(@NotNull PackOutput output, @NotNull ExistingFileHelper exFileHelper) {
         super(output, ALittleMore.MOD_ID, exFileHelper);
     }
 
@@ -42,7 +43,7 @@ public class ALMBlockStateProvider extends BlockStateProvider {
         }
     }
 
-    private void family(ALMBlockFamily almFamily) {
+    private void family(@NotNull ALMBlockFamily almFamily) {
         BlockFamily family = almFamily.vanilla();
         if (!family.shouldGenerateModel()) return;
         Block base = family.getBaseBlock();
@@ -76,7 +77,7 @@ public class ALMBlockStateProvider extends BlockStateProvider {
         }
     }
 
-    private void pillarWithItem(RotatedPillarBlock pillarBlock) {
+    private void pillarWithItem(@NotNull RotatedPillarBlock pillarBlock) {
         ResourceLocation side = modLoc("block/" + name(pillarBlock) + "_side");
         ResourceLocation end = modLoc("block/" + name(pillarBlock) + "_top");
 
@@ -96,23 +97,23 @@ public class ALMBlockStateProvider extends BlockStateProvider {
         itemModelFromBlock(pillarBlock);
     }
 
-    public void simpleCubeAllWithItem(Block block) {
+    public void simpleCubeAllWithItem(@NotNull Block block) {
         if (skipIfNoTexture(block)) return;
         simpleBlockWithItem(block, cubeAll(block));
     }
 
-    public void particleOnly(Block block, ResourceLocation particle) {
+    public void particleOnly(@NotNull Block block, @NotNull ResourceLocation particle) {
         simpleBlock(block, models()
                 .getBuilder(name(block))
                 .texture("particle", particle));
     }
 
-    private void itemModelFromBlock(Block block) {
+    private void itemModelFromBlock(@NotNull Block block) {
         String path = name(block);
         itemModels().withExistingParent(path, modLoc("block/" + path));
     }
 
-    private boolean skipIfNoTexture(Block block) {
+    private boolean skipIfNoTexture(@NotNull Block block) {
         ResourceLocation texture = blockTexture(block);
         if (models().existingFileHelper.exists(texture, ModelProvider.TEXTURE)) {
             return false;
@@ -121,12 +122,12 @@ public class ALMBlockStateProvider extends BlockStateProvider {
         return true;
     }
 
-    private String name(Block block) {
+    private @NotNull String name(@NotNull Block block) {
         return net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(block).getPath();
     }
 
     @SuppressWarnings("unused")
-    private ConfiguredModel[] single(ModelFile file) {
+    private ConfiguredModel @NotNull [] single(@NotNull ModelFile file) {
         return ConfiguredModel.builder().modelFile(file).build();
     }
 }

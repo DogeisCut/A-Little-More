@@ -7,6 +7,7 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.PercentageAttribute;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.jetbrains.annotations.NotNull;
 
 public class ALMAttributes {
 
@@ -21,7 +22,7 @@ public class ALMAttributes {
             16.0d
     ));
 
-    public static void register(IEventBus modEventBus) {
+    public static void register(@NotNull IEventBus modEventBus) {
         ATTRIBUTES.register(modEventBus);
     }
 }

@@ -7,10 +7,11 @@ import net.minecraft.sounds.SoundEvent;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.common.data.SoundDefinition;
 import net.neoforged.neoforge.common.data.SoundDefinitionsProvider;
+import org.jetbrains.annotations.NotNull;
 
 public class ALMSoundProvider extends SoundDefinitionsProvider {
 
-    public ALMSoundProvider(PackOutput output, ExistingFileHelper helper) {
+    public ALMSoundProvider(@NotNull PackOutput output, @NotNull ExistingFileHelper helper) {
         super(output, ALittleMore.MOD_ID, helper);
     }
 
@@ -19,14 +20,14 @@ public class ALMSoundProvider extends SoundDefinitionsProvider {
         music(ALMSounds.JUST_A_LITTLE_MORE.get(), "records/just_a_little_more");
     }
 
-    public void music(SoundEvent event, String file) {
+    public void music(@NotNull SoundEvent event, String file) {
         add(event, SoundDefinition.definition()
                 .with(SoundDefinition.Sound.sound(
                                 ALittleMore.id(file), SoundDefinition.SoundType.SOUND)
                         .stream()));
     }
 
-    public void sound(SoundEvent event, String file, String subtitle) {
+    public void sound(@NotNull SoundEvent event, String file, String subtitle) {
         add(event, SoundDefinition.definition()
                 .with(SoundDefinition.Sound.sound(
                         ALittleMore.id(file), SoundDefinition.SoundType.SOUND))

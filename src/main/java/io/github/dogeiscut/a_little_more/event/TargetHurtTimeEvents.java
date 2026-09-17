@@ -10,13 +10,14 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import org.jetbrains.annotations.NotNull;
 
 @EventBusSubscriber(modid = ALittleMore.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class TargetHurtTimeEvents {
     // TODO: figure out how to update the red flash entities do when hit
 
     @SubscribeEvent
-    public static void onEntityAttributeModification(EntityAttributeModificationEvent event) {
+    public static void onEntityAttributeModification(@NotNull EntityAttributeModificationEvent event) {
         for (EntityType<? extends LivingEntity> type : event.getTypes()) {
             if (!event.has(type, ALMAttributes.TARGET_HURT_TIME)) {
                 event.add(type, ALMAttributes.TARGET_HURT_TIME);
@@ -25,7 +26,7 @@ public class TargetHurtTimeEvents {
     }
 
     @SubscribeEvent
-    public static void onLivingEntityPostDamage(LivingDamageEvent.Post event) {
+    public static void onLivingEntityPostDamage(LivingDamageEvent.@NotNull Post event) {
         if (event.getSource().getEntity() instanceof LivingEntity attacker) {
             AttributeMap attributes = attacker.getAttributes();
             AttributeInstance instance = attributes.getInstance(ALMAttributes.TARGET_HURT_TIME);

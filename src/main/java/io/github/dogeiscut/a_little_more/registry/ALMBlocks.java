@@ -7,6 +7,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Function;
 
@@ -41,33 +42,33 @@ public class ALMBlocks {
     public static final DeferredBlock<Block> DASH_PAD = simpleBlockWithItem("dash_pad", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS));
     public static final DeferredBlock<Block> LAUNCH_PAD = simpleBlockWithItem("launch_pad", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS));
 
-    public static DeferredBlock<Block> simpleBlock(String name, BlockBehaviour.Properties properties) {
+    public static @NotNull DeferredBlock<Block> simpleBlock(@NotNull String name, BlockBehaviour.@NotNull Properties properties) {
         return BLOCKS.registerSimpleBlock(name, properties);
     }
 
-    public static <B extends Block> DeferredBlock<B> block(String name, Function<BlockBehaviour.Properties, B> factory, BlockBehaviour.Properties properties) {
+    public static <B extends Block> @NotNull DeferredBlock<B> block(@NotNull String name, @NotNull Function<BlockBehaviour.Properties, B> factory, BlockBehaviour.@NotNull Properties properties) {
         return BLOCKS.registerBlock(name, factory, properties);
     }
 
-    public static DeferredBlock<Block> simpleBlockWithItem(String name, BlockBehaviour.Properties properties) {
+    public static @NotNull DeferredBlock<Block> simpleBlockWithItem(@NotNull String name, BlockBehaviour.@NotNull Properties properties) {
         DeferredBlock<Block> block = BLOCKS.registerSimpleBlock(name, properties);
         ALMItems.blockItem(block);
         return block;
     }
 
-    public static <B extends Block> DeferredBlock<B> blockWithItem(String name, Function<BlockBehaviour.Properties, B> factory) {
+    public static <B extends Block> @NotNull DeferredBlock<B> blockWithItem(@NotNull String name, @NotNull Function<BlockBehaviour.Properties, B> factory) {
         DeferredBlock<B> block = BLOCKS.registerBlock(name, factory);
         ALMItems.blockItem(block);
         return block;
     }
 
-    public static <B extends Block> DeferredBlock<B> blockWithItem(String name, Function<BlockBehaviour.Properties, B> factory, Item.Properties itemProperties) {
+    public static <B extends Block> @NotNull DeferredBlock<B> blockWithItem(@NotNull String name, @NotNull Function<BlockBehaviour.Properties, B> factory, Item.@NotNull Properties itemProperties) {
         DeferredBlock<B> block = BLOCKS.registerBlock(name, factory);
         ALMItems.blockItem(block, itemProperties);
         return block;
     }
 
-    public static void register(IEventBus modEventBus) {
+    public static void register(@NotNull IEventBus modEventBus) {
         BLOCKS.register(modEventBus);
     }
 }

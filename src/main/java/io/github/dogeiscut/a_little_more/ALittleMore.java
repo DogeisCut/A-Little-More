@@ -15,6 +15,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 @Mod(ALittleMore.MOD_ID)
@@ -25,7 +26,7 @@ public class ALittleMore {
 
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public ALittleMore(IEventBus modEventBus, ModContainer modContainer) {
+    public ALittleMore(@NotNull IEventBus modEventBus, @NotNull ModContainer modContainer) {
 
 //        ALMDataComponents.register(modEventBus);
         ALMAttributes.register(modEventBus);
@@ -62,7 +63,7 @@ public class ALittleMore {
 //        });
     }
 
-    public static ResourceLocation id(String path) {
+    public static @NotNull ResourceLocation id(@NotNull String path) {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
     }
 }

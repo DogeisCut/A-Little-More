@@ -6,6 +6,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
@@ -15,11 +16,11 @@ public class ALMFluidTypes {
 
     public static final Supplier<SeepFluidType> SEEP = fluidType("seep", SeepFluidType::new);
 
-    public static <T extends FluidType> Supplier<T> fluidType(String name, Supplier<T> factory) {
+    public static <T extends FluidType> @NotNull Supplier<T> fluidType(@NotNull String name, @NotNull Supplier<T> factory) {
         return FLUID_TYPES.register(name, factory);
     }
 
-    public static void register(IEventBus modEventBus) {
+    public static void register(@NotNull IEventBus modEventBus) {
         FLUID_TYPES.register(modEventBus);
     }
 }

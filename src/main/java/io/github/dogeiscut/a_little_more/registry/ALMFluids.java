@@ -18,6 +18,7 @@ import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.BiFunction;
@@ -40,27 +41,27 @@ public class ALMFluids {
                     new SeepLiquidBlock(sourceSupplier, properties.lightLevel(state -> 5)))
     );
 
-    public static FluidEntry fluid(String name, Supplier<? extends FluidType> fluidType,
-                                   UnaryOperator<BaseFlowingFluid.Properties> propertiesOp,
-                                   BlockBehaviour.Properties blockProperties) {
+    public static @NotNull FluidEntry fluid(@NotNull String name, @NotNull Supplier<? extends FluidType> fluidType,
+                                            @NotNull UnaryOperator<BaseFlowingFluid.Properties> propertiesOp,
+                                            BlockBehaviour.@NotNull Properties blockProperties) {
         return fluid(name, fluidType, propertiesOp, blockProperties, defaultBucketItemProperties());
     }
 
-    public static FluidEntry fluid(String name, Supplier<? extends FluidType> fluidType) {
+    public static @NotNull FluidEntry fluid(@NotNull String name, @NotNull Supplier<? extends FluidType> fluidType) {
         return fluid(name, fluidType, UnaryOperator.identity(), liquidBlockProperties(MapColor.WATER));
     }
 
-    public static FluidEntry fluid(String name, Supplier<? extends FluidType> fluidType,
-                                   UnaryOperator<BaseFlowingFluid.Properties> propertiesOp,
-                                   BlockBehaviour.Properties blockProperties, Item.Properties bucketProperties) {
+    public static @NotNull FluidEntry fluid(@NotNull String name, @NotNull Supplier<? extends FluidType> fluidType,
+                                            @NotNull UnaryOperator<BaseFlowingFluid.Properties> propertiesOp,
+                                            BlockBehaviour.@NotNull Properties blockProperties, Item.@NotNull Properties bucketProperties) {
         return fluid(name, fluidType, propertiesOp, blockProperties, bucketProperties,
                 (still, p) -> new LiquidBlock(still.get(), p));
     }
 
-    public static FluidEntry fluid(String name, Supplier<? extends FluidType> fluidType,
-                                   UnaryOperator<BaseFlowingFluid.Properties> propertiesOp,
-                                   BlockBehaviour.Properties blockProperties, Item.Properties bucketProperties,
-                                   BiFunction<Supplier<BaseFlowingFluid.Source>, BlockBehaviour.Properties, LiquidBlock> blockFactory) {
+    public static @NotNull FluidEntry fluid(@NotNull String name, @NotNull Supplier<? extends FluidType> fluidType,
+                                            @NotNull UnaryOperator<BaseFlowingFluid.Properties> propertiesOp,
+                                            BlockBehaviour.@NotNull Properties blockProperties, Item.@NotNull Properties bucketProperties,
+                                            @NotNull BiFunction<Supplier<BaseFlowingFluid.Source>, BlockBehaviour.Properties, LiquidBlock> blockFactory) {
         AtomicReference<BaseFlowingFluid.Properties> propertiesHolder = new AtomicReference<>();
 
         Supplier<BaseFlowingFluid.Source> still =
@@ -83,7 +84,7 @@ public class ALMFluids {
         return new FluidEntry(fluidType, still, flowing, block, bucket);
     }
 
-    public static BlockBehaviour.Properties liquidBlockProperties(MapColor mapColor) {
+    public static BlockBehaviour.@NotNull Properties liquidBlockProperties(@NotNull MapColor mapColor) {
         return BlockBehaviour.Properties.of()
                 .mapColor(mapColor)
                 .replaceable()
@@ -95,13 +96,13 @@ public class ALMFluids {
                 .sound(SoundType.EMPTY);
     }
 
-    public static Item.Properties defaultBucketItemProperties() {
+    public static Item.@NotNull Properties defaultBucketItemProperties() {
         return new Item.Properties()
                 .stacksTo(1)
                 .craftRemainder(Items.BUCKET);
     }
 
-    public static void register(IEventBus modEventBus) {
+    public static void register(@NotNull IEventBus modEventBus) {
         FLUIDS.register(modEventBus);
     }
 

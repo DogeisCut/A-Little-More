@@ -8,6 +8,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
@@ -22,10 +23,10 @@ public class ALMEntities {
                     .updateInterval(10)
                     .build("enseepened_pearl"));
 
-    public static <T extends Entity> Supplier<EntityType<T>> entity(
-            String name,
-            EntityType.EntityFactory<T> factory,
-            MobCategory category,
+    public static <T extends Entity> @NotNull Supplier<EntityType<T>> entity(
+            @NotNull String name,
+            EntityType.@NotNull EntityFactory<T> factory,
+            @NotNull MobCategory category,
             float width,
             float height
     ) {
@@ -34,18 +35,18 @@ public class ALMEntities {
                 .build(name));
     }
 
-    public static <T extends Entity> Supplier<EntityType<T>> entity(
-            String name,
-            EntityType.EntityFactory<T> factory,
-            MobCategory category,
-            java.util.function.UnaryOperator<EntityType.Builder<T>> customizer
+    public static <T extends Entity> @NotNull Supplier<EntityType<T>> entity(
+            @NotNull String name,
+            EntityType.@NotNull EntityFactory<T> factory,
+            @NotNull MobCategory category,
+            java.util.function.@NotNull UnaryOperator<EntityType.Builder<T>> customizer
     ) {
         return ENTITY_TYPES.register(name, () -> customizer
                 .apply(EntityType.Builder.of(factory, category))
                 .build(name));
     }
 
-    public static void register(IEventBus modEventBus) {
+    public static void register(@NotNull IEventBus modEventBus) {
         ENTITY_TYPES.register(modEventBus);
     }
 }

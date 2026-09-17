@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -225,31 +226,31 @@ public class ALMItems {
 //            new Item.Properties()
 //    );
 
-    public static Supplier<Item> basicItem(String name) {
+    public static @NotNull Supplier<Item> basicItem(@NotNull String name) {
         return ITEMS.registerSimpleItem(name);
     }
 
-    public static Supplier<Item> basicItem(String name, Item.Properties properties) {
+    public static @NotNull Supplier<Item> basicItem(@NotNull String name, Item.@NotNull Properties properties) {
         return ITEMS.registerSimpleItem(name, properties);
     }
 
-    public static <T extends Item> Supplier<T> item(String name, Function<Item.Properties, T> factory) {
+    public static <T extends Item> @NotNull Supplier<T> item(@NotNull String name, @NotNull Function<Item.Properties, T> factory) {
         return ITEMS.registerItem(name, factory);
     }
 
-    public static <T extends Item> Supplier<T> item(String name, Function<Item.Properties, T> factory, Item.Properties properties) {
+    public static <T extends Item> @NotNull Supplier<T> item(@NotNull String name, @NotNull Function<Item.Properties, T> factory, Item.@NotNull Properties properties) {
         return ITEMS.registerItem(name, factory, properties);
     }
 
-    public static <T extends Block> Supplier<net.minecraft.world.item.BlockItem> blockItem(DeferredBlock<T> block) {
+    public static <T extends Block> @NotNull Supplier<net.minecraft.world.item.BlockItem> blockItem(@NotNull DeferredBlock<T> block) {
         return ITEMS.registerSimpleBlockItem(block);
     }
 
-    public static <T extends Block> Supplier<net.minecraft.world.item.BlockItem> blockItem(DeferredBlock<T> block, Item.Properties properties) {
+    public static <T extends Block> @NotNull Supplier<net.minecraft.world.item.BlockItem> blockItem(@NotNull DeferredBlock<T> block, Item.@NotNull Properties properties) {
         return ITEMS.registerSimpleBlockItem(block, properties);
     }
 
-    public static void register(IEventBus modEventBus) {
+    public static void register(@NotNull IEventBus modEventBus) {
         ITEMS.register(modEventBus);
     }
 }

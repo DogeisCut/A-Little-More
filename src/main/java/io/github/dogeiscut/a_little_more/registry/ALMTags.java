@@ -7,6 +7,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
+import org.jetbrains.annotations.NotNull;
 
 
 public final class ALMTags {
@@ -26,11 +27,11 @@ public final class ALMTags {
         private Blocks() {
         }
 
-        private static TagKey<Block> mod(String path) {
+        private static @NotNull TagKey<Block> mod(String path) {
             return TagKey.create(Registries.BLOCK, ALittleMore.id(path));
         }
 
-        private static TagKey<Block> common(String path) {
+        private static @NotNull TagKey<Block> common(@NotNull String path) {
             return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", path));
         }
     }
@@ -49,11 +50,11 @@ public final class ALMTags {
         private Items() {
         }
 
-        private static TagKey<Item> mod(String path) {
+        private static @NotNull TagKey<Item> mod(String path) {
             return TagKey.create(Registries.ITEM, ALittleMore.id(path));
         }
 
-        private static TagKey<Item> common(String path) {
+        private static @NotNull TagKey<Item> common(@NotNull String path) {
             return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", path));
         }
     }
@@ -65,11 +66,11 @@ public final class ALMTags {
         private Fluids() {
         }
 
-        private static TagKey<Fluid> mod(String path) {
+        private static @NotNull TagKey<Fluid> mod(String path) {
             return TagKey.create(Registries.FLUID, ALittleMore.id(path));
         }
 
-        private static TagKey<Fluid> common(String path) {
+        private static @NotNull TagKey<Fluid> common(@NotNull String path) {
             return TagKey.create(Registries.FLUID, ResourceLocation.fromNamespaceAndPath("c", path));
         }
     }

@@ -16,6 +16,7 @@ import net.minecraft.world.phys.AABB;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
@@ -28,7 +29,7 @@ public class SeepTransformationEvents {
     // Only reason this isn't in SeepLiquidBlock.entityInside is I'm unsure how to handle items leaving the fluid (to properly remove the SUBMERSION_KEY)
 
     @SubscribeEvent
-    public static void onEntityTick(EntityTickEvent.Post event) {
+    public static void onEntityTick(EntityTickEvent.@NotNull Post event) {
         if (!(event.getEntity() instanceof ItemEntity itemEntity)) {
             return;
         }
@@ -71,7 +72,7 @@ public class SeepTransformationEvents {
         }
     }
 
-    private static boolean isFullySubmergedInSeep(ItemEntity itemEntity) {
+    private static boolean isFullySubmergedInSeep(@NotNull ItemEntity itemEntity) {
         Level level = itemEntity.level();
         AABB box = itemEntity.getBoundingBox();
         BlockPos topPos = BlockPos.containing(itemEntity.getX(), box.maxY, itemEntity.getZ());

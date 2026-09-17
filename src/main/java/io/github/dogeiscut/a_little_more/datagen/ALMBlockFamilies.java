@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Map;
@@ -64,11 +65,11 @@ public final class ALMBlockFamilies {
             SEEPSTONE, POLISHED_SEEPSTONE, SEEPSTONE_BRICKS, SEEPSTONE_TILES
     );
 
-    private static ALMBlockFamily.Builder familyBuilder(Block baseBlock) {
+    private static ALMBlockFamily.@NotNull Builder familyBuilder(@NotNull Block baseBlock) {
         return new ALMBlockFamily.Builder(baseBlock);
     }
 
-    private static ALMBlockFamily register(ALMBlockFamily family) {
+    private static @NotNull ALMBlockFamily register(@NotNull ALMBlockFamily family) {
         ALMBlockFamily existing = MAP.put(family.baseBlock(), family);
         if (existing != null) {
             throw new IllegalStateException("Duplicate family definition for " + BuiltInRegistries.BLOCK.getKey(family.baseBlock()));
@@ -76,7 +77,7 @@ public final class ALMBlockFamilies {
         return family;
     }
 
-    public static Stream<ALMBlockFamily> getAllFamilies() {
+    public static @NotNull Stream<ALMBlockFamily> getAllFamilies() {
         return MAP.values().stream();
     }
 }

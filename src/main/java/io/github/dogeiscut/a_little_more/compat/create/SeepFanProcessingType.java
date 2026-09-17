@@ -17,6 +17,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collections;
@@ -28,7 +29,7 @@ public class SeepFanProcessingType implements FanProcessingType {
     // TODO: make this show up for clicking on Seep and its bucket (ALMJEI.registerFluidSubtypes? ALMJEI.registerExtraIngredients?)
 
     @Override
-    public boolean isValidAt(Level level, BlockPos pos) {
+    public boolean isValidAt(@NotNull Level level, @NotNull BlockPos pos) {
         FluidState fluidState = level.getFluidState(pos);
         return fluidState.is(ALMTags.Fluids.SEEP);
     }
@@ -39,12 +40,12 @@ public class SeepFanProcessingType implements FanProcessingType {
     }
 
     @Override
-    public boolean canProcess(ItemStack stack, Level level) {
+    public boolean canProcess(ItemStack stack, @NotNull Level level) {
         return getMatchingRecipe(stack, level).isPresent();
     }
 
     @Override
-    public @Nullable List<ItemStack> process(ItemStack stack, Level level) {
+    public @Nullable List<ItemStack> process(@NotNull ItemStack stack, @NotNull Level level) {
         Optional<RecipeHolder<SeepTransformationRecipe>> recipe = getMatchingRecipe(stack, level);
         if (recipe.isPresent()) {
             return RecipeApplier.applyRecipeOn(level, stack, recipe.get().value(), false);
@@ -53,7 +54,7 @@ public class SeepFanProcessingType implements FanProcessingType {
     }
 
     @Override
-    public void spawnProcessingParticles(Level level, Vec3 pos) {
+    public void spawnProcessingParticles(@NotNull Level level, @NotNull Vec3 pos) {
         if (level.random.nextInt(8) == 0) {
             level.addParticle(
                     ParticleTypes.WITCH,
@@ -66,7 +67,7 @@ public class SeepFanProcessingType implements FanProcessingType {
     }
 
     @Override
-    public void morphAirFlow(AirFlowParticleAccess particleAccess, RandomSource random) {
+    public void morphAirFlow(@NotNull AirFlowParticleAccess particleAccess, @NotNull RandomSource random) {
         particleAccess.setColor(Color.mixColors(0xDDB0FF, 0xB2B0FF, random.nextFloat()));
         particleAccess.setAlpha(.5f);
         if (random.nextFloat() < 1 / 16f)
@@ -79,7 +80,7 @@ public class SeepFanProcessingType implements FanProcessingType {
     }
 
 
-    private Optional<RecipeHolder<SeepTransformationRecipe>> getMatchingRecipe(ItemStack stack, Level level) {
+    private @NotNull Optional<RecipeHolder<SeepTransformationRecipe>> getMatchingRecipe(ItemStack stack, @NotNull Level level) {
         return level.getRecipeManager()
                 .getAllRecipesFor(ALMRecipes.SEEP_TRANSFORMATION_TYPE.get())
                 .stream()

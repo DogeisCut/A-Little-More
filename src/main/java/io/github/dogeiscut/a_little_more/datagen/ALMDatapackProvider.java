@@ -27,6 +27,7 @@ import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Set;
@@ -43,11 +44,11 @@ public class ALMDatapackProvider extends DatapackBuiltinEntriesProvider {
 
     public static final RegistrySetBuilderHolder BUILDER = new RegistrySetBuilderHolder();
 
-    public ALMDatapackProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+    public ALMDatapackProvider(@NotNull PackOutput output, @NotNull CompletableFuture<HolderLookup.Provider> lookupProvider) {
         super(output, lookupProvider, BUILDER.build(), Set.of(ALittleMore.MOD_ID));
     }
 
-    private static void configuredFeatures(BootstrapContext<ConfiguredFeature<?, ?>> ctx) {
+    private static void configuredFeatures(@NotNull BootstrapContext<ConfiguredFeature<?, ?>> ctx) {
         RuleTest stone = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslate = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
 
@@ -61,7 +62,7 @@ public class ALMDatapackProvider extends DatapackBuiltinEntriesProvider {
         )));
     }
 
-    private static void placedFeatures(BootstrapContext<PlacedFeature> ctx) {
+    private static void placedFeatures(@NotNull BootstrapContext<PlacedFeature> ctx) {
         HolderGetter<ConfiguredFeature<?, ?>> features = ctx.lookup(Registries.CONFIGURED_FEATURE);
 
         ctx.register(CELERIUM_ORE_PF, new PlacedFeature(
@@ -75,7 +76,7 @@ public class ALMDatapackProvider extends DatapackBuiltinEntriesProvider {
                 )));
     }
 
-    private static void biomeModifiers(BootstrapContext<BiomeModifier> ctx) {
+    private static void biomeModifiers(@NotNull BootstrapContext<BiomeModifier> ctx) {
         HolderGetter<Biome> biomes = ctx.lookup(Registries.BIOME);
         HolderGetter<PlacedFeature> features = ctx.lookup(Registries.PLACED_FEATURE);
 
@@ -86,7 +87,7 @@ public class ALMDatapackProvider extends DatapackBuiltinEntriesProvider {
         ));
     }
 
-    private static void jukeboxSongs(BootstrapContext<JukeboxSong> ctx) {
+    private static void jukeboxSongs(@NotNull BootstrapContext<JukeboxSong> ctx) {
         ctx.register(JUST_A_LITTLE_MORE, new JukeboxSong(
                 ALMSounds.JUST_A_LITTLE_MORE,
                 Component.translatable("jukebox_song." + ALittleMore.MOD_ID + ".just_a_little_more"),
@@ -95,20 +96,20 @@ public class ALMDatapackProvider extends DatapackBuiltinEntriesProvider {
         ));
     }
 
-    private static ResourceKey<ConfiguredFeature<?, ?>> configuredFeature(String name) {
+    private static @NotNull ResourceKey<ConfiguredFeature<?, ?>> configuredFeature(String name) {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, ALittleMore.id(name));
     }
 
-    private static ResourceKey<PlacedFeature> placedFeature(String name) {
+    private static @NotNull ResourceKey<PlacedFeature> placedFeature(String name) {
         return ResourceKey.create(Registries.PLACED_FEATURE, ALittleMore.id(name));
     }
 
-    private static ResourceKey<BiomeModifier> biomeModifier(String name) {
+    private static @NotNull ResourceKey<BiomeModifier> biomeModifier(String name) {
         return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ALittleMore.id(name));
     }
 
     public static final class RegistrySetBuilderHolder {
-        public net.minecraft.core.RegistrySetBuilder build() {
+        public net.minecraft.core.@NotNull RegistrySetBuilder build() {
             return new net.minecraft.core.RegistrySetBuilder()
                     .add(Registries.CONFIGURED_FEATURE, ALMDatapackProvider::configuredFeatures)
                     .add(Registries.PLACED_FEATURE, ALMDatapackProvider::placedFeatures)

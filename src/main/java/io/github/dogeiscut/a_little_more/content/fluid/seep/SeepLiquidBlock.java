@@ -20,7 +20,7 @@ public class SeepLiquidBlock extends LiquidBlock {
     private static final int LEVITATION_AMPLIFIER = 2;
     private static final double PUSH_FORCE = 0.02d;
 
-    public SeepLiquidBlock(Supplier<? extends FlowingFluid> fluidSupplier, Properties properties) {
+    public SeepLiquidBlock(@NotNull Supplier<? extends FlowingFluid> fluidSupplier, @NotNull Properties properties) {
         super(fluidSupplier.get(), properties);
     }
 
@@ -57,7 +57,7 @@ public class SeepLiquidBlock extends LiquidBlock {
     // This fights with the item entity sinking behavior
     // It's an easy fix but I'm leaving it since ingame, the sinking usually wins
     // And it makes Seep act more mystical.
-    private void applyPushImpulseToEntity(Entity entity) {
+    private void applyPushImpulseToEntity(@NotNull Entity entity) {
         Vec3 delta = entity.getDeltaMovement();
         entity.setDeltaMovement(delta.x, delta.y + PUSH_FORCE, delta.z);
 

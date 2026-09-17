@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 public record SeepTransformationRecipe(Ingredient ingredient, ItemStack result) implements Recipe<SingleRecipeInput> {
 
     @Override
-    public boolean matches(SingleRecipeInput input, @NotNull Level level) {
+    public boolean matches(@NotNull SingleRecipeInput input, @NotNull Level level) {
         return ingredient.test(input.item());
     }
 

@@ -28,15 +28,15 @@ public class EnseepenedPearlEntity extends ThrowableItemProjectile {
     // not making a new entity for this and using events or whatnot was
     // too cumbersome for me...
 
-    public EnseepenedPearlEntity(EntityType<? extends ThrowableItemProjectile> entityType, Level level) {
+    public EnseepenedPearlEntity(@NotNull EntityType<? extends ThrowableItemProjectile> entityType, @NotNull Level level) {
         super(entityType, level);
     }
 
-    public EnseepenedPearlEntity(Level level, LivingEntity shooter) {
+    public EnseepenedPearlEntity(@NotNull Level level, @NotNull LivingEntity shooter) {
         super(ALMEntities.ENSEEPENED_PEARL.get(), shooter, level);
     }
 
-    private static boolean isAllowedToTeleportOwner(Entity entity, Level level) {
+    private static boolean isAllowedToTeleportOwner(@NotNull Entity entity, @NotNull Level level) {
         if (entity.level().dimension() != level.dimension()) {
             return entity.canUsePortal(true);
         } else {
@@ -103,11 +103,11 @@ public class EnseepenedPearlEntity extends ThrowableItemProjectile {
 
     }
 
-    private void playSound(Level level, Vec3 pos) {
+    private void playSound(@NotNull Level level, @NotNull Vec3 pos) {
         level.playSound(null, pos.x, pos.y, pos.z, SoundEvents.PLAYER_TELEPORT, SoundSource.PLAYERS);
     }
 
-    public boolean canChangeDimensions(Level oldLevel, @NotNull Level newLevel) {
+    public boolean canChangeDimensions(@NotNull Level oldLevel, @NotNull Level newLevel) {
         boolean result;
         if (oldLevel.dimension() == Level.END) {
             Entity var4 = this.getOwner();

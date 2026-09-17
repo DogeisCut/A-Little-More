@@ -3,6 +3,7 @@ package io.github.dogeiscut.a_little_more.datagen;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.stream.Stream;
@@ -24,7 +25,7 @@ public final class ALMBlockFamily {
         return vanilla;
     }
 
-    public Block baseBlock() {
+    public @NotNull Block baseBlock() {
         return vanilla.getBaseBlock();
     }
 
@@ -41,7 +42,7 @@ public final class ALMBlockFamily {
         return this.isStone;
     }
 
-    public Stream<Block> allBlocks() {
+    public @NotNull Stream<Block> allBlocks() {
         Stream<Block> base = Stream.of(baseBlock());
         Stream<Block> variants = vanilla.getVariants().values().stream();
         Stream<Block> pillarStream = hasPillar() ? Stream.of(pillar) : Stream.empty();
@@ -49,55 +50,55 @@ public final class ALMBlockFamily {
     }
 
     public static final class Builder {
-        private final BlockFamily.Builder delegate;
+        private final BlockFamily.@NotNull Builder delegate;
         private boolean isStone;
         @Nullable
         private RotatedPillarBlock pillar;
 
-        public Builder(Block baseBlock) {
+        public Builder(@NotNull Block baseBlock) {
             this.delegate = new BlockFamily.Builder(baseBlock);
         }
 
-        public Builder slab(Block block) {
+        public @NotNull Builder slab(@NotNull Block block) {
             delegate.slab(block);
             return this;
         }
 
-        public Builder stairs(Block block) {
+        public @NotNull Builder stairs(@NotNull Block block) {
             delegate.stairs(block);
             return this;
         }
 
-        public Builder wall(Block block) {
+        public @NotNull Builder wall(@NotNull Block block) {
             delegate.wall(block);
             return this;
         }
 
-        public Builder chiseled(Block block) {
+        public @NotNull Builder chiseled(@NotNull Block block) {
             delegate.chiseled(block);
             return this;
         }
 
-        public Builder polished(Block block) {
+        public @NotNull Builder polished(@NotNull Block block) {
             delegate.polished(block);
             return this;
         }
 
-        public Builder fence(Block block) {
+        public @NotNull Builder fence(@NotNull Block block) {
             delegate.fence(block);
             return this;
         }
 
-        public Builder pillar(RotatedPillarBlock block) {
+        public @NotNull Builder pillar(RotatedPillarBlock block) {
             this.pillar = block;
             return this;
         }
 
-        public ALMBlockFamily getFamily() {
+        public @NotNull ALMBlockFamily getFamily() {
             return new ALMBlockFamily(delegate.getFamily(), isStone, pillar);
         }
 
-        public Builder stone() {
+        public @NotNull Builder stone() {
             this.isStone = true;
             return this;
         }

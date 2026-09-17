@@ -8,6 +8,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -24,11 +25,11 @@ public class ALMLanguageProvider extends LanguageProvider {
         OVERRIDES.put("music_disc_just_a_little_more", "Music Disc");
     }
 
-    public ALMLanguageProvider(PackOutput output, String locale) {
+    public ALMLanguageProvider(@NotNull PackOutput output, @NotNull String locale) {
         super(output, ALittleMore.MOD_ID, locale);
     }
 
-    public static String titleCase(String path) {
+    public static @NotNull String titleCase(@NotNull String path) {
         String[] words = path.split("_");
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < words.length; i++) {
@@ -59,7 +60,7 @@ public class ALMLanguageProvider extends LanguageProvider {
         add(item, OVERRIDES.getOrDefault(path, titleCase(path)));
     }
 
-    private void autoName(Block block) {
+    private void autoName(@NotNull Block block) {
         String path = BuiltInRegistries.BLOCK.getKey(block).getPath();
         add(block, OVERRIDES.getOrDefault(path, titleCase(path)));
     }
@@ -122,7 +123,7 @@ public class ALMLanguageProvider extends LanguageProvider {
         add("item.minecraft.tipped_arrow.effect." + effect, "Arrow of " + name);
     }
 
-    public void advancement(String id, String title, String description) {
+    public void advancement(String id, @NotNull String title, @NotNull String description) {
         add("advancement." + ALittleMore.MOD_ID + "." + id + ".title", title);
         add("advancement." + ALittleMore.MOD_ID + "." + id + ".desc", description);
     }

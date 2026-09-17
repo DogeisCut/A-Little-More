@@ -7,6 +7,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.alchemy.Potion;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.jetbrains.annotations.NotNull;
 
 public class ALMPotions {
     public static final DeferredRegister POTIONS =
@@ -16,7 +17,7 @@ public class ALMPotions {
     public static final Holder IMMUNITY = POTIONS.register("immunity",
             () -> new Potion(new MobEffectInstance(ALMMobEffects.IMMUNITY, 3600)));
 
-    public static void register(IEventBus modEventBus) {
+    public static void register(@NotNull IEventBus modEventBus) {
         POTIONS.register(modEventBus);
     }
 }

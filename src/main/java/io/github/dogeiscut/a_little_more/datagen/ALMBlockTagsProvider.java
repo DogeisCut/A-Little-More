@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.WallBlock;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -21,8 +22,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class ALMBlockTagsProvider extends BlockTagsProvider {
 
-    public ALMBlockTagsProvider(PackOutput output,
-                                CompletableFuture<HolderLookup.Provider> lookupProvider,
+    public ALMBlockTagsProvider(@NotNull PackOutput output,
+                                @NotNull CompletableFuture<HolderLookup.Provider> lookupProvider,
                                 @Nullable ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, ALittleMore.MOD_ID, existingFileHelper);
     }
@@ -68,30 +69,30 @@ public class ALMBlockTagsProvider extends BlockTagsProvider {
         }
     }
 
-    private void pickaxe(Block block) {
+    private void pickaxe(@NotNull Block block) {
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(block);
     }
 
-    private void axe(Block block) {
+    private void axe(@NotNull Block block) {
         tag(BlockTags.MINEABLE_WITH_AXE).add(block);
     }
 
-    private void ironTool(Block block) {
+    private void ironTool(@NotNull Block block) {
         tag(BlockTags.NEEDS_IRON_TOOL).add(block);
     }
 
-    private void ore(Block block, TagKey<Block> inGround) {
+    private void ore(@NotNull Block block, @NotNull TagKey<Block> inGround) {
         tag(Tags.Blocks.ORES).add(block);
         tag(Tags.Blocks.ORE_RATES_SINGULAR).add(block);
         tag(inGround).add(block);
     }
 
-    private void storageBlock(Block block, TagKey<Block> specific) {
+    private void storageBlock(@NotNull Block block, @NotNull TagKey<Block> specific) {
         tag(Tags.Blocks.STORAGE_BLOCKS).add(block);
         tag(specific).add(block);
     }
 
-    private void addAll(TagKey<Block> key, List<Block> blocks) {
+    private void addAll(@NotNull TagKey<Block> key, @NotNull List<Block> blocks) {
         var builder = tag(key);
         blocks.forEach(b -> builder.add(b));
     }

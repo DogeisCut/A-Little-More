@@ -30,7 +30,7 @@ import java.util.List;
 @SuppressWarnings("unused")
 public class ALMJEI implements IModPlugin {
 
-    private static List<RecipeHolder<SeepTransformationRecipe>> getSeepTransformationRecipeHolders() {
+    private static @NotNull List<RecipeHolder<SeepTransformationRecipe>> getSeepTransformationRecipeHolders() {
         Minecraft minecraft = Minecraft.getInstance();
         RecipeManager recipeManager = null;
 
@@ -53,7 +53,7 @@ public class ALMJEI implements IModPlugin {
     }
 
     @Override
-    public void registerCategories(IRecipeCategoryRegistration registration) {
+    public void registerCategories(@NotNull IRecipeCategoryRegistration registration) {
         IGuiHelper helper = registration.getJeiHelpers().getGuiHelper();
 
         registration.addRecipeCategories(
@@ -76,7 +76,7 @@ public class ALMJEI implements IModPlugin {
     }
 
     @Override
-    public void registerRecipes(IRecipeRegistration registration) {
+    public void registerRecipes(@NotNull IRecipeRegistration registration) {
         List<RecipeHolder<SeepTransformationRecipe>> holders = getSeepTransformationRecipeHolders();
 
         registration.addRecipes(
@@ -90,7 +90,7 @@ public class ALMJEI implements IModPlugin {
     }
 
     @Override
-    public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
+    public void registerRecipeCatalysts(@NotNull IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(
                 new ItemStack(ALMFluids.SEEP.bucket().get()),
                 SeepTransformationRecipeCategory.RECIPE_TYPE

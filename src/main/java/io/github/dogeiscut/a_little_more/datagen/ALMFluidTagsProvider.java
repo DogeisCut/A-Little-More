@@ -7,14 +7,15 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.FluidTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
 public class ALMFluidTagsProvider extends FluidTagsProvider {
 
-    public ALMFluidTagsProvider(PackOutput output,
-                                CompletableFuture<HolderLookup.Provider> lookupProvider,
+    public ALMFluidTagsProvider(@NotNull PackOutput output,
+                                @NotNull CompletableFuture<HolderLookup.Provider> lookupProvider,
                                 @Nullable ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, ALittleMore.MOD_ID, existingFileHelper);
     }

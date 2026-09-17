@@ -26,19 +26,19 @@ import java.util.concurrent.CompletableFuture;
 
 public class ALMRecipeProvider extends RecipeProvider implements IConditionBuilder {
 
-    public ALMRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+    public ALMRecipeProvider(@NotNull PackOutput output, @NotNull CompletableFuture<HolderLookup.Provider> lookupProvider) {
         super(output, lookupProvider);
     }
 
-    private static String path(ItemLike item) {
+    private static @NotNull String path(@NotNull ItemLike item) {
         return BuiltInRegistries.ITEM.getKey(item.asItem()).getPath();
     }
 
-    private static String path(Block block) {
+    private static @NotNull String path(@NotNull Block block) {
         return BuiltInRegistries.BLOCK.getKey(block).getPath();
     }
 
-    private static String criterionName(ItemLike item) {
+    private static @NotNull String criterionName(@NotNull ItemLike item) {
         return "has_" + path(item);
     }
 
@@ -72,7 +72,7 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
         seepTransformation(out, ALMTags.Items.SEEP_TRANSFORMABLE_MUSIC_DISCS, ALMItems.MUSIC_DISC_JUST_A_LITTLE_MORE.get());
     }
 
-    private void family(RecipeOutput out, ALMBlockFamily almFamily, boolean isStone) {
+    private void family(@NotNull RecipeOutput out, @NotNull ALMBlockFamily almFamily, boolean isStone) {
         BlockFamily family = almFamily.vanilla();
         if (!family.shouldGenerateRecipe()) return;
         Block base = family.getBaseBlock();
@@ -107,7 +107,7 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
         }
     }
 
-    private void progression(RecipeOutput out, List<ALMBlockFamily> chain) {
+    private void progression(@NotNull RecipeOutput out, @NotNull List<ALMBlockFamily> chain) {
         for (int i = 0; i < chain.size(); i++) {
             Block earlierBase = chain.get(i).baseBlock();
 
@@ -131,7 +131,7 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
         }
     }
 
-    public void slabRecipe(RecipeOutput out, ItemLike slab, ItemLike material) {
+    public void slabRecipe(@NotNull RecipeOutput out, @NotNull ItemLike slab, @NotNull ItemLike material) {
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, slab, 6)
                 .pattern("###")
                 .define('#', material)
@@ -139,7 +139,7 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(out);
     }
 
-    public void stairsRecipe(RecipeOutput out, ItemLike stairs, ItemLike material) {
+    public void stairsRecipe(@NotNull RecipeOutput out, @NotNull ItemLike stairs, @NotNull ItemLike material) {
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, stairs, 4)
                 .pattern("#  ")
                 .pattern("## ")
@@ -149,7 +149,7 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(out);
     }
 
-    public void wallRecipe(RecipeOutput out, ItemLike wall, ItemLike material) {
+    public void wallRecipe(@NotNull RecipeOutput out, @NotNull ItemLike wall, @NotNull ItemLike material) {
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, wall, 6)
                 .pattern("###")
                 .pattern("###")
@@ -158,7 +158,7 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(out);
     }
 
-    public void chiseledRecipe(RecipeOutput out, ItemLike slabs, ItemLike material) {
+    public void chiseledRecipe(@NotNull RecipeOutput out, @NotNull ItemLike slabs, @NotNull ItemLike material) {
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, slabs, 1)
                 .pattern("#")
                 .pattern("#")
@@ -167,7 +167,7 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(out);
     }
 
-    public void pillarRecipe(RecipeOutput out, ItemLike blocks, ItemLike material) {
+    public void pillarRecipe(@NotNull RecipeOutput out, @NotNull ItemLike blocks, @NotNull ItemLike material) {
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blocks, 1)
                 .pattern("#")
                 .pattern("#")
@@ -176,7 +176,7 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(out);
     }
 
-    public void square4(RecipeOutput out, Block result, Block material) {
+    public void square4(@NotNull RecipeOutput out, @NotNull Block result, @NotNull Block material) {
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, result, 4)
                 .pattern("##")
                 .pattern("##")
@@ -185,15 +185,15 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(out);
     }
 
-    public void stonecut(RecipeOutput out, Block result,
-                         Block material, int count) {
+    public void stonecut(@NotNull RecipeOutput out, @NotNull Block result,
+                         @NotNull Block material, int count) {
         SingleItemRecipeBuilder.stonecutting(
                         Ingredient.of(material), RecipeCategory.BUILDING_BLOCKS, result, count)
                 .unlockedBy(criterionName(material), has(material))
                 .save(out, ALittleMore.id(path(result) + "_from_" + path(material) + "_stonecutting"));
     }
 
-    public void oreSmelting(RecipeOutput out, List<Block> ores,
+    public void oreSmelting(@NotNull RecipeOutput out, @NotNull List<Block> ores,
                             Item result, float experience, int smeltTime) {
         for (Block ore : ores) {
             Block o = ore;
@@ -211,7 +211,7 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
         }
     }
 
-    public void storageBlock(RecipeOutput out, Item small, Block block) {
+    public void storageBlock(@NotNull RecipeOutput out, @NotNull Item small, @NotNull Block block) {
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, block)
                 .pattern("###")
                 .pattern("###")
@@ -226,7 +226,7 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(out, ALittleMore.id(path(small) + "_from_" + path(block)));
     }
 
-    public void nuggetPair(RecipeOutput out, Item nugget, Item whole) {
+    public void nuggetPair(@NotNull RecipeOutput out, @NotNull Item nugget, @NotNull Item whole) {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, whole)
                 .pattern("###")
                 .pattern("###")
@@ -241,10 +241,10 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(out, ALittleMore.id(path(nugget)));
     }
 
-    public void toolSet(RecipeOutput out, Item material,
-                        Item sword, Item pickaxe,
-                        Item axe, Item shovel,
-                        Item hoe) {
+    public void toolSet(@NotNull RecipeOutput out, @NotNull Item material,
+                        @NotNull Item sword, @NotNull Item pickaxe,
+                        @NotNull Item axe, @NotNull Item shovel,
+                        @NotNull Item hoe) {
         shaped(out, sword, material, "#", "#", "I");
         shaped(out, pickaxe, material, "###", " I ", " I ");
         shaped(out, axe, material, "##", "#I", " I");
@@ -252,16 +252,16 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
         shaped(out, hoe, material, "##", " I", " I");
     }
 
-    public void armorSet(RecipeOutput out, Item material,
-                         Item helmet, Item chestplate,
-                         Item leggings, Item boots) {
+    public void armorSet(@NotNull RecipeOutput out, @NotNull Item material,
+                         @NotNull Item helmet, @NotNull Item chestplate,
+                         @NotNull Item leggings, @NotNull Item boots) {
         shaped(out, helmet, material, "###", "# #");
         shaped(out, chestplate, material, "# #", "###", "###");
         shaped(out, leggings, material, "###", "# #", "# #");
         shaped(out, boots, material, "# #", "# #");
     }
 
-    private void shaped(RecipeOutput out, Item result, Item material, String... pattern) {
+    private void shaped(@NotNull RecipeOutput out, @NotNull Item result, @NotNull Item material, String @NotNull ... pattern) {
         ShapedRecipeBuilder builder = ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, result);
         for (String row : pattern) {
             builder.pattern(row);
@@ -273,12 +273,12 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
         builder.unlockedBy(criterionName(material), has(material)).save(out);
     }
 
-    public void seepTransformation(RecipeOutput out, ItemLike input, Item result) {
+    public void seepTransformation(@NotNull RecipeOutput out, ItemLike input, @NotNull Item result) {
         ResourceLocation id = ALittleMore.id("seep_transformation/" + path(result));
         out.accept(id, new SeepTransformationRecipe(Ingredient.of(input), new ItemStack(result)), null);
     }
 
-    public void seepTransformation(RecipeOutput out, net.minecraft.tags.TagKey<Item> inputTag, Item result) {
+    public void seepTransformation(@NotNull RecipeOutput out, net.minecraft.tags.@NotNull TagKey<Item> inputTag, @NotNull Item result) {
         ResourceLocation id = ALittleMore.id("seep_transformation/" + path(result));
         out.accept(id, new SeepTransformationRecipe(Ingredient.of(inputTag), new ItemStack(result)), null);
     }

@@ -6,6 +6,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.jetbrains.annotations.NotNull;
 
 public class ALMSounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
@@ -13,11 +14,11 @@ public class ALMSounds {
 
     public static final DeferredHolder<SoundEvent, SoundEvent> JUST_A_LITTLE_MORE = sound("music_disc.just_a_little_more");
 
-    public static DeferredHolder<SoundEvent, SoundEvent> sound(String name) {
+    public static @NotNull DeferredHolder<SoundEvent, SoundEvent> sound(@NotNull String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(ALittleMore.id(name)));
     }
 
-    public static void register(IEventBus modEventBus) {
+    public static void register(@NotNull IEventBus modEventBus) {
         SOUND_EVENTS.register(modEventBus);
     }
 }
