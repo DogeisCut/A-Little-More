@@ -48,6 +48,10 @@
     - [X] Ores
 - [ ] Seep Crystals
 - [ ] Celerium Horse Armor
+- [ ] Fix Creative inventory
+  - in an awful order
+  - Could probably benfit from multiple tabs
+  - missing immunity potions/arrow from A Little More tab
 
 # TASKS
 
