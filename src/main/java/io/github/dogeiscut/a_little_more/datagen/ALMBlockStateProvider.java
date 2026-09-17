@@ -65,7 +65,7 @@ public class ALMBlockStateProvider extends BlockStateProvider {
             } else if (variant == BlockFamily.Variant.WALL) {
                 wallBlock((WallBlock) block, baseTexture);
             } else if (variant == BlockFamily.Variant.CHISELED || variant == BlockFamily.Variant.POLISHED) {
-                // handled elsewhere - see method javadoc
+
             } else {
                 ALittleMore.LOGGER.warn(
                         "[A Little More datagen] No model generator wired up for block family variant {} on {}",
