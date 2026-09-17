@@ -4,6 +4,7 @@ import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
 import io.github.dogeiscut.a_little_more.registry.ALMFluidTypes;
 import io.github.dogeiscut.a_little_more.registry.ALMFluids;
+import io.github.dogeiscut.a_little_more.registry.ALMTags;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -32,9 +33,7 @@ public class FluidInteractionsEvents {
                     ALMFluidTypes.SEEP.get(),
                     new FluidInteractionRegistry.InteractionInformation(
                             (level, currentPos, relativePos, currentState) ->
-                                    !level.getFluidState(relativePos).isEmpty() &&
-                                            !level.getFluidState(relativePos).is(ALMFluids.SEEP.still().get()) &&
-                                            !level.getFluidState(relativePos).is(ALMFluids.SEEP.flowing().get()),
+                                    !level.getFluidState(relativePos).isEmpty() && !level.getFluidState(relativePos).is(ALMTags.Fluids.SEEP),
 
                             ALMBlocks.SEEPSTONE.get().defaultBlockState()
                     )
