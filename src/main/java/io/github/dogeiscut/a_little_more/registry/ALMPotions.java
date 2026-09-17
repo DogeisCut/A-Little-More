@@ -13,7 +13,6 @@ public class ALMPotions {
     public static final DeferredRegister<Potion> POTIONS =
             DeferredRegister.create(Registries.POTION, ALittleMore.MOD_ID);
 
-    // Creates a potion with the Immunity effect that lasts for 3 minutes (3600 ticks)
     public static final Holder<Potion> IMMUNITY = POTIONS.register("immunity",
             () -> new Potion(new MobEffectInstance(ALMMobEffects.IMMUNITY, 3600)));
 

@@ -37,5 +37,7 @@ public class ALMDatagen {
         generator.addProvider(event.includeServer(), new ALMRecipeProvider(output, lookup));
         generator.addProvider(event.includeServer(), ALMBlockLootProvider.create(output, lookup));
         generator.addProvider(event.includeServer(), new ALMDatapackProvider(output, lookup));
+
+        generator.addProvider(event.includeClient(), new ALMParticleDescriptionProvider(output, helper));
     }
 }

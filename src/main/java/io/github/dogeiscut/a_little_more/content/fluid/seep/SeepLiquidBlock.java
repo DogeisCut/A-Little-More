@@ -1,6 +1,11 @@
 package io.github.dogeiscut.a_little_more.content.fluid.seep;
 
+import io.github.dogeiscut.a_little_more.registry.ALMParticles;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -9,6 +14,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FlowingFluid;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
@@ -22,6 +28,19 @@ public class SeepLiquidBlock extends LiquidBlock {
 
     public SeepLiquidBlock(@NotNull Supplier<? extends FlowingFluid> fluidSupplier, @NotNull Properties properties) {
         super(fluidSupplier.get(), properties);
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if (random.nextInt(8) == 0) {
+            level.addParticle(
+                    ALMParticles.SEEP_BUBBLE.get(),
+                    pos.getX() + random.nextDouble(),
+                    pos.getY() + random.nextDouble(),
+                    pos.getZ() + random.nextDouble(),
+                    0.0D, 0.0D, 0.0D
+            );
+        }
     }
 
     @Override
