@@ -32,6 +32,10 @@ public class ALMItemTagsProvider extends net.minecraft.data.tags.ItemTagsProvide
     protected void addTags(HolderLookup.Provider provider) {
         ALMItems.ITEMS.getEntries().forEach(holder -> autoTag(holder.get()));
 
+        tag(ALMTags.Items.SEEP_TRANSFORMABLE_MUSIC_DISCS)
+                .addTag(Tags.Items.MUSIC_DISCS)
+                .remove(BuiltInRegistries.ITEM.getResourceKey(ALMItems.MUSIC_DISC_JUST_A_LITTLE_MORE.get()).orElseThrow());
+
         copy(ALMTags.Blocks.CELERIUM_ORES, ALMTags.Items.CELERIUM_ORES);
         copy(ALMTags.Blocks.C_CELERIUM_ORES, ALMTags.Items.C_CELERIUM_ORES);
         copy(ALMTags.Blocks.C_CELERIUM_STORAGE_BLOCKS, ALMTags.Items.C_CELERIUM_STORAGE_BLOCKS);

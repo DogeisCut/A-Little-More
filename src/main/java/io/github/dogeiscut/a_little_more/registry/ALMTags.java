@@ -35,6 +35,7 @@ public final class ALMTags {
 
     public static final class Items {
         public static final TagKey<Item> CELERIUM_ORES = mod("celerium_ores");
+        public static final TagKey<Item> SEEP_TRANSFORMABLE_MUSIC_DISCS = mod("seep_transformable_music_discs");
 
         public static final TagKey<Item> C_CELERIUM_ORES = common("ores/celerium");
         public static final TagKey<Item> C_CELERIUM_STORAGE_BLOCKS = common("storage_blocks/celerium");

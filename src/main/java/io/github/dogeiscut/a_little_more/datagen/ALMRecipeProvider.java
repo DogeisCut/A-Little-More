@@ -5,6 +5,7 @@ import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepTransformationRe
 import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
 import io.github.dogeiscut.a_little_more.registry.ALMFluids;
 import io.github.dogeiscut.a_little_more.registry.ALMItems;
+import io.github.dogeiscut.a_little_more.registry.ALMTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.BlockFamily;
@@ -17,6 +18,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import org.jetbrains.annotations.NotNull;
 
@@ -57,7 +59,7 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
         seepTransformation(out, Items.AMETHYST_SHARD, ALMItems.SEEP_CRYSTAL.get());
         seepTransformation(out, Items.AMETHYST_CLUSTER, ALMBlocks.SEEP_CRYSTAL_CLUSTER.get().asItem());
         seepTransformation(out, Items.STONE, ALMBlocks.SEEPSTONE.get().asItem());
-        //seepTransformation(out, Tags.Items.MUSIC_DISCS, ALMItems.MUSIC_DISC_JUST_A_LITTLE_MORE.get());
+        seepTransformation(out, ALMTags.Items.SEEP_TRANSFORMABLE_MUSIC_DISCS, ALMItems.MUSIC_DISC_JUST_A_LITTLE_MORE.get());
     }
 
     private void family(RecipeOutput out, ALMBlockFamily almFamily, boolean isStone) {
@@ -264,6 +266,11 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
     public void seepTransformation(RecipeOutput out, ItemLike input, Item result) {
         ResourceLocation id = ALittleMore.id("seep_transformation/" + path(result));
         out.accept(id, new SeepTransformationRecipe(Ingredient.of(input), new ItemStack(result)), null);
+    }
+
+    public void seepTransformation(RecipeOutput out, net.minecraft.tags.TagKey<Item> inputTag, Item result) {
+        ResourceLocation id = ALittleMore.id("seep_transformation/" + path(result));
+        out.accept(id, new SeepTransformationRecipe(Ingredient.of(inputTag), new ItemStack(result)), null);
     }
 
     private static String path(ItemLike item) {
