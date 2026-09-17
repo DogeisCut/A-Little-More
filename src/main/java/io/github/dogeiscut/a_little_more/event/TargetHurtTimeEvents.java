@@ -10,7 +10,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import org.jetbrains.annotations.NotNull;
 
-@EventBusSubscriber(modid = ALittleMore.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = ALittleMore.MOD_ID)
 public class TargetHurtTimeEvents {
     // TODO: figure out how to update the red flash entities do when hit
 

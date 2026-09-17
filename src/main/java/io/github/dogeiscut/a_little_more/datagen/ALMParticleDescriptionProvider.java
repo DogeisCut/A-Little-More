@@ -5,10 +5,11 @@ import io.github.dogeiscut.a_little_more.registry.ALMParticles;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.common.data.ParticleDescriptionProvider;
+import org.jetbrains.annotations.NotNull;
 
 public class ALMParticleDescriptionProvider extends ParticleDescriptionProvider {
 
-    public ALMParticleDescriptionProvider(PackOutput output, ExistingFileHelper fileHelper) {
+    public ALMParticleDescriptionProvider(@NotNull PackOutput output, @NotNull ExistingFileHelper fileHelper) {
         super(output, fileHelper);
     }
 

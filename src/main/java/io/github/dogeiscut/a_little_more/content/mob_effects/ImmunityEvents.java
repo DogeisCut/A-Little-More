@@ -7,7 +7,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import org.jetbrains.annotations.NotNull;
 
-@EventBusSubscriber(modid = ALittleMore.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = ALittleMore.MOD_ID)
 
 public class ImmunityEvents {
     @SubscribeEvent

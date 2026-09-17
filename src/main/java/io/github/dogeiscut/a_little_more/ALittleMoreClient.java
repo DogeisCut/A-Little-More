@@ -13,7 +13,7 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import org.jetbrains.annotations.NotNull;
 
-@EventBusSubscriber(modid = ALittleMore.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = ALittleMore.MOD_ID, value = Dist.CLIENT)
 public class ALittleMoreClient {
     public ALittleMoreClient(IEventBus modEventBus) {
     }
@@ -26,7 +26,7 @@ public class ALittleMoreClient {
     }
 
     @SubscribeEvent
-    public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
+    public static void registerParticleProviders(@NotNull RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(ALMParticles.SEEP_BUBBLE.get(), SeepBubbleParticle.Provider::new);
         event.registerSpriteSet(ALMParticles.SEEP_BUBBLE_POP.get(), SeepBubblePopParticle.Provider::new);
     }

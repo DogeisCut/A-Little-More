@@ -27,7 +27,7 @@ public final class ALMTags {
         private Blocks() {
         }
 
-        private static @NotNull TagKey<Block> mod(String path) {
+        private static @NotNull TagKey<Block> mod(@NotNull String path) {
             return TagKey.create(Registries.BLOCK, ALittleMore.id(path));
         }
 
@@ -50,7 +50,7 @@ public final class ALMTags {
         private Items() {
         }
 
-        private static @NotNull TagKey<Item> mod(String path) {
+        private static @NotNull TagKey<Item> mod(@NotNull String path) {
             return TagKey.create(Registries.ITEM, ALittleMore.id(path));
         }
 
@@ -66,7 +66,7 @@ public final class ALMTags {
         private Fluids() {
         }
 
-        private static @NotNull TagKey<Fluid> mod(String path) {
+        private static @NotNull TagKey<Fluid> mod(@NotNull String path) {
             return TagKey.create(Registries.FLUID, ALittleMore.id(path));
         }
 

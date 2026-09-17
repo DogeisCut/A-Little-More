@@ -12,7 +12,7 @@ import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import org.jetbrains.annotations.NotNull;
 
-@EventBusSubscriber(modid = ALittleMore.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = ALittleMore.MOD_ID)
 public class AttributeModificationEvents {
     @SubscribeEvent
     public static void onEntityAttributeModification(@NotNull EntityAttributeModificationEvent event) {

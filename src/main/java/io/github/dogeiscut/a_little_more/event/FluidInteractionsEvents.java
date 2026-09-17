@@ -14,7 +14,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
 import org.jetbrains.annotations.NotNull;
 
-@EventBusSubscriber(modid = ALittleMore.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = ALittleMore.MOD_ID)
 public class FluidInteractionsEvents {
 
     // TODO: this doesnt go here, move to another class

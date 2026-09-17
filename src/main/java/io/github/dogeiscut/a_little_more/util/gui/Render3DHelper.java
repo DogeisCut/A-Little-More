@@ -1,4 +1,4 @@
-package io.github.dogeiscut.a_little_more.client.gui;
+package io.github.dogeiscut.a_little_more.util.gui;
 
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -74,7 +74,6 @@ public class Render3DHelper {
         float r = ((tintColor >> 16) & 0xFF) / 255.0f;
         float g = ((tintColor >> 8) & 0xFF) / 255.0f;
         float b = (tintColor & 0xFF) / 255.0f;
-        if (a <= 0.0f) a = 1.0f;
 
         drawFluidCube(buffer, matrix, stillSprite, flowingSprite, r, g, b, a);
 

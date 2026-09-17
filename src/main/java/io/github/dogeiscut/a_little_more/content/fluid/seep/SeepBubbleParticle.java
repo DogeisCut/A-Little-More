@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class SeepBubbleParticle extends TextureSheetParticle {
 
-    protected SeepBubbleParticle(ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+    protected SeepBubbleParticle(@NotNull ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
         super(level, x, y, z, xSpeed, ySpeed, zSpeed);
         this.setSize(0.02F, 0.02F);
         this.quadSize *= this.random.nextFloat() * 0.6F + 0.4F;

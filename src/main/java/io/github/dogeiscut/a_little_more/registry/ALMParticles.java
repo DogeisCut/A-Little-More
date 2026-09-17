@@ -7,6 +7,7 @@ import net.minecraft.core.registries.Registries;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.jetbrains.annotations.NotNull;
 
 public class ALMParticles {
     public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(Registries.PARTICLE_TYPE, ALittleMore.MOD_ID);
@@ -18,7 +19,7 @@ public class ALMParticles {
             PARTICLES.register("seep_bubble_pop", () -> new SimpleParticleType(false));
 
 
-    public static void register(IEventBus modEventBus) {
+    public static void register(@NotNull IEventBus modEventBus) {
         PARTICLES.register(modEventBus);
     }
 }

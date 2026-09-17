@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
-@EventBusSubscriber(modid = ALittleMore.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = ALittleMore.MOD_ID)
 public class ALMDatagen {
 
     @SubscribeEvent

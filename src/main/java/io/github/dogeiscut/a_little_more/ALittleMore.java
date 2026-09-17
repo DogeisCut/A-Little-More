@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 @Mod(ALittleMore.MOD_ID)
-@EventBusSubscriber(modid = ALittleMore.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = ALittleMore.MOD_ID)
 public class ALittleMore {
 
     public static final String MOD_ID = "a_little_more";

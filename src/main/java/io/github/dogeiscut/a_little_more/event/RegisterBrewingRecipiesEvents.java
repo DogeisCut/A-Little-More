@@ -9,8 +9,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import org.jetbrains.annotations.NotNull;
 
-// Note: Brewing recipes are registered on the GAME bus
-@EventBusSubscriber(modid = ALittleMore.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = ALittleMore.MOD_ID)
 public class RegisterBrewingRecipiesEvents {
 
     @SubscribeEvent

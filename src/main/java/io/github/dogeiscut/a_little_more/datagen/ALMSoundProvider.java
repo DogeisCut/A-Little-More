@@ -38,14 +38,14 @@ public class ALMSoundProvider extends SoundDefinitionsProvider {
         );
     }
 
-    public void music(@NotNull SoundEvent event, String file) {
+    public void music(@NotNull SoundEvent event, @NotNull String file) {
         add(event, SoundDefinition.definition()
                 .with(SoundDefinition.Sound.sound(
                                 ALittleMore.id(file), SoundDefinition.SoundType.SOUND)
                         .stream()));
     }
 
-    public void sound(@NotNull SoundEvent event, String file, String subtitle) {
+    public void sound(@NotNull SoundEvent event, @NotNull String file, String subtitle) {
         add(event, SoundDefinition.definition()
                 .with(SoundDefinition.Sound.sound(
                         ALittleMore.id(file), SoundDefinition.SoundType.SOUND))

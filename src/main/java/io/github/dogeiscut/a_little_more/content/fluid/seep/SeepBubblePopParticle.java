@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 public class SeepBubblePopParticle extends TextureSheetParticle {
     private final SpriteSet sprites;
 
-    protected SeepBubblePopParticle(ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, SpriteSet sprites) {
+    protected SeepBubblePopParticle(@NotNull ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, @NotNull SpriteSet sprites) {
         super(level, x, y, z);
         this.sprites = sprites;
         this.lifetime = 4;

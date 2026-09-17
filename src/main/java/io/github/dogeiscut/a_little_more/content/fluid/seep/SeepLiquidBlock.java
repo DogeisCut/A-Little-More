@@ -27,7 +27,7 @@ public class SeepLiquidBlock extends LiquidBlock {
     }
 
     @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+    public void animateTick(BlockState state, Level level, BlockPos pos, @NotNull RandomSource random) {
         if (random.nextInt(8) == 0) {
             level.addParticle(
                     ALMParticles.SEEP_BUBBLE.get(),

@@ -96,15 +96,15 @@ public class ALMDatapackProvider extends DatapackBuiltinEntriesProvider {
         ));
     }
 
-    private static @NotNull ResourceKey<ConfiguredFeature<?, ?>> configuredFeature(String name) {
+    private static @NotNull ResourceKey<ConfiguredFeature<?, ?>> configuredFeature(@NotNull String name) {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, ALittleMore.id(name));
     }
 
-    private static @NotNull ResourceKey<PlacedFeature> placedFeature(String name) {
+    private static @NotNull ResourceKey<PlacedFeature> placedFeature(@NotNull String name) {
         return ResourceKey.create(Registries.PLACED_FEATURE, ALittleMore.id(name));
     }
 
-    private static @NotNull ResourceKey<BiomeModifier> biomeModifier(String name) {
+    private static @NotNull ResourceKey<BiomeModifier> biomeModifier(@NotNull String name) {
         return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ALittleMore.id(name));
     }
 
