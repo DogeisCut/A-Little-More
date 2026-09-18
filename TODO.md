@@ -52,7 +52,20 @@
     - in an awful order
     - Could probably benfit from multiple tabs
     - missing immunity potions/arrow from A Little More tab
-
+- [ ] Pattern Block Quirks
+  - [ ] Visible pattern seams on edge of block.
+  - [ ] Weird culling when rendering thin faces.
+  - [ ] figuring out how the hell to make the item model 
+  - [ ] Handling rotation (currently it extends pillar block, which is like logs and stuff, but this makes the rotation of the side faces ambigious)
+    - > Current idea is to make it store an explicit "facing" direction instead, on top of a 4 way rotation for that facing direction. But it gets confusing when you place it sideways cause like... how will it know which way to rotate it?
+  - [ ] making the chunk re-render if the block data changes 
+  - [ ] making the patterns data driven (ideally they'd read from banner patterns and try to pull a texture, but use a missing texture when there's none)
+  - [ ] Considering making pattern blocks more advanced:
+    - > I have one last idea actually
+      instead you crafting these in a loom
+      you just make the base pattern block
+      and click each face with a banner that has the patterns you want
+      and then there's a recipie to apply a pattern from one pattern block to an empty one
 # TASKS
 
 - [ ] Various TODOs within files

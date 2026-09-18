@@ -4,7 +4,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.block.AbstractBannerBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import org.jetbrains.annotations.NotNull;
@@ -28,7 +27,7 @@ public class PatternBlockItem extends BlockItem {
     }
 
     public DyeColor getColor() {
-        return ((AbstractBannerBlock)this.getBlock()).getColor();
+        return ((PatternBlock) this.getBlock()).getColor();
     }
 
     public void appendHoverText(@NotNull ItemStack stack, Item.@NotNull TooltipContext context, @NotNull List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
