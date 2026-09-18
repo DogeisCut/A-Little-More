@@ -53,8 +53,8 @@
     - Could probably benfit from multiple tabs
     - missing immunity potions/arrow from A Little More tab
 - [ ] Pattern Block Quirks
-  - [ ] Visible pattern seams on edge of block.
-  - [ ] Weird culling when rendering thin faces.
+  - [X] Visible pattern seams on edge of block.
+  - [X] Weird culling when rendering thin faces.
   - [ ] figuring out how the hell to make the item model 
   - [ ] Handling rotation (currently it extends pillar block, which is like logs and stuff, but this makes the rotation of the side faces ambigious)
     - > Current idea is to make it store an explicit "facing" direction instead, on top of a 4 way rotation for that facing direction. But it gets confusing when you place it sideways cause like... how will it know which way to rotate it?
