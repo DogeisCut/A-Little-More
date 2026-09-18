@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "a_little_more:block/pattern_block"
+    },
+    "axis=y": {
+      "model": "a_little_more:block/pattern_block"
+    },
+    "axis=z": {
+      "model": "a_little_more:block/pattern_block"
+    }
+  }
+}

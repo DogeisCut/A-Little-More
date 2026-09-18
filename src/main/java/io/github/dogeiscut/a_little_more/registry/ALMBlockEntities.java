@@ -1,11 +1,13 @@
 package io.github.dogeiscut.a_little_more.registry;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
+import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -15,8 +17,17 @@ public class ALMBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES =
             DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, ALittleMore.MOD_ID);
 
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PatternBlockEntity>> PATTERN_BLOCK_ENTITY =
+           // awful, but so are varargs so i dont have a choice.
+            blockEntity("pattern_block", PatternBlockEntity::new, ALMBlocks.WHITE_PATTERN_BLOCK, ALMBlocks.ORANGE_PATTERN_BLOCK, ALMBlocks.MAGENTA_PATTERN_BLOCK,
+                    ALMBlocks.LIGHT_BLUE_PATTERN_BLOCK, ALMBlocks.YELLOW_PATTERN_BLOCK, ALMBlocks.LIME_PATTERN_BLOCK,
+                    ALMBlocks.PINK_PATTERN_BLOCK, ALMBlocks.GRAY_PATTERN_BLOCK, ALMBlocks.LIGHT_GRAY_PATTERN_BLOCK,
+                    ALMBlocks.CYAN_PATTERN_BLOCK, ALMBlocks.PURPLE_PATTERN_BLOCK, ALMBlocks.BLUE_PATTERN_BLOCK,
+                    ALMBlocks.BROWN_PATTERN_BLOCK, ALMBlocks.GREEN_PATTERN_BLOCK, ALMBlocks.RED_PATTERN_BLOCK,
+                    ALMBlocks.BLACK_PATTERN_BLOCK);
+
     @SafeVarargs
-    public static <T extends BlockEntity> Supplier<BlockEntityType<T>> blockEntity(
+    public static <T extends BlockEntity> DeferredHolder<BlockEntityType<?>, BlockEntityType<T>> blockEntity(
             String name,
             BlockEntityType.BlockEntitySupplier<T> factory,
             Supplier<? extends Block>... blocks

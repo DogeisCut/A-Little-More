@@ -1,7 +1,7 @@
 package io.github.dogeiscut.a_little_more.compat.jei;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
-import io.github.dogeiscut.a_little_more.util.gui.Render3DHelper;
+import io.github.dogeiscut.a_little_more.util.client.gui.Render3DHelper;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepTransformationRecipe;
 import io.github.dogeiscut.a_little_more.registry.ALMFluids;
 import mezz.jei.api.constants.VanillaTypes;

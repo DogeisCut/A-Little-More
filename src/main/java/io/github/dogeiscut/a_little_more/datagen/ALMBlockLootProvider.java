@@ -36,10 +36,12 @@ public class ALMBlockLootProvider extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        ALMBlockFamilies.getAllFamilies().forEach(family -> family.allBlocks().forEach(this::selfDrop));
+        ALMDatagen.ALMBlockFamilies.getAllFamilies().forEach(family -> family.allBlocks().forEach(this::selfDrop));
 
-        ALMBlockFamilies.SIMPLE_CUBES.forEach(this::selfDrop);
-        ALMBlockFamilies.AXE_MINEABLE.forEach(this::selfDrop);
+        ALMDatagen.ALMBlockFamilies.SIMPLE_CUBES.forEach(this::selfDrop);
+        ALMDatagen.ALMBlockFamilies.AXE_MINEABLE.forEach(this::selfDrop);
+
+        ALMDatagen.ALMBlockFamilies.PATTERN_BLOCKS.forEach(this::selfDrop);
 
         oreDrop(ALMBlocks.CELERIUM_ORE.get(), ALMItems.CELERIUM_SHARD.get());
         oreDrop(ALMBlocks.DEEPSLATE_CELERIUM_ORE.get(), ALMItems.CELERIUM_SHARD.get());

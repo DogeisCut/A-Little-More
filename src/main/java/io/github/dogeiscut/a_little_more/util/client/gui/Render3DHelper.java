@@ -1,4 +1,4 @@
-package io.github.dogeiscut.a_little_more.util.gui;
+package io.github.dogeiscut.a_little_more.util.client.gui;
 
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.vertex.PoseStack;

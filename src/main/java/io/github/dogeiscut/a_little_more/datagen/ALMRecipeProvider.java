@@ -2,10 +2,7 @@ package io.github.dogeiscut.a_little_more.datagen;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepTransformationRecipe;
-import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
-import io.github.dogeiscut.a_little_more.registry.ALMFluids;
-import io.github.dogeiscut.a_little_more.registry.ALMItems;
-import io.github.dogeiscut.a_little_more.registry.ALMTags;
+import io.github.dogeiscut.a_little_more.registry.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.BlockFamily;
@@ -45,8 +42,8 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
     @Override
     protected void buildRecipes(@NotNull RecipeOutput out) {
 
-        ALMBlockFamilies.getAllFamilies().forEach(family -> family(out, family, family.isStone()));
-        progression(out, ALMBlockFamilies.SEEPSTONE_PROGRESSION);
+        ALMDatagen.ALMBlockFamilies.getAllFamilies().forEach(family -> family(out, family, family.isStone()));
+        progression(out, ALMDatagen.ALMBlockFamilies.SEEPSTONE_PROGRESSION);
 
         oreSmelting(out, List.of(ALMBlocks.CELERIUM_ORE.get(), ALMBlocks.DEEPSLATE_CELERIUM_ORE.get()),
                 ALMItems.CELERIUM_SHARD.get(), 1.0F, 200);

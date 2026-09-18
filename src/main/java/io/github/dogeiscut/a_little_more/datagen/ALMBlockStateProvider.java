@@ -3,14 +3,12 @@ package io.github.dogeiscut.a_little_more.datagen;
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
 import io.github.dogeiscut.a_little_more.registry.ALMFluids;
+import net.minecraft.core.Direction;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
-import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
-import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
-import net.neoforged.neoforge.client.model.generators.ModelProvider;
+import net.neoforged.neoforge.client.model.generators.*;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
 
@@ -27,9 +25,30 @@ public class ALMBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        ALMBlockFamilies.getAllFamilies().forEach(this::family);
+        ALMDatagen.ALMBlockFamilies.getAllFamilies().forEach(this::family);
 
-        ALMBlockFamilies.SIMPLE_CUBES.forEach(this::simpleCubeAllWithItem);
+        ALMDatagen.ALMBlockFamilies.SIMPLE_CUBES.forEach(this::simpleCubeAllWithItem);
+
+        ModelFile patternModel = models().getBuilder("block/pattern_block")
+                .customLoader((builder, helper) -> new CustomLoaderBuilder<BlockModelBuilder>(
+                        ALittleMore.id("pattern_block"),
+                        builder,
+                        helper,
+                        false
+                ) {})
+                .end();
+
+        ALMDatagen.ALMBlockFamilies.PATTERN_BLOCKS.forEach(block -> {
+            getVariantBuilder(block)
+                    .partialState().with(RotatedPillarBlock.AXIS, Direction.Axis.X)
+                    .modelForState().modelFile(patternModel).addModel()
+
+                    .partialState().with(RotatedPillarBlock.AXIS, Direction.Axis.Y)
+                    .modelForState().modelFile(patternModel).addModel()
+
+                    .partialState().with(RotatedPillarBlock.AXIS, Direction.Axis.Z)
+                    .modelForState().modelFile(patternModel).addModel();
+        });
 
         // TODO: seep cluster assets, it's NOT going to be a cube.
         simpleCubeAllWithItem(ALMBlocks.SEEP_CRYSTAL_CLUSTER.get());
