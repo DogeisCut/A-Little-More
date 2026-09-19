@@ -68,6 +68,7 @@
       and then there's a recipie to apply a pattern from one pattern block to an empty one
   - [ ] Crafting (new gui block?)
   - [ ] make them drop with patterns
+  - [ ] fix particles being colored
 # TASKS
 
 - [ ] Various TODOs within files
