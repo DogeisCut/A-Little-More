@@ -34,11 +34,11 @@ public final class PatternBlockQuadBuilder {
 
         float[] uvs = new float[]{0f, 0f, 16f, 16f};
 
-        if (orientation.flipHorizontal) {
+        if (orientation.isFlip()) {
             uvs = new float[]{16f, 0f, 0f, 16f};
         }
 
-        BlockFaceUV uv = new BlockFaceUV(uvs, orientation.rotation);
+        BlockFaceUV uv = new BlockFaceUV(uvs, orientation.getRotation());
         BlockElementFace face = new BlockElementFace(null, tintIndex, sprite.contents().name().toString(), uv);
 
         return FACE_BAKERY.bakeQuad(

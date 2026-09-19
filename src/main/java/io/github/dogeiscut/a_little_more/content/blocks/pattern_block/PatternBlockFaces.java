@@ -8,7 +8,6 @@ import net.minecraft.core.Holder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.DyeColor;
 import org.jetbrains.annotations.NotNull;
@@ -17,7 +16,6 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.IntFunction;
 
 public record PatternBlockFaces(Map<Direction, Face> faces) {
 
@@ -47,34 +45,40 @@ public record PatternBlockFaces(Map<Direction, Face> faces) {
             ).map(PatternBlockFaces::new, PatternBlockFaces::faces);
 
     public enum Orientation implements StringRepresentable {
-        R0_NONE("r0_none", 0, false, false),
-        R90_NONE("r90_none", 90, false, false),
-        R180_NONE("r180_none", 180, false, false),
-        R270_NONE("r270_none", 270, false, false),
-        R0_FLIP_H("r0_flip_h", 0, true, false),
-        R90_FLIP_H("r90_flip_h", 90, true, false),
-        R180_FLIP_H("r180_flip_h", 180, true, false),
-        R270_FLIP_H("r270_flip_h", 270, true, false);
+        R0_NONE("r0", 0, false),
+        R90_NONE("r90", 90, false),
+        R180_NONE("r180", 180, false),
+        R270_NONE("r270", 270, false),
+        R0_FLIP_H("r0_flip", 0, true),
+        R90_FLIP_H("r90_flip", 90, true),
+        R180_FLIP_H("r180_flip", 180, true),
+        R270_FLIP_H("r270_flip", 270, true);
 
         public static final Codec<Orientation> CODEC = StringRepresentable.fromEnum(Orientation::values);
 
         public static final StreamCodec<ByteBuf, Orientation> STREAM_CODEC = ByteBufCodecs.fromCodecTrusted(CODEC);
 
         private final String name;
-        public final int rotation;
-        public final boolean flipHorizontal;
-        public final boolean flipVertical;
+        private final int rotation;
+        private final boolean flip;
 
-        Orientation(String name, int rotation, boolean flipHorizontal, boolean flipVertical) {
+        Orientation(String name, int rotation, boolean flip) {
             this.name = name;
             this.rotation = rotation;
-            this.flipHorizontal = flipHorizontal;
-            this.flipVertical = flipVertical;
+            this.flip = flip;
         }
 
         @Override
         public @NotNull String getSerializedName() {
             return this.name;
+        }
+
+        public int getRotation() {
+            return rotation;
+        }
+
+        public boolean isFlip() {
+            return flip;
         }
     }
 
