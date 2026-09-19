@@ -2,6 +2,7 @@ package io.github.dogeiscut.a_little_more.registry;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlock;
+import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockFaces;
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockItem;
 import io.github.dogeiscut.a_little_more.content.weapons.flail.FlailItem;
 import net.minecraft.core.component.DataComponents;
@@ -83,8 +84,8 @@ public class ALMBlocks {
         DeferredBlock<PatternBlock> block = BLOCKS.registerBlock(name, p -> new PatternBlock(BlockBehaviour.Properties.ofFullCopy(base)));
         ALMItems.item(name, properties -> new PatternBlockItem(block.get(),
                 properties.component(
-                        DataComponents.BANNER_PATTERNS,
-                        BannerPatternLayers.EMPTY
+                        ALMDataComponents.PATTERN_BLOCK_FACES,
+                        PatternBlockFaces.EMPTY
                 )
         ));
         return block;
