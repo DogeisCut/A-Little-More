@@ -1,6 +1,7 @@
 package io.github.dogeiscut.a_little_more.datagen;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
+import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockPattern;
 import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
 import io.github.dogeiscut.a_little_more.registry.ALMSounds;
 import net.minecraft.core.HolderGetter;
@@ -114,8 +115,8 @@ public class ALMDatapackProvider extends DatapackBuiltinEntriesProvider {
                     .add(Registries.CONFIGURED_FEATURE, ALMDatapackProvider::configuredFeatures)
                     .add(Registries.PLACED_FEATURE, ALMDatapackProvider::placedFeatures)
                     .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ALMDatapackProvider::biomeModifiers)
-                    .add(Registries.JUKEBOX_SONG, ALMDatapackProvider::jukeboxSongs);
+                    .add(Registries.JUKEBOX_SONG, ALMDatapackProvider::jukeboxSongs)
+                    .add(PatternBlockPattern.REGISTRY_KEY, ALMPatternBlockPatternBootstrap::bootstrap);
         }
     }
-
 }

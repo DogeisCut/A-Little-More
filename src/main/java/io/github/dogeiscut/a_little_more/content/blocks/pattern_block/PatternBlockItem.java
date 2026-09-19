@@ -1,36 +1,59 @@
 package io.github.dogeiscut.a_little_more.content.blocks.pattern_block;
 
+import io.github.dogeiscut.a_little_more.registry.ALMDataComponents;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public class PatternBlockItem extends BlockItem {
+
     public PatternBlockItem(Block block, Properties properties) {
         super(block, properties);
     }
 
-    public static void appendHoverTextFromBannerBlockEntityTag(ItemStack stack, List<Component> tooltipComponents) {
-        BannerPatternLayers patternLayers = stack.get(DataComponents.BANNER_PATTERNS);
-        if (patternLayers != null) {
-            for(int i = 0; i < Math.min(patternLayers.layers().size(), PatternBlockEntity.MAX_PATTERNS); ++i) {
-                BannerPatternLayers.Layer layer = patternLayers.layers().get(i);
-                tooltipComponents.add(layer.description().withStyle(ChatFormatting.GRAY));
-            }
+    public static void appendHoverTextFromPatternBlockFaces(ItemStack stack, List<Component> tooltipComponents) {
+        PatternBlockFaces faces = stack.get(ALMDataComponents.PATTERN_BLOCK_FACES);
+        if (faces == null || faces.faces().isEmpty()) {
+            return;
         }
 
+        for (Direction direction : Direction.values()) {
+            faces.getFace(direction).ifPresent(faceData -> {
+                tooltipComponents.add(
+                        Component.literal(direction.getName().toUpperCase() + ":")
+                                .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.BOLD)
+                );
+
+                tooltipComponents.add(
+                        Component.translatable("color.minecraft." + faceData.baseColor().getName())
+                                .withStyle(ChatFormatting.GRAY)
+                );
+
+                for (PatternBlockFaces.Layer layer : faceData.layers()) {
+                    String translationKey = layer.pattern().value().translationKey() + "." + layer.color().getName();
+                    tooltipComponents.add(
+                            Component.translatable(translationKey)
+                                    .withStyle(ChatFormatting.GRAY)
+                    );
+                }
+            });
+        }
     }
 
-    public DyeColor getColor() {
-        return ((PatternBlock) this.getBlock()).getColor();
-    }
-
-    public void appendHoverText(@NotNull ItemStack stack, Item.@NotNull TooltipContext context, @NotNull List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        appendHoverTextFromBannerBlockEntityTag(stack, tooltipComponents);
+    @Override
+    public void appendHoverText(@NotNull ItemStack stack,
+                                Item.@NotNull TooltipContext context,
+                                @NotNull List<Component> tooltipComponents,
+                                @NotNull TooltipFlag tooltipFlag) {
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+        appendHoverTextFromPatternBlockFaces(stack, tooltipComponents);
     }
 }

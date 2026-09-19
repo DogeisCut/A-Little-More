@@ -43,23 +43,7 @@ public class ALittleMoreClient {
 
     @SubscribeEvent
     public static void onRegisterColorHandlers(RegisterColorHandlersEvent.Block event) {
-        // every time i have to dupe every single pattern block i am given great pain
-        event.register(new PatternBlockColor(),ALMBlocks.WHITE_PATTERN_BLOCK.get());
-        event.register(new PatternBlockColor(),ALMBlocks.ORANGE_PATTERN_BLOCK.get());
-        event.register(new PatternBlockColor(),ALMBlocks.MAGENTA_PATTERN_BLOCK.get());
-        event.register(new PatternBlockColor(),ALMBlocks.LIGHT_BLUE_PATTERN_BLOCK.get());
-        event.register(new PatternBlockColor(),ALMBlocks.YELLOW_PATTERN_BLOCK.get());
-        event.register(new PatternBlockColor(),ALMBlocks.LIME_PATTERN_BLOCK.get());
-        event.register(new PatternBlockColor(),ALMBlocks.PINK_PATTERN_BLOCK.get());
-        event.register(new PatternBlockColor(),ALMBlocks.GRAY_PATTERN_BLOCK.get());
-        event.register(new PatternBlockColor(),ALMBlocks.LIGHT_GRAY_PATTERN_BLOCK.get());
-        event.register(new PatternBlockColor(),ALMBlocks.CYAN_PATTERN_BLOCK.get());
-        event.register(new PatternBlockColor(),ALMBlocks.PURPLE_PATTERN_BLOCK.get());
-        event.register(new PatternBlockColor(),ALMBlocks.BLUE_PATTERN_BLOCK.get());
-        event.register(new PatternBlockColor(),ALMBlocks.BROWN_PATTERN_BLOCK.get());
-        event.register(new PatternBlockColor(),ALMBlocks.GREEN_PATTERN_BLOCK.get());
-        event.register(new PatternBlockColor(),ALMBlocks.RED_PATTERN_BLOCK.get());
-        event.register(new PatternBlockColor(),ALMBlocks.BLACK_PATTERN_BLOCK.get());
+        event.register(new PatternBlockColor(), ALMBlocks.PATTERN_BLOCK.get());
     }
 }
 

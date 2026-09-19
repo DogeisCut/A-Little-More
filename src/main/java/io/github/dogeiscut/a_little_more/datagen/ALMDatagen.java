@@ -71,24 +71,6 @@ public class ALMDatagen {
                 ALMBlocks.DASH_PAD.get(),
                 ALMBlocks.LAUNCH_PAD.get()
         );
-        public static final List<Block> PATTERN_BLOCKS = List.of(
-                ALMBlocks.WHITE_PATTERN_BLOCK.get(),
-                ALMBlocks.ORANGE_PATTERN_BLOCK.get(),
-                ALMBlocks.MAGENTA_PATTERN_BLOCK.get(),
-                ALMBlocks.LIGHT_BLUE_PATTERN_BLOCK.get(),
-                ALMBlocks.YELLOW_PATTERN_BLOCK.get(),
-                ALMBlocks.LIME_PATTERN_BLOCK.get(),
-                ALMBlocks.PINK_PATTERN_BLOCK.get(),
-                ALMBlocks.GRAY_PATTERN_BLOCK.get(),
-                ALMBlocks.LIGHT_GRAY_PATTERN_BLOCK.get(),
-                ALMBlocks.CYAN_PATTERN_BLOCK.get(),
-                ALMBlocks.PURPLE_PATTERN_BLOCK.get(),
-                ALMBlocks.BLUE_PATTERN_BLOCK.get(),
-                ALMBlocks.BROWN_PATTERN_BLOCK.get(),
-                ALMBlocks.GREEN_PATTERN_BLOCK.get(),
-                ALMBlocks.RED_PATTERN_BLOCK.get(),
-                ALMBlocks.BLACK_PATTERN_BLOCK.get()
-        );
         private static final Map<Block, ALMBlockFamily> MAP = Maps.newHashMap();
         public static final ALMBlockFamily SEEPSTONE = register(familyBuilder(ALMBlocks.SEEPSTONE.get())
                 .slab(ALMBlocks.SEEPSTONE_SLAB.get())

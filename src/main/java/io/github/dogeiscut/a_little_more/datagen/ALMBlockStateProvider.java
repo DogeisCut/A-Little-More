@@ -38,17 +38,8 @@ public class ALMBlockStateProvider extends BlockStateProvider {
                 ) {})
                 .end();
 
-        ALMDatagen.ALMBlockFamilies.PATTERN_BLOCKS.forEach(block -> {
-            getVariantBuilder(block)
-                    .partialState().with(RotatedPillarBlock.AXIS, Direction.Axis.X)
-                    .modelForState().modelFile(patternModel).addModel()
-
-                    .partialState().with(RotatedPillarBlock.AXIS, Direction.Axis.Y)
-                    .modelForState().modelFile(patternModel).addModel()
-
-                    .partialState().with(RotatedPillarBlock.AXIS, Direction.Axis.Z)
-                    .modelForState().modelFile(patternModel).addModel();
-        });
+        simpleBlock(ALMBlocks.PATTERN_BLOCK.get(), patternModel);
+        itemModels().getBuilder("pattern_block").parent(patternModel);
 
         // TODO: seep cluster assets, it's NOT going to be a cube.
         simpleCubeAllWithItem(ALMBlocks.SEEP_CRYSTAL_CLUSTER.get());

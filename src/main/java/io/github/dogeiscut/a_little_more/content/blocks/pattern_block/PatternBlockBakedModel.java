@@ -10,11 +10,7 @@ import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.entity.BannerPattern;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.client.ChunkRenderTypeSet;
 import net.neoforged.neoforge.client.model.data.ModelData;
 import org.jetbrains.annotations.NotNull;
@@ -23,18 +19,26 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
 
 public class PatternBlockBakedModel implements BakedModel {
 
     private final TextureAtlasSprite baseSprite;
-    private final Map<String, TextureAtlasSprite> patternSprites;
+    private final TextureAtlasSprite emptyBaseSprite; // Base sprite used when face has no data
+    private final Function<ResourceLocation, TextureAtlasSprite> spriteLookup;
 
     private final Map<CacheKey, List<BakedQuad>> quadCache = new ConcurrentHashMap<>();
 
-    public PatternBlockBakedModel(TextureAtlasSprite baseSprite, Map<String, TextureAtlasSprite> patternSprites) {
+    public PatternBlockBakedModel(
+            TextureAtlasSprite baseSprite,
+            TextureAtlasSprite emptyBaseSprite,
+            Function<ResourceLocation, TextureAtlasSprite> spriteLookup
+    ) {
         this.baseSprite = baseSprite;
-        this.patternSprites = patternSprites;
+        this.emptyBaseSprite = emptyBaseSprite;
+        this.spriteLookup = spriteLookup;
     }
 
     @Override
@@ -43,53 +47,67 @@ public class PatternBlockBakedModel implements BakedModel {
     }
 
     @Override
-    public @NotNull List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @NotNull RandomSource rand,
-                                             @NotNull ModelData extraData, @Nullable RenderType renderType) {
+    public @NotNull List<BakedQuad> getQuads(
+            @Nullable BlockState state,
+            @Nullable Direction side,
+            @NotNull RandomSource rand,
+            @NotNull ModelData extraData,
+            @Nullable RenderType renderType
+    ) {
         if (side == null) {
             return List.of();
         }
 
-        DyeColor baseColor = extraData.get(ALMModelProperties.BASE_COLOR);
-        BannerPatternLayers patterns = extraData.get(ALMModelProperties.BANNER_PATTERN_LAYERS);
-        if (baseColor == null) baseColor = DyeColor.WHITE;
-        if (patterns == null) patterns = BannerPatternLayers.EMPTY;
+        PatternBlockFaces faces = extraData.get(ALMModelProperties.PATTERN_BLOCK_FACES);
+        if (faces == null) {
+            faces = PatternBlockFaces.EMPTY;
+        }
 
-        Direction.Axis axis = state != null ? state.getValue(BlockStateProperties.AXIS) : Direction.Axis.Y;
-
-        CacheKey key = new CacheKey(axis, side, patterns, renderType);
-        BannerPatternLayers finalPatterns = patterns;
-        return quadCache.computeIfAbsent(key, k -> buildQuads(axis, side, finalPatterns, renderType));
+        CacheKey key = new CacheKey(side, faces, renderType);
+        PatternBlockFaces finalFaces = faces;
+        return quadCache.computeIfAbsent(key, k -> buildQuads(side, finalFaces, renderType));
     }
 
-    private List<BakedQuad> buildQuads(Direction.Axis axis, Direction side, BannerPatternLayers patterns, @Nullable RenderType renderType) {
+    private List<BakedQuad> buildQuads(Direction side, PatternBlockFaces faces, @Nullable RenderType renderType) {
         List<BakedQuad> quads = new ArrayList<>();
 
         boolean wantBase = renderType == null || renderType.equals(RenderType.solid());
         boolean wantPatterns = renderType == null || renderType.equals(RenderType.translucent());
 
-        if (wantBase) {
-            quads.add(PatternBlockQuadBuilder.baseFaceQuad(side, baseSprite));
-        }
+        Optional<PatternBlockFaces.Face> faceOpt = faces.getFace(side);
 
-        if (wantPatterns) {
-            List<BannerPatternLayers.Layer> layers = patterns.layers();
-            for (int i = 0; i < layers.size(); i++) {
-                BannerPatternLayers.Layer layer = layers.get(i);
-                TextureAtlasSprite sprite = spriteFor(layer.pattern());
-                if (sprite == null) continue;
-                quads.add(PatternBlockQuadBuilder.layerFaceQuad(side, sprite, i + 1, i + 1));
+        if (wantBase) {
+            if (faceOpt.isPresent()) {
+                int baseTint = side.get3DDataValue() * 100;
+                quads.add(PatternBlockQuadBuilder.baseFaceQuad(side, baseSprite, baseTint));
+            } else {
+                quads.add(PatternBlockQuadBuilder.baseFaceQuad(side, emptyBaseSprite, -1));
             }
         }
+
+        if (wantPatterns && faceOpt.isPresent()) {
+            PatternBlockFaces.Face face = faceOpt.get();
+            List<PatternBlockFaces.Layer> layers = face.layers();
+
+            for (int i = 0; i < layers.size(); i++) {
+                PatternBlockFaces.Layer layer = layers.get(i);
+                TextureAtlasSprite sprite = spriteFor(layer.pattern().value());
+                if (sprite == null) continue;
+
+                int layerTint = (side.get3DDataValue() * 100) + i + 1;
+                quads.add(PatternBlockQuadBuilder.layerFaceQuad(side, sprite, face.orientation(), layerTint));
+            }
+        }
+
         return quads;
     }
 
     @Nullable
-    private TextureAtlasSprite spriteFor(net.minecraft.core.Holder<BannerPattern> patternHolder) {
-        ResourceLocation assetId = patternHolder.value().assetId();
-        TextureAtlasSprite sprite = patternSprites.get(assetId.getPath());
+    private TextureAtlasSprite spriteFor(PatternBlockPattern pattern) {
+        ResourceLocation assetId = pattern.assetId();
+        TextureAtlasSprite sprite = spriteLookup.apply(assetId);
         if (sprite == null) {
-            ALittleMore.LOGGER.warn("Pattern block has no texture for banner pattern '{}' (looked for path '{}')",
-                    assetId, assetId.getPath());
+            ALittleMore.LOGGER.warn("Pattern block missing texture atlas entry for pattern '{}'", assetId);
         }
         return sprite;
     }
@@ -116,12 +134,12 @@ public class PatternBlockBakedModel implements BakedModel {
 
     @Override
     public @NotNull TextureAtlasSprite getParticleIcon() {
-        return baseSprite;
+        return emptyBaseSprite;
     }
 
     @Override
     public @NotNull TextureAtlasSprite getParticleIcon(@NotNull ModelData data) {
-        return baseSprite;
+        return emptyBaseSprite;
     }
 
     @Override
@@ -134,5 +152,5 @@ public class PatternBlockBakedModel implements BakedModel {
         return ChunkRenderTypeSet.of(RenderType.solid(), RenderType.translucent());
     }
 
-    private record CacheKey(Direction.Axis axis, Direction side, BannerPatternLayers patterns, @Nullable RenderType renderType) {}
+    private record CacheKey(Direction side, PatternBlockFaces faces, @Nullable RenderType renderType) {}
 }
