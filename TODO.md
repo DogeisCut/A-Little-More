@@ -67,6 +67,7 @@
       and click each face with a banner that has the patterns you want
       and then there's a recipie to apply a pattern from one pattern block to an empty one
   - [ ] Crafting (new gui block?)
+  - [ ] make them drop with patterns
 # TASKS
 
 - [ ] Various TODOs within files
