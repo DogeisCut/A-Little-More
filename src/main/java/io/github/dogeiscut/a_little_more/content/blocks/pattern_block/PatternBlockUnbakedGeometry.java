@@ -38,6 +38,6 @@ public class PatternBlockUnbakedGeometry implements IUnbakedGeometry<PatternBloc
         Function<ResourceLocation, TextureAtlasSprite> patternSpriteGetter = loc ->
                 spriteGetter.apply(new Material(TextureAtlas.LOCATION_BLOCKS, loc));
 
-        return new PatternBlockBakedModel(baseSprite, emptyBaseSprite, patternSpriteGetter);
+        return new PatternBlockBakedModel(baseSprite, emptyBaseSprite, patternSpriteGetter, context.getTransforms());
     }
 }

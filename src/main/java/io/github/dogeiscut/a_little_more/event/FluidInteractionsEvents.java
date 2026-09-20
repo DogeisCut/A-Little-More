@@ -28,16 +28,14 @@ public class FluidInteractionsEvents {
 
     @SubscribeEvent
     public static void onCommonSetup(@NotNull FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            FluidInteractionRegistry.addInteraction(
-                    ALMFluidTypes.SEEP.get(),
-                    new FluidInteractionRegistry.InteractionInformation(
-                            (level, currentPos, relativePos, currentState) ->
-                                    !level.getFluidState(relativePos).isEmpty() && !level.getFluidState(relativePos).is(ALMTags.Fluids.SEEP),
+        event.enqueueWork(() -> FluidInteractionRegistry.addInteraction(
+                ALMFluidTypes.SEEP.get(),
+                new FluidInteractionRegistry.InteractionInformation(
+                        (level, currentPos, relativePos, currentState) ->
+                                !level.getFluidState(relativePos).isEmpty() && !level.getFluidState(relativePos).is(ALMTags.Fluids.SEEP),
 
-                            ALMBlocks.SEEPSTONE.get().defaultBlockState()
-                    )
-            );
-        });
+                        ALMBlocks.SEEPSTONE.get().defaultBlockState()
+                )
+        ));
     }
 }

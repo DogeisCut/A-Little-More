@@ -120,6 +120,8 @@
   "item.minecraft.tipped_arrow.effect.immunity": "Arrow of Immunity",
   "itemGroup.a_little_more": "A Little More",
   "jukebox_song.a_little_more.just_a_little_more": "DogeisCut - Just A Little More",
+  "key.a_little_more.flip_pattern_blocks": "Flip Pattern Blocks in Inventories",
+  "key.categories.a_little_more": "A Little More",
   "tooltip.a_little_more.imbued_with": "Imbued With:",
   "trim_material.a_little_more.celerium": "Celerium"
 }

@@ -74,7 +74,7 @@ public class ALMPatternBlockPatternTagsProvider extends TagsProvider<PatternBloc
     }
 
     @SafeVarargs
-    private void add(@NotNull TagKey<PatternBlockPattern> tag, @NotNull ResourceKey<PatternBlockPattern>... patterns) {
+    private void add(@NotNull TagKey<PatternBlockPattern> tag, @NotNull ResourceKey<PatternBlockPattern> @NotNull ... patterns) {
         TagAppender<PatternBlockPattern> appender = tag(tag);
         for (ResourceKey<PatternBlockPattern> pattern : patterns) {
             appender.add(pattern);

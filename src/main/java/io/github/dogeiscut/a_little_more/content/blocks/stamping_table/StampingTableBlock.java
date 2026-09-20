@@ -18,7 +18,7 @@ public class StampingTableBlock extends Block {
 
     public static final Component CONTAINER_TITLE = Component.translatable("container.a_little_more.stamping_table");
 
-    public StampingTableBlock(Properties properties) {
+    public StampingTableBlock(@NotNull Properties properties) {
         super(properties);
     }
 

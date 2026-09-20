@@ -45,11 +45,11 @@ public class StampingTableScreen extends AbstractContainerScreen<StampingTableMe
     private final Map<StampingTableAction, Button> actionButtons = new EnumMap<>(StampingTableAction.class);
     private final Map<Direction, Button> editButtons = new EnumMap<>(Direction.class);
 
-    private ItemStack patternBlockHint = ItemStack.EMPTY;
-    private ItemStack dyeHint = ItemStack.EMPTY;
-    private ItemStack patternItemHint = ItemStack.EMPTY;
+    private @NotNull ItemStack patternBlockHint = ItemStack.EMPTY;
+    private @NotNull ItemStack dyeHint = ItemStack.EMPTY;
+    private @NotNull ItemStack patternItemHint = ItemStack.EMPTY;
 
-    private CubeView view = CubeView.FRONT;
+    private @NotNull CubeView view = CubeView.FRONT;
     private int startRow;
     private float scrollOffs;
     private boolean scrolling;
@@ -58,6 +58,32 @@ public class StampingTableScreen extends AbstractContainerScreen<StampingTableMe
         super(menu, inventory, title);
         this.imageWidth = WIDTH;
         this.imageHeight = HEIGHT;
+    }
+
+    private static @NotNull Component faceName(@NotNull Direction direction) {
+        return Component.translatable("gui.a_little_more.stamping_table.face." + direction.getName());
+    }
+
+    private static int hiddenRows(int patternCount) {
+        int rows = (patternCount + GRID_COLUMNS - 1) / GRID_COLUMNS;
+        return Math.max(0, rows - GRID_VISIBLE_ROWS);
+    }
+
+    private static void drawPanel(@NotNull GuiGraphics graphics, int x, int y, int width, int height) {
+        graphics.fill(x, y, x + width, y + height, 0xFF000000);
+        graphics.fill(x + 1, y + 1, x + width - 1, y + height - 1, 0xFFFFFFFF);
+        graphics.fill(x + 3, y + 3, x + width - 1, y + height - 1, 0xFF555555);
+        graphics.fill(x + 3, y + 3, x + width - 3, y + height - 3, 0xFFC6C6C6);
+    }
+
+    private static void drawInset(@NotNull GuiGraphics graphics, int x, int y, int width, int height) {
+        graphics.fill(x, y, x + width, y + height, 0xFFFFFFFF);
+        graphics.fill(x, y, x + width - 1, y + height - 1, 0xFF373737);
+        graphics.fill(x + 1, y + 1, x + width - 1, y + height - 1, 0xFF8B8B8B);
+    }
+
+    private static void drawSlotFrame(@NotNull GuiGraphics graphics, int x, int y) {
+        drawInset(graphics, x, y, 18, 18);
     }
 
     @Override
@@ -121,10 +147,6 @@ public class StampingTableScreen extends AbstractContainerScreen<StampingTableMe
         if (this.minecraft != null && this.minecraft.gameMode != null) {
             this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, id);
         }
-    }
-
-    private static @NotNull Component faceName(@NotNull Direction direction) {
-        return Component.translatable("gui.a_little_more.stamping_table.face." + direction.getName());
     }
 
     private void updateButtons() {
@@ -316,11 +338,6 @@ public class StampingTableScreen extends AbstractContainerScreen<StampingTableMe
         }
     }
 
-    private static int hiddenRows(int patternCount) {
-        int rows = (patternCount + GRID_COLUMNS - 1) / GRID_COLUMNS;
-        return Math.max(0, rows - GRID_VISIBLE_ROWS);
-    }
-
     private int patternIndexAt(double mouseX, double mouseY) {
         double relativeX = mouseX - (this.leftPos + GRID_X);
         double relativeY = mouseY - (this.topPos + GRID_Y);
@@ -381,6 +398,8 @@ public class StampingTableScreen extends AbstractContainerScreen<StampingTableMe
         return super.mouseClicked(mouseX, mouseY, button);
     }
 
+    //TODO: actual background asset(s)
+
     @Override
     public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY) {
         if (this.scrolling) {
@@ -405,24 +424,5 @@ public class StampingTableScreen extends AbstractContainerScreen<StampingTableMe
             return true;
         }
         return super.mouseScrolled(mouseX, mouseY, scrollX, scrollY);
-    }
-
-    //TODO: actual background asset(s)
-
-    private static void drawPanel(@NotNull GuiGraphics graphics, int x, int y, int width, int height) {
-        graphics.fill(x, y, x + width, y + height, 0xFF000000);
-        graphics.fill(x + 1, y + 1, x + width - 1, y + height - 1, 0xFFFFFFFF);
-        graphics.fill(x + 3, y + 3, x + width - 1, y + height - 1, 0xFF555555);
-        graphics.fill(x + 3, y + 3, x + width - 3, y + height - 3, 0xFFC6C6C6);
-    }
-
-    private static void drawInset(@NotNull GuiGraphics graphics, int x, int y, int width, int height) {
-        graphics.fill(x, y, x + width, y + height, 0xFFFFFFFF);
-        graphics.fill(x, y, x + width - 1, y + height - 1, 0xFF373737);
-        graphics.fill(x + 1, y + 1, x + width - 1, y + height - 1, 0xFF8B8B8B);
-    }
-
-    private static void drawSlotFrame(@NotNull GuiGraphics graphics, int x, int y) {
-        drawInset(graphics, x, y, 18, 18);
     }
 }

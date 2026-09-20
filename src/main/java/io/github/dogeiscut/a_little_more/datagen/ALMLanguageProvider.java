@@ -91,6 +91,7 @@ public class ALMLanguageProvider extends LanguageProvider {
         add("jukebox_song." + ALittleMore.MOD_ID + ".just_a_little_more", "DogeisCut - Just A Little More");
         add("trim_material." + ALittleMore.MOD_ID + ".celerium", "Celerium");
 
+        keyMappingStrings();
         stampingTableStrings();
 
         add(ALittleMore.MOD_ID + ".recipe.seep_transformation", "Seep Transformation");
@@ -100,7 +101,7 @@ public class ALMLanguageProvider extends LanguageProvider {
 
         advancementStrings();
     }
-    
+
     private void advancementStrings() {
         advancement("rabies_free", "Rabies Free",
                 "Craft and drink a Potion of Immunity, and dodge an effect.");
@@ -120,6 +121,11 @@ public class ALMLanguageProvider extends LanguageProvider {
         advancement("upgrades_people", "Upgrades, People", "Transform an item in Seep.");
         advancement("player_pinball", "Player Pinball", "Use a Launch Pad.");
         advancement("erased_history", "Erased History", "Mine a Seep Crystal with something in it.");
+    }
+
+    private void keyMappingStrings() {
+        add("key.categories." + ALittleMore.MOD_ID, "A Little More");
+        add("key." + ALittleMore.MOD_ID + ".flip_pattern_blocks", "Flip Pattern Blocks in Inventories");
     }
 
     private void stampingTableStrings() {
@@ -153,7 +159,7 @@ public class ALMLanguageProvider extends LanguageProvider {
         stampingTable("remove_face.tooltip", "Clear this face back to the bare block (edits in place)");
     }
 
-    private void stampingTable(String key, String value) {
+    private void stampingTable(String key, @NotNull String value) {
         add("gui." + ALittleMore.MOD_ID + ".stamping_table." + key, value);
     }
 

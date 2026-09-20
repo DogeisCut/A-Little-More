@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class PatternBlock extends Block implements EntityBlock {
 
-    public PatternBlock(Properties properties) {
+    public PatternBlock(@NotNull Properties properties) {
         super(properties);
     }
 
@@ -36,7 +36,7 @@ public class PatternBlock extends Block implements EntityBlock {
     }
 
     @Override
-    public @NotNull ItemStack getCloneItemStack(LevelReader level, @NotNull BlockPos pos, @NotNull BlockState state) {
+    public @NotNull ItemStack getCloneItemStack(@NotNull LevelReader level, @NotNull BlockPos pos, @NotNull BlockState state) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof PatternBlockEntity patternBlockEntity) {
             return patternBlockEntity.getItem();

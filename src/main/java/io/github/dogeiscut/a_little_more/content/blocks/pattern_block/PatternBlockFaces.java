@@ -20,13 +20,21 @@ import java.util.Optional;
 public record PatternBlockFaces(Map<Direction, Face> faces) {
 
     public static final PatternBlockFaces EMPTY = new PatternBlockFaces(Map.of());
+    public static final Codec<PatternBlockFaces> CODEC = Codec.unboundedMap(Direction.CODEC, Face.CODEC)
+            .xmap(PatternBlockFaces::new, PatternBlockFaces::faces);
+    public static final StreamCodec<RegistryFriendlyByteBuf, PatternBlockFaces> STREAM_CODEC =
+            ByteBufCodecs.<RegistryFriendlyByteBuf, Direction, Face, Map<Direction, Face>>map(
+                    i -> new EnumMap<>(Direction.class),
+                    Direction.STREAM_CODEC,
+                    Face.STREAM_CODEC
+            ).map(PatternBlockFaces::new, PatternBlockFaces::faces);
 
     public PatternBlockFaces {
         faces = Map.copyOf(faces);
 
     }
 
-    public Optional<Face> getFace(Direction direction) {
+    public @NotNull Optional<Face> getFace(Direction direction) {
         return Optional.ofNullable(faces.get(direction));
     }
 
@@ -34,14 +42,14 @@ public record PatternBlockFaces(Map<Direction, Face> faces) {
         return faces.containsKey(direction);
     }
 
-    public PatternBlockFaces withFace(Direction direction, Face face) {
+    public @NotNull PatternBlockFaces withFace(Direction direction, Face face) {
         Map<Direction, Face> copy = new EnumMap<>(Direction.class);
         copy.putAll(faces);
         copy.put(direction, face);
         return new PatternBlockFaces(copy);
     }
 
-    public PatternBlockFaces withoutFace(Direction direction) {
+    public @NotNull PatternBlockFaces withoutFace(Direction direction) {
         if (!faces.containsKey(direction)) {
             return this;
         }
@@ -50,16 +58,6 @@ public record PatternBlockFaces(Map<Direction, Face> faces) {
         copy.remove(direction);
         return new PatternBlockFaces(copy);
     }
-
-    public static final Codec<PatternBlockFaces> CODEC = Codec.unboundedMap(Direction.CODEC, Face.CODEC)
-            .xmap(PatternBlockFaces::new, PatternBlockFaces::faces);
-
-    public static final StreamCodec<RegistryFriendlyByteBuf, PatternBlockFaces> STREAM_CODEC =
-            ByteBufCodecs.<RegistryFriendlyByteBuf, Direction, Face, Map<Direction, Face>>map(
-                    i -> new EnumMap<>(Direction.class),
-                    Direction.STREAM_CODEC,
-                    Face.STREAM_CODEC
-            ).map(PatternBlockFaces::new, PatternBlockFaces::faces);
 
     public enum Orientation implements StringRepresentable {
         R0_NONE("r0", 0, false),
@@ -85,6 +83,16 @@ public record PatternBlockFaces(Map<Direction, Face> faces) {
             this.flip = flip;
         }
 
+        public static @NotNull Orientation of(int rotation, boolean flip) {
+            int normalized = Math.floorMod(rotation, 360);
+            for (Orientation orientation : values()) {
+                if (orientation.rotation == normalized && orientation.flip == flip) {
+                    return orientation;
+                }
+            }
+            throw new IllegalArgumentException("Unsupported orientation: " + rotation + " flip=" + flip);
+        }
+
         @Override
         public @NotNull String getSerializedName() {
             return this.name;
@@ -98,29 +106,19 @@ public record PatternBlockFaces(Map<Direction, Face> faces) {
             return flip;
         }
 
-        public static Orientation of(int rotation, boolean flip) {
-            int normalized = Math.floorMod(rotation, 360);
-            for (Orientation orientation : values()) {
-                if (orientation.rotation == normalized && orientation.flip == flip) {
-                    return orientation;
-                }
-            }
-            throw new IllegalArgumentException("Unsupported orientation: " + rotation + " flip=" + flip);
-        }
-
-        public Orientation rotatedClockwise() {
+        public @NotNull Orientation rotatedClockwise() {
             return of(rotation + 90, flip);
         }
 
-        public Orientation rotatedCounterClockwise() {
+        public @NotNull Orientation rotatedCounterClockwise() {
             return of(rotation - 90, flip);
         }
 
-        public Orientation flippedHorizontally() {
+        public @NotNull Orientation flippedHorizontally() {
             return of(-rotation, !flip);
         }
 
-        public Orientation flippedVertically() {
+        public @NotNull Orientation flippedVertically() {
             return of(180 - rotation, !flip);
         }
     }
@@ -141,21 +139,20 @@ public record PatternBlockFaces(Map<Direction, Face> faces) {
 
     public record Face(DyeColor baseColor, Orientation orientation, List<Layer> layers) {
 
-        public Face {
-            layers = List.copyOf(layers);
-        }
-
         public static final Codec<Face> CODEC = RecordCodecBuilder.create(instance -> instance.group(
                 DyeColor.CODEC.fieldOf("base_color").forGetter(Face::baseColor),
                 Orientation.CODEC.fieldOf("orientation").forGetter(Face::orientation),
                 Layer.CODEC.listOf().fieldOf("layers").forGetter(Face::layers)
         ).apply(instance, Face::new));
-
         public static final StreamCodec<RegistryFriendlyByteBuf, Face> STREAM_CODEC = StreamCodec.composite(
                 DyeColor.STREAM_CODEC, Face::baseColor,
                 Orientation.STREAM_CODEC, Face::orientation,
                 Layer.STREAM_CODEC.apply(ByteBufCodecs.list()), Face::layers,
                 Face::new
         );
+
+        public Face {
+            layers = List.copyOf(layers);
+        }
     }
 }

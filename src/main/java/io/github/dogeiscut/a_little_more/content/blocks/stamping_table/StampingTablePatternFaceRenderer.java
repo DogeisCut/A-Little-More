@@ -1,13 +1,9 @@
 package io.github.dogeiscut.a_little_more.content.blocks.stamping_table;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.BufferBuilder;
-import com.mojang.blaze3d.vertex.BufferUploader;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.MeshData;
-import com.mojang.blaze3d.vertex.Tesselator;
-import com.mojang.blaze3d.vertex.VertexFormat;
+import com.mojang.blaze3d.vertex.*;
 import io.github.dogeiscut.a_little_more.ALittleMore;
+import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockFaceFrames;
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockFaces;
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockFaces.Face;
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockFaces.Orientation;
@@ -23,8 +19,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix4f;
 
-import java.util.EnumMap;
-import java.util.Map;
 import java.util.function.Function;
 
 public final class StampingTablePatternFaceRenderer {
@@ -38,72 +32,6 @@ public final class StampingTablePatternFaceRenderer {
     private static final float[] CORNER_V = {0.0F, 1.0F, 1.0F, 0.0F};
 
     private StampingTablePatternFaceRenderer() {
-    }
-
-    public record FaceFrame(float originX, float originY, float rightX, float rightY, float downX, float downY) {
-
-        public static @NotNull FaceFrame square(float x, float y, float size) {
-            return new FaceFrame(x, y, size, 0.0F, 0.0F, size);
-        }
-
-        public float x(float fx, float fy) {
-            return originX + fx * rightX + fy * downX;
-        }
-
-        public float y(float fx, float fy) {
-            return originY + fx * rightY + fy * downY;
-        }
-    }
-
-    public enum CubeView {
-        FRONT(new float[]{-1, 0, -1}, new float[]{-1, 2, 1}, Direction.UP, Direction.EAST, Direction.NORTH),
-        BACK(new float[]{1, 0, 1}, new float[]{-1, 2, 1}, Direction.DOWN, Direction.WEST, Direction.SOUTH);
-
-        public final Direction endFace;
-        public final Direction leftFace;
-        public final Direction rightFace;
-        private final float[] screenRight;
-        private final float[] screenUp;
-
-        CubeView(float[] screenRight, float[] screenUp, Direction endFace, Direction leftFace, Direction rightFace) {
-            this.screenRight = normalize(screenRight);
-            this.screenUp = normalize(screenUp);
-            this.endFace = endFace;
-            this.leftFace = leftFace;
-            this.rightFace = rightFace;
-        }
-
-        public @NotNull CubeView opposite() {
-            return this == FRONT ? BACK : FRONT;
-        }
-
-        public boolean shows(@NotNull Direction direction) {
-            return direction == endFace || direction == leftFace || direction == rightFace;
-        }
-
-        public float[] screenDirection(@NotNull Direction direction) {
-            float[] world = {direction.getStepX(), direction.getStepY(), direction.getStepZ()};
-            float x = dot(world, screenRight);
-            float y = -dot(world, screenUp);
-            float length = (float) Math.sqrt(x * x + y * y);
-            return new float[]{x / length, y / length};
-        }
-
-        private float[] project(float[] point, float centerX, float centerY, float scale) {
-            float[] relative = {point[0] - 0.5F, point[1] - 0.5F, point[2] - 0.5F};
-            return new float[]{centerX + dot(relative, screenRight) * scale, centerY - dot(relative, screenUp) * scale};
-        }
-    }
-
-    private static final Map<Direction, float[][]> FACE_BASIS = new EnumMap<>(Direction.class);
-
-    static {
-        FACE_BASIS.put(Direction.UP, basis(0, 1, 0, 1, 0, 0, 0, 0, 1));
-        FACE_BASIS.put(Direction.DOWN, basis(0, 0, 1, 1, 0, 0, 0, 0, -1));
-        FACE_BASIS.put(Direction.NORTH, basis(1, 1, 0, -1, 0, 0, 0, -1, 0));
-        FACE_BASIS.put(Direction.SOUTH, basis(0, 1, 1, 1, 0, 0, 0, -1, 0));
-        FACE_BASIS.put(Direction.WEST, basis(0, 1, 0, 0, 0, 1, 0, -1, 0));
-        FACE_BASIS.put(Direction.EAST, basis(1, 1, 1, 0, 0, -1, 0, -1, 0));
     }
 
     public static void drawFace(@NotNull GuiGraphics graphics, @NotNull FaceFrame frame, @Nullable Face face, float shade) {
@@ -150,7 +78,7 @@ public final class StampingTablePatternFaceRenderer {
 
     public static @NotNull FaceFrame cubeFace(@NotNull CubeView view, @NotNull Direction direction,
                                               float centerX, float centerY, float scale) {
-        float[][] basis = FACE_BASIS.get(direction);
+        float[][] basis = PatternBlockFaceFrames.basis(direction);
         float[] origin = view.project(basis[0], centerX, centerY, scale);
         float[] right = view.project(add(basis[0], basis[1]), centerX, centerY, scale);
         float[] down = view.project(add(basis[0], basis[2]), centerX, centerY, scale);
@@ -299,21 +227,71 @@ public final class StampingTablePatternFaceRenderer {
         return from + (to - from) * t;
     }
 
-    private static float dot(float[] a, float[] b) {
+    private static float dot(float @NotNull [] a, float @NotNull [] b) {
         return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
     }
 
-    private static float[] add(float[] a, float[] b) {
+    private static float[] add(float @NotNull [] a, float @NotNull [] b) {
         return new float[]{a[0] + b[0], a[1] + b[1], a[2] + b[2]};
     }
 
-    private static float[] normalize(float[] v) {
+    private static float[] normalize(float @NotNull [] v) {
         float length = (float) Math.sqrt(dot(v, v));
         return new float[]{v[0] / length, v[1] / length, v[2] / length};
     }
 
-    private static float[][] basis(float ox, float oy, float oz, float rx, float ry, float rz,
-                                                       float dx, float dy, float dz) {
-        return new float[][]{{ox, oy, oz}, {rx, ry, rz}, {dx, dy, dz}};
+    public enum CubeView {
+        FRONT(new float[]{-1, 0, -1}, new float[]{-1, 2, 1}, Direction.UP, Direction.EAST, Direction.NORTH),
+        BACK(new float[]{1, 0, 1}, new float[]{-1, 2, 1}, Direction.DOWN, Direction.WEST, Direction.SOUTH);
+
+        public final Direction endFace;
+        public final Direction leftFace;
+        public final Direction rightFace;
+        private final float @NotNull [] screenRight;
+        private final float @NotNull [] screenUp;
+
+        CubeView(float @NotNull [] screenRight, float @NotNull [] screenUp, Direction endFace, Direction leftFace, Direction rightFace) {
+            this.screenRight = normalize(screenRight);
+            this.screenUp = normalize(screenUp);
+            this.endFace = endFace;
+            this.leftFace = leftFace;
+            this.rightFace = rightFace;
+        }
+
+        public @NotNull CubeView opposite() {
+            return this == FRONT ? BACK : FRONT;
+        }
+
+        public boolean shows(@NotNull Direction direction) {
+            return direction == endFace || direction == leftFace || direction == rightFace;
+        }
+
+        public float[] screenDirection(@NotNull Direction direction) {
+            float[] world = {direction.getStepX(), direction.getStepY(), direction.getStepZ()};
+            float x = dot(world, screenRight);
+            float y = -dot(world, screenUp);
+            float length = (float) Math.sqrt(x * x + y * y);
+            return new float[]{x / length, y / length};
+        }
+
+        private float[] project(float @NotNull [] point, float centerX, float centerY, float scale) {
+            float[] relative = {point[0] - 0.5F, point[1] - 0.5F, point[2] - 0.5F};
+            return new float[]{centerX + dot(relative, screenRight) * scale, centerY - dot(relative, screenUp) * scale};
+        }
+    }
+
+    public record FaceFrame(float originX, float originY, float rightX, float rightY, float downX, float downY) {
+
+        public static @NotNull FaceFrame square(float x, float y, float size) {
+            return new FaceFrame(x, y, size, 0.0F, 0.0F, size);
+        }
+
+        public float x(float fx, float fy) {
+            return originX + fx * rightX + fy * downX;
+        }
+
+        public float y(float fx, float fy) {
+            return originY + fx * rightY + fy * downY;
+        }
     }
 }

@@ -15,11 +15,11 @@ public class ALMMenuTypes {
     public static final DeferredRegister<MenuType<?>> MENU_TYPES =
             DeferredRegister.create(Registries.MENU, ALittleMore.MOD_ID);
 
-    public static final DeferredHolder<MenuType<?>, MenuType<StampingTableMenu>> STAMPING_TABLE =
+    public static void register(@NotNull IEventBus modEventBus) {
+        MENU_TYPES.register(modEventBus);
+    }    public static final DeferredHolder<MenuType<?>, MenuType<StampingTableMenu>> STAMPING_TABLE =
             MENU_TYPES.register("stamping_table",
                     () -> new MenuType<>(StampingTableMenu::new, FeatureFlags.DEFAULT_FLAGS));
 
-    public static void register(@NotNull IEventBus modEventBus) {
-        MENU_TYPES.register(modEventBus);
-    }
+
 }

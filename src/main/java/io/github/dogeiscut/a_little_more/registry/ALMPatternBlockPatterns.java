@@ -3,7 +3,7 @@ package io.github.dogeiscut.a_little_more.registry;
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockPattern;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 
 public class ALMPatternBlockPatterns {
     public static final ResourceKey<PatternBlockPattern> BORDER = create("border");
@@ -49,7 +49,7 @@ public class ALMPatternBlockPatterns {
     public static final ResourceKey<PatternBlockPattern> TRIANGLES_BOTTOM = create("triangles_bottom");
     public static final ResourceKey<PatternBlockPattern> TRIANGLES_TOP = create("triangles_top");
 
-    private static ResourceKey<PatternBlockPattern> create(String name) {
+    private static @NotNull ResourceKey<PatternBlockPattern> create(@NotNull String name) {
         return ResourceKey.create(
                 PatternBlockPattern.REGISTRY_KEY,
                 ALittleMore.id(name)

@@ -54,11 +54,13 @@
     - missing immunity potions/arrow from A Little More tab
 - [ ] Pattern Block
   - [X] Visible pattern seams on edge of block.
+  - [ ] scaffold-like custom block sounds
   - [X] Weird culling when rendering thin faces.
-  - [ ] figuring out how the hell to make the item model work properly
+  - [X] figuring out how the hell to make the item model work properly
+  - [ ] fix block breaking cracks rendering under the patterns
   - [X] Handling rotation (currently it extends pillar block, which is like logs and stuff, but this makes the rotation of the side faces ambigious)
     - > Current idea is to make it store an explicit "facing" direction instead, on top of a 4 way rotation for that facing direction. But it gets confusing when you place it sideways cause like... how will it know which way to rotate it?
-  - [ ] making the chunk re-render if the block data changes 
+  - [ ] making the chunk re-render if the block data changes
   - [X] making the patterns data driven (ideally they'd read from banner patterns and try to pull a texture, but use a missing texture when there's none)
   - [X] Considering making pattern blocks more advanced:
     - > I have one last idea actually
@@ -74,8 +76,8 @@
     - [X] Base color: a blank face has to be dyed first, which sets its base color, before patterns can be added
     - [X] Way to re-dye the base color of a face that already exists
       - eh im deciding not to bother with this. You can already copy faces for free so having one sink isnt a big deal
-    - [ ] Pattern block item model doesn't show faces, so the Stamping Table slots only show the empty base (see above)
-      - [ ] kinda want to make holding shift show the backside faces in the item itself
+    - [X] Pattern block item model doesn't show faces, so the Stamping Table slots only show the empty base (see above)
+      - [X] kinda want to make holding shift show the backside faces in the item itself
     - [ ] Actual proper slot icons (like the loom) instead of the weird fake item thing
     - [ ] Stamping table custom sounds (For modifications, instead of just using the loom ones)
     - [ ] some sort of blanked out default state (for when there's no blocks or items in it at all) like the loom
@@ -87,7 +89,7 @@ and currently pasting or removing a face is an instant action
       - i could also make the block itself rotatable but idk if i want to do that since your facing direction alone cant
     - [ ] make banner pattern items reduce the patterns to only 1, with it being force selected, like the loom.
 cover all orientations (6 cardinal directions, with 4 rotations in each)
-  - [ ] make them drop with patterns
+  - [ ] make them drop with patterns (currently mining a pattern block drops a blank one)
   - [ ] fix break/mine particles being colored
   - [ ] optimize the block and items themselves by storing faces/patterns in a world-saved table that the blocks/items reference instead of direct patterns
     - this is just so a chunk of entierly the same pattern block isnt storing 9450940 copies of the same data

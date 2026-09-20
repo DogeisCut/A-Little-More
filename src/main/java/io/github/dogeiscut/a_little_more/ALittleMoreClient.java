@@ -1,6 +1,7 @@
 package io.github.dogeiscut.a_little_more;
 
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockColor;
+import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockFlipKey;
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockGeometryLoader;
 import io.github.dogeiscut.a_little_more.content.blocks.stamping_table.StampingTableScreen;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepBubbleParticle;
@@ -14,11 +15,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.client.event.ModelEvent;
-import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
-import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
-import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
+import net.neoforged.neoforge.client.event.*;
 import org.jetbrains.annotations.NotNull;
 
 @EventBusSubscriber(modid = ALittleMore.MOD_ID, value = Dist.CLIENT)
@@ -40,18 +37,28 @@ public class ALittleMoreClient {
     }
 
     @SubscribeEvent
-    public static void onRegisterGeometryLoaders(ModelEvent.RegisterGeometryLoaders event) {
+    public static void onRegisterGeometryLoaders(ModelEvent.@NotNull RegisterGeometryLoaders event) {
         event.register(PatternBlockGeometryLoader.ID, PatternBlockGeometryLoader.INSTANCE);
     }
 
     @SubscribeEvent
-    public static void onRegisterMenuScreens(RegisterMenuScreensEvent event) {
+    public static void onRegisterMenuScreens(@NotNull RegisterMenuScreensEvent event) {
         event.register(ALMMenuTypes.STAMPING_TABLE.get(), StampingTableScreen::new);
     }
 
     @SubscribeEvent
-    public static void onRegisterColorHandlers(RegisterColorHandlersEvent.Block event) {
+    public static void onRegisterColorHandlers(RegisterColorHandlersEvent.@NotNull Block event) {
         event.register(new PatternBlockColor(), ALMBlocks.PATTERN_BLOCK.get());
+    }
+
+    @SubscribeEvent
+    public static void onRegisterItemColorHandlers(RegisterColorHandlersEvent.@NotNull Item event) {
+        event.register(new PatternBlockColor(), ALMBlocks.PATTERN_BLOCK.get());
+    }
+
+    @SubscribeEvent
+    public static void onRegisterKeyMappings(@NotNull RegisterKeyMappingsEvent event) {
+        event.register(PatternBlockFlipKey.FLIP);
     }
 }
 

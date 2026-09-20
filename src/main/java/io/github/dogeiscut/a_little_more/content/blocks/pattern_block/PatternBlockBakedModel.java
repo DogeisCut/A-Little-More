@@ -1,15 +1,20 @@
 package io.github.dogeiscut.a_little_more.content.blocks.pattern_block;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import io.github.dogeiscut.a_little_more.ALittleMore;
+import io.github.dogeiscut.a_little_more.registry.ALMDataComponents;
 import io.github.dogeiscut.a_little_more.registry.ALMModelProperties;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.ItemOverrides;
+import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.ChunkRenderTypeSet;
 import net.neoforged.neoforge.client.model.data.ModelData;
@@ -25,20 +30,99 @@ import java.util.function.Function;
 
 public class PatternBlockBakedModel implements BakedModel {
 
-    private final TextureAtlasSprite baseSprite;
-    private final TextureAtlasSprite emptyBaseSprite; // Base sprite used when face has no data
-    private final Function<ResourceLocation, TextureAtlasSprite> spriteLookup;
+    private static final int MAX_CACHED_ITEM_MODELS = 512;
 
-    private final Map<CacheKey, List<BakedQuad>> quadCache = new ConcurrentHashMap<>();
+    private final TextureAtlasSprite baseSprite;
+    private final TextureAtlasSprite emptyBaseSprite;
+    private final Function<ResourceLocation, TextureAtlasSprite> spriteLookup;
+    private final ItemTransforms transforms;
+
+    private final Map<CacheKey, List<BakedQuad>> quadCache;
+    private final Map<ItemKey, PatternBlockBakedModel> itemModels;
+
+    private final @Nullable PatternBlockFaces itemFaces;
+    private final int tintOffset;
+    private final boolean flipped;
+    private final @Nullable PatternBlockBakedModel flippedView;
 
     public PatternBlockBakedModel(
             TextureAtlasSprite baseSprite,
             TextureAtlasSprite emptyBaseSprite,
-            Function<ResourceLocation, TextureAtlasSprite> spriteLookup
+            Function<ResourceLocation, TextureAtlasSprite> spriteLookup,
+            ItemTransforms transforms
     ) {
         this.baseSprite = baseSprite;
         this.emptyBaseSprite = emptyBaseSprite;
         this.spriteLookup = spriteLookup;
+        this.transforms = transforms;
+        this.quadCache = new ConcurrentHashMap<>();
+        this.itemModels = new ConcurrentHashMap<>();
+        this.itemFaces = null;
+        this.tintOffset = 0;
+        this.flipped = false;
+        this.flippedView = new PatternBlockBakedModel(this, true);
+    }
+
+    private PatternBlockBakedModel(@NotNull PatternBlockBakedModel main, boolean flipped) {
+        this.baseSprite = main.baseSprite;
+        this.emptyBaseSprite = main.emptyBaseSprite;
+        this.spriteLookup = main.spriteLookup;
+        this.transforms = main.transforms;
+        this.quadCache = main.quadCache;
+        this.itemModels = main.itemModels;
+        this.itemFaces = null;
+        this.tintOffset = 0;
+        this.flipped = flipped;
+        this.flippedView = null;
+    }
+
+    private PatternBlockBakedModel(@NotNull PatternBlockBakedModel view, @Nullable PatternBlockFaces faces, int tintOffset) {
+        this.baseSprite = view.baseSprite;
+        this.emptyBaseSprite = view.emptyBaseSprite;
+        this.spriteLookup = view.spriteLookup;
+        this.transforms = view.transforms;
+        this.quadCache = view.quadCache;
+        this.itemModels = view.itemModels;
+        this.itemFaces = faces;
+        this.tintOffset = tintOffset;
+        this.flipped = view.flipped;
+        this.flippedView = null;
+    }
+
+    @Override
+    public @NotNull BakedModel applyTransform(@NotNull ItemDisplayContext context, @NotNull PoseStack poseStack, boolean leftHand) {
+        transforms.getTransform(context).apply(leftHand, poseStack);
+
+        if (flippedView != null && context == ItemDisplayContext.GUI && PatternBlockFlipKey.isHeld()) {
+            return flippedView;
+        }
+        return this;
+    }
+
+    @Override
+    public @NotNull List<BakedModel> getRenderPasses(@NotNull ItemStack stack, boolean fabulous) {
+        if (itemFaces != null) {
+            return List.of(this);
+        }
+
+        PatternBlockFaces faces = stack.getOrDefault(ALMDataComponents.PATTERN_BLOCK_FACES, PatternBlockFaces.EMPTY);
+        ItemKey key = new ItemKey(faces, flipped);
+        PatternBlockBakedModel model = itemModels.get(key);
+        if (model == null) {
+            if (itemModels.size() >= MAX_CACHED_ITEM_MODELS) {
+                itemModels.clear();
+            }
+            model = flipped
+                    ? new PatternBlockBakedModel(this, PatternBlockFlip.flipped(faces), PatternBlockFlip.TINT_OFFSET)
+                    : new PatternBlockBakedModel(this, faces, 0);
+            itemModels.put(key, model);
+        }
+        return List.of(model);
+    }
+
+    @Override
+    public @NotNull ItemTransforms getTransforms() {
+        return transforms;
     }
 
     @Override
@@ -60,15 +144,15 @@ public class PatternBlockBakedModel implements BakedModel {
 
         PatternBlockFaces faces = extraData.get(ALMModelProperties.PATTERN_BLOCK_FACES);
         if (faces == null) {
-            faces = PatternBlockFaces.EMPTY;
+            faces = itemFaces != null ? itemFaces : PatternBlockFaces.EMPTY;
         }
 
-        CacheKey key = new CacheKey(side, faces, renderType);
+        CacheKey key = new CacheKey(side, faces, renderType, tintOffset);
         PatternBlockFaces finalFaces = faces;
-        return quadCache.computeIfAbsent(key, k -> buildQuads(side, finalFaces, renderType));
+        return quadCache.computeIfAbsent(key, k -> buildQuads(side, finalFaces, renderType, tintOffset));
     }
 
-    private List<BakedQuad> buildQuads(Direction side, PatternBlockFaces faces, @Nullable RenderType renderType) {
+    private @NotNull List<BakedQuad> buildQuads(@NotNull Direction side, @NotNull PatternBlockFaces faces, @Nullable RenderType renderType, int tintOffset) {
         List<BakedQuad> quads = new ArrayList<>();
 
         boolean wantBase = renderType == null || renderType.equals(RenderType.solid());
@@ -78,7 +162,7 @@ public class PatternBlockBakedModel implements BakedModel {
 
         if (wantBase) {
             if (faceOpt.isPresent()) {
-                int baseTint = side.get3DDataValue() * 100;
+                int baseTint = tintOffset + side.get3DDataValue() * 100;
                 quads.add(PatternBlockQuadBuilder.baseFaceQuad(side, baseSprite, baseTint));
             } else {
                 quads.add(PatternBlockQuadBuilder.baseFaceQuad(side, emptyBaseSprite, -1));
@@ -94,7 +178,7 @@ public class PatternBlockBakedModel implements BakedModel {
                 TextureAtlasSprite sprite = spriteFor(layer.pattern().value());
                 if (sprite == null) continue;
 
-                int layerTint = (side.get3DDataValue() * 100) + i + 1;
+                int layerTint = tintOffset + (side.get3DDataValue() * 100) + i + 1;
                 quads.add(PatternBlockQuadBuilder.layerFaceQuad(side, sprite, face.orientation(), layerTint));
             }
         }
@@ -103,7 +187,7 @@ public class PatternBlockBakedModel implements BakedModel {
     }
 
     @Nullable
-    private TextureAtlasSprite spriteFor(PatternBlockPattern pattern) {
+    private TextureAtlasSprite spriteFor(@NotNull PatternBlockPattern pattern) {
         ResourceLocation assetId = pattern.assetId();
         TextureAtlasSprite sprite = spriteLookup.apply(assetId);
         if (sprite == null) {
@@ -152,5 +236,9 @@ public class PatternBlockBakedModel implements BakedModel {
         return ChunkRenderTypeSet.of(RenderType.solid(), RenderType.translucent());
     }
 
-    private record CacheKey(Direction side, PatternBlockFaces faces, @Nullable RenderType renderType) {}
+    private record CacheKey(Direction side, PatternBlockFaces faces, @Nullable RenderType renderType, int tintOffset) {
+    }
+
+    private record ItemKey(PatternBlockFaces faces, boolean flipped) {
+    }
 }

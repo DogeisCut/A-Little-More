@@ -6,11 +6,11 @@ import io.github.dogeiscut.a_little_more.registry.ALMPatternBlockPatterns;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.DyeColor;
+import org.jetbrains.annotations.NotNull;
 
 public class ALMPatternBlockPatternBootstrap {
 
-    public static void bootstrap(BootstrapContext<PatternBlockPattern> context) {
+    public static void bootstrap(@NotNull BootstrapContext<PatternBlockPattern> context) {
         register(context, ALMPatternBlockPatterns.BORDER, "border");
         register(context, ALMPatternBlockPatterns.BRICKS, "bricks");
         register(context, ALMPatternBlockPatterns.CIRCLE, "circle");
@@ -55,7 +55,7 @@ public class ALMPatternBlockPatternBootstrap {
         register(context, ALMPatternBlockPatterns.TRIANGLES_TOP, "triangles_top");
     }
 
-    private static void register(BootstrapContext<PatternBlockPattern> context, ResourceKey<PatternBlockPattern> key, String name) {
+    private static void register(@NotNull BootstrapContext<PatternBlockPattern> context, @NotNull ResourceKey<PatternBlockPattern> key, String name) {
         ResourceLocation assetId = ALittleMore.id("block/pattern_block/" + name);
         String translationKey = "pattern.a_little_more." + name;
         context.register(key, new PatternBlockPattern(assetId, translationKey));

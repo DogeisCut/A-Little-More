@@ -49,23 +49,23 @@ public class StampingTableMenu extends AbstractContainerMenu {
     private static final int HOTBAR_START = 31;
     private static final int SLOTS_END = 40;
 
-    private final ContainerLevelAccess access;
-    private final HolderLookup.RegistryLookup<PatternBlockPattern> patternLookup;
+    private final @NotNull ContainerLevelAccess access;
+    private final HolderLookup.@NotNull RegistryLookup<PatternBlockPattern> patternLookup;
 
-    private final Container inputContainer;
-    private final Container resultContainer;
-    private final Slot patternBlockSlot;
-    private final Slot dyeSlot;
-    private final Slot patternItemSlot;
-    private final Slot resultSlot;
+    private final @NotNull Container inputContainer;
+    private final @NotNull Container resultContainer;
+    private final @NotNull Slot patternBlockSlot;
+    private final @NotNull Slot dyeSlot;
+    private final @NotNull Slot patternItemSlot;
+    private final @NotNull Slot resultSlot;
 
     private final DataSlot selectedPattern = DataSlot.standalone();
     private final DataSlot editingFace = DataSlot.standalone();
     private final DataSlot clipboardPresent = DataSlot.standalone();
 
-    private List<Holder<PatternBlockPattern>> selectablePatterns = List.of();
+    private @NotNull List<Holder<PatternBlockPattern>> selectablePatterns = List.of();
     private @Nullable Face clipboard;
-    private Runnable slotUpdateListener = () -> {
+    private @NotNull Runnable slotUpdateListener = () -> {
     };
 
     public StampingTableMenu(int containerId, @NotNull Inventory inventory) {
@@ -148,6 +148,14 @@ public class StampingTableMenu extends AbstractContainerMenu {
         this.selectablePatterns = computeSelectablePatterns(ItemStack.EMPTY);
     }
 
+    public static @NotNull PatternBlockFaces getFaces(@NotNull ItemStack stack) {
+        return stack.getOrDefault(ALMDataComponents.PATTERN_BLOCK_FACES, PatternBlockFaces.EMPTY);
+    }
+
+    private static boolean isSamePattern(@NotNull Holder<PatternBlockPattern> a, @NotNull Holder<PatternBlockPattern> b) {
+        return a.unwrapKey().isPresent() ? a.unwrapKey().equals(b.unwrapKey()) : a.equals(b);
+    }
+
     public @NotNull List<Holder<PatternBlockPattern>> getSelectablePatterns() {
         return this.selectablePatterns;
     }
@@ -174,10 +182,6 @@ public class StampingTableMenu extends AbstractContainerMenu {
 
     public void registerUpdateListener(@NotNull Runnable listener) {
         this.slotUpdateListener = listener;
-    }
-
-    public static @NotNull PatternBlockFaces getFaces(@NotNull ItemStack stack) {
-        return stack.getOrDefault(ALMDataComponents.PATTERN_BLOCK_FACES, PatternBlockFaces.EMPTY);
     }
 
     @Override
@@ -300,10 +304,6 @@ public class StampingTableMenu extends AbstractContainerMenu {
             }
         }
         this.selectedPattern.set(index);
-    }
-
-    private static boolean isSamePattern(@NotNull Holder<PatternBlockPattern> a, @NotNull Holder<PatternBlockPattern> b) {
-        return a.unwrapKey().isPresent() ? a.unwrapKey().equals(b.unwrapKey()) : a.equals(b);
     }
 
     private void setupResultSlot() {

@@ -7,19 +7,21 @@ import net.minecraft.client.renderer.block.model.FaceBakery;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.BlockModelRotation;
 import net.minecraft.core.Direction;
+import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 
 public final class PatternBlockQuadBuilder {
 
     private static final FaceBakery FACE_BAKERY = new FaceBakery();
 
-    private PatternBlockQuadBuilder() {}
+    private PatternBlockQuadBuilder() {
+    }
 
-    public static BakedQuad baseFaceQuad(Direction side, TextureAtlasSprite sprite, int tintIndex) {
+    public static @NotNull BakedQuad baseFaceQuad(@NotNull Direction side, @NotNull TextureAtlasSprite sprite, int tintIndex) {
         return layerFaceQuad(side, sprite, PatternBlockFaces.Orientation.R0_NONE, tintIndex);
     }
 
-    public static BakedQuad layerFaceQuad(Direction side, TextureAtlasSprite sprite, PatternBlockFaces.Orientation orientation, int tintIndex) {
+    public static @NotNull BakedQuad layerFaceQuad(@NotNull Direction side, @NotNull TextureAtlasSprite sprite, PatternBlockFaces.@NotNull Orientation orientation, int tintIndex) {
         Vector3f from = new Vector3f(0f, 0f, 0f);
         Vector3f to = new Vector3f(16f, 16f, 16f);
 

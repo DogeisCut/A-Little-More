@@ -23,6 +23,11 @@ public enum StampingTableAction {
         this.orientationChange = orientationChange;
     }
 
+    public static @Nullable StampingTableAction byIndex(int index) {
+        StampingTableAction[] actions = values();
+        return index >= 0 && index < actions.length ? actions[index] : null;
+    }
+
     public @NotNull String translationKey() {
         return "gui.a_little_more.stamping_table." + translationSuffix;
     }
@@ -37,10 +42,5 @@ public enum StampingTableAction {
 
     public int buttonId() {
         return StampingTableMenu.BUTTON_ACTION_BASE + ordinal();
-    }
-
-    public static @Nullable StampingTableAction byIndex(int index) {
-        StampingTableAction[] actions = values();
-        return index >= 0 && index < actions.length ? actions[index] : null;
     }
 }

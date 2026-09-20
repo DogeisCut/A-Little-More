@@ -24,17 +24,19 @@ public class ALMBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        ALMDatagen.ALMBlockFamilies.getAllFamilies().forEach(this::family);
+        ALMDatagen.BlockFamilies.getAllFamilies().forEach(this::family);
 
-        ALMDatagen.ALMBlockFamilies.SIMPLE_CUBES.forEach(this::simpleCubeAllWithItem);
+        ALMDatagen.BlockFamilies.SIMPLE_CUBES.forEach(this::simpleCubeAllWithItem);
 
         ModelFile patternModel = models().getBuilder("block/pattern_block")
+                .parent(new ModelFile.UncheckedModelFile(mcLoc("block/block")))
                 .customLoader((builder, helper) -> new CustomLoaderBuilder<BlockModelBuilder>(
                         ALittleMore.id("pattern_block"),
                         builder,
                         helper,
                         false
-                ) {})
+                ) {
+                })
                 .end();
 
         simpleBlock(ALMBlocks.PATTERN_BLOCK.get(), patternModel);

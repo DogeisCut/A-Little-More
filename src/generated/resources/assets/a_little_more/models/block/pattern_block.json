@@ -1,3 +1,4 @@
 {
+  "parent": "minecraft:block/block",
   "loader": "a_little_more:pattern_block"
 }

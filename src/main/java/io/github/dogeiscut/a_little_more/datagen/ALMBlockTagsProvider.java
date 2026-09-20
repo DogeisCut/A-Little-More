@@ -32,25 +32,27 @@ public class ALMBlockTagsProvider extends BlockTagsProvider {
     protected void addTags(HolderLookup.@NotNull Provider provider) {
         ALMBlocks.BLOCKS.getEntries().forEach(holder -> auto(holder.get()));
 
-        ALMDatagen.ALMBlockFamilies.SEEPSTONE.allBlocks().forEach(this::pickaxe);
-        ALMDatagen.ALMBlockFamilies.POLISHED_SEEPSTONE.allBlocks().forEach(this::pickaxe);
-        ALMDatagen.ALMBlockFamilies.SEEPSTONE_BRICKS.allBlocks().forEach(this::pickaxe);
-        ALMDatagen.ALMBlockFamilies.SEEPSTONE_TILES.allBlocks().forEach(this::pickaxe);
+        ALMDatagen.BlockFamilies.SEEPSTONE.allBlocks().forEach(this::pickaxe);
+        ALMDatagen.BlockFamilies.POLISHED_SEEPSTONE.allBlocks().forEach(this::pickaxe);
+        ALMDatagen.BlockFamilies.SEEPSTONE_BRICKS.allBlocks().forEach(this::pickaxe);
+        ALMDatagen.BlockFamilies.SEEPSTONE_TILES.allBlocks().forEach(this::pickaxe);
 
-        ALMDatagen.ALMBlockFamilies.SIMPLE_CUBES.forEach(this::pickaxe);
-        ALMDatagen.ALMBlockFamilies.ORES.forEach(this::pickaxe);
-        ALMDatagen.ALMBlockFamilies.PICKAXE_MINEABLE_EXTRA.forEach(this::pickaxe);
-        ALMDatagen.ALMBlockFamilies.AXE_MINEABLE.forEach(this::axe);
+        ALMDatagen.BlockFamilies.SIMPLE_CUBES.forEach(this::pickaxe);
+        ALMDatagen.BlockFamilies.ORES.forEach(this::pickaxe);
 
-        //ALMBlockFamilies.PATTERN_BLOCKS.forEach();
+        ALMDatagen.BlockFamilies.PICKAXE_MINEABLE.forEach(this::pickaxe);
+        ALMDatagen.BlockFamilies.AXE_MINEABLE.forEach(this::axe);
+        ALMDatagen.BlockFamilies.SHOVEL_MINEABLE.forEach(this::shovel);
+        ALMDatagen.BlockFamilies.HOE_MINEABLE.forEach(this::hoe);
+        ALMDatagen.BlockFamilies.SWORD_EFFICIENT.forEach(this::sword);
 
-        ALMDatagen.ALMBlockFamilies.NEEDS_IRON_TOOL.forEach(this::ironTool);
+        ALMDatagen.BlockFamilies.NEEDS_IRON_TOOL.forEach(this::ironTool);
 
         ore(ALMBlocks.CELERIUM_ORE.get(), Tags.Blocks.ORES_IN_GROUND_STONE);
         ore(ALMBlocks.DEEPSLATE_CELERIUM_ORE.get(), Tags.Blocks.ORES_IN_GROUND_DEEPSLATE);
 
-        addAll(ALMTags.Blocks.CELERIUM_ORES, ALMDatagen.ALMBlockFamilies.ORES);
-        addAll(ALMTags.Blocks.C_CELERIUM_ORES, ALMDatagen.ALMBlockFamilies.ORES);
+        addAll(ALMTags.Blocks.CELERIUM_ORES, ALMDatagen.BlockFamilies.ORES);
+        addAll(ALMTags.Blocks.C_CELERIUM_ORES, ALMDatagen.BlockFamilies.ORES);
 
         storageBlock(ALMBlocks.CELERIUM_BLOCK.get(), ALMTags.Blocks.C_CELERIUM_STORAGE_BLOCKS);
         tag(BlockTags.BEACON_BASE_BLOCKS).add(ALMBlocks.CELERIUM_BLOCK.get());
@@ -77,6 +79,18 @@ public class ALMBlockTagsProvider extends BlockTagsProvider {
 
     private void axe(@NotNull Block block) {
         tag(BlockTags.MINEABLE_WITH_AXE).add(block);
+    }
+
+    private void shovel(@NotNull Block block) {
+        tag(BlockTags.MINEABLE_WITH_SHOVEL).add(block);
+    }
+
+    private void hoe(@NotNull Block block) {
+        tag(BlockTags.MINEABLE_WITH_HOE).add(block);
+    }
+
+    private void sword(@NotNull Block block) {
+        tag(BlockTags.SWORD_EFFICIENT).add(block);
     }
 
     private void ironTool(@NotNull Block block) {

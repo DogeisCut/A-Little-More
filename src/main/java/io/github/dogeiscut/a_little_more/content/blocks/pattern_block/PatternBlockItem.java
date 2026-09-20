@@ -15,11 +15,11 @@ import java.util.List;
 
 public class PatternBlockItem extends BlockItem {
 
-    public PatternBlockItem(Block block, Properties properties) {
+    public PatternBlockItem(@NotNull Block block, @NotNull Properties properties) {
         super(block, properties);
     }
 
-    public static void appendHoverTextFromPatternBlockFaces(ItemStack stack, List<Component> tooltipComponents) {
+    public static void appendHoverTextFromPatternBlockFaces(@NotNull ItemStack stack, @NotNull List<Component> tooltipComponents) {
         PatternBlockFaces faces = stack.get(ALMDataComponents.PATTERN_BLOCK_FACES);
         if (faces == null || faces.faces().isEmpty()) {
             return;

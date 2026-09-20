@@ -7,14 +7,10 @@ import io.github.dogeiscut.a_little_more.registry.ALMModelProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.data.ModelData;
@@ -24,8 +20,12 @@ public class PatternBlockEntity extends BlockEntity {
     private static final String TAG_FACES = "faces";
     private PatternBlockFaces faces = PatternBlockFaces.EMPTY;
 
-    public PatternBlockEntity(BlockPos pos, BlockState blockState) {
+    public PatternBlockEntity(@NotNull BlockPos pos, @NotNull BlockState blockState) {
         super(ALMBlockEntities.PATTERN_BLOCK_ENTITY.get(), pos, blockState);
+    }
+
+    public PatternBlockFaces getFaces() {
+        return this.faces;
     }
 
     public void setFaces(PatternBlockFaces faces) {
@@ -35,10 +35,6 @@ public class PatternBlockEntity extends BlockEntity {
             this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), 3);
             this.requestModelDataUpdate();
         }
-    }
-
-    public PatternBlockFaces getFaces() {
-        return this.faces;
     }
 
     @Override
@@ -80,7 +76,7 @@ public class PatternBlockEntity extends BlockEntity {
         return this.saveWithoutMetadata(registries);
     }
 
-    public ItemStack getItem() {
+    public @NotNull ItemStack getItem() {
         ItemStack itemStack = new ItemStack(this.getBlockState().getBlock());
         itemStack.applyComponents(this.collectComponents());
         return itemStack;
@@ -99,7 +95,7 @@ public class PatternBlockEntity extends BlockEntity {
     }
 
     @Override
-    public void removeComponentsFromTag(CompoundTag tag) {
+    public void removeComponentsFromTag(@NotNull CompoundTag tag) {
         tag.remove(TAG_FACES);
     }
 }
