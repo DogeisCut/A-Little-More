@@ -66,7 +66,10 @@ public class ALMDatagen {
                 ALMBlocks.CELERIUM_ORE.get(),
                 ALMBlocks.DEEPSLATE_CELERIUM_ORE.get()
         );
-        public static final List<Block> SWORD_EFFICIENT = List.of(
+
+        public static final List<Block> PICKAXE_MINEABLE = List.of(
+                ALMBlocks.DASH_PAD.get(),
+                ALMBlocks.LAUNCH_PAD.get(),
                 ALMBlocks.PATTERN_BLOCK.get()
         );
         public static final List<Block> AXE_MINEABLE = List.of(
@@ -75,21 +78,16 @@ public class ALMDatagen {
                 ALMBlocks.STAMPING_TABLE.get(),
                 ALMBlocks.PATTERN_BLOCK.get()
         );
-        public static final List<Block> PICKAXE_MINEABLE = List.of(
-                ALMBlocks.DASH_PAD.get(),
-                ALMBlocks.LAUNCH_PAD.get(),
-                ALMBlocks.PATTERN_BLOCK.get()
-        );
         public static final List<Block> SHOVEL_MINEABLE = List.of(
-                ALMBlocks.DASH_PAD.get(),
-                ALMBlocks.LAUNCH_PAD.get(),
                 ALMBlocks.PATTERN_BLOCK.get()
         );
         public static final List<Block> HOE_MINEABLE = List.of(
-                ALMBlocks.DASH_PAD.get(),
-                ALMBlocks.LAUNCH_PAD.get(),
                 ALMBlocks.PATTERN_BLOCK.get()
         );
+        public static final List<Block> SWORD_EFFICIENT = List.of(
+                ALMBlocks.PATTERN_BLOCK.get()
+        );
+
         private static final Map<Block, ALMBlockFamily> MAP = Maps.newHashMap();
         public static final ALMBlockFamily SEEPSTONE = register(familyBuilder(ALMBlocks.SEEPSTONE.get())
                 .slab(ALMBlocks.SEEPSTONE_SLAB.get())

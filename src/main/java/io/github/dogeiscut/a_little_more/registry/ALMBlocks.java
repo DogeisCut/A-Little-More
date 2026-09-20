@@ -76,7 +76,9 @@ public class ALMBlocks {
     }
 
     public static @NotNull DeferredBlock<PatternBlock> patternBlock(@NotNull String name) {
-        DeferredBlock<PatternBlock> block = BLOCKS.registerBlock(name, p -> new PatternBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+        DeferredBlock<PatternBlock> block = BLOCKS.registerBlock(name, p -> new PatternBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).sound(
+                SoundType.SCAFFOLDING
+        )));
         ALMItems.item(name, properties -> new PatternBlockItem(block.get(),
                 properties.component(
                         ALMDataComponents.PATTERN_BLOCK_FACES,

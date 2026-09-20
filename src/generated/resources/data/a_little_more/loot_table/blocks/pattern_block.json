@@ -11,6 +11,15 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:copy_components",
+              "include": [
+                "a_little_more:pattern_block_faces"
+              ],
+              "source": "block_entity"
+            }
+          ],
           "name": "a_little_more:pattern_block"
         }
       ],

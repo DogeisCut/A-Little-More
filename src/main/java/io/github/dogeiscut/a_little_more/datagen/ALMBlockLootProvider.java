@@ -1,6 +1,7 @@
 package io.github.dogeiscut.a_little_more.datagen;
 
 import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
+import io.github.dogeiscut.a_little_more.registry.ALMDataComponents;
 import io.github.dogeiscut.a_little_more.registry.ALMItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -9,7 +10,15 @@ import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.CopyComponentsFunction;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.predicates.ExplosionCondition;
+import net.minecraft.world.level.storage.loot.providers.number.LootNumberProviderType;
+import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
@@ -41,7 +50,17 @@ public class ALMBlockLootProvider extends BlockLootSubProvider {
         ALMDatagen.BlockFamilies.SIMPLE_CUBES.forEach(this::selfDrop);
         ALMDatagen.BlockFamilies.AXE_MINEABLE.forEach(this::selfDrop);
 
-        selfDrop(ALMBlocks.PATTERN_BLOCK.get());
+        add(ALMBlocks.PATTERN_BLOCK.get(), block -> LootTable.lootTable()
+                .withPool(
+                        LootPool.lootPool()
+                                .add(LootItem.lootTableItem(block)
+                                        .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY)
+                                                .include(ALMDataComponents.PATTERN_BLOCK_FACES)
+                                        )
+                                )
+                                .when(ExplosionCondition.survivesExplosion())
+                )
+        );
 
         oreDrop(ALMBlocks.CELERIUM_ORE.get(), ALMItems.CELERIUM_SHARD.get());
         oreDrop(ALMBlocks.DEEPSLATE_CELERIUM_ORE.get(), ALMItems.CELERIUM_SHARD.get());

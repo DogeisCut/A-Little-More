@@ -58,6 +58,7 @@
   - [X] Weird culling when rendering thin faces.
   - [X] figuring out how the hell to make the item model work properly
   - [ ] fix block breaking cracks rendering under the patterns
+    - they also render brighter in some cases its weird
   - [X] Handling rotation (currently it extends pillar block, which is like logs and stuff, but this makes the rotation of the side faces ambigious)
     - > Current idea is to make it store an explicit "facing" direction instead, on top of a 4 way rotation for that facing direction. But it gets confusing when you place it sideways cause like... how will it know which way to rotate it?
   - [ ] making the chunk re-render if the block data changes
@@ -72,6 +73,8 @@
     - [X] Stamping Table block, menu and screen (pattern block/dye/pattern item/result, pattern grid, face preview, cube preview)
     - [ ] Stamping Table art: block textures are placeholders, and the GUI is drawn with fills instead of a texture
       - ideally stuff like the scrolling Ui would look like the actual loom.
+      - [ ] Commit on a layout before doing this
+    - [ ] make button icons instead of text
     - [X] Stamping Table recipe, and a way to obtain the base pattern block
     - [X] Base color: a blank face has to be dyed first, which sets its base color, before patterns can be added
     - [X] Way to re-dye the base color of a face that already exists
@@ -89,7 +92,7 @@ and currently pasting or removing a face is an instant action
       - i could also make the block itself rotatable but idk if i want to do that since your facing direction alone cant
     - [ ] make banner pattern items reduce the patterns to only 1, with it being force selected, like the loom.
 cover all orientations (6 cardinal directions, with 4 rotations in each)
-  - [ ] make them drop with patterns (currently mining a pattern block drops a blank one)
+  - [X] make them drop with patterns (currently mining a pattern block drops a blank one)
   - [ ] fix break/mine particles being colored
   - [ ] optimize the block and items themselves by storing faces/patterns in a world-saved table that the blocks/items reference instead of direct patterns
     - this is just so a chunk of entierly the same pattern block isnt storing 9450940 copies of the same data
