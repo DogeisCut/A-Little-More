@@ -67,8 +67,34 @@
       and click each face with a banner that has the patterns you want
       and then there's a recipie to apply a pattern from one pattern block to an empty one
   - [ ] Crafting (new gui block?)
+    - [X] Stamping Table block, menu and screen (pattern block/dye/pattern item/result, pattern grid, face preview, cube preview)
+    - [ ] Stamping Table art: block textures are placeholders, and the GUI is drawn with fills instead of a texture
+    - [X] Stamping Table recipe, and a way to obtain the base pattern block
+    - [X] Base color: a blank face has to be dyed first, which sets its base color, before patterns can be added
+    - [X] Way to re-dye the base color of a face that already exists
+      - eh im deciding not to bother with this. You can already copy faces for free so having one sink isnt a big deal
+    - [ ] Pattern block item model doesn't show faces, so the Stamping Table slots only show the empty base (see above)
+      - [ ] kinda want to make holding shift show the backside faces in the item itself
+    - [ ] Actual proper slot icons (like the loom) instead of the weird fake item thing
+    - [ ] Stamping table custom sounds (For modifications, instead of just using the loom ones)
+    - [ ] some sort of blanked out default state (for when there's no blocks or items in it at all) like the loom
+    - [X] decide if removing a face or pasting one should move the pattern blocks to the output slot
+      - current problem is the output slot actually duplicates the input slot with whatever edit you want to make
+and currently pasting or removing a face is an instant action
+        - but also i can see this getting annoying
+    - [ ] Buttons for rotating/flipping all the patterns across the whole block (as if you rotated the block)
+      - i could also make the block itself rotatable but idk if i want to do that since your facing direction alone cant
+cover all orientations (6 cardinal directions, with 4 rotations in each)
   - [ ] make them drop with patterns
-  - [ ] fix particles being colored
+  - [ ] fix break/mine particles being colored
+  - [ ] optimize the block and items themselves by storing faces/patterns in a world-saved table that the blocks/items reference instead of direct patterns
+    - this is just so a chunk of entierly the same pattern block isnt storing 9450940 copies of the same data
+  - IDEA: allowing multiple dyes to be used on a single pattern for mixed colors, similar to armor dying
+    - don't know what this would look like in the gui though. (accepts 9 dyes at once instead of 1? or maybe just 5? 3?)
+    - also this would require changing `PatternBlockFaces` to just store a decimal color (`0xFFFFFF`, etc) instead of a dyecolor
+      - so ideally i'd implement the above optimization first.
+    - ALTERNATE IDEA: opacity slider for layers?
+    - ALTERNATE ALTERNATE IDEA: more dyes
 # TASKS
 
 - [ ] Various TODOs within files

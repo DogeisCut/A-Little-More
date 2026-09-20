@@ -4,22 +4,16 @@ import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlock;
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockFaces;
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockItem;
-import io.github.dogeiscut.a_little_more.content.weapons.flail.FlailItem;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.DyeColor;
+import io.github.dogeiscut.a_little_more.content.blocks.stamping_table.StampingTableBlock;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 public class ALMBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(ALittleMore.MOD_ID);
@@ -53,6 +47,7 @@ public class ALMBlocks {
     public static final DeferredBlock<Block> LAUNCH_PAD = simpleBlockWithItem("launch_pad", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS));
 
     public static final DeferredBlock<PatternBlock> PATTERN_BLOCK = patternBlock("pattern_block", Blocks.OAK_PLANKS);
+    public static final DeferredBlock<StampingTableBlock> STAMPING_TABLE = blockWithItem("stamping_table", p -> new StampingTableBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LOOM)));
 
     public static @NotNull DeferredBlock<Block> simpleBlock(@NotNull String name, BlockBehaviour.@NotNull Properties properties) {
         return BLOCKS.registerSimpleBlock(name, properties);

@@ -39,6 +39,7 @@ public class ALittleMore {
         ALMPotions.register(modEventBus);
         ALMRecipes.register(modEventBus);
         ALMBlockEntities.register(modEventBus);
+        ALMMenuTypes.register(modEventBus);
         ALMEntities.register(modEventBus);
         ALMParticles.register(modEventBus);
         ALMSounds.register(modEventBus);

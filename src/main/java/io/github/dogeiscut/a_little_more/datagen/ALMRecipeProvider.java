@@ -9,6 +9,7 @@ import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -44,6 +45,25 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ALMDatagen.ALMBlockFamilies.getAllFamilies().forEach(family -> family(out, family, family.isStone()));
         progression(out, ALMDatagen.ALMBlockFamilies.SEEPSTONE_PROGRESSION);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ALMBlocks.PATTERN_BLOCK, 8)
+                .pattern("/O/")
+                .pattern("O#O")
+                .pattern("/O/")
+                .define('#', ItemTags.PLANKS)
+                .define('O', Items.PAINTING)
+                .define('/', Items.STICK)
+                .unlockedBy("has_planks", has(ItemTags.PLANKS))
+                .save(out);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ALMBlocks.STAMPING_TABLE)
+                .pattern("_(")
+                .pattern("##")
+                .define('#', ItemTags.PLANKS)
+                .define('(', Items.BRUSH)
+                .define('_', Items.SMOOTH_STONE_SLAB)
+                .unlockedBy(criterionName(ALMBlocks.PATTERN_BLOCK), has(ALMBlocks.PATTERN_BLOCK))
+                .save(out);
 
         oreSmelting(out, List.of(ALMBlocks.CELERIUM_ORE.get(), ALMBlocks.DEEPSLATE_CELERIUM_ORE.get()),
                 ALMItems.CELERIUM_SHARD.get(), 1.0F, 200);

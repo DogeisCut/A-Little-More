@@ -43,7 +43,10 @@ public class ALMDatagen {
 
         generator.addProvider(event.includeServer(), new ALMRecipeProvider(output, lookup));
         generator.addProvider(event.includeServer(), ALMBlockLootProvider.create(output, lookup));
-        generator.addProvider(event.includeServer(), new ALMDatapackProvider(output, lookup));
+        ALMDatapackProvider datapack = new ALMDatapackProvider(output, lookup);
+        generator.addProvider(event.includeServer(), datapack);
+        generator.addProvider(event.includeServer(),
+                new ALMPatternBlockPatternTagsProvider(output, datapack.getRegistryProvider(), helper));
 
         generator.addProvider(event.includeClient(), new ALMParticleDescriptionProvider(output, helper));
     }
@@ -65,7 +68,8 @@ public class ALMDatagen {
         );
         public static final List<Block> AXE_MINEABLE = List.of(
                 ALMBlocks.DASH_PAD.get(),
-                ALMBlocks.LAUNCH_PAD.get()
+                ALMBlocks.LAUNCH_PAD.get(),
+                ALMBlocks.STAMPING_TABLE.get()
         );
         public static final List<Block> PICKAXE_MINEABLE_EXTRA = List.of(
                 ALMBlocks.DASH_PAD.get(),

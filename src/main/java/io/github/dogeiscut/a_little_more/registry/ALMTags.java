@@ -1,11 +1,13 @@
 package io.github.dogeiscut.a_little_more.registry;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
+import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockPattern;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BannerPattern;
 import net.minecraft.world.level.material.Fluid;
 import org.jetbrains.annotations.NotNull;
 
@@ -56,6 +58,30 @@ public final class ALMTags {
 
         private static @NotNull TagKey<Item> common(@NotNull String path) {
             return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", path));
+        }
+    }
+
+    public static final class PatternBlockPatterns {
+        public static final TagKey<PatternBlockPattern> NO_ITEM_REQUIRED = mod("no_item_required");
+
+        public static final TagKey<PatternBlockPattern> PATTERN_ITEM_FLOWER = mod("pattern_item/flower");
+        public static final TagKey<PatternBlockPattern> PATTERN_ITEM_CREEPER = mod("pattern_item/creeper");
+        public static final TagKey<PatternBlockPattern> PATTERN_ITEM_SKULL = mod("pattern_item/skull");
+        public static final TagKey<PatternBlockPattern> PATTERN_ITEM_MOJANG = mod("pattern_item/mojang");
+        public static final TagKey<PatternBlockPattern> PATTERN_ITEM_GLOBE = mod("pattern_item/globe");
+        public static final TagKey<PatternBlockPattern> PATTERN_ITEM_PIGLIN = mod("pattern_item/piglin");
+        public static final TagKey<PatternBlockPattern> PATTERN_ITEM_FLOW = mod("pattern_item/flow");
+        public static final TagKey<PatternBlockPattern> PATTERN_ITEM_GUSTER = mod("pattern_item/guster");
+
+        private PatternBlockPatterns() {
+        }
+
+        public static @NotNull TagKey<PatternBlockPattern> forBannerPatternTag(@NotNull TagKey<BannerPattern> bannerPatternTag) {
+            return mod(bannerPatternTag.location().getPath());
+        }
+
+        private static @NotNull TagKey<PatternBlockPattern> mod(@NotNull String path) {
+            return TagKey.create(PatternBlockPattern.REGISTRY_KEY, ALittleMore.id(path));
         }
     }
 

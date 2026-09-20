@@ -34,6 +34,23 @@ public record PatternBlockFaces(Map<Direction, Face> faces) {
         return faces.containsKey(direction);
     }
 
+    public PatternBlockFaces withFace(Direction direction, Face face) {
+        Map<Direction, Face> copy = new EnumMap<>(Direction.class);
+        copy.putAll(faces);
+        copy.put(direction, face);
+        return new PatternBlockFaces(copy);
+    }
+
+    public PatternBlockFaces withoutFace(Direction direction) {
+        if (!faces.containsKey(direction)) {
+            return this;
+        }
+        Map<Direction, Face> copy = new EnumMap<>(Direction.class);
+        copy.putAll(faces);
+        copy.remove(direction);
+        return new PatternBlockFaces(copy);
+    }
+
     public static final Codec<PatternBlockFaces> CODEC = Codec.unboundedMap(Direction.CODEC, Face.CODEC)
             .xmap(PatternBlockFaces::new, PatternBlockFaces::faces);
 
@@ -79,6 +96,32 @@ public record PatternBlockFaces(Map<Direction, Face> faces) {
 
         public boolean isFlip() {
             return flip;
+        }
+
+        public static Orientation of(int rotation, boolean flip) {
+            int normalized = Math.floorMod(rotation, 360);
+            for (Orientation orientation : values()) {
+                if (orientation.rotation == normalized && orientation.flip == flip) {
+                    return orientation;
+                }
+            }
+            throw new IllegalArgumentException("Unsupported orientation: " + rotation + " flip=" + flip);
+        }
+
+        public Orientation rotatedClockwise() {
+            return of(rotation + 90, flip);
+        }
+
+        public Orientation rotatedCounterClockwise() {
+            return of(rotation - 90, flip);
+        }
+
+        public Orientation flippedHorizontally() {
+            return of(-rotation, !flip);
+        }
+
+        public Orientation flippedVertically() {
+            return of(180 - rotation, !flip);
         }
     }
 

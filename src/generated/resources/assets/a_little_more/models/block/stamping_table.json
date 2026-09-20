@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "a_little_more:block/stamping_table_bottom",
+    "side": "a_little_more:block/stamping_table_side",
+    "top": "a_little_more:block/stamping_table_top"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    },
+    "O": {
+      "item": "minecraft:painting"
+    }
+  },
+  "pattern": [
+    "/O/",
+    "O#O",
+    "/O/"
+  ],
+  "result": {
+    "count": 8,
+    "id": "a_little_more:pattern_block"
+  }
+}

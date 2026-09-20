@@ -3,7 +3,6 @@ package io.github.dogeiscut.a_little_more.datagen;
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
 import io.github.dogeiscut.a_little_more.registry.ALMFluids;
-import net.minecraft.core.Direction;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -40,6 +39,14 @@ public class ALMBlockStateProvider extends BlockStateProvider {
 
         simpleBlock(ALMBlocks.PATTERN_BLOCK.get(), patternModel);
         itemModels().getBuilder("pattern_block").parent(patternModel);
+
+        Block stampingTable = ALMBlocks.STAMPING_TABLE.get();
+        simpleBlockWithItem(stampingTable, models().cubeBottomTop(
+                name(stampingTable),
+                modLoc("block/stamping_table_side"),
+                modLoc("block/stamping_table_bottom"),
+                modLoc("block/stamping_table_top")
+        ));
 
         // TODO: seep cluster assets, it's NOT going to be a cube.
         simpleCubeAllWithItem(ALMBlocks.SEEP_CRYSTAL_CLUSTER.get());

@@ -91,11 +91,17 @@ public class ALMLanguageProvider extends LanguageProvider {
         add("jukebox_song." + ALittleMore.MOD_ID + ".just_a_little_more", "DogeisCut - Just A Little More");
         add("trim_material." + ALittleMore.MOD_ID + ".celerium", "Celerium");
 
+        stampingTableStrings();
+
         add(ALittleMore.MOD_ID + ".recipe.seep_transformation", "Seep Transformation");
         add(ALittleMore.MOD_ID + ".recipe.seep_transformation.seep", "Dropping an Item Into Seep");
         add(ALittleMore.MOD_ID + ".recipe.fan_seeping", "Bulk Seeping");
         add(ALittleMore.MOD_ID + ".recipe.fan_seeping.fan", "Fan behind Seep");
 
+        advancementStrings();
+    }
+    
+    private void advancementStrings() {
         advancement("rabies_free", "Rabies Free",
                 "Craft and drink a Potion of Immunity, and dodge an effect.");
         advancement("skull_crusher", "Skull Crusher", "Obtain a Flail.");
@@ -114,6 +120,41 @@ public class ALMLanguageProvider extends LanguageProvider {
         advancement("upgrades_people", "Upgrades, People", "Transform an item in Seep.");
         advancement("player_pinball", "Player Pinball", "Use a Launch Pad.");
         advancement("erased_history", "Erased History", "Mine a Seep Crystal with something in it.");
+    }
+
+    private void stampingTableStrings() {
+        add("container." + ALittleMore.MOD_ID + ".stamping_table", "Stamping Table");
+
+        stampingTable("edit", "Edit");
+        stampingTable("editing", "Editing...");
+        stampingTable("flip_preview", "Flip Preview");
+        stampingTable("dye_face_first", "Dye this face first to give it a base color");
+
+        stampingTable("face.up", "Up");
+        stampingTable("face.down", "Down");
+        stampingTable("face.north", "North");
+        stampingTable("face.south", "South");
+        stampingTable("face.west", "West");
+        stampingTable("face.east", "East");
+
+        stampingTable("flip_h", "Flip H");
+        stampingTable("flip_h.tooltip", "Mirror this face from left to right (edits in place)");
+        stampingTable("flip_v", "Flip V");
+        stampingTable("flip_v.tooltip", "Mirror this face from top to bottom (edits in place)");
+        stampingTable("rotate_cw", "Rotate CW");
+        stampingTable("rotate_cw.tooltip", "Rotate this face 90 degrees clockwise (edits in place)");
+        stampingTable("rotate_ccw", "Rotate CCW");
+        stampingTable("rotate_ccw.tooltip", "Rotate this face 90 degrees counterclockwise (edits in place)");
+        stampingTable("copy", "Copy");
+        stampingTable("copy.tooltip", "Copy this face so it can be pasted onto another face or block (lost when closed)");
+        stampingTable("paste", "Paste");
+        stampingTable("paste.tooltip", "Replace this face with the copied face (edits in place)");
+        stampingTable("remove_face", "Remove Face");
+        stampingTable("remove_face.tooltip", "Clear this face back to the bare block (edits in place)");
+    }
+
+    private void stampingTable(String key, String value) {
+        add("gui." + ALittleMore.MOD_ID + ".stamping_table." + key, value);
     }
 
     public void potionNames(String effect, String name) {

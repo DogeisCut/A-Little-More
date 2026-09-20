@@ -2,10 +2,12 @@ package io.github.dogeiscut.a_little_more;
 
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockColor;
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockGeometryLoader;
+import io.github.dogeiscut.a_little_more.content.blocks.stamping_table.StampingTableScreen;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepBubbleParticle;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepBubblePopParticle;
 import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
 import io.github.dogeiscut.a_little_more.registry.ALMEntities;
+import io.github.dogeiscut.a_little_more.registry.ALMMenuTypes;
 import io.github.dogeiscut.a_little_more.registry.ALMParticles;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.neoforged.api.distmarker.Dist;
@@ -15,6 +17,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.ModelEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import org.jetbrains.annotations.NotNull;
 
@@ -39,6 +42,11 @@ public class ALittleMoreClient {
     @SubscribeEvent
     public static void onRegisterGeometryLoaders(ModelEvent.RegisterGeometryLoaders event) {
         event.register(PatternBlockGeometryLoader.ID, PatternBlockGeometryLoader.INSTANCE);
+    }
+
+    @SubscribeEvent
+    public static void onRegisterMenuScreens(RegisterMenuScreensEvent event) {
+        event.register(ALMMenuTypes.STAMPING_TABLE.get(), StampingTableScreen::new);
     }
 
     @SubscribeEvent

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "(": {
+      "item": "minecraft:brush"
+    },
+    "_": {
+      "item": "minecraft:smooth_stone_slab"
+    }
+  },
+  "pattern": [
+    "_(",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "a_little_more:stamping_table"
+  }
+}
