@@ -69,6 +69,7 @@
   - [ ] Crafting (new gui block?)
     - [X] Stamping Table block, menu and screen (pattern block/dye/pattern item/result, pattern grid, face preview, cube preview)
     - [ ] Stamping Table art: block textures are placeholders, and the GUI is drawn with fills instead of a texture
+      - ideally stuff like the scrolling Ui would look like the actual loom.
     - [X] Stamping Table recipe, and a way to obtain the base pattern block
     - [X] Base color: a blank face has to be dyed first, which sets its base color, before patterns can be added
     - [X] Way to re-dye the base color of a face that already exists
@@ -84,6 +85,7 @@ and currently pasting or removing a face is an instant action
         - but also i can see this getting annoying
     - [ ] Buttons for rotating/flipping all the patterns across the whole block (as if you rotated the block)
       - i could also make the block itself rotatable but idk if i want to do that since your facing direction alone cant
+    - [ ] make banner pattern items reduce the patterns to only 1, with it being force selected, like the loom.
 cover all orientations (6 cardinal directions, with 4 rotations in each)
   - [ ] make them drop with patterns
   - [ ] fix break/mine particles being colored
