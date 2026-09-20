@@ -85,7 +85,6 @@ public class ALMDatagen {
                 ALMBlocks.PATTERN_BLOCK.get()
         );
         public static final List<Block> SWORD_EFFICIENT = List.of(
-                ALMBlocks.PATTERN_BLOCK.get()
         );
 
         private static final Map<Block, ALMBlockFamily> MAP = Maps.newHashMap();

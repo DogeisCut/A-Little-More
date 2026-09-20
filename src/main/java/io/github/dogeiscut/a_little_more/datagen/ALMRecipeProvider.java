@@ -1,11 +1,9 @@
 package io.github.dogeiscut.a_little_more.datagen;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
+import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockDuplicateRecipe;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepTransformationRecipe;
-import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
-import io.github.dogeiscut.a_little_more.registry.ALMFluids;
-import io.github.dogeiscut.a_little_more.registry.ALMItems;
-import io.github.dogeiscut.a_little_more.registry.ALMTags;
+import io.github.dogeiscut.a_little_more.registry.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.BlockFamily;
@@ -90,6 +88,8 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
         seepTransformation(out, Items.AMETHYST_CLUSTER, ALMBlocks.SEEP_CRYSTAL_CLUSTER.get().asItem());
         seepTransformation(out, Items.STONE, ALMBlocks.SEEPSTONE.get().asItem());
         seepTransformation(out, ALMTags.Items.SEEP_TRANSFORMABLE_MUSIC_DISCS, ALMItems.MUSIC_DISC_JUST_A_LITTLE_MORE.get());
+
+        SpecialRecipeBuilder.special(PatternBlockDuplicateRecipe::new).save(out, ALittleMore.id("pattern_block_duplicate"));
     }
 
     private void family(@NotNull RecipeOutput out, @NotNull ALMBlockFamily almFamily, boolean isStone) {

@@ -1,5 +1,6 @@
 package io.github.dogeiscut.a_little_more.datagen;
 
+import com.simibubi.create.AllTags;
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
 import io.github.dogeiscut.a_little_more.registry.ALMTags;
@@ -7,10 +8,12 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.crafting.BannerDuplicateRecipe;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -45,6 +48,12 @@ public class ALMBlockTagsProvider extends BlockTagsProvider {
         ALMDatagen.BlockFamilies.SHOVEL_MINEABLE.forEach(this::shovel);
         ALMDatagen.BlockFamilies.HOE_MINEABLE.forEach(this::hoe);
         ALMDatagen.BlockFamilies.SWORD_EFFICIENT.forEach(this::sword);
+
+//        if (ModList.get().isLoaded("create")) {
+//            tag(AllTags.AllBlockTags.COPYCAT_ALLOW.tag).add(
+//                    ALMBlocks.PATTERN_BLOCK.get()
+//            );
+//        }
 
         ALMDatagen.BlockFamilies.NEEDS_IRON_TOOL.forEach(this::ironTool);
 
