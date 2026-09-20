@@ -46,7 +46,7 @@ public class ALMBlocks {
     public static final DeferredBlock<Block> DASH_PAD = simpleBlockWithItem("dash_pad", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS));
     public static final DeferredBlock<Block> LAUNCH_PAD = simpleBlockWithItem("launch_pad", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS));
 
-    public static final DeferredBlock<PatternBlock> PATTERN_BLOCK = patternBlock("pattern_block", Blocks.OAK_PLANKS);
+    public static final DeferredBlock<PatternBlock> PATTERN_BLOCK = patternBlock("pattern_block");
     public static final DeferredBlock<StampingTableBlock> STAMPING_TABLE = blockWithItem("stamping_table", p -> new StampingTableBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LOOM)));
 
     public static @NotNull DeferredBlock<Block> simpleBlock(@NotNull String name, BlockBehaviour.@NotNull Properties properties) {
@@ -75,8 +75,8 @@ public class ALMBlocks {
         return block;
     }
 
-    public static @NotNull DeferredBlock<PatternBlock> patternBlock(@NotNull String name, @NotNull Block base) {
-        DeferredBlock<PatternBlock> block = BLOCKS.registerBlock(name, p -> new PatternBlock(BlockBehaviour.Properties.ofFullCopy(base)));
+    public static @NotNull DeferredBlock<PatternBlock> patternBlock(@NotNull String name) {
+        DeferredBlock<PatternBlock> block = BLOCKS.registerBlock(name, p -> new PatternBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
         ALMItems.item(name, properties -> new PatternBlockItem(block.get(),
                 properties.component(
                         ALMDataComponents.PATTERN_BLOCK_FACES,
