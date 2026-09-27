@@ -36,6 +36,30 @@ public class ALMSoundProvider extends SoundDefinitionsProvider {
                         ALittleMore.id("item/bucket/fill_seep3"), SoundDefinition.SoundType.SOUND
                 )).subtitle("subtitles.item.bucket.fill")
         );
+
+        add(ALMSounds.OPOSSUM_AMBIENT.get(), SoundDefinition.definition()
+                .with(SoundDefinition.Sound.sound(
+                        ALittleMore.id("mob/opossum/idle1"), SoundDefinition.SoundType.SOUND
+                )).with(SoundDefinition.Sound.sound(
+                        ALittleMore.id("mob/opossum/idle2"), SoundDefinition.SoundType.SOUND
+                )).with(SoundDefinition.Sound.sound(
+                        ALittleMore.id("mob/opossum/idle3"), SoundDefinition.SoundType.SOUND
+                )).subtitle("subtitles.entity.opossum.ambient")
+        );
+        add(ALMSounds.OPOSSUM_HURT.get(), SoundDefinition.definition()
+                .with(SoundDefinition.Sound.sound(
+                        ALittleMore.id("mob/opossum/hurt1"), SoundDefinition.SoundType.SOUND
+                )).with(SoundDefinition.Sound.sound(
+                        ALittleMore.id("mob/opossum/hurt2"), SoundDefinition.SoundType.SOUND
+                )).subtitle("subtitles.entity.opossum.hurt")
+        );add(ALMSounds.OPOSSUM_DEATH.get(), SoundDefinition.definition()
+                .with(SoundDefinition.Sound.sound(
+                        ALittleMore.id("mob/opossum/death1"), SoundDefinition.SoundType.SOUND
+                )).with(SoundDefinition.Sound.sound(
+                        ALittleMore.id("mob/opossum/death2"), SoundDefinition.SoundType.SOUND
+                )).subtitle("subtitles.entity.opossum.death")
+        );
+
     }
 
     public void music(@NotNull SoundEvent event, @NotNull String file) {

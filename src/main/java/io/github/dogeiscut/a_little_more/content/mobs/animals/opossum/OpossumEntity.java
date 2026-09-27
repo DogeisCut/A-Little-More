@@ -1,9 +1,12 @@
 package io.github.dogeiscut.a_little_more.content.mobs.animals.opossum;
 
 import io.github.dogeiscut.a_little_more.registry.ALMEntities;
+import io.github.dogeiscut.a_little_more.registry.ALMSounds;
 import io.github.dogeiscut.a_little_more.registry.ALMTags;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -27,6 +30,21 @@ public class OpossumEntity extends Animal {
                 .add(Attributes.MAX_HEALTH, 8.0d)
                 .add(Attributes.MOVEMENT_SPEED, 0.25d)
                 .build();
+    }
+
+    @Override
+    protected @Nullable SoundEvent getAmbientSound() {
+        return ALMSounds.OPOSSUM_AMBIENT.get();
+    }
+
+    @Override
+    protected @Nullable SoundEvent getHurtSound(@NotNull DamageSource damageSource) {
+        return ALMSounds.OPOSSUM_HURT.get();
+    }
+
+    @Override
+    protected @Nullable SoundEvent getDeathSound() {
+        return ALMSounds.OPOSSUM_DEATH.get();
     }
 
     @Override

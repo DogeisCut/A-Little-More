@@ -1,4 +1,26 @@
 {
+  "entity.opossum.ambient": {
+    "sounds": [
+      "a_little_more:mob/opossum/idle1",
+      "a_little_more:mob/opossum/idle2",
+      "a_little_more:mob/opossum/idle3"
+    ],
+    "subtitle": "subtitles.entity.opossum.ambient"
+  },
+  "entity.opossum.death": {
+    "sounds": [
+      "a_little_more:mob/opossum/death1",
+      "a_little_more:mob/opossum/death2"
+    ],
+    "subtitle": "subtitles.entity.opossum.death"
+  },
+  "entity.opossum.hurt": {
+    "sounds": [
+      "a_little_more:mob/opossum/hurt1",
+      "a_little_more:mob/opossum/hurt2"
+    ],
+    "subtitle": "subtitles.entity.opossum.hurt"
+  },
   "item.bucket.empty_seep": {
     "sounds": [
       "a_little_more:item/bucket/empty_seep1",
