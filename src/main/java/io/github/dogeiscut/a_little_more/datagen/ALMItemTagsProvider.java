@@ -61,6 +61,10 @@ public class ALMItemTagsProvider extends net.minecraft.data.tags.ItemTagsProvide
         add(ALMTags.Items.C_SEEP_BUCKETS, ALMFluids.SEEP.bucket());
 
         add(ALMTags.Items.OPOSSUM_FOOD, Items.SPIDER_EYE);
+        tag(ALMTags.Items.OPOSSUM_FOOD).addTag(Tags.Items.SEEDS);
+        tag(ALMTags.Items.OPOSSUM_FOOD).addTag(Tags.Items.FOODS_FRUIT);
+        tag(ALMTags.Items.OPOSSUM_FOOD).addTag(Tags.Items.FOODS_VEGETABLE);
+        tag(ALMTags.Items.OPOSSUM_FOOD).addTag(Tags.Items.FOODS_BERRY);
     }
 
     public void autoTag(Item item) {

@@ -1,5 +1,9 @@
 {
   "values": [
-    "minecraft:spider_eye"
+    "minecraft:spider_eye",
+    "#c:seeds",
+    "#c:foods/fruit",
+    "#c:foods/vegetable",
+    "#c:foods/berry"
   ]
 }

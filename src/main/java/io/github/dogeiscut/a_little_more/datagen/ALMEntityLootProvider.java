@@ -35,7 +35,7 @@ public class ALMEntityLootProvider implements LootTableSubProvider {
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
                                 .when(LootItemRandomChanceWithEnchantedBonusCondition
-                                        .randomChanceAndLootingBoost(this.registries, 0.15f, 0.015f))
+                                        .randomChanceAndLootingBoost(this.registries, 0.05f, 0.015f))
                                 .add(LootItem.lootTableItem(ALMItems.OPOSSUM_TAIL.get())))
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
