@@ -4,6 +4,7 @@ import io.github.dogeiscut.a_little_more.registry.ALMDataComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -55,5 +56,10 @@ public class PatternBlockItem extends BlockItem {
                                 @NotNull TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
         appendHoverTextFromPatternBlockFaces(stack, tooltipComponents);
+    }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet enabledFeatures) {
+        return false;
     }
 }

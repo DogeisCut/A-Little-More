@@ -47,7 +47,7 @@ public class ALMBlocks {
     public static final DeferredBlock<Block> LAUNCH_PAD = simpleBlockWithItem("launch_pad", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS));
 
     public static final DeferredBlock<PatternBlock> PATTERN_BLOCK = patternBlock("pattern_block");
-    public static final DeferredBlock<StampingTableBlock> STAMPING_TABLE = blockWithItem("stamping_table", p -> new StampingTableBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LOOM)));
+    public static final DeferredBlock<StampingTableBlock> STAMPING_TABLE = stampingTable("stamping_table");
 
     public static @NotNull DeferredBlock<Block> simpleBlock(@NotNull String name, BlockBehaviour.@NotNull Properties properties) {
         return BLOCKS.registerSimpleBlock(name, properties);
@@ -85,6 +85,12 @@ public class ALMBlocks {
                         PatternBlockFaces.EMPTY
                 )
         ));
+        return block;
+    }
+
+    public static @NotNull DeferredBlock<StampingTableBlock> stampingTable(@NotNull String name) {
+        DeferredBlock<StampingTableBlock> block = BLOCKS.registerBlock(name, p -> new StampingTableBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LOOM)));
+        ALMItems.item(name, properties -> new StampingTableBlock.Item(block.get(), properties));
         return block;
     }
 
