@@ -2,6 +2,7 @@ package io.github.dogeiscut.a_little_more.registry;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.content.consumables.enseepened_pearl.EnseepenedPearlEntity;
+import io.github.dogeiscut.a_little_more.content.mobs.animals.opossum.OpossumEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -22,6 +23,13 @@ public class ALMEntities {
                     .clientTrackingRange(4)
                     .updateInterval(10)
                     .build("enseepened_pearl"));
+
+    public static final Supplier<EntityType<OpossumEntity>> OPOSSUM = entity("opossum",
+            OpossumEntity::new,
+            MobCategory.CREATURE,
+            0.7F,
+            0.7F
+    );
 
     public static <T extends Entity> @NotNull Supplier<EntityType<T>> entity(
             @NotNull String name,

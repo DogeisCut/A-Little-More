@@ -6,10 +6,7 @@ import io.github.dogeiscut.a_little_more.registry.ALMItems;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.DiggerItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.*;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -39,6 +36,11 @@ public class ALMItemModelProvider extends ItemModelProvider {
 
     public void auto(Item item) {
         if (item instanceof BlockItem) return;
+
+        if (item instanceof SpawnEggItem) {
+            spawnEggItem(item);
+            return;
+        }
 
         ResourceLocation id = BuiltInRegistries.ITEM.getKey(item);
         ResourceLocation texture = ResourceLocation.fromNamespaceAndPath(id.getNamespace(), "item/" + id.getPath());

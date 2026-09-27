@@ -13,6 +13,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.NotNull;
@@ -205,16 +206,17 @@ public class ALMItems {
             )
     ));
 
-//    public static final Supplier<SpawnEggItem> OPOSSUM_SPAWN_EGG = ITEMS.registerItem(
-//            "opossum_spawn_egg",
-//            properties -> new SpawnEggItem(
-//                    ALMEntities.OPOSSUM.get(),
-//                    0xFFFFFF,
-//                    0x000000,
-//                    properties
-//            ),
-//            new Item.Properties()
-//    );
+    // TODO: spawn egg helper func
+    public static final Supplier<SpawnEggItem> OPOSSUM_SPAWN_EGG = ITEMS.registerItem(
+            "opossum_spawn_egg",
+            properties -> new DeferredSpawnEggItem(
+                    ALMEntities.OPOSSUM,
+                    0x4D4343,
+                    0xBA4965,
+                    properties
+            ),
+            new Item.Properties()
+    );
 //    public static final Supplier<SpawnEggItem> SHADY_DEALER_SPAWN_EGG = ITEMS.registerItem(
 //            "shady_dealer_spawn_egg",
 //            properties -> new SpawnEggItem(

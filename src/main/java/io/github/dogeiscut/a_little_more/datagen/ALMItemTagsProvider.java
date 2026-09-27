@@ -59,6 +59,8 @@ public class ALMItemTagsProvider extends net.minecraft.data.tags.ItemTagsProvide
         add(Tags.Items.ENDER_PEARLS, ALMItems.ENSEEPENED_PEARL);
         add(Tags.Items.MUSIC_DISCS, ALMItems.MUSIC_DISC_JUST_A_LITTLE_MORE);
         add(ALMTags.Items.C_SEEP_BUCKETS, ALMFluids.SEEP.bucket());
+
+        add(ALMTags.Items.OPOSSUM_FOOD, Items.SPIDER_EYE);
     }
 
     public void autoTag(Item item) {

@@ -6,10 +6,9 @@ import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlo
 import io.github.dogeiscut.a_little_more.content.blocks.stamping_table.StampingTableScreen;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepBubbleParticle;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepBubblePopParticle;
-import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
-import io.github.dogeiscut.a_little_more.registry.ALMEntities;
-import io.github.dogeiscut.a_little_more.registry.ALMMenuTypes;
-import io.github.dogeiscut.a_little_more.registry.ALMParticles;
+import io.github.dogeiscut.a_little_more.content.mobs.animals.opossum.OpossumModel;
+import io.github.dogeiscut.a_little_more.content.mobs.animals.opossum.OpossumRenderer;
+import io.github.dogeiscut.a_little_more.registry.*;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -28,6 +27,12 @@ public class ALittleMoreClient {
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.@NotNull RegisterRenderers event) {
         event.registerEntityRenderer(ALMEntities.ENSEEPENED_PEARL.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ALMEntities.OPOSSUM.get(), OpossumRenderer::new);
+    }
+
+    @SubscribeEvent
+    public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(ALMModelLayerLocations.OPOSSUM, OpossumModel::createBodyLayer);
     }
 
     @SubscribeEvent
