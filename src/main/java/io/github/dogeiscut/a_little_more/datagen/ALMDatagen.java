@@ -8,9 +8,11 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.metadata.PackMetadataGenerator;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -45,7 +47,15 @@ public class ALMDatagen {
         generator.addProvider(event.includeServer(), new ALMFluidTagsProvider(output, lookup, helper));
 
         generator.addProvider(event.includeServer(), new ALMRecipeProvider(output, lookup));
-        generator.addProvider(event.includeServer(), ALMBlockLootProvider.create(output, lookup));
+        generator.addProvider(event.includeServer(), new LootTableProvider(
+                output,
+                java.util.Collections.emptySet(),
+                List.of(
+                        new LootTableProvider.SubProviderEntry(ALMBlockLootProvider::new, LootContextParamSets.BLOCK),
+                        new LootTableProvider.SubProviderEntry(ALMEntityLootProvider::new, LootContextParamSets.ENTITY)
+                ),
+                lookup
+        ));
         ALMDatapackProvider datapack = new ALMDatapackProvider(output, lookup);
         generator.addProvider(event.includeServer(), datapack);
         generator.addProvider(event.includeServer(),

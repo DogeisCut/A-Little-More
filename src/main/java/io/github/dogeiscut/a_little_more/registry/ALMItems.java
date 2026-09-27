@@ -211,7 +211,7 @@ public class ALMItems {
             "opossum_spawn_egg",
             properties -> new DeferredSpawnEggItem(
                     ALMEntities.OPOSSUM,
-                    0x4D4343,
+                    0x736A6A,
                     0xBA4965,
                     properties
             ),
