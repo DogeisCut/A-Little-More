@@ -2,6 +2,7 @@ package io.github.dogeiscut.a_little_more.registry;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockFaces;
+import io.github.dogeiscut.a_little_more.content.imbuing.ImbuementComponent;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
 import net.neoforged.bus.api.IEventBus;
@@ -17,6 +18,9 @@ public class ALMDataComponents {
 
     public static final DataComponentType<PatternBlockFaces> PATTERN_BLOCK_FACES =
             register("pattern_block_faces", b -> b.persistent(PatternBlockFaces.CODEC));
+
+//    public static final DataComponentType<ImbuementComponent> IMBUEMENT =
+//            register("imbuement", b -> b.persistent(ImbuementComponent.CODEC));
 
 
     private static <T> @NotNull DataComponentType<T> register(@NotNull String name, @NotNull UnaryOperator<DataComponentType.Builder<T>> builder) {
