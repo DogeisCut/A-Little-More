@@ -3,7 +3,11 @@ package io.github.dogeiscut.a_little_more;
 import com.mojang.logging.LogUtils;
 import io.github.dogeiscut.a_little_more.compat.create.ALMCreate;
 import io.github.dogeiscut.a_little_more.registry.*;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.repository.PackSource;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -15,6 +19,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
+import net.neoforged.neoforge.event.AddPackFindersEvent;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
@@ -57,6 +62,22 @@ public class ALittleMore {
     @SubscribeEvent
     public static void onCommonSetup(FMLCommonSetupEvent event) {
 
+    }
+
+    @SubscribeEvent
+    public static void addPackFinders(AddPackFindersEvent event) {
+        if (event.getPackType() != PackType.SERVER_DATA) {
+            return;
+        }
+
+        event.addPackFinders(
+                id("data/a_little_more/datapacks/pattern_stamping"),
+                PackType.SERVER_DATA,
+                Component.translatable(ALittleMore.MOD_ID + "dataPack.pattern_stamping.description"),
+                PackSource.FEATURE,
+                false,
+                Pack.Position.TOP
+        );
     }
 
     public static @NotNull ResourceLocation id(@NotNull String path) {

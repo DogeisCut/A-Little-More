@@ -1,7 +1,6 @@
 package io.github.dogeiscut.a_little_more.content.blocks.pattern_block;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -43,10 +42,5 @@ public class PatternBlock extends Block implements EntityBlock {
             return patternBlockEntity.getItem();
         }
         return super.getCloneItemStack(level, pos, state);
-    }
-
-    @Override
-    public boolean isEnabled(FeatureFlagSet enabledFeatures) {
-        return false;
     }
 }

@@ -1,7 +1,6 @@
 package io.github.dogeiscut.a_little_more.datagen;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
-import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockDuplicateRecipe;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepTransformationRecipe;
 import io.github.dogeiscut.a_little_more.registry.*;
 import net.minecraft.core.HolderLookup;
@@ -43,28 +42,8 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(@NotNull RecipeOutput out) {
-
         ALMDatagen.BlockFamilies.getAllFamilies().forEach(family -> family(out, family, family.isStone()));
         progression(out, ALMDatagen.BlockFamilies.SEEPSTONE_PROGRESSION);
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ALMBlocks.PATTERN_BLOCK, 8)
-                .pattern("/O/")
-                .pattern("O#O")
-                .pattern("/O/")
-                .define('#', ItemTags.PLANKS)
-                .define('O', Items.PAINTING)
-                .define('/', Items.STICK)
-                .unlockedBy("has_planks", has(ItemTags.PLANKS))
-                .save(out);
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ALMBlocks.STAMPING_TABLE)
-                .pattern("_(")
-                .pattern("##")
-                .define('#', ItemTags.PLANKS)
-                .define('(', Items.BRUSH)
-                .define('_', Items.SMOOTH_STONE_SLAB)
-                .unlockedBy(criterionName(ALMBlocks.PATTERN_BLOCK), has(ALMBlocks.PATTERN_BLOCK))
-                .save(out);
 
         oreSmelting(out, List.of(ALMBlocks.CELERIUM_ORE.get(), ALMBlocks.DEEPSLATE_CELERIUM_ORE.get()),
                 ALMItems.CELERIUM_SHARD.get(), 1.0F, 200);
@@ -88,8 +67,6 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
         seepTransformation(out, Items.AMETHYST_CLUSTER, ALMBlocks.SEEP_CRYSTAL_CLUSTER.get().asItem());
         seepTransformation(out, Items.STONE, ALMBlocks.SEEPSTONE.get().asItem());
         seepTransformation(out, ALMTags.Items.SEEP_TRANSFORMABLE_MUSIC_DISCS, ALMItems.MUSIC_DISC_JUST_A_LITTLE_MORE.get());
-
-        SpecialRecipeBuilder.special(PatternBlockDuplicateRecipe::new).save(out, ALittleMore.id("pattern_block_duplicate"));
     }
 
     private void family(@NotNull RecipeOutput out, @NotNull ALMBlockFamily almFamily, boolean isStone) {

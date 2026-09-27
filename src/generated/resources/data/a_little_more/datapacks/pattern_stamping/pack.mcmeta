@@ -1,0 +1,13 @@
+{
+  "features": {
+    "enabled": [
+      "a_little_more:pattern_stamping"
+    ]
+  },
+  "pack": {
+    "description": {
+      "translate": "a_little_moredataPack.pattern_stamping.description"
+    },
+    "pack_format": 48
+  }
+}

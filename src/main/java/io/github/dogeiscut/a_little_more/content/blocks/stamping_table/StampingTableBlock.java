@@ -6,7 +6,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.Level;
@@ -40,22 +39,5 @@ public class StampingTableBlock extends Block {
                 (containerId, inventory, player) -> new StampingTableMenu(containerId, inventory, ContainerLevelAccess.create(level, pos)),
                 CONTAINER_TITLE
         );
-    }
-
-    @Override
-    public boolean isEnabled(FeatureFlagSet enabledFeatures) {
-        return false;
-    }
-
-    // temp, just so i can disable it lol
-    public static class Item extends BlockItem {
-        public Item(Block block, Properties properties) {
-            super(block, properties);
-        }
-
-        @Override
-        public boolean isEnabled(FeatureFlagSet enabledFeatures) {
-            return false;
-        }
     }
 }

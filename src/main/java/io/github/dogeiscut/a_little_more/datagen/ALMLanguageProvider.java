@@ -99,6 +99,8 @@ public class ALMLanguageProvider extends LanguageProvider {
         add(ALittleMore.MOD_ID + ".recipe.fan_seeping", "Bulk Seeping");
         add(ALittleMore.MOD_ID + ".recipe.fan_seeping.fan", "Fan behind Seep");
 
+        add(ALittleMore.MOD_ID + "dataPack.pattern_stamping.description", "A Little More: Pattern Block + Stamping Table");
+
         advancementStrings();
     }
 

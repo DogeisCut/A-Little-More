@@ -3,10 +3,13 @@ package io.github.dogeiscut.a_little_more.datagen;
 import com.google.common.collect.Maps;
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
+import io.github.dogeiscut.a_little_more.registry.ALMFeatureFlags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.metadata.PackMetadataGenerator;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -49,6 +52,19 @@ public class ALMDatagen {
                 new ALMPatternBlockPatternTagsProvider(output, datapack.getRegistryProvider(), helper));
 
         generator.addProvider(event.includeClient(), new ALMParticleDescriptionProvider(output, helper));
+
+        if (event.includeServer()) {
+            DataGenerator.PackGenerator featurePack =
+                    generator.getBuiltinDatapack(true, ALittleMore.MOD_ID, "pattern_stamping");
+
+            featurePack.addProvider(packOutput -> PackMetadataGenerator.forFeaturePack(
+                    packOutput,
+                    Component.translatable(ALittleMore.MOD_ID + "dataPack.pattern_stamping.description"),
+                    ALMFeatureFlags.PATTERN_STAMPING_SET
+            ));
+
+            featurePack.addProvider(packOutput -> new ALMPatternStampingRecipeProvider(packOutput, lookup));
+        }
     }
 
     public static final class BlockFamilies {
