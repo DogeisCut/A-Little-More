@@ -16,6 +16,9 @@
       I can save it for a future update.
 - [X] Seep bucket dispenser behavior
 - [X] Seep cauldron
+  - [ ] figure out why create fluid pipes won't connect to them
+    - Create relies on `VanillaFluidTargets.canProvideFluidWithoutCapability` for this. So far, the only way I can think to fix this
+is to make a mixin... This is cumbersome to say the least...
 - [ ] Under seep overlay
 - [ ] Figure out wait repairing celerium tools/armor doesn't show up in JEI
 - [ ] Fix Create support for Bulk Seeping not showing up in JEI
