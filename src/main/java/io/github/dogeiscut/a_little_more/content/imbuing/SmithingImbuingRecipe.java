@@ -6,6 +6,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.SmithingRecipe;
 import net.minecraft.world.item.crafting.SmithingRecipeInput;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 public class SmithingImbuingRecipe implements SmithingRecipe {
 
@@ -30,17 +31,17 @@ public class SmithingImbuingRecipe implements SmithingRecipe {
     }
 
     @Override
-    public ItemStack assemble(SmithingRecipeInput smithingRecipeInput, HolderLookup.Provider provider) {
+    public @NotNull ItemStack assemble(SmithingRecipeInput smithingRecipeInput, HolderLookup.Provider provider) {
         return null;
     }
 
     @Override
-    public ItemStack getResultItem(HolderLookup.Provider provider) {
+    public @NotNull ItemStack getResultItem(HolderLookup.Provider provider) {
         return null;
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
+    public @NotNull RecipeSerializer<?> getSerializer() {
         return null;
     }
 }

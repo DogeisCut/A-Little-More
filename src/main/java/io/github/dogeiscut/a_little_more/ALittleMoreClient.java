@@ -12,11 +12,9 @@ import io.github.dogeiscut.a_little_more.content.mobs.animals.opossum.OpossumMod
 import io.github.dogeiscut.a_little_more.content.mobs.animals.opossum.OpossumRenderer;
 import io.github.dogeiscut.a_little_more.content.particle.ALMDripParticle;
 import io.github.dogeiscut.a_little_more.registry.*;
-import net.minecraft.client.particle.SplashParticle;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
-import net.minecraft.core.particles.ParticleTypes;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -45,7 +43,7 @@ public class ALittleMoreClient {
     }
 
     @SubscribeEvent
-    public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+    public static void registerLayerDefinitions(EntityRenderersEvent.@NotNull RegisterLayerDefinitions event) {
         event.registerLayerDefinition(ALMModelLayerLocations.OPOSSUM, OpossumModel::createBodyLayer);
     }
 
@@ -54,9 +52,9 @@ public class ALittleMoreClient {
         event.registerSpriteSet(ALMParticles.SEEP_BUBBLE.get(), SeepBubbleParticle.Provider::new);
         event.registerSpriteSet(ALMParticles.SEEP_BUBBLE_POP.get(), SeepBubblePopParticle.Provider::new);
         event.registerSpriteSet(ALMParticles.SEEP_TRANSFORM.get(), SeepTransformParticle.Provider::new);
-        event.registerSpriteSet(ALMParticles.FALLING_SEEP.get(), ALMDripParticle.FallingSeepProvider::new);;
+        event.registerSpriteSet(ALMParticles.FALLING_SEEP.get(), ALMDripParticle.FallingSeepProvider::new);
         event.registerSpriteSet(ALMParticles.DRIPPING_SEEP.get(), ALMDripParticle.DrippingSeepProvider::new);
-        event.registerSpriteSet(ALMParticles.FALLING_DRIPSTONE_SEEP.get(), ALMDripParticle.FallingDripstoneSeepProvider::new);;
+        event.registerSpriteSet(ALMParticles.FALLING_DRIPSTONE_SEEP.get(), ALMDripParticle.FallingDripstoneSeepProvider::new);
         event.registerSpriteSet(ALMParticles.DRIPPING_DRIPSTONE_SEEP.get(), ALMDripParticle.DrippingDripstoneSeepProvider::new);
         event.registerSpriteSet(ALMParticles.SEEP_SPLASH.get(), SeepSplashParticle.Provider::new);
     }

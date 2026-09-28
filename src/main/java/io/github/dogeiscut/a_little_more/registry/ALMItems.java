@@ -19,7 +19,6 @@ import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.NotNull;
@@ -226,7 +225,7 @@ public class ALMItems {
             new Item.Properties()
     );
 
-    public static final Supplier<SeepSodaItem> SEEP_SODA = item("seep_soda", (properties) ->  new SeepSodaItem(properties
+    public static final Supplier<SeepSodaItem> SEEP_SODA = item("seep_soda", (properties) -> new SeepSodaItem(properties
             .stacksTo(16)
             .food(new FoodProperties.Builder()
                     .nutrition(2)
@@ -237,7 +236,6 @@ public class ALMItems {
             )
             .rarity(Rarity.UNCOMMON)
     ));
-
 
 
 //    public static final Supplier<SpawnEggItem> SHADY_DEALER_SPAWN_EGG = ITEMS.registerItem(

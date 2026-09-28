@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class SeepFlowingFluid extends BaseFlowingFluid {
 
-    protected SeepFlowingFluid(Properties properties) {
+    protected SeepFlowingFluid(@NotNull Properties properties) {
         super(properties);
     }
 
@@ -34,7 +34,7 @@ public class SeepFlowingFluid extends BaseFlowingFluid {
     }
 
     @Override
-    public void animateTick(@NotNull Level level, @NotNull BlockPos pos, @NotNull FluidState state, RandomSource random) {
+    public void animateTick(@NotNull Level level, @NotNull BlockPos pos, @NotNull FluidState state, @NotNull RandomSource random) {
         if (random.nextInt(8) == 0) {
 
             level.addParticle(
@@ -48,7 +48,7 @@ public class SeepFlowingFluid extends BaseFlowingFluid {
     }
 
     public static class Flowing extends SeepFlowingFluid {
-        public Flowing(Properties properties) {
+        public Flowing(@NotNull Properties properties) {
             super(properties);
             this.registerDefaultState(this.getStateDefinition().any().setValue(LEVEL, 7));
         }
@@ -73,7 +73,7 @@ public class SeepFlowingFluid extends BaseFlowingFluid {
     }
 
     public static class Source extends SeepFlowingFluid {
-        public Source(Properties properties) {
+        public Source(@NotNull Properties properties) {
             super(properties);
         }
 
@@ -93,7 +93,7 @@ public class SeepFlowingFluid extends BaseFlowingFluid {
         }
 
         @Override
-        public void animateTick(@NotNull Level level, @NotNull BlockPos pos, @NotNull FluidState state, RandomSource random) {
+        public void animateTick(@NotNull Level level, @NotNull BlockPos pos, @NotNull FluidState state, @NotNull RandomSource random) {
             super.animateTick(level, pos, state, random);
             // TODO: custom sound
             // TODO: figure out why this isnt making a noise

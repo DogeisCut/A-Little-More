@@ -16,7 +16,9 @@ public class ALMMenuTypes {
 
     public static void register(@NotNull IEventBus modEventBus) {
         MENU_TYPES.register(modEventBus);
-    }    public static final DeferredHolder<MenuType<?>, MenuType<StampingTableMenu>> STAMPING_TABLE =
+    }
+
+    public static final DeferredHolder<MenuType<?>, MenuType<StampingTableMenu>> STAMPING_TABLE =
             MENU_TYPES.register("stamping_table",
                     () -> new MenuType<>(StampingTableMenu::new, ALMFeatureFlags.PATTERN_STAMPING_SET));
 

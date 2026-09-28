@@ -31,12 +31,14 @@ public class ALMBlockEntities {
             }
             return BlockEntityType.Builder.of(factory, resolved).build(null);
         });
-    }    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PatternBlockEntity>> PATTERN_BLOCK_ENTITY =
-            blockEntity("pattern_block", PatternBlockEntity::new, ALMBlocks.PATTERN_BLOCK);
+    }
 
     public static void register(@NotNull IEventBus modEventBus) {
         BLOCK_ENTITY_TYPES.register(modEventBus);
-    }
+    }    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PatternBlockEntity>> PATTERN_BLOCK_ENTITY =
+            blockEntity("pattern_block", PatternBlockEntity::new, ALMBlocks.PATTERN_BLOCK);
+
+
 
 
 }

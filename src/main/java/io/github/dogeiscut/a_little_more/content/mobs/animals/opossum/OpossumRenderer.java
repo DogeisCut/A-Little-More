@@ -8,7 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
 public class OpossumRenderer extends MobRenderer<OpossumEntity, OpossumModel<OpossumEntity>> {
-    public OpossumRenderer(EntityRendererProvider.Context context) {
+    public OpossumRenderer(EntityRendererProvider.@NotNull Context context) {
         super(context, new OpossumModel<>(context.bakeLayer(ALMModelLayerLocations.OPOSSUM)), 0.5f);
     }
 

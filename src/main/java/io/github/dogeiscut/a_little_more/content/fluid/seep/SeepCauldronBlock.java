@@ -19,51 +19,19 @@ import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 
 public class SeepCauldronBlock extends AbstractCauldronBlock {
-    public static final MapCodec<SeepCauldronBlock> CODEC = simpleCodec(SeepCauldronBlock::new);
     public static final CauldronInteraction.InteractionMap SEEP = CauldronInteraction.newInteractionMap("seep");
+    public static final MapCodec<SeepCauldronBlock> CODEC = simpleCodec(SeepCauldronBlock::new);
 
-    public SeepCauldronBlock(BlockBehaviour.Properties properties) {
+    public SeepCauldronBlock(BlockBehaviour.@NotNull Properties properties) {
         super(properties, SEEP);
     }
 
-    protected double getContentHeight(@NotNull BlockState state) {
-        return 0.9375d;
-    }
-
-    @Override
-    public @NotNull ItemStack getCloneItemStack(@NotNull BlockState state, @NotNull HitResult target, @NotNull LevelReader level, @NotNull BlockPos pos, @NotNull Player player) {
-        return new ItemStack(Items.CAULDRON);
-    }
-
-    @Override
-    protected @NotNull MapCodec<? extends AbstractCauldronBlock> codec() {
-        return CODEC;
-    }
-
-    protected void entityInside(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Entity entity) {
-        if (this.isEntityInsideContent(state, pos, entity)) {
-            SeepLiquidBlock.levitate(level, entity);
-        }
-        if (!level.isClientSide && entity.isOnFire() && this.isEntityInsideContent(state, pos, entity)) {
-            entity.clearFire();
-        }
-    }
-
-    @Override
-    public boolean isFull(@NotNull BlockState blockState) {
-        return true;
-    }
-
-    protected int getAnalogOutputSignal(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos) {
-        return 3;
-    }
-
-    public static void addCauldronInteractions(CauldronInteraction.InteractionMap interactionMap) {
+    public static void addCauldronInteractions(CauldronInteraction.@NotNull InteractionMap interactionMap) {
         interactionMap.map().put(Items.LAVA_BUCKET, CauldronInteraction.FILL_LAVA);
         interactionMap.map().put(Items.WATER_BUCKET, CauldronInteraction.FILL_WATER);
         interactionMap.map().put(Items.POWDER_SNOW_BUCKET, CauldronInteraction.FILL_POWDER_SNOW);
 
-        interactionMap.map().put(Items.BUCKET,  (state, level, pos, player, hand, stack) ->
+        interactionMap.map().put(Items.BUCKET, (state, level, pos, player, hand, stack) ->
                 CauldronInteraction.fillBucket(
                         state,
                         level,
@@ -100,5 +68,37 @@ public class SeepCauldronBlock extends AbstractCauldronBlock {
                                 ALMSounds.BUCKET_EMPTY_SEEP.get()
                         )
         );
+    }
+
+    protected double getContentHeight(@NotNull BlockState state) {
+        return 0.9375d;
+    }
+
+    @Override
+    public @NotNull ItemStack getCloneItemStack(@NotNull BlockState state, @NotNull HitResult target, @NotNull LevelReader level, @NotNull BlockPos pos, @NotNull Player player) {
+        return new ItemStack(Items.CAULDRON);
+    }
+
+    @Override
+    protected @NotNull MapCodec<? extends AbstractCauldronBlock> codec() {
+        return CODEC;
+    }
+
+    protected void entityInside(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Entity entity) {
+        if (this.isEntityInsideContent(state, pos, entity)) {
+            SeepLiquidBlock.levitate(level, entity);
+        }
+        if (!level.isClientSide && entity.isOnFire() && this.isEntityInsideContent(state, pos, entity)) {
+            entity.clearFire();
+        }
+    }
+
+    @Override
+    public boolean isFull(@NotNull BlockState blockState) {
+        return true;
+    }
+
+    protected int getAnalogOutputSignal(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos) {
+        return 3;
     }
 }

@@ -10,10 +10,6 @@ import java.util.List;
 // TODO: figure out how to make this data-driven
 public record Imbuement(Item type, List<AttributeEntry> appliedAttributes, List<SpecialEffect> specialEffects) {
 
-    public record AttributeEntry(Attribute attribute, double amount) {
-
-    }
-
     public enum SpecialEffect implements StringRepresentable {
         DOUBLE_DURABILITY,
         INDESTRUCTIBLE_NONTOOL;
@@ -25,5 +21,9 @@ public record Imbuement(Item type, List<AttributeEntry> appliedAttributes, List<
                 case INDESTRUCTIBLE_NONTOOL -> "indestructible_nontool";
             };
         }
+    }
+
+    public record AttributeEntry(Attribute attribute, double amount) {
+
     }
 }

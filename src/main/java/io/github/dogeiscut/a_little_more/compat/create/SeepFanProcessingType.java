@@ -77,7 +77,7 @@ public class SeepFanProcessingType implements FanProcessingType {
     }
 
     @Override
-    public void affectEntity(Entity entity, Level level) {
+    public void affectEntity(@NotNull Entity entity, Level level) {
         SeepLiquidBlock.levitate(level, entity);
     }
 

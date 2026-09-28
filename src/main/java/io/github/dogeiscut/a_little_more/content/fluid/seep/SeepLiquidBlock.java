@@ -1,8 +1,6 @@
 package io.github.dogeiscut.a_little_more.content.fluid.seep;
 
-import io.github.dogeiscut.a_little_more.registry.ALMParticles;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -18,27 +16,15 @@ import java.util.function.Supplier;
 
 public class SeepLiquidBlock extends LiquidBlock {
 
-    private static final int LEVITATION_DURATION_TICKS = 21;
     public static final int LEVITATION_AMPLIFIER = 2;
+    private static final int LEVITATION_DURATION_TICKS = 21;
     private static final double PUSH_FORCE = 0.02d;
 
     public SeepLiquidBlock(@NotNull Supplier<? extends FlowingFluid> fluidSupplier, @NotNull Properties properties) {
         super(fluidSupplier.get(), properties);
     }
 
-    @Override
-    protected void entityInside(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Entity entity) {
-        super.entityInside(state, level, pos, entity);
-
-        float fluidHeight = level.getFluidState(pos).getOwnHeight();
-        double fluidSurfaceY = pos.getY() + fluidHeight;
-
-        if (entity.getBoundingBox().minY < fluidSurfaceY) {
-            levitate(level, entity);
-        }
-    }
-
-    public static void levitate(Level level, Entity entity) {
+    public static void levitate(@NotNull Level level, @NotNull Entity entity) {
         if (entity.isAlive()) {
             if (entity instanceof LivingEntity living) {
                 if (!level.isClientSide) {
@@ -68,5 +54,17 @@ public class SeepLiquidBlock extends LiquidBlock {
         entity.setDeltaMovement(delta.x, delta.y + PUSH_FORCE, delta.z);
 
         entity.hasImpulse = true;
+    }
+
+    @Override
+    protected void entityInside(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Entity entity) {
+        super.entityInside(state, level, pos, entity);
+
+        float fluidHeight = level.getFluidState(pos).getOwnHeight();
+        double fluidSurfaceY = pos.getY() + fluidHeight;
+
+        if (entity.getBoundingBox().minY < fluidSurfaceY) {
+            levitate(level, entity);
+        }
     }
 }

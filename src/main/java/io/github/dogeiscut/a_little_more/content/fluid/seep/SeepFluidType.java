@@ -5,7 +5,6 @@ import io.github.dogeiscut.a_little_more.content.fluid.BaseFluidType;
 import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
 import io.github.dogeiscut.a_little_more.registry.ALMParticles;
 import io.github.dogeiscut.a_little_more.registry.ALMSounds;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
@@ -18,7 +17,6 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.SoundActions;
 import net.neoforged.neoforge.fluids.FluidType;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
 
 public class SeepFluidType extends BaseFluidType {
@@ -29,7 +27,7 @@ public class SeepFluidType extends BaseFluidType {
     private static final double MAX_SINK_SPEED = -0.5D;
     private static final double HORIZONTAL_DRAG = 0.95D;
 
-    public SeepFluidType(String descriptionId, int tint) {
+    public SeepFluidType(@NotNull String descriptionId, int tint) {
         super(FluidType.Properties.create()
                         .descriptionId(descriptionId)
                         .fallDistanceModifier(0f)

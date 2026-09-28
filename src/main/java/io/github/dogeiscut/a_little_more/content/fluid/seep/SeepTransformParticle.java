@@ -1,25 +1,23 @@
 package io.github.dogeiscut.a_little_more.content.fluid.seep;
 
-import io.github.dogeiscut.a_little_more.registry.ALMTags;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.RandomSource;
 import org.jetbrains.annotations.NotNull;
 
 public class SeepTransformParticle extends TextureSheetParticle {
     private static final RandomSource RANDOM = RandomSource.create();
-    private final SpriteSet sprites;
+    private final @NotNull SpriteSet sprites;
 
     public SeepTransformParticle(@NotNull ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, @NotNull SpriteSet sprites) {
-        super(level, x, y, z, (double)0.5F - RANDOM.nextDouble(), ySpeed, (double)0.5F - RANDOM.nextDouble());
+        super(level, x, y, z, (double) 0.5F - RANDOM.nextDouble(), ySpeed, (double) 0.5F - RANDOM.nextDouble());
         this.friction = 0.96F;
         this.gravity = -0.1F;
         this.speedUpWhenYMotionIsBlocked = true;
         this.sprites = sprites;
         this.yd *= 0.2F;
-        if (xSpeed == (double)0.0F && zSpeed == (double)0.0F) {
+        if (xSpeed == (double) 0.0F && zSpeed == (double) 0.0F) {
             this.xd *= 0.1F;
             this.zd *= 0.1F;
         }
@@ -31,7 +29,7 @@ public class SeepTransformParticle extends TextureSheetParticle {
         );
 
         this.quadSize *= 0.75F;
-        this.lifetime = (int)((double)8.0F / (Math.random() * 0.8 + 0.2));
+        this.lifetime = (int) ((double) 8.0F / (Math.random() * 0.8 + 0.2));
         this.hasPhysics = false;
         this.setSpriteFromAge(sprites);
     }

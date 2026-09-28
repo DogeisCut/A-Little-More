@@ -5,11 +5,7 @@ import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlo
 import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.SpecialRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.NotNull;
@@ -23,7 +19,7 @@ public class ALMPatternStampingRecipeProvider extends RecipeProvider {
         super(output, lookupProvider);
     }
 
-    private static @NotNull String criterionName(net.minecraft.world.level.ItemLike item) {
+    private static @NotNull String criterionName(net.minecraft.world.level.@NotNull ItemLike item) {
         return "has_" + net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(item.asItem()).getPath();
     }
 

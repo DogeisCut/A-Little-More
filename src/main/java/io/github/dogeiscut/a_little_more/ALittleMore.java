@@ -9,7 +9,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
-import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -66,13 +65,13 @@ public class ALittleMore {
     }
 
     @SubscribeEvent
-    static void onCommonSetup(FMLCommonSetupEvent event) {
+    static void onCommonSetup(@NotNull FMLCommonSetupEvent event) {
         event.enqueueWork(() -> DispenserBlock.registerBehavior(ALMFluids.SEEP.bucket().get(), DispenseFluidContainer.getInstance()));
         event.enqueueWork(() -> SeepCauldronBlock.addCauldronInteractions(SeepCauldronBlock.SEEP));
     }
 
     @SubscribeEvent
-    public static void addPackFinders(AddPackFindersEvent event) {
+    public static void addPackFinders(@NotNull AddPackFindersEvent event) {
         if (event.getPackType() != PackType.SERVER_DATA) {
             return;
         }

@@ -48,6 +48,7 @@ public final class StampingTableLayout {
     public static final int GIZMO_X = 363;
     public static final int GIZMO_Y = 128;
     public static final float GIZMO_ARM = 11.0F;
+
     private StampingTableLayout() {
     }
 }

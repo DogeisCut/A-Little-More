@@ -5,11 +5,9 @@ import io.github.dogeiscut.a_little_more.registry.ALMSounds;
 import io.github.dogeiscut.a_little_more.registry.ALMTags;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -21,11 +19,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class OpossumEntity extends Animal {
-    public OpossumEntity(EntityType<? extends Animal> entityType, Level level) {
+    public OpossumEntity(@NotNull EntityType<? extends Animal> entityType, @NotNull Level level) {
         super(entityType, level);
     }
 
-    public static AttributeSupplier createAttributes() {
+    public static @NotNull AttributeSupplier createAttributes() {
         return Animal.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 8.0d)
                 .add(Attributes.MOVEMENT_SPEED, 0.25d)
@@ -48,7 +46,7 @@ public class OpossumEntity extends Animal {
     }
 
     @Override
-    public boolean isFood(ItemStack itemStack) {
+    public boolean isFood(@NotNull ItemStack itemStack) {
         return itemStack.is(ALMTags.Items.OPOSSUM_FOOD);
     }
 

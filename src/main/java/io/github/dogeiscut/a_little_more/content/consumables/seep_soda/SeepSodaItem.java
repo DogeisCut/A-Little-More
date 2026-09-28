@@ -10,7 +10,7 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 public class SeepSodaItem extends Item {
-    public SeepSodaItem(Properties properties) {
+    public SeepSodaItem(@NotNull Properties properties) {
         super(properties);
     }
 

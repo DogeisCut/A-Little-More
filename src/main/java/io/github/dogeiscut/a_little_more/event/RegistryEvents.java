@@ -5,9 +5,6 @@ import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlo
 import io.github.dogeiscut.a_little_more.content.mobs.animals.opossum.OpossumEntity;
 import io.github.dogeiscut.a_little_more.registry.*;
 import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.Fluids;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
@@ -30,7 +27,7 @@ public class RegistryEvents {
     }
 
     @SubscribeEvent
-    public static void registerAttributes(EntityAttributeCreationEvent event) {
+    public static void registerAttributes(@NotNull EntityAttributeCreationEvent event) {
         event.put(ALMEntities.OPOSSUM.get(), OpossumEntity.createAttributes());
     }
 
@@ -44,7 +41,7 @@ public class RegistryEvents {
     }
 
     @SubscribeEvent
-    public static void registerCauldronFluidContent(RegisterCauldronFluidContentEvent event) {
+    public static void registerCauldronFluidContent(@NotNull RegisterCauldronFluidContentEvent event) {
         event.register(ALMBlocks.SEEP_CAULDRON.get(), ALMFluids.SEEP.still().get(), FluidType.BUCKET_VOLUME, null);
     }
 }
