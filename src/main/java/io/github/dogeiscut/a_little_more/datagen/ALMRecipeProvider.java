@@ -4,6 +4,7 @@ import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepTransformationRecipe;
 import io.github.dogeiscut.a_little_more.registry.*;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
@@ -13,10 +14,13 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
+import net.neoforged.neoforge.common.crafting.DataComponentIngredient;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -67,6 +71,21 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
         seepTransformation(out, Items.AMETHYST_CLUSTER, ALMBlocks.SEEP_CRYSTAL_CLUSTER.get().asItem());
         seepTransformation(out, Items.STONE, ALMBlocks.SEEPSTONE.get().asItem());
         seepTransformation(out, ALMTags.Items.SEEP_TRANSFORMABLE_MUSIC_DISCS, ALMItems.MUSIC_DISC_JUST_A_LITTLE_MORE.get());
+
+
+        {
+            ItemStack waterBottle = new ItemStack(Items.POTION);
+            waterBottle.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.WATER));
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ALMItems.SEEP_SODA.get(), 4)
+                    .requires(ALMFluids.SEEP.bucket().get())
+                    .requires(Items.SUGAR)
+                    .requires(DataComponentIngredient.of(false, waterBottle))
+                    .requires(DataComponentIngredient.of(false, waterBottle))
+                    .requires(DataComponentIngredient.of(false, waterBottle))
+                    .requires(DataComponentIngredient.of(false, waterBottle))
+                    .unlockedBy(criterionName(ALMItems.SEEP_SODA.get()), has(ALMFluids.SEEP.bucket().get()))
+                    .save(out);
+        }
     }
 
     private void family(@NotNull RecipeOutput out, @NotNull ALMBlockFamily almFamily, boolean isStone) {

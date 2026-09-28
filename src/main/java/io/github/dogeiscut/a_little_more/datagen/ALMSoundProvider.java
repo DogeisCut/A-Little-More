@@ -40,11 +40,11 @@ public class ALMSoundProvider extends SoundDefinitionsProvider {
         add(ALMSounds.OPOSSUM_AMBIENT.get(), SoundDefinition.definition()
                 .with(SoundDefinition.Sound.sound(
                         ALittleMore.id("mob/opossum/idle1"), SoundDefinition.SoundType.SOUND
-                )).with(SoundDefinition.Sound.sound(
+                ).volume(0.4)).with(SoundDefinition.Sound.sound(
                         ALittleMore.id("mob/opossum/idle2"), SoundDefinition.SoundType.SOUND
-                )).with(SoundDefinition.Sound.sound(
+                ).volume(0.4)).with(SoundDefinition.Sound.sound(
                         ALittleMore.id("mob/opossum/idle3"), SoundDefinition.SoundType.SOUND
-                )).subtitle("subtitles.entity.opossum.ambient")
+                ).volume(0.4)).subtitle("subtitles.entity.opossum.ambient")
         );
         add(ALMSounds.OPOSSUM_HURT.get(), SoundDefinition.definition()
                 .with(SoundDefinition.Sound.sound(

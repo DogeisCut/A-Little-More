@@ -19,7 +19,7 @@ import java.util.function.Supplier;
 public class SeepLiquidBlock extends LiquidBlock {
 
     private static final int LEVITATION_DURATION_TICKS = 20;
-    private static final int LEVITATION_AMPLIFIER = 2;
+    public static final int LEVITATION_AMPLIFIER = 2;
     private static final double PUSH_FORCE = 0.02d;
 
     public SeepLiquidBlock(@NotNull Supplier<? extends FlowingFluid> fluidSupplier, @NotNull Properties properties) {

@@ -1,9 +1,18 @@
 {
   "entity.opossum.ambient": {
     "sounds": [
-      "a_little_more:mob/opossum/idle1",
-      "a_little_more:mob/opossum/idle2",
-      "a_little_more:mob/opossum/idle3"
+      {
+        "name": "a_little_more:mob/opossum/idle1",
+        "volume": 0.4
+      },
+      {
+        "name": "a_little_more:mob/opossum/idle2",
+        "volume": 0.4
+      },
+      {
+        "name": "a_little_more:mob/opossum/idle3",
+        "volume": 0.4
+      }
     ],
     "subtitle": "subtitles.entity.opossum.ambient"
   },

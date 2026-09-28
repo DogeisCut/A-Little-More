@@ -27,6 +27,8 @@ import org.slf4j.Logger;
 @EventBusSubscriber(modid = ALittleMore.MOD_ID)
 public class ALittleMore {
 
+    //TODO: might be worth rewriting my registry and datagen classes to be something like Create's Registrate (builders!!)
+
     public static final String MOD_ID = "a_little_more";
 
     public static final Logger LOGGER = LogUtils.getLogger();
