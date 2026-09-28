@@ -1,6 +1,7 @@
 package io.github.dogeiscut.a_little_more.datagen;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
+import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepFluidType;
 import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
 import io.github.dogeiscut.a_little_more.registry.ALMFluids;
 import net.minecraft.data.BlockFamily;
@@ -55,12 +56,38 @@ public class ALMBlockStateProvider extends BlockStateProvider {
 
         particleOnly(ALMFluids.SEEP.block().get(), modLoc("block/seep_still"));
 
+        singleLevelCauldronBlock(ALMBlocks.SEEP_CAULDRON.get(), SeepFluidType.STILL, false /* i know seep is transparent but vanilla water cauldrons aren't and it causes weird block outline artifacts*/);
+
         if (!missingTextures.isEmpty()) {
             ALittleMore.LOGGER.warn(
                     "[A Little More datagen] Skipped {} block model(s) with no texture yet: {}",
                     missingTextures.size(), String.join(", ", missingTextures));
         }
     }
+
+    // WHY IS THERE NO BUILT-IN DATAGEN FUNCTION FOR CAULDRONS, MOJANG!!!!!!!!!!!!!!!!!!?????????????????
+    public void singleLevelCauldronBlock(@NotNull Block block, @NotNull ResourceLocation fluidTexture, boolean translucent) {
+        ResourceLocation cauldronTop = mcLoc("block/cauldron_top");
+        ResourceLocation cauldronSide = mcLoc("block/cauldron_side");
+        ResourceLocation cauldronBottom = mcLoc("block/cauldron_bottom");
+        ResourceLocation cauldronInner = mcLoc("block/cauldron_inner");
+
+        String blockName = name(block);
+
+        BlockModelBuilder model = models().withExistingParent(blockName, mcLoc("block/template_cauldron_full"))
+                .texture("top", cauldronTop)
+                .texture("side", cauldronSide)
+                .texture("bottom", cauldronBottom)
+                .texture("inside", cauldronInner)
+                .texture("content", fluidTexture);
+
+        if (translucent) {
+            model.renderType(mcLoc("translucent"));
+        }
+
+        simpleBlock(block, model);
+    }
+
 
     private void family(@NotNull ALMBlockFamily almFamily) {
         BlockFamily family = almFamily.vanilla();

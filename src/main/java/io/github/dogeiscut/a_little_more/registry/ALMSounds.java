@@ -16,6 +16,8 @@ public class ALMSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> BUCKET_EMPTY_SEEP = sound("item.bucket.empty_seep");
     public static final DeferredHolder<SoundEvent, SoundEvent> BUCKET_SEEP_FILL = sound("item.bucket.fill_seep");
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> SEEP_TRANSFORM = sound("block.seep.transform");
+
     public static final DeferredHolder<SoundEvent, SoundEvent> OPOSSUM_AMBIENT = sound("entity.opossum.ambient");
     public static final DeferredHolder<SoundEvent, SoundEvent> OPOSSUM_HURT = sound("entity.opossum.hurt");
     public static final DeferredHolder<SoundEvent, SoundEvent> OPOSSUM_DEATH = sound("entity.opossum.death");

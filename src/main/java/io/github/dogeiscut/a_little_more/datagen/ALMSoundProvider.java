@@ -37,6 +37,12 @@ public class ALMSoundProvider extends SoundDefinitionsProvider {
                 )).subtitle("subtitles.item.bucket.fill")
         );
 
+        add(ALMSounds.SEEP_TRANSFORM.get(), SoundDefinition.definition()
+                .with(SoundDefinition.Sound.sound(
+                        ALittleMore.id("block/seep/transform"), SoundDefinition.SoundType.SOUND
+                )).subtitle("subtitles.block.seep.transform")
+        );
+
         add(ALMSounds.OPOSSUM_AMBIENT.get(), SoundDefinition.definition()
                 .with(SoundDefinition.Sound.sound(
                         ALittleMore.id("mob/opossum/idle1"), SoundDefinition.SoundType.SOUND
@@ -52,7 +58,8 @@ public class ALMSoundProvider extends SoundDefinitionsProvider {
                 )).with(SoundDefinition.Sound.sound(
                         ALittleMore.id("mob/opossum/hurt2"), SoundDefinition.SoundType.SOUND
                 )).subtitle("subtitles.entity.opossum.hurt")
-        );add(ALMSounds.OPOSSUM_DEATH.get(), SoundDefinition.definition()
+        );
+        add(ALMSounds.OPOSSUM_DEATH.get(), SoundDefinition.definition()
                 .with(SoundDefinition.Sound.sound(
                         ALittleMore.id("mob/opossum/death1"), SoundDefinition.SoundType.SOUND
                 )).with(SoundDefinition.Sound.sound(

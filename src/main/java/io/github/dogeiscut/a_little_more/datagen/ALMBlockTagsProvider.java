@@ -68,6 +68,11 @@ public class ALMBlockTagsProvider extends BlockTagsProvider {
 
         tag(ALMTags.Blocks.INCORRECT_FOR_CELERIUM_TOOL)
                 .addTag(BlockTags.INCORRECT_FOR_IRON_TOOL);
+
+        tag(BlockTags.CAULDRONS)
+                .add(ALMBlocks.SEEP_CAULDRON.get());
+        tag(Tags.Blocks.VILLAGER_JOB_SITES)
+                .add(ALMBlocks.SEEP_CAULDRON.get());
     }
 
     private void auto(Block block) {

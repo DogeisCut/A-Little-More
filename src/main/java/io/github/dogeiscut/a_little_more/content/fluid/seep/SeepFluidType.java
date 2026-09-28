@@ -2,7 +2,10 @@ package io.github.dogeiscut.a_little_more.content.fluid.seep;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.content.fluid.BaseFluidType;
+import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
+import io.github.dogeiscut.a_little_more.registry.ALMParticles;
 import io.github.dogeiscut.a_little_more.registry.ALMSounds;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
@@ -15,6 +18,7 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.SoundActions;
 import net.neoforged.neoforge.fluids.FluidType;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
 
 public class SeepFluidType extends BaseFluidType {
@@ -38,6 +42,7 @@ public class SeepFluidType extends BaseFluidType {
                         .pathType(PathType.LAVA)
                         .rarity(Rarity.UNCOMMON)
                         .adjacentPathType(PathType.DANGER_OTHER)
+                        .addDripstoneDripping(0.1f, ALMParticles.DRIPPING_DRIPSTONE_SEEP.get(), ALMBlocks.SEEP_CAULDRON.get(), null)
                         .density(15)
                         .motionScale(-0.01d)
                         .viscosity(5),

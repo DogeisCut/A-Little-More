@@ -6,14 +6,22 @@ import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlo
 import io.github.dogeiscut.a_little_more.content.blocks.stamping_table.StampingTableScreen;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepBubbleParticle;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepBubblePopParticle;
+import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepSplashParticle;
+import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepTransformParticle;
 import io.github.dogeiscut.a_little_more.content.mobs.animals.opossum.OpossumModel;
 import io.github.dogeiscut.a_little_more.content.mobs.animals.opossum.OpossumRenderer;
+import io.github.dogeiscut.a_little_more.content.particle.ALMDripParticle;
 import io.github.dogeiscut.a_little_more.registry.*;
+import net.minecraft.client.particle.SplashParticle;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.core.particles.ParticleTypes;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -22,7 +30,13 @@ public class ALittleMoreClient {
     public ALittleMoreClient(IEventBus modEventBus) {
     }
 
-    // TODO: there's probably a better spot for all this. my goal with this file structure is to have related stuff as unseperated as possible
+    @SubscribeEvent
+    public static void onClientSetup(@NotNull FMLClientSetupEvent event) {
+        event.enqueueWork(() -> {
+            ItemBlockRenderTypes.setRenderLayer(ALMFluids.SEEP.still().get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(ALMFluids.SEEP.flowing().get(), RenderType.translucent());
+        });
+    }
 
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.@NotNull RegisterRenderers event) {
@@ -39,6 +53,12 @@ public class ALittleMoreClient {
     public static void registerParticleProviders(@NotNull RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(ALMParticles.SEEP_BUBBLE.get(), SeepBubbleParticle.Provider::new);
         event.registerSpriteSet(ALMParticles.SEEP_BUBBLE_POP.get(), SeepBubblePopParticle.Provider::new);
+        event.registerSpriteSet(ALMParticles.SEEP_TRANSFORM.get(), SeepTransformParticle.Provider::new);
+        event.registerSpriteSet(ALMParticles.FALLING_SEEP.get(), ALMDripParticle.FallingSeepProvider::new);;
+        event.registerSpriteSet(ALMParticles.DRIPPING_SEEP.get(), ALMDripParticle.DrippingSeepProvider::new);
+        event.registerSpriteSet(ALMParticles.FALLING_DRIPSTONE_SEEP.get(), ALMDripParticle.FallingDripstoneSeepProvider::new);;
+        event.registerSpriteSet(ALMParticles.DRIPPING_DRIPSTONE_SEEP.get(), ALMDripParticle.DrippingDripstoneSeepProvider::new);
+        event.registerSpriteSet(ALMParticles.SEEP_SPLASH.get(), SeepSplashParticle.Provider::new);
     }
 
     @SubscribeEvent

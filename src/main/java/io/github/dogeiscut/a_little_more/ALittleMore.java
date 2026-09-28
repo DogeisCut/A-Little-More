@@ -2,12 +2,15 @@ package io.github.dogeiscut.a_little_more;
 
 import com.mojang.logging.LogUtils;
 import io.github.dogeiscut.a_little_more.compat.create.ALMCreate;
+import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepCauldronBlock;
 import io.github.dogeiscut.a_little_more.registry.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
+import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.level.block.DispenserBlock;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -20,6 +23,7 @@ import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
+import net.neoforged.neoforge.fluids.DispenseFluidContainer;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
@@ -62,8 +66,9 @@ public class ALittleMore {
     }
 
     @SubscribeEvent
-    public static void onCommonSetup(FMLCommonSetupEvent event) {
-
+    static void onCommonSetup(FMLCommonSetupEvent event) {
+        event.enqueueWork(() -> DispenserBlock.registerBehavior(ALMFluids.SEEP.bucket().get(), DispenseFluidContainer.getInstance()));
+        event.enqueueWork(() -> SeepCauldronBlock.addCauldronInteractions(SeepCauldronBlock.SEEP));
     }
 
     @SubscribeEvent

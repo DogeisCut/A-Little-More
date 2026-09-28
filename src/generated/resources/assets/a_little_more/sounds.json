@@ -1,4 +1,10 @@
 {
+  "block.seep.transform": {
+    "sounds": [
+      "a_little_more:block/seep/transform"
+    ],
+    "subtitle": "subtitles.block.seep.transform"
+  },
   "entity.opossum.ambient": {
     "sounds": [
       {

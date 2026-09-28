@@ -4,7 +4,7 @@
         - [ ] Small
         - [ ] Big
     - [ ] Splash Particles
-    - [ ] Bucket sounds
+    - [X] Bucket sounds
     - [ ] Underseep Sounds
     - [X] Underseep particles
     - [ ] Submerge sounds
@@ -14,8 +14,8 @@
     - [ ] Ambient sounds
     - Worth noting Create doesn't even bother with all this for Chocolate and Honey so if I can't get it working,
       I can save it for a future update.
-- [ ] Seep bucket dispenser behavior
-- [ ] Seep cauldron
+- [X] Seep bucket dispenser behavior
+- [X] Seep cauldron
 - [ ] Under seep overlay
 - [ ] Figure out wait repairing celerium tools/armor doesn't show up in JEI
 - [ ] Fix Create support for Bulk Seeping not showing up in JEI
@@ -41,7 +41,7 @@
 - [ ] Launch Pad
 - [ ] Custom Celerium block sounds
 - [ ] Custom Seepstone block sounds
-- [ ] Make seep drag entities more (like water)
+- [X] Make seep drag entities more (like water)
 - Celerium Textures
     - [ ] Replace armor placeholders
     - [ ] Adjust random pixels on axe texture
@@ -52,6 +52,17 @@
     - in an awful order
     - Could probably benfit from multiple tabs
     - missing immunity potions/arrow from A Little More tab
+
+# TASKS
+
+- [ ] Various TODOs within files
+- [X] Item Tagging
+- [X] Block Tagging
+- [ ] File Organization/Cleanup (the goal is to have files for the same feature in the same folder, and that one file
+  has one tasks)
+- [X] Loot Tables (UGHHHHHH)
+
+# FUTURE
 - [ ] Pattern Block
   - [X] Visible pattern seams on edge of block.
   - [ ] scaffold-like custom block sounds
@@ -86,12 +97,12 @@
     - [ ] some sort of blanked out default state (for when there's no blocks or items in it at all) like the loom
     - [X] decide if removing a face or pasting one should move the pattern blocks to the output slot
       - current problem is the output slot actually duplicates the input slot with whatever edit you want to make
-and currently pasting or removing a face is an instant action
+        and currently pasting or removing a face is an instant action
         - but also i can see this getting annoying
     - [ ] Buttons for rotating/flipping all the patterns across the whole block (as if you rotated the block)
       - i could also make the block itself rotatable but idk if i want to do that since your facing direction alone cant
     - [ ] make banner pattern items reduce the patterns to only 1, with it being force selected, like the loom.
-cover all orientations (6 cardinal directions, with 4 rotations in each)
+      cover all orientations (6 cardinal directions, with 4 rotations in each)
   - [X] make them drop with patterns (currently mining a pattern block drops a blank one)
   - [ ] fix break/mine particles being colored
   - [ ] optimize the block and items themselves by storing faces/patterns in a world-saved table that the blocks/items reference instead of direct patterns
@@ -102,15 +113,3 @@ cover all orientations (6 cardinal directions, with 4 rotations in each)
       - so ideally i'd implement the above optimization first.
     - ALTERNATE IDEA: opacity slider for layers?
     - ALTERNATE ALTERNATE IDEA: more dyes
-# TASKS
-
-- [ ] Various TODOs within files
-    - TODOs in the following files: `ALittleMoreClient`, `SeepFanProcessingType`, `ALMJEI`,
-      `SeepTransformationRecipeCategory`,
-      `EnseepenedPearlEntity`, `FluidInteractionsEvents`, `TargetHurtTimeEvents`, `ALMArmorMaterials`, `ALMAttributes`,
-      `ALMItems`, `Render3DHelper`, and `ALMTags`.
-- [ ] Item Tagging
-- [ ] Block Tagging
-- [ ] File Organization/Cleanup (the goal is to have files for the same feature in the same folder, and that one file
-  has one tasks)
-- [ ] Loot Tables (UGHHHHHH)

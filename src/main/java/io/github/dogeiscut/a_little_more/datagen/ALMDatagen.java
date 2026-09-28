@@ -96,7 +96,8 @@ public class ALMDatagen {
         public static final List<Block> PICKAXE_MINEABLE = List.of(
                 ALMBlocks.DASH_PAD.get(),
                 ALMBlocks.LAUNCH_PAD.get(),
-                ALMBlocks.PATTERN_BLOCK.get()
+                ALMBlocks.PATTERN_BLOCK.get(),
+                ALMBlocks.SEEP_CAULDRON.get()
         );
         public static final List<Block> AXE_MINEABLE = List.of(
                 ALMBlocks.DASH_PAD.get(),

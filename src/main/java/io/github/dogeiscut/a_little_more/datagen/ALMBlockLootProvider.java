@@ -8,6 +8,7 @@ import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -47,6 +48,8 @@ public class ALMBlockLootProvider extends BlockLootSubProvider {
         oreDrop(ALMBlocks.DEEPSLATE_CELERIUM_ORE.get(), ALMItems.CELERIUM_SHARD.get());
 
         selfDrop(ALMBlocks.SEEP_CRYSTAL_CLUSTER.get());
+
+        dropOther(ALMBlocks.SEEP_CAULDRON.get(), Blocks.CAULDRON);
     }
 
     public void selfDrop(Block block) {

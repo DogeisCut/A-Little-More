@@ -18,13 +18,7 @@ import org.jetbrains.annotations.NotNull;
 public class FluidInteractionsEvents {
 
     // TODO: this doesnt go here, move to another class
-    @SubscribeEvent
-    public static void onClientSetup(@NotNull FMLClientSetupEvent event) {
-        event.enqueueWork(() -> {
-            ItemBlockRenderTypes.setRenderLayer(ALMFluids.SEEP.still().get(), RenderType.translucent());
-            ItemBlockRenderTypes.setRenderLayer(ALMFluids.SEEP.flowing().get(), RenderType.translucent());
-        });
-    }
+
 
     @SubscribeEvent
     public static void onCommonSetup(@NotNull FMLCommonSetupEvent event) {

@@ -2,8 +2,10 @@ package io.github.dogeiscut.a_little_more.compat.create;
 
 import com.simibubi.create.content.kinetics.fan.processing.FanProcessingType;
 import com.simibubi.create.foundation.recipe.RecipeApplier;
+import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepLiquidBlock;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepTransformationRecipe;
 import io.github.dogeiscut.a_little_more.registry.ALMFluids;
+import io.github.dogeiscut.a_little_more.registry.ALMParticles;
 import io.github.dogeiscut.a_little_more.registry.ALMRecipes;
 import io.github.dogeiscut.a_little_more.registry.ALMTags;
 import net.createmod.catnip.theme.Color;
@@ -57,7 +59,7 @@ public class SeepFanProcessingType implements FanProcessingType {
     public void spawnProcessingParticles(@NotNull Level level, @NotNull Vec3 pos) {
         if (level.random.nextInt(8) == 0) {
             level.addParticle(
-                    ParticleTypes.WITCH,
+                    ALMParticles.SEEP_TRANSFORM.get(),
                     pos.x + (level.random.nextDouble() - 0.5D) * 0.5D,
                     pos.y + (level.random.nextDouble() - 0.5D) * 0.5D,
                     pos.z + (level.random.nextDouble() - 0.5D) * 0.5D,
@@ -76,7 +78,7 @@ public class SeepFanProcessingType implements FanProcessingType {
 
     @Override
     public void affectEntity(Entity entity, Level level) {
-        // TODO: apply levitation through SeepLiquidBlock lol
+        SeepLiquidBlock.levitate(level, entity);
     }
 
 

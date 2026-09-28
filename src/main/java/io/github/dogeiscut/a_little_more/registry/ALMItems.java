@@ -235,7 +235,10 @@ public class ALMItems {
                     .effect(() -> new MobEffectInstance(MobEffects.LEVITATION, 15 * 20, SeepLiquidBlock.LEVITATION_AMPLIFIER, false, true, true), 1F)
                     .build()
             )
+            .rarity(Rarity.UNCOMMON)
     ));
+
+
 
 //    public static final Supplier<SpawnEggItem> SHADY_DEALER_SPAWN_EGG = ITEMS.registerItem(
 //            "shady_dealer_spawn_egg",
