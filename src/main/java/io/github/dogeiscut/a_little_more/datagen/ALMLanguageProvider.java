@@ -72,6 +72,10 @@ public class ALMLanguageProvider extends LanguageProvider {
         add("fluid." + ALittleMore.MOD_ID + ".seep", "Seep");
         add("fluid." + ALittleMore.MOD_ID + ".flowing_seep", "Flowing Seep");
 
+        add("block." + ALittleMore.MOD_ID + ".seep_soda", "Seep Soda");
+        add("fluid." + ALittleMore.MOD_ID + ".seep_soda", "Seep Soda");
+        add("fluid." + ALittleMore.MOD_ID + ".flowing_seep_soda", "Flowing Seep Soda");
+
         add("attributes." + ALittleMore.MOD_ID + ".target_hurt_time", "Target Hurt Time");
 
         add("effect." + ALittleMore.MOD_ID + ".immunity", "Immunity");

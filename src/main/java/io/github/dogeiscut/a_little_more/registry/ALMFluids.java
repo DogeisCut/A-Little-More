@@ -41,6 +41,14 @@ public class ALMFluids {
                     new SeepLiquidBlock(sourceSupplier, properties.lightLevel(state -> 5)))
     );
 
+    public static final InternalFluidEntry SEEP_SODA = internalFluid(
+            "seep_soda",
+            ALMFluidTypes.SEEP_SODA,
+            properties -> properties
+                    .slopeFindDistance(2)
+                    .levelDecreasePerBlock(2)
+    );
+
     public static @NotNull FluidEntry fluid(@NotNull String name, @NotNull Supplier<? extends FluidType> fluidType,
                                             @NotNull UnaryOperator<BaseFlowingFluid.Properties> propertiesOp,
                                             BlockBehaviour.@NotNull Properties blockProperties) {
@@ -84,6 +92,22 @@ public class ALMFluids {
         return new FluidEntry(fluidType, still, flowing, block, bucket);
     }
 
+    public static @NotNull InternalFluidEntry internalFluid(@NotNull String name, @NotNull Supplier<? extends FluidType> fluidType,
+                                                            @NotNull UnaryOperator<BaseFlowingFluid.Properties> propertiesOp) {
+        AtomicReference<BaseFlowingFluid.Properties> propertiesHolder = new AtomicReference<>();
+
+        Supplier<BaseFlowingFluid.Source> still =
+                FLUIDS.register(name, () -> new BaseFlowingFluid.Source(propertiesHolder.get()));
+        Supplier<BaseFlowingFluid.Flowing> flowing =
+                FLUIDS.register("flowing_" + name, () -> new BaseFlowingFluid.Flowing(propertiesHolder.get()));
+
+        propertiesHolder.set(propertiesOp.apply(
+                new BaseFlowingFluid.Properties(fluidType, still, flowing)
+        ));
+
+        return new InternalFluidEntry(fluidType, still, flowing);
+    }
+
     public static BlockBehaviour.@NotNull Properties liquidBlockProperties(@NotNull MapColor mapColor) {
         return BlockBehaviour.Properties.of()
                 .mapColor(mapColor)
@@ -112,6 +136,13 @@ public class ALMFluids {
             Supplier<BaseFlowingFluid.Flowing> flowing,
             DeferredBlock<LiquidBlock> block,
             Supplier<BucketItem> bucket
+    ) {
+    }
+
+    public record InternalFluidEntry(
+            Supplier<? extends FluidType> type,
+            Supplier<BaseFlowingFluid.Source> still,
+            Supplier<BaseFlowingFluid.Flowing> flowing
     ) {
     }
 }

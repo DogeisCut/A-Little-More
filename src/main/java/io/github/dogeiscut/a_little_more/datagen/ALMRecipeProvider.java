@@ -84,7 +84,7 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
                     .requires(DataComponentIngredient.of(false, waterBottle))
                     .requires(DataComponentIngredient.of(false, waterBottle))
                     .unlockedBy(criterionName(ALMItems.SEEP_SODA.get()), has(ALMFluids.SEEP.bucket().get()))
-                    .save(out);
+                    .save(out, ALittleMore.id("seep_soda" + "_manual_only"));
         }
     }
 

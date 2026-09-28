@@ -1,13 +1,9 @@
 package io.github.dogeiscut.a_little_more.registry;
 
-import com.simibubi.create.AllTags;
-import com.simibubi.create.content.equipment.BuildersTeaItem;
-import com.tterrag.registrate.util.entry.ItemEntry;
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.content.armor.AttributeArmorItem;
 import io.github.dogeiscut.a_little_more.content.consumables.enseepened_pearl.EnseepenedPearlItem;
 import io.github.dogeiscut.a_little_more.content.consumables.seep_soda.SeepSodaItem;
-import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepFluidType;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepLiquidBlock;
 import io.github.dogeiscut.a_little_more.content.weapons.flail.FlailItem;
 import net.minecraft.core.registries.Registries;
@@ -236,7 +232,7 @@ public class ALMItems {
                     .nutrition(2)
                     .saturationModifier(.6F)
                     .alwaysEdible()
-                    .effect(() -> new MobEffectInstance(MobEffects.LEVITATION, 30 * 20, SeepLiquidBlock.LEVITATION_AMPLIFIER, false, true, true), 1F)
+                    .effect(() -> new MobEffectInstance(MobEffects.LEVITATION, 15 * 20, SeepLiquidBlock.LEVITATION_AMPLIFIER, false, true, true), 1F)
                     .build()
             )
     ));

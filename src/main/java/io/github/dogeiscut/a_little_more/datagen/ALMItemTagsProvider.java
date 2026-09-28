@@ -1,5 +1,6 @@
 package io.github.dogeiscut.a_little_more.datagen;
 
+import com.simibubi.create.AllTags;
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.content.weapons.flail.FlailItem;
 import io.github.dogeiscut.a_little_more.registry.ALMFluids;
@@ -65,6 +66,12 @@ public class ALMItemTagsProvider extends net.minecraft.data.tags.ItemTagsProvide
         tag(ALMTags.Items.OPOSSUM_FOOD).addTag(Tags.Items.FOODS_FRUIT);
         tag(ALMTags.Items.OPOSSUM_FOOD).addTag(Tags.Items.FOODS_VEGETABLE);
         tag(ALMTags.Items.OPOSSUM_FOOD).addTag(Tags.Items.FOODS_BERRY);
+
+        tag(AllTags.AllItemTags.UPRIGHT_ON_BELT.tag).add(ALMItems.SEEP_SODA.get());
+        tag(Tags.Items.FOODS).add(ALMItems.SEEP_SODA.get());
+        tag(Tags.Items.DRINKS).add(ALMItems.SEEP_SODA.get());
+        tag(ALMTags.Items.C_DRINKS_SEEP_SODA).add(ALMItems.SEEP_SODA.get());
+        tag(ALMTags.Items.C_DRINKS_SODA).add(ALMItems.SEEP_SODA.get());
     }
 
     public void autoTag(Item item) {

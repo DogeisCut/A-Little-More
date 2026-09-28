@@ -24,9 +24,19 @@ public class ALMFluidTagsProvider extends FluidTagsProvider {
     protected void addTags(HolderLookup.@NotNull Provider provider) {
         tag(ALMTags.Fluids.SEEP)
                 .add(ALMFluids.SEEP.still().get())
-                .add(ALMFluids.SEEP.flowing().get());
+                .add(ALMFluids.SEEP.flowing().get())
+                .add(ALMFluids.SEEP_SODA.still().get())
+                .add(ALMFluids.SEEP_SODA.flowing().get());
         tag(ALMTags.Fluids.C_SEEP)
                 .add(ALMFluids.SEEP.still().get())
-                .add(ALMFluids.SEEP.flowing().get());
+                .add(ALMFluids.SEEP.flowing().get())
+                .add(ALMFluids.SEEP_SODA.still().get())
+                .add(ALMFluids.SEEP_SODA.flowing().get());
+        tag(ALMTags.Fluids.SEEP_SODA)
+                .add(ALMFluids.SEEP_SODA.still().get())
+                .add(ALMFluids.SEEP_SODA.flowing().get());
+        tag(ALMTags.Fluids.C_SEEP_SODA)
+                .add(ALMFluids.SEEP_SODA.still().get())
+                .add(ALMFluids.SEEP_SODA.flowing().get());
     }
 }

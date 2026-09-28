@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "type": "neoforge:single",
+      "amount": 250,
+      "fluid": "minecraft:water"
+    },
+    {
+      "type": "neoforge:single",
+      "amount": 250,
+      "fluid": "a_little_more:seep"
+    }
+  ],
+  "results": [
+    {
+      "amount": 500,
+      "id": "a_little_more:seep_soda"
+    }
+  ]
+}

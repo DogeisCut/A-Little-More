@@ -25,9 +25,9 @@ public class SeepFluidType extends BaseFluidType {
     private static final double MAX_SINK_SPEED = -0.5D;
     private static final double HORIZONTAL_DRAG = 0.95D;
 
-    public SeepFluidType() {
+    public SeepFluidType(String descriptionId, int tint) {
         super(FluidType.Properties.create()
-                        .descriptionId("block.a_little_more.seep")
+                        .descriptionId(descriptionId)
                         .fallDistanceModifier(0f)
                         .canExtinguish(true)
                         .canDrown(false)
@@ -44,11 +44,15 @@ public class SeepFluidType extends BaseFluidType {
                 STILL,
                 FLOW,
                 OVERLAY,
-                0xFFFFFFFF,
+                tint,
                 new Vector3f(0.866666667f, 0.690196078f, 1.0f),
                 1.0f,
                 3.0f
         );
+    }
+
+    public SeepFluidType() {
+        this("block.a_little_more.seep", 0xFFFFFFFF);
     }
 
     @Override

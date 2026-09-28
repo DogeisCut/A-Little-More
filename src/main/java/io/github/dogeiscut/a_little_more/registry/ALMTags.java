@@ -50,6 +50,9 @@ public final class ALMTags {
         public static final TagKey<Item> C_EMERALD_NUGGETS = common("nuggets/emerald");
         public static final TagKey<Item> C_SEEP_BUCKETS = common("buckets/seep");
 
+        public static final TagKey<Item> C_DRINKS_SEEP_SODA = common("drinks/seep_soda");
+        public static final TagKey<Item> C_DRINKS_SODA = common("drinks/soda");
+
         private Items() {
         }
 
@@ -89,6 +92,8 @@ public final class ALMTags {
     public static final class Fluids {
         public static final TagKey<Fluid> SEEP = mod("seep");
         public static final TagKey<Fluid> C_SEEP = common("seep");
+        public static final TagKey<Fluid> SEEP_SODA = mod("seep_soda");
+        public static final TagKey<Fluid> C_SEEP_SODA = common("seep_soda");
 
         private Fluids() {
         }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "a_little_more:seep_soda"
+        "recipe": "a_little_more:seep_soda_manual_only"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "a_little_more:seep_soda"
+      "a_little_more:seep_soda_manual_only"
     ]
   }
 }

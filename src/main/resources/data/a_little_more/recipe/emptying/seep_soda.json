@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "a_little_more:seep_soda"
+    }
+  ],
+  "results": [
+    {
+      "id": "minecraft:glass_bottle"
+    },
+    {
+      "amount": 250,
+      "id": "a_little_more:seep_soda"
+    }
+  ]
+}
