@@ -47,8 +47,6 @@ public class ALMBlockLootProvider extends BlockLootSubProvider {
         oreDrop(ALMBlocks.CELERIUM_ORE.get(), ALMItems.CELERIUM_SHARD.get());
         oreDrop(ALMBlocks.DEEPSLATE_CELERIUM_ORE.get(), ALMItems.CELERIUM_SHARD.get());
 
-        selfDrop(ALMBlocks.SEEP_CRYSTAL_CLUSTER.get());
-
         dropOther(ALMBlocks.SEEP_CAULDRON.get(), Blocks.CAULDRON);
     }
 

@@ -1,16 +1,20 @@
 package io.github.dogeiscut.a_little_more.datagen;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
+import io.github.dogeiscut.a_little_more.content.blocks.seep_crystal_cluster.SeepCrystalClusterBlock;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepFluidType;
 import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
 import io.github.dogeiscut.a_little_more.registry.ALMFluids;
+import net.minecraft.core.Direction;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.neoforged.neoforge.client.model.generators.*;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.util.TransformationHelper;
 import org.jetbrains.annotations.NotNull;
+import org.joml.Quaternionf;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,12 +55,46 @@ public class ALMBlockStateProvider extends BlockStateProvider {
                 modLoc("block/stamping_table_top")
         ));
 
-        // TODO: seep cluster assets, it's NOT going to be a cube.
-        simpleCubeAllWithItem(ALMBlocks.SEEP_CRYSTAL_CLUSTER.get());
-
         particleOnly(ALMFluids.SEEP.block().get(), modLoc("block/seep_still"));
 
         singleLevelCauldronBlock(ALMBlocks.SEEP_CAULDRON.get(), SeepFluidType.STILL, false /* i know seep is transparent but vanilla water cauldrons aren't and it causes weird block outline artifacts*/);
+
+        ModelFile seepCrystalClusterModel = models().getExistingFile(modLoc("block/seep_crystal_cluster"));
+
+        ModelFile[] spinModels = new ModelFile[4];
+        for (int i = 0; i < 4; i++) {
+            int spin = i * 90;
+            spinModels[i] = models().getBuilder("block/seep_crystal_cluster_spin_" + spin)
+                    .parent(seepCrystalClusterModel)
+                    .rootTransforms()
+                    .origin(TransformationHelper.TransformOrigin.CENTER)
+                    .rotation(new Quaternionf().rotationY((float) Math.toRadians(spin)))
+                    .end();
+        }
+
+        getVariantBuilder(ALMBlocks.SEEP_CRYSTAL_CLUSTER.get()).forAllStates(state -> {
+            Direction facing = state.getValue(SeepCrystalClusterBlock.FACING);
+
+            int xRot = 0;
+            int yRot = 0;
+
+            switch (facing) {
+                case DOWN ->  xRot = 180;
+                case UP ->    xRot = 0;
+                case NORTH -> { xRot = 90;  yRot = 0; }
+                case SOUTH -> { xRot = 90;  yRot = 180; }
+                case WEST ->  { xRot = 90;  yRot = 270; }
+                case EAST ->  { xRot = 90;  yRot = 90; }
+            }
+
+            ConfiguredModel[] variants = new ConfiguredModel[spinModels.length];
+            for (int i = 0; i < spinModels.length; i++) {
+                variants[i] = new ConfiguredModel(spinModels[i], xRot, yRot, false, 1);
+            }
+            return variants;
+        });
+
+        itemModels().withExistingParent("seep_crystal_cluster", modLoc("block/seep_crystal_cluster"));
 
         if (!missingTextures.isEmpty()) {
             ALittleMore.LOGGER.warn(

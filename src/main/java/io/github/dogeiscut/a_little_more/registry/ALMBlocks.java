@@ -4,6 +4,7 @@ import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlock;
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockFaces;
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockItem;
+import io.github.dogeiscut.a_little_more.content.blocks.seep_crystal_cluster.SeepCrystalClusterBlock;
 import io.github.dogeiscut.a_little_more.content.blocks.stamping_table.StampingTableBlock;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepCauldronBlock;
 import net.minecraft.world.item.Item;
@@ -19,7 +20,7 @@ import java.util.function.Function;
 public class ALMBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(ALittleMore.MOD_ID);
 
-    public static final DeferredBlock<Block> SEEP_CRYSTAL_CLUSTER = simpleBlockWithItem("seep_crystal_cluster", BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_CLUSTER));
+    public static final DeferredBlock<SeepCrystalClusterBlock> SEEP_CRYSTAL_CLUSTER = blockWithItem("seep_crystal_cluster", p -> new SeepCrystalClusterBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_CLUSTER).noLootTable().noOcclusion().lightLevel((s)->5)));
 
     public static final DeferredBlock<Block> SEEPSTONE = simpleBlockWithItem("seepstone", BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).sound(SoundType.TUFF));
     public static final DeferredBlock<SlabBlock> SEEPSTONE_SLAB = blockWithItem("seepstone_slab", p -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(SEEPSTONE.get())));

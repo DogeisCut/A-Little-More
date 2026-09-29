@@ -1,0 +1,12 @@
+{
+  "parent": "a_little_more:block/seep_crystal_cluster",
+  "transform": {
+    "origin": "center",
+    "rotation": [
+      0.0,
+      0.70710677,
+      0.0,
+      -0.70710677
+    ]
+  }
+}

@@ -1,0 +1,700 @@
+{
+  "variants": {
+    "facing=down,fluidlogged=empty,fragile=false": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 180
+      }
+    ],
+    "facing=down,fluidlogged=empty,fragile=true": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 180
+      }
+    ],
+    "facing=down,fluidlogged=seep,fragile=false": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 180
+      }
+    ],
+    "facing=down,fluidlogged=seep,fragile=true": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 180
+      }
+    ],
+    "facing=down,fluidlogged=water,fragile=false": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 180
+      }
+    ],
+    "facing=down,fluidlogged=water,fragile=true": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 180
+      }
+    ],
+    "facing=east,fluidlogged=empty,fragile=false": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90,
+        "y": 90
+      }
+    ],
+    "facing=east,fluidlogged=empty,fragile=true": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90,
+        "y": 90
+      }
+    ],
+    "facing=east,fluidlogged=seep,fragile=false": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90,
+        "y": 90
+      }
+    ],
+    "facing=east,fluidlogged=seep,fragile=true": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90,
+        "y": 90
+      }
+    ],
+    "facing=east,fluidlogged=water,fragile=false": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90,
+        "y": 90
+      }
+    ],
+    "facing=east,fluidlogged=water,fragile=true": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90,
+        "y": 90
+      }
+    ],
+    "facing=north,fluidlogged=empty,fragile=false": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90
+      }
+    ],
+    "facing=north,fluidlogged=empty,fragile=true": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90
+      }
+    ],
+    "facing=north,fluidlogged=seep,fragile=false": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90
+      }
+    ],
+    "facing=north,fluidlogged=seep,fragile=true": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90
+      }
+    ],
+    "facing=north,fluidlogged=water,fragile=false": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90
+      }
+    ],
+    "facing=north,fluidlogged=water,fragile=true": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90
+      }
+    ],
+    "facing=south,fluidlogged=empty,fragile=false": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90,
+        "y": 180
+      }
+    ],
+    "facing=south,fluidlogged=empty,fragile=true": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90,
+        "y": 180
+      }
+    ],
+    "facing=south,fluidlogged=seep,fragile=false": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90,
+        "y": 180
+      }
+    ],
+    "facing=south,fluidlogged=seep,fragile=true": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90,
+        "y": 180
+      }
+    ],
+    "facing=south,fluidlogged=water,fragile=false": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90,
+        "y": 180
+      }
+    ],
+    "facing=south,fluidlogged=water,fragile=true": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90,
+        "y": 180
+      }
+    ],
+    "facing=up,fluidlogged=empty,fragile=false": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0"
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90"
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180"
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270"
+      }
+    ],
+    "facing=up,fluidlogged=empty,fragile=true": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0"
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90"
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180"
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270"
+      }
+    ],
+    "facing=up,fluidlogged=seep,fragile=false": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0"
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90"
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180"
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270"
+      }
+    ],
+    "facing=up,fluidlogged=seep,fragile=true": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0"
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90"
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180"
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270"
+      }
+    ],
+    "facing=up,fluidlogged=water,fragile=false": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0"
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90"
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180"
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270"
+      }
+    ],
+    "facing=up,fluidlogged=water,fragile=true": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0"
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90"
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180"
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270"
+      }
+    ],
+    "facing=west,fluidlogged=empty,fragile=false": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90,
+        "y": 270
+      }
+    ],
+    "facing=west,fluidlogged=empty,fragile=true": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90,
+        "y": 270
+      }
+    ],
+    "facing=west,fluidlogged=seep,fragile=false": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90,
+        "y": 270
+      }
+    ],
+    "facing=west,fluidlogged=seep,fragile=true": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90,
+        "y": 270
+      }
+    ],
+    "facing=west,fluidlogged=water,fragile=false": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90,
+        "y": 270
+      }
+    ],
+    "facing=west,fluidlogged=water,fragile=true": [
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_0",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_90",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_180",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "a_little_more:block/seep_crystal_cluster_spin_270",
+        "x": 90,
+        "y": 270
+      }
+    ]
+  }
+}
