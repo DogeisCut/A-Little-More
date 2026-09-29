@@ -20,7 +20,7 @@ import java.util.function.Function;
 public class ALMBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(ALittleMore.MOD_ID);
 
-    public static final DeferredBlock<SeepCrystalClusterBlock> SEEP_CRYSTAL_CLUSTER = blockWithItem("seep_crystal_cluster", p -> new SeepCrystalClusterBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_CLUSTER).noLootTable().noOcclusion().lightLevel((s)->5)));
+    public static final DeferredBlock<SeepCrystalClusterBlock> SEEP_CRYSTAL_CLUSTER = blockWithItem("seep_crystal_cluster", p -> new SeepCrystalClusterBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_CLUSTER).noOcclusion().lightLevel((s)->5)));
 
     public static final DeferredBlock<Block> SEEPSTONE = simpleBlockWithItem("seepstone", BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).sound(SoundType.TUFF));
     public static final DeferredBlock<SlabBlock> SEEPSTONE_SLAB = blockWithItem("seepstone_slab", p -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(SEEPSTONE.get())));

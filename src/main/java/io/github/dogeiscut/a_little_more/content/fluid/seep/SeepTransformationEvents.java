@@ -81,7 +81,7 @@ public class SeepTransformationEvents {
 
             data.remove(SUBMERSION_KEY);
             float randomPitch = 0.8F + itemEntity.getRandom().nextFloat() * 0.4F;
-            itemEntity.playSound(ALMSounds.SEEP_TRANSFORM.get(), 1.0f, randomPitch);
+            itemEntity.playSound(ALMSoundEvents.SEEP_TRANSFORM.get(), 1.0f, randomPitch);
 
             serverLevel.sendParticles(ALMParticles.SEEP_TRANSFORM.get(),
                     itemEntity.getX(), itemEntity.getY() + itemEntity.getBbHeight() * 0.5d, itemEntity.getZ(),

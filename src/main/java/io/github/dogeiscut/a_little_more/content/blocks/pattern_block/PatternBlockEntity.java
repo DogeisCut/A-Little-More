@@ -21,7 +21,7 @@ public class PatternBlockEntity extends BlockEntity {
     private PatternBlockFaces faces = PatternBlockFaces.EMPTY;
 
     public PatternBlockEntity(@NotNull BlockPos pos, @NotNull BlockState blockState) {
-        super(ALMBlockEntities.PATTERN_BLOCK_ENTITY.get(), pos, blockState);
+        super(ALMBlockEntities.PATTERN_BLOCK.get(), pos, blockState);
     }
 
     public PatternBlockFaces getFaces() {

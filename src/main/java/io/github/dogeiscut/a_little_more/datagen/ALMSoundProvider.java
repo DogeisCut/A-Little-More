@@ -1,7 +1,7 @@
 package io.github.dogeiscut.a_little_more.datagen;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
-import io.github.dogeiscut.a_little_more.registry.ALMSounds;
+import io.github.dogeiscut.a_little_more.registry.ALMSoundEvents;
 import net.minecraft.data.PackOutput;
 import net.minecraft.sounds.SoundEvent;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -17,8 +17,8 @@ public class ALMSoundProvider extends SoundDefinitionsProvider {
 
     @Override
     public void registerSounds() {
-        music(ALMSounds.JUST_A_LITTLE_MORE.get(), "records/just_a_little_more");
-        add(ALMSounds.BUCKET_EMPTY_SEEP.get(), SoundDefinition.definition()
+        music(ALMSoundEvents.JUST_A_LITTLE_MORE.get(), "records/just_a_little_more");
+        add(ALMSoundEvents.BUCKET_EMPTY_SEEP.get(), SoundDefinition.definition()
                 .with(SoundDefinition.Sound.sound(
                         ALittleMore.id("item/bucket/empty_seep1"), SoundDefinition.SoundType.SOUND
                 )).with(SoundDefinition.Sound.sound(
@@ -27,7 +27,7 @@ public class ALMSoundProvider extends SoundDefinitionsProvider {
                         ALittleMore.id("item/bucket/empty_seep3"), SoundDefinition.SoundType.SOUND
                 )).subtitle("subtitles.item.bucket.empty")
         );
-        add(ALMSounds.BUCKET_SEEP_FILL.get(), SoundDefinition.definition()
+        add(ALMSoundEvents.BUCKET_SEEP_FILL.get(), SoundDefinition.definition()
                 .with(SoundDefinition.Sound.sound(
                         ALittleMore.id("item/bucket/fill_seep1"), SoundDefinition.SoundType.SOUND
                 )).with(SoundDefinition.Sound.sound(
@@ -37,13 +37,13 @@ public class ALMSoundProvider extends SoundDefinitionsProvider {
                 )).subtitle("subtitles.item.bucket.fill")
         );
 
-        add(ALMSounds.SEEP_TRANSFORM.get(), SoundDefinition.definition()
+        add(ALMSoundEvents.SEEP_TRANSFORM.get(), SoundDefinition.definition()
                 .with(SoundDefinition.Sound.sound(
                         ALittleMore.id("block/seep/transform"), SoundDefinition.SoundType.SOUND
                 )).subtitle("subtitles.block.seep.transform")
         );
 
-        add(ALMSounds.OPOSSUM_AMBIENT.get(), SoundDefinition.definition()
+        add(ALMSoundEvents.OPOSSUM_AMBIENT.get(), SoundDefinition.definition()
                 .with(SoundDefinition.Sound.sound(
                         ALittleMore.id("mob/opossum/idle1"), SoundDefinition.SoundType.SOUND
                 ).volume(0.4)).with(SoundDefinition.Sound.sound(
@@ -52,14 +52,14 @@ public class ALMSoundProvider extends SoundDefinitionsProvider {
                         ALittleMore.id("mob/opossum/idle3"), SoundDefinition.SoundType.SOUND
                 ).volume(0.4)).subtitle("subtitles.entity.opossum.ambient")
         );
-        add(ALMSounds.OPOSSUM_HURT.get(), SoundDefinition.definition()
+        add(ALMSoundEvents.OPOSSUM_HURT.get(), SoundDefinition.definition()
                 .with(SoundDefinition.Sound.sound(
                         ALittleMore.id("mob/opossum/hurt1"), SoundDefinition.SoundType.SOUND
                 )).with(SoundDefinition.Sound.sound(
                         ALittleMore.id("mob/opossum/hurt2"), SoundDefinition.SoundType.SOUND
                 )).subtitle("subtitles.entity.opossum.hurt")
         );
-        add(ALMSounds.OPOSSUM_DEATH.get(), SoundDefinition.definition()
+        add(ALMSoundEvents.OPOSSUM_DEATH.get(), SoundDefinition.definition()
                 .with(SoundDefinition.Sound.sound(
                         ALittleMore.id("mob/opossum/death1"), SoundDefinition.SoundType.SOUND
                 )).with(SoundDefinition.Sound.sound(
@@ -67,6 +67,17 @@ public class ALMSoundProvider extends SoundDefinitionsProvider {
                 )).subtitle("subtitles.entity.opossum.death")
         );
 
+        add(ALMSoundEvents.SEEP_CRYSTAL_CLUSTER_ADD_ITEM.get(), SoundDefinition.definition()
+                .with(SoundDefinition.Sound.sound(
+                        ALittleMore.id("block/seep_crystal_cluster/add_item1"), SoundDefinition.SoundType.SOUND
+                )).with(SoundDefinition.Sound.sound(
+                        ALittleMore.id("block/seep_crystal_cluster/add_item2"), SoundDefinition.SoundType.SOUND
+                )).with(SoundDefinition.Sound.sound(
+                        ALittleMore.id("block/seep_crystal_cluster/add_item3"), SoundDefinition.SoundType.SOUND
+                )).with(SoundDefinition.Sound.sound(
+                        ALittleMore.id("block/seep_crystal_cluster/add_item4"), SoundDefinition.SoundType.SOUND
+                )).subtitle("subtitles.block.seep_crystal_cluster.add_item")
+        );
     }
 
     public void music(@NotNull SoundEvent event, @NotNull String file) {

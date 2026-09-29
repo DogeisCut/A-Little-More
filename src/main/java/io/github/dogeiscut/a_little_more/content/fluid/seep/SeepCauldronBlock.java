@@ -3,7 +3,7 @@ package io.github.dogeiscut.a_little_more.content.fluid.seep;
 import com.mojang.serialization.MapCodec;
 import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
 import io.github.dogeiscut.a_little_more.registry.ALMFluids;
-import io.github.dogeiscut.a_little_more.registry.ALMSounds;
+import io.github.dogeiscut.a_little_more.registry.ALMSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.world.entity.Entity;
@@ -42,7 +42,7 @@ public class SeepCauldronBlock extends AbstractCauldronBlock {
                         stack,
                         new ItemStack(ALMFluids.SEEP.bucket().get()),
                         other_state -> true,
-                        ALMSounds.BUCKET_SEEP_FILL.get()
+                        ALMSoundEvents.BUCKET_SEEP_FILL.get()
                 )
         );
         interactionMap.map().put(ALMFluids.SEEP.bucket().get(),
@@ -54,7 +54,7 @@ public class SeepCauldronBlock extends AbstractCauldronBlock {
                                 hand,
                                 stack,
                                 state,
-                                ALMSounds.BUCKET_EMPTY_SEEP.get()
+                                ALMSoundEvents.BUCKET_EMPTY_SEEP.get()
                         )
         );
         CauldronInteraction.EMPTY.map().put(ALMFluids.SEEP.bucket().get(),
@@ -66,7 +66,7 @@ public class SeepCauldronBlock extends AbstractCauldronBlock {
                                 hand,
                                 stack,
                                 ALMBlocks.SEEP_CAULDRON.get().defaultBlockState(),
-                                ALMSounds.BUCKET_EMPTY_SEEP.get()
+                                ALMSoundEvents.BUCKET_EMPTY_SEEP.get()
                         )
         );
     }

@@ -2,6 +2,7 @@ package io.github.dogeiscut.a_little_more.registry;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockEntity;
+import io.github.dogeiscut.a_little_more.content.blocks.seep_crystal_cluster.SeepCrystalClusterBlockEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -17,6 +18,12 @@ public class ALMBlockEntities {
 
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES =
             DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, ALittleMore.MOD_ID);
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PatternBlockEntity>> PATTERN_BLOCK =
+            blockEntity("pattern_block", PatternBlockEntity::new, ALMBlocks.PATTERN_BLOCK);
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SeepCrystalClusterBlockEntity>> SEEP_CRYSTAL_CLUSTER =
+            blockEntity("seep_crystal_cluster", SeepCrystalClusterBlockEntity::new, ALMBlocks.SEEP_CRYSTAL_CLUSTER);
 
     @SafeVarargs
     public static <T extends BlockEntity> @NotNull DeferredHolder<BlockEntityType<?>, BlockEntityType<T>> blockEntity(
@@ -35,10 +42,6 @@ public class ALMBlockEntities {
 
     public static void register(@NotNull IEventBus modEventBus) {
         BLOCK_ENTITY_TYPES.register(modEventBus);
-    }    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PatternBlockEntity>> PATTERN_BLOCK_ENTITY =
-            blockEntity("pattern_block", PatternBlockEntity::new, ALMBlocks.PATTERN_BLOCK);
-
-
-
+    }
 
 }

@@ -40,7 +40,7 @@ public class SeepFlowingFluid extends BaseFlowingFluid {
             level.addParticle(
                     ALMParticles.SEEP_BUBBLE.get(),
                     pos.getX() + random.nextDouble(),
-                    pos.getY() + ((random.nextDouble() * 1.3) - (1.0 - state.getOwnHeight())),
+                    pos.getY() + (random.nextDouble() - (1.0 - state.getOwnHeight())),
                     pos.getZ() + random.nextDouble(),
                     0.0D, 0.0D, 0.0D
             );

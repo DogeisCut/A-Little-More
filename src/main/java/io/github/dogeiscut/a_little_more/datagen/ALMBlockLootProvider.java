@@ -1,8 +1,10 @@
 package io.github.dogeiscut.a_little_more.datagen;
 
+import io.github.dogeiscut.a_little_more.content.blocks.seep_crystal_cluster.SeepCrystalClusterBlock;
 import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
 import io.github.dogeiscut.a_little_more.registry.ALMDataComponents;
 import io.github.dogeiscut.a_little_more.registry.ALMItems;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
@@ -13,7 +15,12 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.CopyComponentsFunction;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.ExplosionCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
@@ -46,6 +53,31 @@ public class ALMBlockLootProvider extends BlockLootSubProvider {
 
         oreDrop(ALMBlocks.CELERIUM_ORE.get(), ALMItems.CELERIUM_SHARD.get());
         oreDrop(ALMBlocks.DEEPSLATE_CELERIUM_ORE.get(), ALMItems.CELERIUM_SHARD.get());
+
+        LootItemCondition.Builder fragileTrue =
+                LootItemBlockStatePropertyCondition
+                        .hasBlockStateProperties(ALMBlocks.SEEP_CRYSTAL_CLUSTER.get())
+                        .setProperties(StatePropertiesPredicate.Builder.properties()
+                                .hasProperty(SeepCrystalClusterBlock.FRAGILE, true));
+
+        this.add(ALMBlocks.SEEP_CRYSTAL_CLUSTER.get(), block ->
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(block)
+                                        .when(this.hasSilkTouch())
+                                        .otherwise(LootItem.lootTableItem(ALMItems.SEEP_CRYSTAL.get())
+                                                .apply(SetItemCountFunction
+                                                        .setCount(UniformGenerator.between(1.0F, 4.0F)))
+                                                .when(fragileTrue)
+                                                .otherwise(LootItem.lootTableItem(ALMItems.SEEP_CRYSTAL.get())
+                                                        .apply(SetItemCountFunction
+                                                                .setCount(ConstantValue.exactly(4))))
+                                        )
+                                )
+                                .when(ExplosionCondition.survivesExplosion())
+                        )
+        );
 
         dropOther(ALMBlocks.SEEP_CAULDRON.get(), Blocks.CAULDRON);
     }

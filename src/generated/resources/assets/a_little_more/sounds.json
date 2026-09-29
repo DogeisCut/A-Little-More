@@ -5,6 +5,15 @@
     ],
     "subtitle": "subtitles.block.seep.transform"
   },
+  "block.seep_crystal_cluster.add_item": {
+    "sounds": [
+      "a_little_more:block/seep_crystal_cluster/add_item1",
+      "a_little_more:block/seep_crystal_cluster/add_item2",
+      "a_little_more:block/seep_crystal_cluster/add_item3",
+      "a_little_more:block/seep_crystal_cluster/add_item4"
+    ],
+    "subtitle": "subtitles.block.seep_crystal_cluster.add_item"
+  },
   "entity.opossum.ambient": {
     "sounds": [
       {

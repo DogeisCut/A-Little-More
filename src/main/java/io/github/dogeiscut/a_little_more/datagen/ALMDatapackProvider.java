@@ -3,7 +3,7 @@ package io.github.dogeiscut.a_little_more.datagen;
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockPattern;
 import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
-import io.github.dogeiscut.a_little_more.registry.ALMSounds;
+import io.github.dogeiscut.a_little_more.registry.ALMSoundEvents;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
@@ -90,7 +90,7 @@ public class ALMDatapackProvider extends DatapackBuiltinEntriesProvider {
 
     private static void jukeboxSongs(@NotNull BootstrapContext<JukeboxSong> ctx) {
         ctx.register(JUST_A_LITTLE_MORE, new JukeboxSong(
-                ALMSounds.JUST_A_LITTLE_MORE,
+                ALMSoundEvents.JUST_A_LITTLE_MORE,
                 Component.translatable("jukebox_song." + ALittleMore.MOD_ID + ".just_a_little_more"),
                 125.0F,
                 7

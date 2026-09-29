@@ -8,7 +8,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.NotNull;
 
-public class ALMSounds {
+public class ALMSoundEvents {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
             DeferredRegister.create(Registries.SOUND_EVENT, ALittleMore.MOD_ID);
 
@@ -21,6 +21,8 @@ public class ALMSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> OPOSSUM_AMBIENT = sound("entity.opossum.ambient");
     public static final DeferredHolder<SoundEvent, SoundEvent> OPOSSUM_HURT = sound("entity.opossum.hurt");
     public static final DeferredHolder<SoundEvent, SoundEvent> OPOSSUM_DEATH = sound("entity.opossum.death");
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> SEEP_CRYSTAL_CLUSTER_ADD_ITEM = sound("block.seep_crystal_cluster.add_item");
 
 
     public static @NotNull DeferredHolder<SoundEvent, SoundEvent> sound(@NotNull String name) {

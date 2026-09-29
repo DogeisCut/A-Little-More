@@ -97,7 +97,8 @@ public class ALMDatagen {
                 ALMBlocks.DASH_PAD.get(),
                 ALMBlocks.LAUNCH_PAD.get(),
                 ALMBlocks.PATTERN_BLOCK.get(),
-                ALMBlocks.SEEP_CAULDRON.get()
+                ALMBlocks.SEEP_CAULDRON.get(),
+                ALMBlocks.SEEP_CRYSTAL_CLUSTER.get()
         );
         public static final List<Block> AXE_MINEABLE = List.of(
                 ALMBlocks.DASH_PAD.get(),

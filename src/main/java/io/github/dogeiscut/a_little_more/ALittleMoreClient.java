@@ -3,6 +3,8 @@ package io.github.dogeiscut.a_little_more;
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockColor;
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockFlipKey;
 import io.github.dogeiscut.a_little_more.content.blocks.pattern_block.PatternBlockGeometryLoader;
+import io.github.dogeiscut.a_little_more.content.blocks.seep_crystal_cluster.SeepCrystalClusterBlockEntity;
+import io.github.dogeiscut.a_little_more.content.blocks.seep_crystal_cluster.SeepCrystalClusterRenderer;
 import io.github.dogeiscut.a_little_more.content.blocks.stamping_table.StampingTableScreen;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepBubbleParticle;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepBubblePopParticle;
@@ -40,6 +42,8 @@ public class ALittleMoreClient {
     public static void registerRenderers(EntityRenderersEvent.@NotNull RegisterRenderers event) {
         event.registerEntityRenderer(ALMEntities.ENSEEPENED_PEARL.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(ALMEntities.OPOSSUM.get(), OpossumRenderer::new);
+
+        event.registerBlockEntityRenderer(ALMBlockEntities.SEEP_CRYSTAL_CLUSTER.get(), SeepCrystalClusterRenderer::new);
     }
 
     @SubscribeEvent

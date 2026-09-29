@@ -1,0 +1,39 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"ambientocclusion": false,
+	"render_type": "minecraft:translucent",
+	"texture_size": [64, 64],
+	"textures": {
+		"0": "a_little_more:block/seep_crystal_cluster",
+		"particle": "a_little_more:block/seepstone"
+	},
+	"elements": [
+		{
+			"from": [4, 0, 4],
+			"to": [12, 14, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0.5, 8]},
+			"faces": {
+				"north": {"uv": [9, 2, 11, 5.5], "texture": "#0"},
+				"east": {"uv": [7, 2, 9, 5.5], "texture": "#0"},
+				"south": {"uv": [13, 2, 15, 5.5], "texture": "#0"},
+				"west": {"uv": [11, 2, 13, 5.5], "texture": "#0"},
+				"up": {"uv": [11, 2, 9, 0], "texture": "#0"},
+				"down": {"uv": [11, 0, 13, 2], "texture": "#0", "cullface": "down"}
+			}
+		},
+		{
+			"from": [11.4, 12.9, 11.4],
+			"to": [4.6, 0.1, 4.6],
+			"rotation": {"angle": 0, "axis": "x", "origin": [8, 6.5, 8]},
+			"faces": {
+				"north": {"uv": [13, 2, 15, 5.5], "rotation": 180, "texture": "#0"},
+				"east": {"uv": [7, 2, 9, 5.5], "rotation": 180, "texture": "#0"},
+				"south": {"uv": [9, 2, 11, 5.5], "rotation": 180, "texture": "#0"},
+				"west": {"uv": [11, 2, 13, 5.5], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [11, 2, 9, 0], "texture": "#0"}
+			}
+		}
+	]
+}

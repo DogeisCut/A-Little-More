@@ -74,6 +74,8 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
         seepTransformation(out, Items.STONE, ALMBlocks.SEEPSTONE.get().asItem());
         seepTransformation(out, ALMTags.Items.SEEP_TRANSFORMABLE_MUSIC_DISCS, ALMItems.MUSIC_DISC_JUST_A_LITTLE_MORE.get());
 
+        square4(out, ALMBlocks.SEEP_CRYSTAL_CLUSTER, ALMItems.SEEP_CRYSTAL.get(), 1);
+
 
         {
             ItemStack waterBottle = new ItemStack(Items.POTION);
@@ -197,13 +199,17 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(out);
     }
 
-    public void square4(@NotNull RecipeOutput out, @NotNull Block result, @NotNull Block material) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, result, 4)
+    public void square4(@NotNull RecipeOutput out, @NotNull ItemLike result, @NotNull ItemLike material, int count) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, result, count)
                 .pattern("##")
                 .pattern("##")
                 .define('#', material)
                 .unlockedBy(criterionName(material), has(material))
                 .save(out);
+    }
+
+    public void square4(@NotNull RecipeOutput out, @NotNull ItemLike result, @NotNull ItemLike material) {
+        square4(out, result, material, 4);
     }
 
     public void stonecut(@NotNull RecipeOutput out, @NotNull Block result,

@@ -52,7 +52,7 @@ public class ALittleMore {
         ALMMenuTypes.register(modEventBus);
         ALMEntities.register(modEventBus);
         ALMParticles.register(modEventBus);
-        ALMSounds.register(modEventBus);
+        ALMSoundEvents.register(modEventBus);
         ALMCreativeTabs.register(modEventBus);
 
         if (ModList.get().isLoaded("create")) {
