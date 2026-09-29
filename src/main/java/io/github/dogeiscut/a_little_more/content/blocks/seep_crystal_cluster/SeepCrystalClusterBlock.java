@@ -82,9 +82,16 @@ public class SeepCrystalClusterBlock extends Block implements EntityBlock, Simpl
 
     @Override
     protected void onRemove(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull BlockState newState, boolean movedByPiston) {
-        if (level.getBlockEntity(pos) instanceof SeepCrystalClusterBlockEntity be) {
-            Block.popResource(level, pos, be.getContents());
+        if (level instanceof ServerLevel serverLevel) {
+            if (serverLevel.getBlockEntity(pos) instanceof SeepCrystalClusterBlockEntity be) {
+                Block.popResource(serverLevel, pos, be.getContents());
+            }
+            if (state.getValue(FRAGILE)) {
+                int xpAmount = level.random.nextInt(4) + 1;
+                this.popExperience(serverLevel, pos, xpAmount);
+            }
         }
+
         super.onRemove(state, level, pos, newState, movedByPiston);
     }
 

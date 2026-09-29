@@ -42,8 +42,11 @@ is to make a mixin... This is cumbersome to say the least...
 - [ ] Horrendous Hideout
 - [ ] Worldgen
     - [ ] Seep
+      - [ ] Seep Crystal Clusters
+        - [ ] Seep Crystal Cluster loot
     - [X] Celerium
 - [ ] Item Imbuing
+- [ ]
 - [X] Music (for music disc)
     - [X] Music Disc
 - [ ] Advancements
@@ -60,8 +63,16 @@ is to make a mixin... This is cumbersome to say the least...
     - [ ] Adjust random pixels on axe texture
     - [X] Ores
 - [ ] Seep Crystals
-  - [ ] Seeplogging
+  - [X] Seeplogging
+  - [X] Model
+  - [X] Blockstates
+  - [X] Block Entity
+  - [X] Item storage
+  - [ ] Render items inside correctly (billboarded)
+  - [ ] Only drop (if fragile) when broken by player
+  - [ ] Fix XP drops to only do it without instamine
 - [ ] Celerium Horse Armor
+- [X] Immunity Effect
 - [ ] Fix Creative inventory
     - in an awful order
     - Could probably benfit from multiple tabs
