@@ -21,14 +21,24 @@
 is to make a mixin... This is cumbersome to say the least...
 - [ ] Under seep overlay
 - [ ] Figure out wait repairing celerium tools/armor doesn't show up in JEI
-- [ ] Fix Create support for Bulk Seeping not showing up in JEI
+- [ ] Redo seep transformation JEI support (it looks like crap right now)
+- [X] Fix Create support for Bulk Seeping not showing up in JEI
 - [ ] Datagen
     - [X] Fix block families
     - [ ] whatever the hell is going on with armor trims
-- [ ] ALMTags namespacing
-- [ ] Seepstone family assets
+    - [ ] External mod recipies (like Create)
+- [X] ALMTags namespacing
+- [X] Seepstone family assets
 - [ ] Opossums
+  - [X] Model
+  - [X] Entity
+  - [X] Spawn Egg
+  - [ ] Behavior
 - [ ] Shady dealers
+  - [ ] Model
+  - [ ] Entity
+  - [ ] Spawn Egg
+  - [ ] Behavior
 - [ ] Horrendous Hideout
 - [ ] Worldgen
     - [ ] Seep
@@ -50,11 +60,14 @@ is to make a mixin... This is cumbersome to say the least...
     - [ ] Adjust random pixels on axe texture
     - [X] Ores
 - [ ] Seep Crystals
+  - [ ] Seeplogging
 - [ ] Celerium Horse Armor
 - [ ] Fix Creative inventory
     - in an awful order
     - Could probably benfit from multiple tabs
     - missing immunity potions/arrow from A Little More tab
+- [ ] Translations for some sound's subtitles
+  - [ ] Fix seep drip particles using the wrong subtitle
 
 # TASKS
 

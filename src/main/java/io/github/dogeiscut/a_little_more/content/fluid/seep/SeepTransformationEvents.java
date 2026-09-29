@@ -1,10 +1,7 @@
 package io.github.dogeiscut.a_little_more.content.fluid.seep;
 
 import io.github.dogeiscut.a_little_more.ALittleMore;
-import io.github.dogeiscut.a_little_more.registry.ALMFluids;
-import io.github.dogeiscut.a_little_more.registry.ALMParticles;
-import io.github.dogeiscut.a_little_more.registry.ALMRecipes;
-import io.github.dogeiscut.a_little_more.registry.ALMSounds;
+import io.github.dogeiscut.a_little_more.registry.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -15,6 +12,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -104,13 +102,16 @@ public class SeepTransformationEvents {
         AABB box = itemEntity.getBoundingBox();
         BlockPos topPos = BlockPos.containing(itemEntity.getX(), box.maxY, itemEntity.getZ());
         FluidState fluidState = level.getFluidState(topPos);
+        BlockState blockState = level.getBlockState(topPos);
 
         boolean isSeep = fluidState.is(ALMFluids.SEEP.still().get()) || fluidState.is(ALMFluids.SEEP.flowing().get());
-        if (!isSeep) {
-            return false;
+        boolean isSeepCauldron = blockState.is(ALMBlocks.SEEP_CAULDRON);
+        if (isSeep) {
+            double surfaceY = topPos.getY() + fluidState.getHeight(level, topPos);
+            return box.maxY <= surfaceY;
+        } else if (isSeepCauldron) {
+            return itemEntity.getY() < (double)topPos.getY() + SeepCauldronBlock.CONTENT_HEIGHT && itemEntity.getBoundingBox().maxY > (double)topPos.getY() + (double)0.25F;
         }
-
-        double surfaceY = topPos.getY() + fluidState.getHeight(level, topPos);
-        return box.maxY <= surfaceY;
+        return false;
     }
 }

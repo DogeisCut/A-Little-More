@@ -21,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 public class SeepCauldronBlock extends AbstractCauldronBlock {
     public static final CauldronInteraction.InteractionMap SEEP = CauldronInteraction.newInteractionMap("seep");
     public static final MapCodec<SeepCauldronBlock> CODEC = simpleCodec(SeepCauldronBlock::new);
+    public static final double CONTENT_HEIGHT = 0.9375d;
 
     public SeepCauldronBlock(BlockBehaviour.@NotNull Properties properties) {
         super(properties, SEEP);
@@ -71,7 +72,7 @@ public class SeepCauldronBlock extends AbstractCauldronBlock {
     }
 
     protected double getContentHeight(@NotNull BlockState state) {
-        return 0.9375d;
+        return CONTENT_HEIGHT;
     }
 
     @Override
