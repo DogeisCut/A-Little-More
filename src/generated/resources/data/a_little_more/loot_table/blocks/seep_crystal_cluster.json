@@ -13,6 +13,28 @@
           "type": "minecraft:alternatives",
           "children": [
             {
+              "type": "minecraft:empty",
+              "conditions": [
+                {
+                  "block": "a_little_more:seep_crystal_cluster",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "fragile": "true"
+                  }
+                },
+                {
+                  "condition": "minecraft:inverted",
+                  "term": {
+                    "condition": "minecraft:entity_properties",
+                    "entity": "this",
+                    "predicate": {
+                      "type": "minecraft:player"
+                    }
+                  }
+                }
+              ]
+            },
+            {
               "type": "minecraft:item",
               "conditions": [
                 {
@@ -34,44 +56,39 @@
               "name": "a_little_more:seep_crystal_cluster"
             },
             {
-              "type": "minecraft:alternatives",
-              "children": [
+              "type": "minecraft:item",
+              "conditions": [
                 {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "block": "a_little_more:seep_crystal_cluster",
-                      "condition": "minecraft:block_state_property",
-                      "properties": {
-                        "fragile": "true"
-                      }
-                    }
-                  ],
-                  "functions": [
-                    {
-                      "add": false,
-                      "count": {
-                        "type": "minecraft:uniform",
-                        "max": 4.0,
-                        "min": 1.0
-                      },
-                      "function": "minecraft:set_count"
-                    }
-                  ],
-                  "name": "a_little_more:seep_crystal"
-                },
-                {
-                  "type": "minecraft:item",
-                  "functions": [
-                    {
-                      "add": false,
-                      "count": 4.0,
-                      "function": "minecraft:set_count"
-                    }
-                  ],
-                  "name": "a_little_more:seep_crystal"
+                  "block": "a_little_more:seep_crystal_cluster",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "fragile": "true"
+                  }
                 }
-              ]
+              ],
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 4.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "a_little_more:seep_crystal"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": 4.0,
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "a_little_more:seep_crystal"
             }
           ]
         }

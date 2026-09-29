@@ -4,20 +4,26 @@ import io.github.dogeiscut.a_little_more.content.blocks.seep_crystal_cluster.See
 import io.github.dogeiscut.a_little_more.registry.ALMBlocks;
 import io.github.dogeiscut.a_little_more.registry.ALMDataComponents;
 import io.github.dogeiscut.a_little_more.registry.ALMItems;
+import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
+import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.CopyComponentsFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.ExplosionCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
@@ -59,22 +65,24 @@ public class ALMBlockLootProvider extends BlockLootSubProvider {
                         .hasBlockStateProperties(ALMBlocks.SEEP_CRYSTAL_CLUSTER.get())
                         .setProperties(StatePropertiesPredicate.Builder.properties()
                                 .hasProperty(SeepCrystalClusterBlock.FRAGILE, true));
-
+        LootItemCondition.Builder brokenByPlayer =
+                LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS,
+                        EntityPredicate.Builder.entity().of(EntityType.PLAYER));
         this.add(ALMBlocks.SEEP_CRYSTAL_CLUSTER.get(), block ->
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))
-                                .add(LootItem.lootTableItem(block)
-                                        .when(this.hasSilkTouch())
-                                        .otherwise(LootItem.lootTableItem(ALMItems.SEEP_CRYSTAL.get())
-                                                .apply(SetItemCountFunction
-                                                        .setCount(UniformGenerator.between(1.0F, 4.0F)))
+                                .add(AlternativesEntry.alternatives(
+                                        EmptyLootItem.emptyItem()
                                                 .when(fragileTrue)
-                                                .otherwise(LootItem.lootTableItem(ALMItems.SEEP_CRYSTAL.get())
-                                                        .apply(SetItemCountFunction
-                                                                .setCount(ConstantValue.exactly(4))))
-                                        )
-                                )
+                                                .when(brokenByPlayer.invert()),
+                                        LootItem.lootTableItem(block).when(this.hasSilkTouch()),
+                                        LootItem.lootTableItem(ALMItems.SEEP_CRYSTAL.get())
+                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F)))
+                                                .when(fragileTrue),
+                                        LootItem.lootTableItem(ALMItems.SEEP_CRYSTAL.get())
+                                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(4)))
+                                ))
                                 .when(ExplosionCondition.survivesExplosion())
                         )
         );

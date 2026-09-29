@@ -81,15 +81,30 @@ public class SeepCrystalClusterBlock extends Block implements EntityBlock, Simpl
     }
 
     @Override
+    public @NotNull BlockState playerWillDestroy(@NotNull Level level, @NotNull BlockPos pos, @NotNull BlockState state, @NotNull Player player) {
+        if (state.getValue(FRAGILE) && level instanceof ServerLevel serverLevel
+                && serverLevel.getBlockEntity(pos) instanceof SeepCrystalClusterBlockEntity be) {
+            Block.popResource(serverLevel, pos, be.getContents());
+            be.setContents(ItemStack.EMPTY);
+        }
+        return super.playerWillDestroy(level, pos, state, player);
+    }
+
+    @Override
+    public void playerDestroy(@NotNull Level level, @NotNull Player player, @NotNull BlockPos pos, @NotNull BlockState state, @Nullable BlockEntity blockEntity, @NotNull ItemStack tool) {
+        super.playerDestroy(level, player, pos, state, blockEntity, tool);
+        if (state.getValue(FRAGILE) && level instanceof ServerLevel serverLevel) {
+            this.popExperience(serverLevel, pos, level.random.nextInt(4) + 1);
+        }
+    }
+
+    @Override
     protected void onRemove(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull BlockState newState, boolean movedByPiston) {
-        if (level instanceof ServerLevel serverLevel) {
-            if (serverLevel.getBlockEntity(pos) instanceof SeepCrystalClusterBlockEntity be) {
-                Block.popResource(serverLevel, pos, be.getContents());
-            }
-            if (state.getValue(FRAGILE)) {
-                int xpAmount = level.random.nextInt(4) + 1;
-                this.popExperience(serverLevel, pos, xpAmount);
-            }
+        // Fragile crystals drop nothing here: anything that isn't a player mining them just destroys the contents.
+        if (!state.is(newState.getBlock()) && !state.getValue(FRAGILE)
+                && level instanceof ServerLevel serverLevel
+                && serverLevel.getBlockEntity(pos) instanceof SeepCrystalClusterBlockEntity be) {
+            Block.popResource(serverLevel, pos, be.getContents());
         }
 
         super.onRemove(state, level, pos, newState, movedByPiston);

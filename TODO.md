@@ -69,8 +69,8 @@ is to make a mixin... This is cumbersome to say the least...
   - [X] Block Entity
   - [X] Item storage
   - [ ] Render items inside correctly (billboarded)
-  - [ ] Only drop (if fragile) when broken by player
-  - [ ] Fix XP drops to only do it without instamine
+  - [X] Only drop (if fragile) when broken by player
+  - [X] Fix XP drops to only do it without instamine
 - [ ] Celerium Horse Armor
 - [X] Immunity Effect
 - [ ] Fix Creative inventory
