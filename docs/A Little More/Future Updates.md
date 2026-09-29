@@ -18,3 +18,6 @@ Doors for stone families
 
 ## Endstone Spike
 Endstone dripstone
+
+## Pattern Blocks/Stamping Table
+Finish these up.
