@@ -100,7 +100,6 @@ public class SeepCrystalClusterBlock extends Block implements EntityBlock, Simpl
 
     @Override
     protected void onRemove(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull BlockState newState, boolean movedByPiston) {
-        // Fragile crystals drop nothing here: anything that isn't a player mining them just destroys the contents.
         if (!state.is(newState.getBlock()) && !state.getValue(FRAGILE)
                 && level instanceof ServerLevel serverLevel
                 && serverLevel.getBlockEntity(pos) instanceof SeepCrystalClusterBlockEntity be) {
