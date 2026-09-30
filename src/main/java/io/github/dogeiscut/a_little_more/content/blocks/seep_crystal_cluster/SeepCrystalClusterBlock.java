@@ -71,8 +71,10 @@ public class SeepCrystalClusterBlock extends Block implements EntityBlock, Simpl
                 if (stack.isEmpty() || !be.getContents().isEmpty()) {
                     return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
                 }
-                be.setContents(player.getItemInHand(hand));
-                player.setItemInHand(hand, ItemStack.EMPTY);
+                be.setContents(player.getItemInHand(hand).copy());
+                if (!player.getAbilities().instabuild) {
+                    player.setItemInHand(hand, ItemStack.EMPTY);
+                }
                 level.playSound(null, pos, ALMSoundEvents.SEEP_CRYSTAL_CLUSTER_ADD_ITEM.get(), SoundSource.BLOCKS);
                 return ItemInteractionResult.SUCCESS;
             }
