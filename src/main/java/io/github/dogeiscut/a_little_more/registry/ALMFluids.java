@@ -8,6 +8,7 @@ import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -15,7 +16,10 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
+import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
+import net.neoforged.neoforge.fluids.FluidInteractionRegistry.InteractionInformation;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -168,5 +172,13 @@ public class ALMFluids {
             Supplier<? extends BaseFlowingFluid> still,
             Supplier<? extends BaseFlowingFluid> flowing
     ) {
+    }
+
+
+    public static void registerFluidInteractions() {
+        FluidInteractionRegistry.addInteraction(ALMFluidTypes.SEEP.get(), new InteractionInformation(
+                (level, currentPos, relativePos, currentState) -> !level.getFluidState(relativePos).isEmpty() && !level.getFluidState(relativePos).is(ALMTags.Fluids.SEEP),
+                fluidState -> ALMBlocks.SEEPSTONE.get().defaultBlockState()
+        ));
     }
 }

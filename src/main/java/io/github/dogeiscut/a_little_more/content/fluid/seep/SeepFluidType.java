@@ -49,8 +49,8 @@ public class SeepFluidType extends BaseFluidType {
                 OVERLAY,
                 tint,
                 new Vector3f(0.866666667f, 0.690196078f, 1.0f),
-                1.0f,
-                3.0f
+                0.0f,
+                5.0f
         );
     }
 

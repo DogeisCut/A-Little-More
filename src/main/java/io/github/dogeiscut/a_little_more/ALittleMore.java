@@ -66,6 +66,7 @@ public class ALittleMore {
 
     @SubscribeEvent
     static void onCommonSetup(@NotNull FMLCommonSetupEvent event) {
+        ALMFluids.registerFluidInteractions();
         event.enqueueWork(() -> DispenserBlock.registerBehavior(ALMFluids.SEEP.bucket().get(), DispenseFluidContainer.getInstance()));
         event.enqueueWork(() -> SeepCauldronBlock.addCauldronInteractions(SeepCauldronBlock.SEEP));
     }
