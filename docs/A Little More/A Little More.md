@@ -59,13 +59,14 @@ These pockets will generate as long deep caverns filled with Seep to the bottom 
 Curiously, items sink fast in Seep. Some items even react with the stuff, transforming into new items if submerged long enough. Seep crystals grow at the bottom, when mined directly, drops as Seepite shards. Sometimes Seep crystals contain various rare items, preserving what's left of what the end used to be, dropping those instead. Breaking the support block or unsubmerging these crystals destroys them, dropping nothing. If only you could get down there to mine and collect things directly...
 
 - Ender Pearl -> Enseepened Pearl: Acts exactly like an ender pearl, but will not deal fall damage or spawn ender mites.
-- Seep Torch -> A periwinkle torch with a dark purple base
+- Torch -> Seep Torch: A periwinkle torch with a dark purple base
 - Cobblestone -> Endstone
 - Stone -> Seepstone
 - Music Disc (Any) -> Music Disc (Just A Little More)
 - Amethyst Shard -> Seep Crystal
 - Amethyst Cluster -> Seep Crystal Cluster
 - TODO: More Item transformations
+Calling for a change in design, I want to avoid transforming items into other vanilla items. Considering removing the cobblestone recipie, and making all stone transformations transform into seepstone.
 
 When Seep mixes with lava, Seepstone is created, a periwinkle building block able to be crafted and stonecut into many decorative forms. Can be combined with a speed pad to create a launch pad, sending the player forwards and up, depending on the Redstone signal given to the bottom (height) and the side (distance).
 
