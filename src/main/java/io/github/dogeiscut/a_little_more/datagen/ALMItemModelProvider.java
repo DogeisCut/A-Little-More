@@ -46,11 +46,6 @@ public class ALMItemModelProvider extends ItemModelProvider {
         ResourceLocation texture = ResourceLocation.fromNamespaceAndPath(id.getNamespace(), "item/" + id.getPath());
 
         if (!existingFileHelper.exists(texture, ModelProvider.TEXTURE)) {
-            ResourceLocation blockTexture = ResourceLocation.fromNamespaceAndPath(id.getNamespace(), "block/" + id.getPath());
-            if (existingFileHelper.exists(blockTexture, ModelProvider.TEXTURE)) {
-                generated(BuiltInRegistries.ITEM.getKey(item).getPath(), blockTexture);
-                return;
-            }
             missingTextures.add(texture.toString());
             return;
         }
