@@ -1,7 +1,7 @@
 {
   "type": "a_little_more:seep_transformation",
   "ingredient": {
-    "item": "minecraft:stone"
+    "tag": "a_little_more:seep_transformable_stone"
   },
   "result": {
     "count": 1,

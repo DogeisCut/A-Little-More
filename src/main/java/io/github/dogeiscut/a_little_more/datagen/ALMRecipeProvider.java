@@ -21,6 +21,7 @@ import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import net.neoforged.neoforge.common.crafting.DataComponentIngredient;
 import org.jetbrains.annotations.NotNull;
@@ -67,29 +68,30 @@ public class ALMRecipeProvider extends RecipeProvider implements IConditionBuild
         nuggetPair(out, ALMItems.EMERALD_NUGGET.get(), Items.EMERALD);
 
         seepTransformation(out, Items.ENDER_PEARL, ALMItems.ENSEEPENED_PEARL.get());
-        seepTransformation(out, Items.COBBLESTONE, Items.END_STONE);
+
+        seepTransformation(out, ALMTags.Items.SEEP_TRANSFORMABLE_STONE, ALMBlocks.SEEPSTONE.get().asItem());
+
         seepTransformation(out, Items.WATER_BUCKET, ALMFluids.SEEP.bucket().get());
         seepTransformation(out, Items.AMETHYST_SHARD, ALMItems.SEEP_CRYSTAL.get());
         seepTransformation(out, Items.AMETHYST_CLUSTER, ALMBlocks.SEEP_CRYSTAL_CLUSTER.get().asItem());
-        seepTransformation(out, Items.STONE, ALMBlocks.SEEPSTONE.get().asItem());
         seepTransformation(out, ALMTags.Items.SEEP_TRANSFORMABLE_MUSIC_DISCS, ALMItems.MUSIC_DISC_JUST_A_LITTLE_MORE.get());
+
+        seepTransformation(out, ALMTags.Items.SEEP_TRANSFORMABLE_TORCHES, ALMItems.SEEP_TORCH.get());
 
         square4(out, ALMBlocks.SEEP_CRYSTAL_CLUSTER, ALMItems.SEEP_CRYSTAL.get(), 1);
 
+        ItemStack waterBottle = new ItemStack(Items.POTION);
+        waterBottle.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.WATER));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ALMItems.SEEP_SODA.get(), 4)
+                .requires(ALMFluids.SEEP.bucket().get())
+                .requires(Items.SUGAR)
+                .requires(DataComponentIngredient.of(false, waterBottle))
+                .requires(DataComponentIngredient.of(false, waterBottle))
+                .requires(DataComponentIngredient.of(false, waterBottle))
+                .requires(DataComponentIngredient.of(false, waterBottle))
+                .unlockedBy(criterionName(ALMItems.SEEP_SODA.get()), has(ALMFluids.SEEP.bucket().get()))
+                .save(out, ALittleMore.id("seep_soda" + "_manual_only"));
 
-        {
-            ItemStack waterBottle = new ItemStack(Items.POTION);
-            waterBottle.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.WATER));
-            ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ALMItems.SEEP_SODA.get(), 4)
-                    .requires(ALMFluids.SEEP.bucket().get())
-                    .requires(Items.SUGAR)
-                    .requires(DataComponentIngredient.of(false, waterBottle))
-                    .requires(DataComponentIngredient.of(false, waterBottle))
-                    .requires(DataComponentIngredient.of(false, waterBottle))
-                    .requires(DataComponentIngredient.of(false, waterBottle))
-                    .unlockedBy(criterionName(ALMItems.SEEP_SODA.get()), has(ALMFluids.SEEP.bucket().get()))
-                    .save(out, ALittleMore.id("seep_soda" + "_manual_only"));
-        }
     }
 
     private void family(@NotNull RecipeOutput out, @NotNull ALMBlockFamily almFamily, boolean isStone) {

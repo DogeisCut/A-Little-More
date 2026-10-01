@@ -72,6 +72,25 @@ public class ALMItemTagsProvider extends net.minecraft.data.tags.ItemTagsProvide
         tag(Tags.Items.DRINKS).add(ALMItems.SEEP_SODA.get());
         tag(ALMTags.Items.C_DRINKS_SEEP_SODA).add(ALMItems.SEEP_SODA.get());
         tag(ALMTags.Items.C_DRINKS_SODA).add(ALMItems.SEEP_SODA.get());
+
+        // TODO: all the stone block variants transform into the seepstone variants (bricks, polished, etc, also finish up this list)
+        // (anything from the end is intentionally excluded)
+        tag(ALMTags.Items.SEEP_TRANSFORMABLE_STONE).add(
+                Items.COBBLESTONE,
+                Items.STONE,
+                Items.GRANITE,
+                Items.DIORITE,
+                Items.ANDESITE,
+                Items.DEEPSLATE,
+                Items.COBBLED_DEEPSLATE,
+                Items.BLACKSTONE
+        );
+        // (why is there no torches tag?)
+        tag(ALMTags.Items.SEEP_TRANSFORMABLE_TORCHES).add(
+                Items.TORCH,
+                Items.REDSTONE_TORCH,
+                Items.SOUL_TORCH
+        );
     }
 
     public void autoTag(Item item) {

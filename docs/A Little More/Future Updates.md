@@ -9,7 +9,9 @@ Porting this over from an old mod. Has it's own creative category (there's a lot
 
 ## Enseepened Tools
 No idea what these would do but it'd be cool
-
+## Enseepened Wood
+(and sapling and tree)
+Grows extra fast, looks like spruce, but periwinkle (with unique log and leaves texture)
 ## Purpleheart Wood
 Woodset for purpleheart trees
 

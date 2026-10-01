@@ -40,8 +40,14 @@ public final class ALMTags {
 
     public static final class Items {
         public static final TagKey<Item> CELERIUM_ORES = mod("celerium_ores");
-        public static final TagKey<Item> SEEP_TRANSFORMABLE_MUSIC_DISCS = mod("seep_transformable_music_discs");
         public static final TagKey<Item> OPOSSUM_FOOD = mod("opossum_food");
+
+        public static final TagKey<Item> SEEP_TRANSFORMABLE_MUSIC_DISCS = mod("seep_transformable_music_discs");
+        public static final TagKey<Item> SEEP_TRANSFORMABLE_PEARLS = mod("seep_transformable_pearls");
+        public static final TagKey<Item> SEEP_TRANSFORMABLE_STONE = mod("seep_transformable_stone");
+        public static final TagKey<Item> SEEP_TRANSFORMABLE_POLISHED_STONE = mod("seep_transformable_polished_stone");
+        public static final TagKey<Item> SEEP_TRANSFORMABLE_BRICKS = mod("seep_transformable_bricks");
+        public static final TagKey<Item> SEEP_TRANSFORMABLE_TORCHES = mod("seep_transformable_torches");
 
         public static final TagKey<Item> C_CELERIUM_ORES = common("ores/celerium");
         public static final TagKey<Item> C_CELERIUM_STORAGE_BLOCKS = common("storage_blocks/celerium");
