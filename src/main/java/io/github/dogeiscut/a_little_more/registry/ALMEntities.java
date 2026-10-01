@@ -24,12 +24,11 @@ public class ALMEntities {
                     .updateInterval(10)
                     .build("enseepened_pearl"));
 
-    public static final Supplier<EntityType<OpossumEntity>> OPOSSUM = entity("opossum",
-            OpossumEntity::new,
-            MobCategory.CREATURE,
-            0.7F,
-            0.7F
-    );
+    public static final Supplier<EntityType<OpossumEntity>> OPOSSUM = ENTITY_TYPES.register("opossum",
+            () -> EntityType.Builder.of(OpossumEntity::new, MobCategory.CREATURE)
+                    .sized(0.7F, 0.7F)
+                    .ridingOffset(-0.3f)
+                    .build("opossum"));
 
     public static <T extends Entity> @NotNull Supplier<EntityType<T>> entity(
             @NotNull String name,
