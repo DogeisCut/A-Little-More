@@ -1,5 +1,6 @@
 package io.github.dogeiscut.a_little_more.registry;
 
+import com.simibubi.create.AllParticleTypes;
 import io.github.dogeiscut.a_little_more.ALittleMore;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -36,8 +37,10 @@ public class ALMParticles {
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SEEP_SPLASH =
             PARTICLES.register("seep_splash", () -> new SimpleParticleType(false));
 
+    // TODO: this calls for a rewrite of this file tbh
+    public static final SimpleParticleType SEEP_FIRE_FLAME_TYPE = new SimpleParticleType(false);
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SEEP_FIRE_FLAME =
-            PARTICLES.register("seep_fire_flame", () -> new SimpleParticleType(false));
+            PARTICLES.register("seep_fire_flame", () -> SEEP_FIRE_FLAME_TYPE);
 
     public static void register(@NotNull IEventBus modEventBus) {
         PARTICLES.register(modEventBus);

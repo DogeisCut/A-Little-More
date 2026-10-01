@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "a_little_more:block/wall_seep_torch"
+    },
+    "facing=north": {
+      "model": "a_little_more:block/wall_seep_torch",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "a_little_more:block/wall_seep_torch",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "a_little_more:block/wall_seep_torch",
+      "y": 180
+    }
+  }
+}

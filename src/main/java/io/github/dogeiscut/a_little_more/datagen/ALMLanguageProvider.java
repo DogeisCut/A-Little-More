@@ -7,6 +7,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.WallTorchBlock;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import org.jetbrains.annotations.NotNull;
 
@@ -61,6 +62,7 @@ public class ALMLanguageProvider extends LanguageProvider {
     }
 
     private void autoName(@NotNull Block block) {
+        if (block instanceof WallTorchBlock) return;
         String path = BuiltInRegistries.BLOCK.getKey(block).getPath();
         add(block, OVERRIDES.getOrDefault(path, titleCase(path)));
     }

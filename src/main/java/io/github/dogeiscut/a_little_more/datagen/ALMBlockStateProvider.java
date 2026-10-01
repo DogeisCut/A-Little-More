@@ -111,10 +111,12 @@ public class ALMBlockStateProvider extends BlockStateProvider {
 
     public void torch(Block torchBlock, Block wallTorchBlock, @NotNull ResourceLocation texture) {
         var standingModel = models().withExistingParent(name(torchBlock), mcLoc("block/template_torch"))
+                .renderType(mcLoc("cutout"))
                 .texture("torch", texture);
         simpleBlock(torchBlock, standingModel);
 
         var wallModel = models().withExistingParent(name(wallTorchBlock), mcLoc("block/template_torch_wall"))
+                .renderType(mcLoc("cutout"))
                 .texture("torch", texture);
         horizontalBlock(wallTorchBlock, wallModel, 90);
     }
