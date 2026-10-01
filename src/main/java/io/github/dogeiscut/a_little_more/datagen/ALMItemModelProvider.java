@@ -35,6 +35,12 @@ public class ALMItemModelProvider extends ItemModelProvider {
     }
 
     public void auto(Item item) {
+        if (item instanceof StandingAndWallBlockItem) {
+            ResourceLocation id = BuiltInRegistries.ITEM.getKey(item);
+            generated(id.getPath(), ResourceLocation.fromNamespaceAndPath(id.getNamespace(), "block/" + id.getPath()));
+            return;
+        }
+
         if (item instanceof BlockItem) return;
 
         if (item instanceof SpawnEggItem) {
