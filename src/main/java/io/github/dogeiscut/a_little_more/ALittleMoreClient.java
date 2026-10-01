@@ -14,6 +14,7 @@ import io.github.dogeiscut.a_little_more.content.mobs.animals.opossum.OpossumMod
 import io.github.dogeiscut.a_little_more.content.mobs.animals.opossum.OpossumRenderer;
 import io.github.dogeiscut.a_little_more.content.particle.ALMDripParticle;
 import io.github.dogeiscut.a_little_more.registry.*;
+import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
@@ -61,6 +62,7 @@ public class ALittleMoreClient {
         event.registerSpriteSet(ALMParticles.FALLING_DRIPSTONE_SEEP.get(), ALMDripParticle.FallingDripstoneSeepProvider::new);
         event.registerSpriteSet(ALMParticles.DRIPPING_DRIPSTONE_SEEP.get(), ALMDripParticle.DrippingDripstoneSeepProvider::new);
         event.registerSpriteSet(ALMParticles.SEEP_SPLASH.get(), SeepSplashParticle.Provider::new);
+        event.registerSpriteSet(ALMParticles.SEEP_FIRE_FLAME.get(), FlameParticle.Provider::new);
     }
 
     @SubscribeEvent

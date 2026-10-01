@@ -87,6 +87,8 @@ public class ALMBlockLootProvider extends BlockLootSubProvider {
                         )
         );
 
+        selfDrop(ALMBlocks.SEEP_TORCH.get());
+
         dropOther(ALMBlocks.SEEP_CAULDRON.get(), Blocks.CAULDRON);
     }
 

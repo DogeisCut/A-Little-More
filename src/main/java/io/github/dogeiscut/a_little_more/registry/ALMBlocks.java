@@ -53,6 +53,9 @@ public class ALMBlocks {
 
     public static final DeferredBlock<SeepCauldronBlock> SEEP_CAULDRON = block("seep_cauldron", SeepCauldronBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON).lightLevel((s) -> 5));
 
+    public static final DeferredBlock<TorchBlock> SEEP_TORCH = block("seep_torch", p -> new TorchBlock(ALMParticles.SEEP_FIRE_FLAME.get(), p), BlockBehaviour.Properties.ofFullCopy(Blocks.TORCH).lightLevel((s) -> 8));
+    public static final DeferredBlock<WallTorchBlock> WALL_SEEP_TORCH = block("wall_seep_torch", p -> new WallTorchBlock(ALMParticles.SEEP_FIRE_FLAME.get(), p), BlockBehaviour.Properties.ofFullCopy(Blocks.TORCH).lightLevel((s) -> 8));
+
     public static @NotNull DeferredBlock<Block> simpleBlock(@NotNull String name, BlockBehaviour.@NotNull Properties properties) {
         return BLOCKS.registerSimpleBlock(name, properties);
     }

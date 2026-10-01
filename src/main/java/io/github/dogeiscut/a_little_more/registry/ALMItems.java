@@ -6,6 +6,7 @@ import io.github.dogeiscut.a_little_more.content.consumables.enseepened_pearl.En
 import io.github.dogeiscut.a_little_more.content.consumables.seep_soda.SeepSodaItem;
 import io.github.dogeiscut.a_little_more.content.fluid.seep.SeepLiquidBlock;
 import io.github.dogeiscut.a_little_more.content.weapons.flail.FlailItem;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -248,6 +249,9 @@ public class ALMItems {
 //            ),
 //            new Item.Properties()
 //    );
+
+
+    public static final Supplier<StandingAndWallBlockItem> SEEP_TORCH = item("seep_torch", p -> new StandingAndWallBlockItem(ALMBlocks.SEEP_TORCH.get(), ALMBlocks.WALL_SEEP_TORCH.get(), p, Direction.DOWN));
 
     public static @NotNull Supplier<Item> basicItem(@NotNull String name) {
         return ITEMS.registerSimpleItem(name);

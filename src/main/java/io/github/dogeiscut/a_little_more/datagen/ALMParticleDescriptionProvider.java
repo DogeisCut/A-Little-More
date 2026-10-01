@@ -24,5 +24,7 @@ public class ALMParticleDescriptionProvider extends ParticleDescriptionProvider 
         sprite(ALMParticles.FALLING_DRIPSTONE_SEEP.get(), ResourceLocation.withDefaultNamespace("drip_fall"));
         sprite(ALMParticles.DRIPPING_DRIPSTONE_SEEP.get(), ResourceLocation.withDefaultNamespace("drip_hang"));
         spriteSet(ALMParticles.SEEP_SPLASH.get(), ALittleMore.id("seep_splash"), 4, false);
+
+        sprite(ALMParticles.SEEP_FIRE_FLAME.get(), ALittleMore.id("seep_fire_flame"));
     }
 }

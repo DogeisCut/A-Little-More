@@ -8,7 +8,14 @@ import io.github.dogeiscut.a_little_more.registry.ALMFluids;
 import net.minecraft.core.Direction;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.models.BlockModelGenerators;
+import net.minecraft.data.models.blockstates.MultiVariantGenerator;
+import net.minecraft.data.models.blockstates.Variant;
+import net.minecraft.data.models.blockstates.VariantProperties;
+import net.minecraft.data.models.model.ModelTemplates;
+import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.neoforged.neoforge.client.model.generators.*;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -60,7 +67,6 @@ public class ALMBlockStateProvider extends BlockStateProvider {
         singleLevelCauldronBlock(ALMBlocks.SEEP_CAULDRON.get(), SeepFluidType.STILL, false /* i know seep is transparent but vanilla water cauldrons aren't and it causes weird block outline artifacts*/);
 
         ModelFile seepCrystalClusterModel = models().getExistingFile(modLoc("block/seep_crystal_cluster"));
-
         ModelFile[] spinModels = new ModelFile[4];
         for (int i = 0; i < 4; i++) {
             int spin = i * 90;
@@ -71,7 +77,6 @@ public class ALMBlockStateProvider extends BlockStateProvider {
                     .rotation(new Quaternionf().rotationY((float) Math.toRadians(spin)))
                     .end();
         }
-
         getVariantBuilder(ALMBlocks.SEEP_CRYSTAL_CLUSTER.get()).forAllStates(state -> {
             Direction facing = state.getValue(SeepCrystalClusterBlock.FACING);
 
@@ -93,14 +98,25 @@ public class ALMBlockStateProvider extends BlockStateProvider {
             }
             return variants;
         });
-
         itemModels().withExistingParent("seep_crystal_cluster", modLoc("block/seep_crystal_cluster"));
+
+        torch(ALMBlocks.SEEP_TORCH.get(), ALMBlocks.WALL_SEEP_TORCH.get(), modLoc("block/seep_torch"));
 
         if (!missingTextures.isEmpty()) {
             ALittleMore.LOGGER.warn(
                     "[A Little More datagen] Skipped {} block model(s) with no texture yet: {}",
                     missingTextures.size(), String.join(", ", missingTextures));
         }
+    }
+
+    public void torch(Block torchBlock, Block wallTorchBlock, @NotNull ResourceLocation texture) {
+        var standingModel = models().withExistingParent(name(torchBlock), mcLoc("block/template_torch"))
+                .texture("torch", texture);
+        simpleBlock(torchBlock, standingModel);
+
+        var wallModel = models().withExistingParent(name(wallTorchBlock), mcLoc("block/template_torch_wall"))
+                .texture("torch", texture);
+        horizontalBlock(wallTorchBlock, wallModel, 90);
     }
 
     // WHY IS THERE NO BUILT-IN DATAGEN FUNCTION FOR CAULDRONS, MOJANG!!!!!!!!!!!!!!!!!!?????????????????
