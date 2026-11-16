@@ -2,6 +2,7 @@ package io.github.dogeiscut.a_little_more.content.goals;
 
 import com.google.common.collect.Streams;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.animal.Animal;
 
@@ -72,9 +73,17 @@ public class RideParentGoal extends Goal {
         if (this.animal.isPassenger()) {
             return;
         }
-        if (this.parent != null && this.parent.getPassengers().size() <= stackMax) {
-            @Nullable Entity controller = this.parent.getControllingPassenger();
-            this.animal.startRiding(controller == null ? this.parent : controller);
+        if (this.parent != null) {
+            LivingEntity vehicle = this.parent;
+            for (int i = 0; i < this.stackMax; i++) {
+                if (vehicle.getControllingPassenger() != null) {
+                    vehicle = vehicle.getControllingPassenger();
+                } else {
+                    if (vehicle == this.animal) break;
+                    this.animal.startRiding(vehicle);
+                    break;
+                }
+            }
         }
     }
 }

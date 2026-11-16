@@ -17,6 +17,7 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -62,6 +63,14 @@ public class OpossumEntity extends Animal {
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0F));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
+    }
+
+    // TODO: position opossums randomly across the back if the bottom-most entity is an adult opossum
+    @Override
+    protected void positionRider(@NotNull Entity passenger, MoveFunction callback) {
+        Vec3 vec3 = this.getPassengerRidingPosition(passenger);
+        Vec3 vec31 = passenger.getVehicleAttachmentPoint(this);
+        callback.accept(passenger, vec3.x - vec31.x, vec3.y - vec31.y, vec3.z - vec31.z);
     }
 
     @Override
